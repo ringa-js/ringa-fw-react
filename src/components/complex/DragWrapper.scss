@@ -1,0 +1,9 @@
+.drag-wrapper {
+  &.dragEnabled {
+    cursor: move;
+  }
+
+  &.dragging {
+    pointer-events: none;
+  }
+}

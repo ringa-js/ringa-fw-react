@@ -1,0 +1,19 @@
+.bp-component {
+  &.disabled {
+    filter: brightness(110%) greyscale(50%);
+    pointer-events: none;
+  }
+
+  &.hide {
+    display: none;
+  }
+}
+
+.bp-drop-hover {
+  border: 1px dashed black !important;
+}
+
+.bp-block-mouse {
+  pointer-events: none !important;
+  opacity: 0.5;
+}

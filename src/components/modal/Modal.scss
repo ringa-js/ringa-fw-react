@@ -1,0 +1,22 @@
+.modal {
+  position: absolute;
+  pointer-events: all;
+
+  min-width: 200px;
+  min-height: 75px;
+
+  .modal-header {
+  }
+
+  .drag-wrapper {
+    &.dragging {
+      .modal-header {
+      }
+    }
+  }
+
+  .modal-contents {
+    &.show-header {
+    }
+  }
+}

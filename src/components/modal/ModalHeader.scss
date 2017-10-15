@@ -1,0 +1,16 @@
+.modal-header {
+  .title {
+    text-align: center;
+
+    &.closeable {
+    }
+  }
+
+  .modal-close-btn {
+    position: absolute;
+    cursor: pointer;
+
+    img {
+    }
+  }
+}

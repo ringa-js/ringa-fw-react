@@ -1,0 +1,19 @@
+.tooltip {
+  position: absolute;
+  pointer-events: all;
+  overflow-x: hidden;
+
+  .message {
+    width: 100%;
+  }
+
+  .children {
+
+  }
+
+  &.debug {
+  }
+
+  &.error {
+  }
+}

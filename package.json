@@ -1,0 +1,74 @@
+{
+  "name": "ringa-fw-react",
+  "version": "0.0.1",
+  "description": "RingaJS React Visual Framework",
+  "main": "dist/ringa-fw-react.min.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rm -rf dist",
+    "dev": "`npm bin`/webpack-dev-server --config ./config/webpack.config.dev.js",
+    "build": "rm -rf dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.dist.js",
+    "start": "npm run dev",
+    "release:major": "npm test && npm run build && npm version major && npm publish && git push --follow-tags",
+    "release:minor": "npm test && npm run build && npm version minor && npm publish && git push --follow-tags",
+    "release:patch": "npm test && npm run build && npm version patch && npm publish && git push --follow-tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshjung/ringa-fw-react.git"
+  },
+  "keywords": [],
+  "authors": [
+    "Joshua Jung <joshua.p.jung@gmail.com>"
+  ],
+  "peerDependencies": {
+    "react-dom": "15.5.4"
+  },
+  "dependencies": {
+    "babel-jest": "^19.0.0",
+    "babel-polyfill": "^6.0.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-es2015": "^6.24.1",
+    "classnames": "^2.2.5",
+    "cloner": "^0.4.0",
+    "deep-equal": "^1.0.1",
+    "hasharray": "^1.1.0",
+    "moment": "^2.19.1",
+    "postcss-loader": "^2.0.6",
+    "react": "^15.5.4",
+    "react-dom": "^15.6.2",
+    "react-ringa": "0.1.3",
+    "ringa": "0.1.8",
+    "trie-search": "^1.0.9"
+  },
+  "devDependencies": {
+    "babel-core": "^6.7.6",
+    "babel-eslint": "^5.0.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.23.0",
+    "extract-text-webpack-plugin": "3.0.0",
+    "file-loader": "^0.8.5",
+    "html-webpack-plugin": "2.30.1",
+    "imports-loader": "^0.6.5",
+    "node-sass": "^4.5.0",
+    "optimize-css-assets-webpack-plugin": "^3.2.0",
+    "sass-loader": "^6.0.2",
+    "sass-module-importer": "^1.4.0",
+    "style-loader": "^0.13.2",
+    "url-loader": "^0.5.8",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
+  },
+  "jest": {
+    "verbose": true,
+    "globals": {
+      "__DEV__": true
+    }
+  }
+}

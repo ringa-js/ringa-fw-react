@@ -1,0 +1,16 @@
+.drag-list-container {
+  &.show-scroll {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  &.drag-active {
+    box-shadow: 0 0 7px #C44;
+  }
+
+  .empty {
+    text-align: center;
+    width: calc(100% - 2em);
+    padding: 0.1em 1em;
+  }
+}
