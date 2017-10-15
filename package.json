@@ -1,8 +1,8 @@
 {
   "name": "ringa-fw-react",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "description": "RingaJS React Visual Framework",
-  "main": "dist/ringa-fw-react.min.js",
+  "main": "dist/ringa-fw-reacgt.min.js",
   "files": [
     "dist"
   ],

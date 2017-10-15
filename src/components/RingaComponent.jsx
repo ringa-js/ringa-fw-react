@@ -283,9 +283,9 @@ class RingaComponent extends Component {
     let o = Array.prototype.slice.call(arguments);
 
     o.push({
-      'bp-component': true,
-      'bp-drop-hover': this.state && !!this.state.dropHoverData,
-      'bp-block-mouse': this.state && this.state.blockMouseEvents,
+      'ringa-component': true,
+      'ringa-drop-hover': this.state && !!this.state.dropHoverData,
+      'ringa-block-mouse': this.state && this.state.blockMouseEvents,
       'mouse-over': this.state && this.state.mouseOver,
       'hide': this.props.visible === false,
       'disabled': !this.enabled
@@ -437,7 +437,7 @@ class RingaComponent extends Component {
     this.dragOverlay = OverlayModel.show({
       renderer: this._render.bind(this),
       classes: {
-        'bp-block-mouse': true
+        'ringa-block-mouse': true
       },
       maxWidth: 2500,
       x: mouseEvent.clientX + this.dragOffset.x,

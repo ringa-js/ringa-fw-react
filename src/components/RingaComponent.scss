@@ -1,4 +1,4 @@
-.bp-component {
+.ringa-component {
   &.disabled {
     filter: brightness(110%) greyscale(50%);
     pointer-events: none;
@@ -9,11 +9,11 @@
   }
 }
 
-.bp-drop-hover {
+.ringa-drop-hover {
   border: 1px dashed black !important;
 }
 
-.bp-block-mouse {
+.ringa-block-mouse {
   pointer-events: none !important;
   opacity: 0.5;
 }
