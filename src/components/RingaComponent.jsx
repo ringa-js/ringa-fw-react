@@ -37,13 +37,13 @@ const classCounts = {};
 const groups = {};
 
 window.renderCounts = {};
-window.ComponentBase_StartPerformanceCheck = () => {
+window.RingaComponent_StartPerformanceCheck = () => {
   for (let key in window.renderCounts) {
     window.renderCounts[key] = 0;
   }
 };
 
-class ComponentBase extends Component {
+class RingaComponent extends Component {
   //-----------------------------------
   // Constructor
   //-----------------------------------
@@ -73,11 +73,11 @@ class ComponentBase extends Component {
 
     this.id = id || `${cname}${count}`;
 
-    if (ComponentBase.idToComponent[this.id]) {
-      console.warn(`ComponentBase::constructor(): setting an id of ${this.id} and it is already used! Make sure you call super() in componentWillUnmount().`);
+    if (RingaComponent.idToComponent[this.id]) {
+      console.warn(`RingaComponent::constructor(): setting an id of ${this.id} and it is already used! Make sure you call super() in componentWillUnmount().`);
     }
 
-    ComponentBase.idToComponent[this.id] = this;
+    RingaComponent.idToComponent[this.id] = this;
 
     this.tooltipTimeMS = 666;
 
@@ -155,7 +155,7 @@ class ComponentBase extends Component {
   // Lifecycle
   //-----------------------------------
   componentWillUnmount() {
-    delete ComponentBase.idToComponent[this.id];
+    delete RingaComponent.idToComponent[this.id];
 
     this.removeEvents();
 
@@ -185,7 +185,7 @@ class ComponentBase extends Component {
     this.mounted = true;
 
     if (!this.rootDomNode) {
-      throw new Error('ComponentBase::componentDidMount(): could not find the rootDomNode!');
+      throw new Error('RingaComponent::componentDidMount(): could not find the rootDomNode!');
     }
 
     this.addEvents();
@@ -206,7 +206,7 @@ class ComponentBase extends Component {
     this.rootDomNode = ReactDOM.findDOMNode(this);
 
     if (!this.rootDomNode) {
-      throw new Error('ComponentBase::componentDidUpdate(): could not find the rootDomNode!');
+      throw new Error('RingaComponent::componentDidUpdate(): could not find the rootDomNode!');
     }
 
     if (oldDomNode !== this.rootDomNode) {
@@ -217,7 +217,7 @@ class ComponentBase extends Component {
   }
 
   render() {
-    throw new Error('ComponentBase::render(): this should be overridden!');
+    throw new Error('RingaComponent::render(): this should be overridden!');
   }
 
   renderDrag() {
@@ -397,7 +397,7 @@ class ComponentBase extends Component {
 
   dispatch(eventType, detail, bubbles = true, cancellable = true, requireCatch = true, bus = undefined) {
     if (!this.rootDomNode) {
-      throw new Error('ComponentBase::dispatch(): rootDomNode was undefined!');
+      throw new Error('RingaComponent::dispatch(): rootDomNode was undefined!');
     }
 
     return dispatch(eventType, detail, bus || this.rootDomNode, bubbles, cancellable, requireCatch);
@@ -405,7 +405,7 @@ class ComponentBase extends Component {
 
   dispatchLater(eventType, detail, bubbles = true, cancellable = true, requireCatch = true) {
     if (!this.rootDomNode) {
-      throw new Error('ComponentBase::dispatch(): rootDomNode was undefined!');
+      throw new Error('RingaComponent::dispatch(): rootDomNode was undefined!');
     }
 
     return new Promise(resolve => {
@@ -577,6 +577,6 @@ class ComponentBase extends Component {
   }
 }
 
-ComponentBase.idToComponent = new WeakMap();
+RingaComponent.idToComponent = new WeakMap();
 
-export default ComponentBase;
+export default RingaComponent;
