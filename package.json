@@ -4,7 +4,8 @@
   "description": "RingaJS React Visual Framework",
   "main": "src/index.js",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
     "clean": "rm -rf dist",
