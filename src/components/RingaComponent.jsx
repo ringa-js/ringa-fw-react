@@ -10,6 +10,23 @@ import {dispatch} from 'ringa';
 import './RingaComponent.scss';
 
 /**
+ * Recursively walks the prototype chain to get all the available properties for a given Object.
+ *
+ * @param inst The object to walk.
+ * @returns {Array} An array of all the property names
+ */
+export function getAllProperties(inst) {
+  let props = [];
+
+  while (inst) {
+    props = props.concat(Object.getOwnPropertyNames(inst));
+    inst = Object.getPrototypeOf(inst);
+  }
+
+  return props;
+}
+
+/**
  * Uses getAllProperties() and then filters it for all methods.
  *
  * @param inst The object to walk.
