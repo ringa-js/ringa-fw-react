@@ -102,6 +102,8 @@
     width: 100%;
 
     .item {
+      @include hover-1;
+
       font-size: 14px;
       padding: 5px 10px;
       cursor: pointer;

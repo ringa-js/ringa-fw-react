@@ -2,6 +2,8 @@ import React from 'react';
 import RingaComponent from '../RingaComponent';
 
 import highlight from 'highlight.js';
+import js from 'highlight.js/lib/languages/javascript';
+import 'highlight.js/styles/sunburst.css';
 
 class Code extends RingaComponent {
   //-----------------------------------
@@ -22,7 +24,7 @@ class Code extends RingaComponent {
     const {code} = this.props;
 
     return <div className={this.calcClassnames("code")}>
-      <pre><code ref="code">{code}</code></pre>
+      <pre><code ref="code" class="javascript">{code}</code></pre>
     </div>;
   }
 }

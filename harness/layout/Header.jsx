@@ -47,7 +47,7 @@ class Header extends RingaComponent {
         <div className="header-inner">
           <div className="flex-start">
             <div className="title">
-              <img src={LOGO} width={120} height={21} />
+              <img src={LOGO} width={120} height={25} />
               <div className="subtitle">React Framework</div>
             </div>
           </div>

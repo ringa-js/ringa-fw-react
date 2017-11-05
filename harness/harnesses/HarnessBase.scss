@@ -1,0 +1,14 @@
+@import '../../src/styles/themes/classic/variables';
+
+.harness-wrapper {
+  height: calc(100% - 120px);
+  overflow: auto;
+  padding: $pad3;
+
+  .code-example {
+    .code {
+      max-height: 300px;
+      overflow: auto;
+    }
+  }
+}

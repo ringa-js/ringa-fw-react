@@ -15,6 +15,10 @@
     box-shadow: 1px 1px 2px 1px $black-2;
   }
 
+  &:focus {
+    outline:0;
+  }
+
   @media screen and (max-width: $break-small) {
     padding: 3px 8px;
     font-size: 13px;
@@ -33,5 +37,24 @@
 
   &.white {
     color: $white;
+  }
+
+  &.selected {
+    background: $white;
+    -webkit-box-shadow: inset 1px 1px 2px 1px $grey-1;
+    -moz-box-shadow: inset 1px 1px 2px 1px $grey-1;
+    box-shadow: inset 1px 1px 2px 1px $grey-1;
+  }
+
+  &.tab {
+    margin: 0;
+
+    &:hover {
+      transform: translate(0px, 0px);
+
+      -webkit-box-shadow: inset 1px 1px 2px 1px $grey-1;
+      -moz-box-shadow: inset 1px 1px 2px 1px $grey-1;
+      box-shadow: inset 1px 1px 2px 1px $grey-1;
+    }
   }
 }

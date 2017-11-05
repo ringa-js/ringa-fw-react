@@ -2,8 +2,12 @@ import React from 'react';
 import {List} from '../../../src/index';
 
 import HarnessBase from '../HarnessBase';
+import CodeExample from '../../../src/components/complex/CodeExample';
 
 import './ListHarness.scss';
+
+import Example1 from './Example1.txt';
+import Example2 from './Example2.txt';
 
 class ListHarness extends HarnessBase {
   //-----------------------------------
@@ -73,26 +77,21 @@ class ListHarness extends HarnessBase {
   // Lifecycle
   //-----------------------------------
   render() {
-    return <div className="list-harness">
-      <div className="super-group">
-        <label>Basic</label>
-        <div className="flex-space-between-wrap">
-          <div className="group">
-            <section>
-              <List items={this.items} />
-            </section>
-          </div>
+    return <div className="harness-wrapper">
+      <div className="list-harness">
+        <h1>List Component</h1>
+        <div className="super-group">
+          <h2>Basic</h2>
+          <CodeExample code={Example1}>
+            <List items={this.items} />
+          </CodeExample>
         </div>
-      </div>
-      <div className="super-group">
-        <label>Multi-select</label>
-        <div className="flex-space-between-wrap">
-          <div className="group">
-            <section>
-              <List multiSelect={true}
-                    items={this.multiSelectItems} />
-            </section>
-          </div>
+        <div className="super-group">
+          <h2>Multi-select</h2>
+          <CodeExample code={Example1}>
+            <List multiSelect={true}
+                  items={this.multiSelectItems} />
+          </CodeExample>
         </div>
       </div>
     </div>;

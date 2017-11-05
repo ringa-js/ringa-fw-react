@@ -10,7 +10,6 @@
   -webkit-overflow-scrolling: touch;
   min-width: 250px;
   position: relative;
-  max-height: 300px;
 
   font-size: 16px;
 
@@ -29,13 +28,14 @@
   }
 
   .item-renderer {
+    @include hover-1;
+
     padding: 9px 11px;
     background: $white;
 
     transition: 0.3s background linear;
 
     &:hover {
-      background: $hover-1;
       cursor: pointer;
     }
 
@@ -72,7 +72,7 @@
     font-size: 14px;
   }
 
-  .empty-list-msg{
+  .empty-list-msg {
     padding: 20px;
     text-align: center;
     color: $grey-1;

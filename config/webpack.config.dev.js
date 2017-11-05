@@ -40,7 +40,7 @@ const config = {
   module: {
     loaders: [
       {
-        test: /\.md/,
+        test: /\.(md|txt)$/,
         loader: 'raw-loader'
       },
       {
@@ -55,7 +55,7 @@ const config = {
         }
       },
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         loaders: [
           'style-loader',
           'css-loader',

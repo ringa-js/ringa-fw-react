@@ -39,11 +39,9 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
         <OverlayContainer global={true} classes="fill">
           <ModalContainer global={true} classes="fill">
             <Header {...this.props} />
-            <div className="container fill">
-              <Route path="/list" component={ListHarness} />
-              <Route path="/home" component={Home} />
-              <Redirect from="/" to="/home" />
-            </div>
+            <Route path="/list" component={ListHarness} />
+            <Route path="/home" component={Home} />
+            <Redirect from="/" to="/home" />
             <Footer />
           </ModalContainer>
         </OverlayContainer>

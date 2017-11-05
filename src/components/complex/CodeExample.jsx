@@ -1,11 +1,13 @@
 import React from 'react';
 import RingaComponent from '../RingaComponent';
 
+import TabNavigator from '../containers/TabNavigator';
 import Code from './Code';
+import Markdown from './Markdown';
 
 import I18NModel from '../../models/I18NModel';
 
-import {depend} from 'react-ringa';
+import {depend, dependency} from 'react-ringa';
 
 class CodeExample extends RingaComponent {
   //-----------------------------------
@@ -21,7 +23,7 @@ class CodeExample extends RingaComponent {
   // Lifecycle
   //-----------------------------------
   render() {
-    const {children, code, i18NKey = 'codeExample.example'} = this.props;
+    const {children, code, documentation, i18NKey = 'codeExample.example'} = this.props;
     const {i18NModel} = this.state;
 
     const tabs = [{
@@ -31,6 +33,13 @@ class CodeExample extends RingaComponent {
       label: i18NModel.i18n('codeExample.code'),
       content: <Code code={code} />
     }];
+
+    if (documentation) {
+      tabs.push({
+        label: i18NModel.i18n('codeExample.documentation'),
+        content: <Markdown markdown={documentation} />
+      });
+    }
 
     return <div className={this.calcClassnames("code-example")}>
       <TabNavigator tabs={tabs} />

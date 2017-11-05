@@ -1,0 +1,20 @@
+@import '../../styles/themes/classic/variables';
+
+.tab-navigator {
+  .tab {
+    border-top: 1px solid $grey-1;
+
+    &:first-child {
+      border-left: 1px solid $grey-1;
+    }
+
+    &:last-child {
+      border-right: 1px solid $grey-1;
+    }
+  }
+
+  .content {
+    border: 1px solid $grey-1;
+    overflow: auto;
+  }
+}

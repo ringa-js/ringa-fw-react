@@ -2,6 +2,7 @@ import React from 'react';
 import RingaComponent from '../src/components/RingaComponent';
 import Markdown from '../src/components/complex/Markdown';
 
+import './Home.scss';
 import HOME_MD from './Home.md';
 
 export default class Home extends RingaComponent {
