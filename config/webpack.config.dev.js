@@ -2,10 +2,10 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
+const buildInfo = require('./util/buildInfo');
 const ROOT_PATH = path.resolve(process.env.PWD);
 
-module.exports = {
+const config = {
   name: 'ringa-fw-react',
   devtool: 'cheap-module-eval-source-map',
   entry: {
@@ -23,6 +23,7 @@ module.exports = {
       'react-dom': path.resolve(__dirname, '../node_modules/react-dom'),
       ringa: path.resolve(__dirname, '../node_modules/ringa'),
       'react-ringa': path.resolve(__dirname, '../node_modules/react-ringa'),
+      'react-fw-core': path.resolve(__dirname, '../node_modules/react-fw-core'),
       'moment': path.resolve(__dirname, '../node_modules/moment'),
       'trie-search': path.resolve(__dirname, '../node_modules/trie-search')
     }
@@ -38,6 +39,10 @@ module.exports = {
   },
   module: {
     loaders: [
+      {
+        test: /\.md/,
+        loader: 'raw-loader'
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
@@ -103,3 +108,18 @@ module.exports = {
     })
   ]
 };
+
+module.exports = new Promise(resolve => {
+  buildInfo(build => {
+    config.plugins.unshift(new webpack.DefinePlugin({
+      __DEV__: true,
+      __BUILD__: JSON.stringify(build),
+      __BUILD_EPOCH__: new Date().getTime(),
+      'process.env': {
+        NODE_ENV: '"development"'
+      }
+    }));
+
+    resolve(config);
+  })
+});

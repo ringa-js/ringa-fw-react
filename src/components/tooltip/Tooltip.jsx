@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Tooltip.scss';
 import PositionableComponent from '../PositionableComponent';
 
 import classnames from 'classnames';

@@ -1,5 +1,4 @@
 import React from 'react';
-import './ModalHeader.scss';
 import RingaComponent from '../RingaComponent';
 import DragWrapper from '../complex/DragWrapper';
 

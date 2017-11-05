@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './AlertModal.scss';
 import PositionableComponent from '../../PositionableComponent';
 import I18NModel from '../../../models/I18NModel';
 

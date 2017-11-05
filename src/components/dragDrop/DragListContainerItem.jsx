@@ -1,7 +1,6 @@
 import React from 'react';
 import RingaComponent from '../RingaComponent';
 import DragHandles from '../dragDrop/DragHandles';
-import './DragListContainerItem.scss';
 
 class DragListContainerItem extends RingaComponent {
   //-----------------------------------

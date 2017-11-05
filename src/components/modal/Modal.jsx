@@ -1,5 +1,4 @@
 import React from 'react';
-import './Modal.scss';
 import ModalHeader from './ModalHeader.jsx';
 import PositionableComponent from '../PositionableComponent';
 import I18NModel from '../../models/I18NModel';

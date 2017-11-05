@@ -1,0 +1,80 @@
+@import '../../styles/themes/classic/variables';
+
+.number-input {
+  padding: 0;
+  margin: 0;
+  background: none;
+  position: relative;
+  white-space: nowrap;
+  width: 100px;
+  border: 1px solid $grey-1;
+
+  display: flex;
+  justify-content: flex-end;
+
+  input:focus {
+    outline: none !important;
+    box-shadow: 0 0 12px 1px $hover-1 !important;
+  }
+
+  .buttons {
+    position: absolute;
+    top: -1px;
+    right: 0;
+
+    @media screen and (max-width: $break-small) {
+      top: -3px;
+    }
+
+    .up, .down {
+      height: 14px;
+      cursor: pointer;
+      &[disabled] {
+        visibility: hidden;
+        cursor: not-allowed;
+      }
+
+      @media screen and (max-width: $break-small) {
+        display: none;
+      }
+    }
+  }
+
+  > label {
+    margin-right: 0.5em;
+  }
+
+  > input {
+    padding: 0.3em;
+    padding-right: 20px;
+    font-size: 15px;
+    width: calc(100% - 20px);
+    text-align: right;
+    border: none;
+
+    @media screen and (max-width: $break-small) {
+      font-size: 18px;
+      padding-right: 0.3em;
+      width: 100%;
+    }
+  }
+
+  &.required {
+    input, textarea {
+      width: calc(100% - 1.0em - 20px);
+    }
+  }
+
+  > .required-indicator {
+    margin-left: 0.3em;
+    display: inline;
+    font-size: 20px;
+    color: red;
+  }
+
+  &.invalid {
+    input, textarea {
+      border: 2px solid red;
+    }
+  }
+}

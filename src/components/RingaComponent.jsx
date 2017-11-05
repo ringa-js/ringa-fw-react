@@ -7,8 +7,6 @@ import classnames from 'classnames';
 import {isCoordWithin, getBounds} from '../utils/DisplayUtils';
 import {dispatch} from 'ringa';
 
-import './RingaComponent.scss';
-
 /**
  * Recursively walks the prototype chain to get all the available properties for a given Object.
  *
@@ -234,7 +232,7 @@ class RingaComponent extends Component {
   }
 
   render() {
-    throw new Error('RingaComponent::render(): this should be overridden!');
+    throw new Error('RingaComponent::render(): this should be overridden! See', this);
   }
 
   renderDrag() {

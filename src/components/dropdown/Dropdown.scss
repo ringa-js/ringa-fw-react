@@ -1,0 +1,159 @@
+@import '../../styles/themes/classic/variables';
+
+.dropdown.default {
+  position: relative;
+  background-color: $white;
+  border: 1px solid $grey-1;
+  border-radius: $radius-1;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 250px;
+  color: $black;
+
+  &.open {
+    border: 1px solid $ringa-color;
+    border-bottom: none;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-bottom: 1px;
+
+    &.position-top {
+      border: 1px solid $ringa-color;
+      border-top: none;
+      border-radius: $radius-1;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      padding-top: 2px;
+      padding-bottom: 0px;
+    }
+  }
+
+  &.borderless {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    > .arrow {
+      border-color: $black-3 transparent transparent;
+    }
+
+    > .arrow.open {
+      border-color: transparent transparent $black-3;
+    }
+
+    &.white {
+      > .arrow {
+        border-color: $white transparent transparent;
+      }
+
+      > .arrow.open {
+        border-color: transparent transparent $white;
+      }
+    }
+  }
+
+  &.white {
+    color: $white;
+  }
+
+  > .dropdown-selected {
+    padding: 5px 10px;
+    margin-right: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  > .dropdown-placeholder {
+    color: $black-3;
+    padding: $pad1;
+    width: calc(100% - 20px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  > .arrow {
+    border-color: $black-3 transparent transparent;
+    border-style: solid;
+    border-width: 5px 5px 0;
+    content: ' ';
+    display: block;
+    height: 0;
+    position: absolute;
+    right: 8px;
+    top: calc(50% - 2.5px);
+    width: 0
+  }
+
+  > .arrow.open {
+    border-color: transparent transparent $black-3;
+    border-width: 0 5px 5px;
+  }
+}
+
+.overlay {
+  .dropdown-list {
+    min-width: 100px;
+    min-height: 25px;
+    width: 100%;
+
+    .item {
+      font-size: 14px;
+      padding: 5px 10px;
+      cursor: pointer;
+      width: calc(100% - 10px);
+    }
+  }
+}
+
+.overlay.dropdown-overlay {
+  display: block;
+  background-color: $white;
+  border: 1px solid $ringa-color;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+
+  &.open, &.opening {
+    opacity: 1;
+  }
+
+  &.closing {
+    opacity: 0;
+  }
+
+  &.show-scroll {
+  }
+
+  &.default {
+    width: 100%;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: $radius-1;
+    border-bottom-right-radius: $radius-1;
+
+    &.position-top {
+      border: 1px solid $ringa-color;
+      border-bottom: none;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: $radius-1;
+      border-top-right-radius: $radius-1;
+    }
+  }
+
+  &.borderless {
+    .filler-line {
+      display: none;
+    }
+
+    border-radius: $radius-1;
+    border: 1px solid $ringa-color;
+    color: $black;
+    overflow: hidden;
+  }
+}

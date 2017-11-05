@@ -1,0 +1,84 @@
+@import '../../styles/themes/classic/variables';
+
+.radio-button {
+  /* Radio */
+  display: flex;
+
+  .label {
+    display: inline-block;
+    margin-left: 5px;
+  }
+
+  input[type="radio"] {
+    margin: 0;
+    background-color: $white;
+    background-image: -webkit-linear-gradient(
+        0deg,
+        transparent 20%,
+        hsla(0, 0%, 100%, 0.7),
+        transparent 80%
+      ),
+      -webkit-linear-gradient(90deg, transparent 20%, hsla(0, 0%, 100%, 0.7), transparent
+            80%);
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px $grey-1;
+    //0 2px 3px hsla(0,0%,0%,.6),
+    //0 4px 3px hsla(0,0%,0%,.4),
+    //0 6px 6px hsla(0,0%,0%,.2),
+    //0 10px 6px hsla(0,0%,0%,.2);
+    cursor: pointer;
+    display: inline-block;
+    height: 15px;
+    position: relative;
+    width: 15px;
+    -webkit-appearance: none;
+
+    @media screen and (max-width: $break-small) {
+      height: 20px;
+      width: 20px;
+      border-radius: 15px;
+    }
+  }
+
+  .radio-label {
+    flex: 0 1 auto;
+    float: right;
+    margin-left: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    @media screen and (max-width: $break-small) {
+      margin-left: 10px;
+      font-size: 17px;
+    }
+  }
+
+  input[type="radio"] {
+    flex: 0 0 auto;
+  }
+
+  input[type="radio"]:after {
+
+    background-color: $grey-2;
+    border-radius: 25px;
+    content: "";
+    display: block;
+    height: 7px;
+    left: 4px;
+    position: relative;
+    top: 4px;
+    width: 7px;
+
+    @media screen and (max-width: $break-small) {
+      height: 10px;
+      left: 5px;
+      top: 5px;
+      width: 10px;
+    }
+  }
+
+  input[type="radio"]:checked:after {
+    background-color: $ringa-color;
+  }
+}

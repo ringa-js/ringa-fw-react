@@ -8,8 +8,6 @@ import classnames from 'classnames';
 
 import {attach, depend, dependency} from 'react-ringa';
 
-import './OverlayContainer.scss';
-
 export default class OverlayContainer extends RingaComponent {
   //-----------------------------------
   // Constructor

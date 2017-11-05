@@ -1,0 +1,77 @@
+@import './variables';
+
+html, body {
+  font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.react-app {
+  width: 100%;
+  height: 100%;
+}
+
+.fill {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.flex-space-between {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-space-between-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.flex-start {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.flex-end {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.flex-child {
+  flex: 1 1 auto;
+}
+
+button {
+  background-color: $grey-2;
+  color: $black;
+  border: none;
+  padding: 0.45em 0.66em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  transition: background-color 0.2s ease-out;
+  cursor: pointer;
+  margin: 0.2em;
+
+  &:hover {
+    background-color: $grey-3;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+ul {
+  li {
+    margin: 0.4em;
+  }
+}

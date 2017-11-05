@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const ROOT_PATH = path.resolve(process.env.PWD);
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
 require('babel-polyfill');
 
 module.exports = {
@@ -67,22 +69,12 @@ module.exports = {
         }
       },
       {
-        test: /\.scss$/,
-        loaders: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              outputStyle: 'expanded',
-              includePaths: [
-                path.join(__dirname, 'node_modules'),
-                path.join(__dirname, 'src'),
-                __dirname
-              ]
-            }
-          }
-        ]
+        test: /\.s?css$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          //resolve-url-loader may be chained before sass-loader if necessary
+          use: ['css-loader', 'sass-loader']
+        })
       },
       {
         test: /\.png$/,
@@ -117,6 +109,10 @@ module.exports = {
   plugins: [
     new webpack.DefinePlugin({
       __DEV__: false
+    }),
+    new ExtractTextPlugin({
+      filename: 'ringa-theme-classic.[contenthash].css',
+      allChunks: true
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,

@@ -1,7 +1,6 @@
 import React from 'react';
 import RingaComponent from '../RingaComponent';
 
-import './DragHandles.scss';
 import DRAG_HANDLES from '../../images/drag_handles.svg';
 
 class DragHandles extends RingaComponent {

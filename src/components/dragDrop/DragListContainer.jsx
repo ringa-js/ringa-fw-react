@@ -1,9 +1,7 @@
 import React from 'react';
 import RingaComponent from '../RingaComponent';
 import DragListContainerItem from './DragListContainerItem';
-import {getBounds, isOver} from '../../utils/DisplayUtils';
-
-import './DragListContainer.scss';
+import {getBounds} from '../../utils/DisplayUtils';
 
 class DragListContainer extends RingaComponent {
   //-----------------------------------

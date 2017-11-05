@@ -1,5 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
-import RingaFrameworkHarness from './RingaFrameworkHarness';
+import 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 
-render(<RingaFrameworkHarness/>, document.querySelector('.react-app'));
+import routes from './routes';
+
+render(<BrowserRouter>{routes}</BrowserRouter>, document.querySelector('.react-app'));

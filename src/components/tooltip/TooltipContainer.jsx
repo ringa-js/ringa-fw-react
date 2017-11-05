@@ -5,8 +5,6 @@ import TooltipContainerModel from './TooltipContainerModel';
 import Tooltip from './Tooltip';
 import {attach, depend, dependency} from 'react-ringa';
 
-import './TooltipContainer.scss';
-
 export default class TooltipContainer extends RingaComponent {
   //-----------------------------------
   // Constructor

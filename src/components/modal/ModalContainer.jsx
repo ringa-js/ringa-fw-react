@@ -8,8 +8,6 @@ import classnames from 'classnames';
 
 import {attach, depend, dependency} from 'react-ringa';
 
-import './ModalContainer.scss';
-
 export default class ModalContainer extends RingaComponent {
   //-----------------------------------
   // Constructor

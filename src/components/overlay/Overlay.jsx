@@ -1,5 +1,4 @@
 import React from 'react';
-import './Overlay.scss';
 import PositionableComponent from '../PositionableComponent';
 import {watch} from 'react-ringa';
 import classnames from 'classnames';

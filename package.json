@@ -2,7 +2,7 @@
   "name": "ringa-fw-react",
   "version": "0.0.5",
   "description": "RingaJS React Visual Framework",
-  "main": "src/index.js",
+  "main": "./src/index.js",
   "files": [
     "dist",
     "src"
@@ -25,7 +25,10 @@
     "Joshua Jung <joshua.p.jung@gmail.com>"
   ],
   "peerDependencies": {
-    "react-dom": "15.5.4"
+    "react-dom": "15.5.4",
+    "ringa": "0.1.8",
+    "react": "^15.5.4",
+    "react-ringa": "0.1.3"
   },
   "dependencies": {
     "babel-jest": "^19.0.0",
@@ -36,12 +39,16 @@
     "cloner": "^0.4.0",
     "deep-equal": "^1.0.1",
     "hasharray": "^1.1.0",
+    "highlight.js": "^9.12.0",
+    "history": "^4.7.2",
     "moment": "^2.19.1",
     "postcss-loader": "^2.0.6",
-    "react": "^15.5.4",
-    "react-dom": "^15.6.2",
-    "react-ringa": "0.1.3",
-    "ringa": "0.1.8",
+    "raw-loader": "^0.5.1",
+    "react-body-classname": "^1.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "ringa-fw-core": "0.0.5",
+    "showdown": "^1.8.1",
     "trie-search": "^1.0.9"
   },
   "devDependencies": {

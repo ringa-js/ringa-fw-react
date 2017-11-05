@@ -1,6 +1,7 @@
 import React from 'react';
+import RingaComponent from '../RingaComponent';
 
-export default class RingaFrameworkHarness extends React.Component {
+export default class Container extends RingaComponent {
   //-----------------------------------
   // Constructor
   //-----------------------------------
@@ -12,8 +13,8 @@ export default class RingaFrameworkHarness extends React.Component {
   // Lifecycle
   //-----------------------------------
   render() {
-    return <h1>
-      RingaJS Framework for React!
-    </h1>;
+    const {children, classes} = this.props;
+
+    return <div className={this.calcClassnames('ringa-container', classes)}>{children}</div>;
   }
 }
