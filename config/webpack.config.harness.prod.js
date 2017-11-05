@@ -7,7 +7,7 @@ const ROOT_PATH = path.resolve(process.env.PWD);
 
 const config = {
   name: 'ringa-fw-react',
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval',
   entry: {
     app: path.resolve(ROOT_PATH, 'harness/index.js')
   },
@@ -87,7 +87,7 @@ const config = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      __DEV__: true
+      __DEV__: false
     }),
     new HtmlWebpackPlugin({
       title: 'Ringa JS React Framework',
@@ -97,7 +97,13 @@ const config = {
       cache: true
     }),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
+      sourceMap: false,
+      compress: {
+        warnings: true
+      },
+      output: {
+        comments: false
+      },
       mangle: {
         except: [
           '$controller',
@@ -148,7 +154,7 @@ module.exports = new Promise(resolve => {
       __BUILD__: JSON.stringify(build),
       __BUILD_EPOCH__: new Date().getTime(),
       'process.env': {
-        NODE_ENV: '"development"'
+        NODE_ENV: '"production"'
       }
     }));
 

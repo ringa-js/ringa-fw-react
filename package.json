@@ -10,7 +10,7 @@
   "scripts": {
     "clean": "rm -rf dist",
     "dev": "`npm bin`/webpack-dev-server --config ./config/webpack.config.dev.js",
-    "build:harness": "rm -rf dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.harness.prod.js",
+    "build:harness": "rm -rf harness/dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.harness.prod.js",
     "build": "rm -rf dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.dist.js",
     "start": "npm run dev",
     "release:major": "npm test && npm run build && npm version major && npm publish && git push --follow-tags",
