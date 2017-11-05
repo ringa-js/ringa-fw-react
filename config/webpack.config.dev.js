@@ -100,7 +100,7 @@ const config = {
     }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Ringa Framework React',
+      title: 'Ringa JS React Framework',
       template: path.resolve(ROOT_PATH, 'harness/templates/index.ejs'),
       filename: 'index.html',
       inject: false,

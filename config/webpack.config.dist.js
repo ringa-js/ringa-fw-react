@@ -16,47 +16,23 @@ module.exports = {
     app: path.resolve(ROOT_PATH, 'src/index.js')
   },
   resolve: {
-    extensions: ['.js', '.jsx']
-  },
-  externals: {
-    react: {
-      root: 'React',
-      commonjs2: 'react',
-      commonjs: 'react',
-      amd: 'react',
-      umd: 'react',
-    },
-    'react-dom': {
-      root: 'ReactDOM',
-      commonjs2: 'react-dom',
-      commonjs: 'react-dom',
-      amd: 'react-dom',
-      umd: 'react-dom',
-    },
-    ringa: {
-      root: 'Ringa',
-      commonjs2: 'ringa',
-      commonjs: 'ringa',
-      amd: 'ringa',
-      umd: 'ringa',
-    },
-    'react-ringa': {
-      root: 'ReactRinga',
-      commonjs2: 'react-ringa',
-      commonjs: 'react-ringa',
-      amd: 'react-ringa',
-      umd: 'react-ringa'
-    },
-    'moment': {
-      root: 'Moment',
-      commonjs2: 'moment',
-      commonjs: 'moment',
-      amd: 'moment',
-      umd: 'moment'
+    extensions: ['.js', '.jsx'],
+    alias: {
+      react: path.resolve(__dirname, '../node_modules/react'),
+      'react-dom': path.resolve(__dirname, '../node_modules/react-dom'),
+      ringa: path.resolve(__dirname, '../node_modules/ringa'),
+      'react-ringa': path.resolve(__dirname, '../node_modules/react-ringa'),
+      'react-fw-core': path.resolve(__dirname, '../node_modules/react-fw-core'),
+      'moment': path.resolve(__dirname, '../node_modules/moment'),
+      'trie-search': path.resolve(__dirname, '../node_modules/trie-search')
     }
   },
   module: {
     loaders: [
+      {
+        test: /\.(md|txt)$/,
+        loader: 'raw-loader'
+      },
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
