@@ -26,7 +26,7 @@ class FormHarness extends HarnessBase {
   //-----------------------------------
   render() {
     return <div className="harness-wrapper form-harness fill">
-      <h1>Form Component</h1>
+      {this.renderHeader('form.title', '^0.0.8', 'form.description', 'import {Form} from \'ringa-fw-react\'', 'https://github.com/ringa-js/ringa-fw-react/blob/master/src/components/form/Form.jsx')}
       <TabNavigator classes="fill">
         <Tab label="Basic">
           <CodeExample code={FormExample1Code} classes="fill">

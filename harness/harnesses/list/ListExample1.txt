@@ -1,6 +1,11 @@
-import {List} from 'ringa-fw-react';
+import React from 'react';
+import {List, RingaComponent} from 'ringa-fw-react';
 
-this.items = [
+class ListExample1 extends RingaComponent {
+  constructor() {
+    super();
+
+    this.items = [
       "Alabama",
       "Alaska",
       "Arizona",
@@ -53,7 +58,14 @@ this.items = [
       "Wisconsin",
       "Wyoming"
     ];
+  }
 
-...
+  //-----------------------------------
+  // Lifecycle
+  //-----------------------------------
+  render() {
+    return <List items={this.items} />;
+  }
+}
 
-<List items={this.items} />
+export default ListExample1;

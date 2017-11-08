@@ -4,7 +4,7 @@ import {RingaComponent,
         Form,
         FormItem,
         TextInput,
-        SubmitButton} from '../../../src/index';
+        SubmitButton} from 'ringa-fw-react';
 
 export default class FormExample1 extends RingaComponent {
   //-----------------------------------

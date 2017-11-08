@@ -5,7 +5,7 @@ import { Route, Redirect } from 'react-router';
 import ApplicationLayout from './layout/ApplicationLayout';
 
 export const routeMap = {
-  'Home': '/home',
+  'Home': '/',
   'List': '/list',
   'Form': '/form'
 };

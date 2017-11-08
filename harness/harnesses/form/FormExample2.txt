@@ -8,7 +8,7 @@ import {RingaComponent,
         TextInput,
         SubmitButton,
         ValidatorEmail,
-        ValidatorRequired} from '../../../src/index';
+        ValidatorRequired} from 'ringa-fw-react';
 
 export default class FormExample2 extends RingaComponent {
   //-----------------------------------

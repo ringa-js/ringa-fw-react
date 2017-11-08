@@ -46,7 +46,7 @@ class Header extends RingaComponent {
     return <header className="app-header">
         <div className="header-inner">
           <div className="flex-start">
-            <div className="title">
+            <div className="title" onClick={this.logo_onClickHandler}>
               <img src={LOGO} width={120} height={25} />
               <div className="subtitle">React Framework</div>
             </div>
@@ -67,6 +67,10 @@ class Header extends RingaComponent {
   //-----------------------------------
   links_changeHandler(route) {
     this.props.history.push(route.value);
+  }
+
+  logo_onClickHandler(route) {
+    this.props.history.push('/');
   }
 }
 

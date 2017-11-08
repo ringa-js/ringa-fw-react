@@ -1,6 +1,11 @@
-import {List} from 'ringa-fw-react';
+import React from 'react';
+import {List, RingaComponent} from '../../../src/index';
 
-this.items = [
+class ListExample1 extends RingaComponent {
+  constructor() {
+    super();
+
+    this.items = [
       "Alabama",
       "Alaska",
       "Arizona",
@@ -53,9 +58,14 @@ this.items = [
       "Wisconsin",
       "Wyoming"
     ];
+  }
 
-    this.multiSelectItems = this.items.map(label => ({label}));
-...
+  //-----------------------------------
+  // Lifecycle
+  //-----------------------------------
+  render() {
+    return <List items={this.items} />;
+  }
+}
 
-<List multiSelect={true}
-      items={this.multiSelectItems} />
+export default ListExample1;

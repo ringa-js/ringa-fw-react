@@ -13,4 +13,23 @@
     .code {
     }
   }
+
+  .header {
+    border-bottom: 2px solid $black-3;
+    margin-bottom: $pad3;
+    padding-bottom: $pad3;
+
+    h1 {
+      margin-top: 0;
+    }
+
+    .since-version {
+      margin: $pad2 0;
+    }
+
+    .version {
+      background-color: $grey-1;
+      padding: 2px $pad1;
+    }
+  }
 }

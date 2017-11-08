@@ -21,12 +21,16 @@ import {TooltipContainer,
 
 import {attach} from 'react-ringa';
 
+import EN from '../assets/en.json';
+
 export default class ApplicationLayout extends DefaultApplicationRoot {
   //-----------------------------------
   // Constructor
   //-----------------------------------
   constructor(props) {
     super(props);
+
+    this.i18NModel.mergeLanguagePack('en', EN);
 
     attach(this, new AppController());
   }
@@ -40,10 +44,9 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
         <OverlayContainer global={true} classes="fill">
           <ModalContainer global={true} classes="fill">
             <Header {...this.props} />
-            <Route path="/home" component={Home} />
+            <Route exact path="/" component={Home} />
             <Route path="/list" component={ListHarness} />
             <Route path="/form" component={FormHarness} />
-            <Redirect from="/" to="/home" />
             <Footer />
           </ModalContainer>
         </OverlayContainer>

@@ -1,3 +1,6 @@
+import showdown from 'showdown';
+let converter = new showdown.Converter();
+
 const getDeepKey = function(key, obj) {
   let ix = key.indexOf('.');
 
@@ -30,6 +33,14 @@ export function i18n(key, options) {
 
     if (item.search(/\${/) !== -1) {
       item = replaceKeys(item, options);
+    }
+
+    if (item.startsWith('markdown:')) {
+      item = item.substring(9);
+
+      item = item.replace('\\n', '\n');
+
+      item = converter.makeHtml(item);
     }
 
     return item || `['${options.language}' key '${key}']`;
