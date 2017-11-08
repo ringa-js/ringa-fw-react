@@ -2,13 +2,15 @@
 
 .harness-wrapper {
   height: calc(100% - 120px);
+  width: calc(100% - #{$pad3 * 2});
   overflow: auto;
   padding: $pad3;
 
+  display: flex;
+  flex-direction: column;
+
   .code-example {
     .code {
-      max-height: 300px;
-      overflow: auto;
     }
   }
 }

@@ -73,6 +73,7 @@ export ScreenModel from './models/ScreenModel';
 // Input
 //-----------------------------------
 export List from './components/input/List';
+export TextInput from './components/input/TextInput';
 
 //-----------------------------------
 // Complex
@@ -86,6 +87,7 @@ export CodeExample from './components/complex/CodeExample';
 // Containers
 //-----------------------------------
 export TabNavigator from './components/containers/TabNavigator';
+export Tab from './components/containers/Tab';
 
 //-----------------------------------
 // Forms
@@ -94,6 +96,13 @@ export ValidatorBase from './components/validation/ValidatorBase';
 export ValidatorEmail from './components/validation/ValidatorEmail';
 export ValidatorLength from './components/validation/ValidatorLength';
 export ValidatorRequired from './components/validation/ValidatorRequired';
+
+export Form from './components/form/Form';
+export FormItem from './components/form/FormItem';
+export FormController from './components/form/FormController';
+export FormModel from './components/form/FormModel';
+export SubmitButton from './components/form/SubmitButton';
+export FormMessage from './components/form/FormMessage';
 
 //-----------------------------------
 // Utils

@@ -33,7 +33,7 @@ export default class TooltipContainer extends RingaComponent {
 
     tooltips = tooltips.map(this.renderTooltip);
 
-    return <div className="tooltip-container">
+    return <div className={this.calcClassnames('tooltip-container')}>
       {tooltips}
     </div>;
   }

@@ -8,6 +8,8 @@ export default class TextInput extends ValidatingInputBase {
   //-----------------------------------
   constructor(props) {
     super(props, props.id);
+
+    this.setupValidators(props);
   }
 
   //-----------------------------------

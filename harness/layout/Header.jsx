@@ -53,6 +53,8 @@ class Header extends RingaComponent {
           </div>
           <div className="links flex-end">
             <Dropdown items={options}
+                      align="right"
+                      shift="right"
                       onChange={this.links_changeHandler}
                       value={selectedItem} />
           </div>

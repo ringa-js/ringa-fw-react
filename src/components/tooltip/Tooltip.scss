@@ -1,6 +1,10 @@
 @import '../../styles/themes/classic/variables';
 
-.tooltip {
+.ringa-component.tooltip {
+  @include drop-shadow-1;
+
+  background: $grey-1;
+  padding: $pad1;
   position: absolute;
   pointer-events: all;
   overflow-x: hidden;
@@ -17,5 +21,7 @@
   }
 
   &.error {
+    background-color: $error-red;
+    color: $white;
   }
 }

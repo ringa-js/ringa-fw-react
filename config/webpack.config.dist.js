@@ -27,6 +27,57 @@ module.exports = {
       'trie-search': path.resolve(__dirname, '../node_modules/trie-search')
     }
   },
+  externals: {
+    react: {
+      root: 'React',
+      commonjs2: 'react',
+      commonjs: 'react',
+      amd: 'react',
+      umd: 'react',
+    },
+    'react-dom': {
+      root: 'ReactDOM',
+      commonjs2: 'react-dom',
+      commonjs: 'react-dom',
+      amd: 'react-dom',
+      umd: 'react-dom',
+    },
+    'ringa': {
+      root: 'Ringa',
+      commonjs2: 'ringa',
+      commonjs: 'ringa',
+      amd: 'ringa',
+      umd: 'ringa',
+    },
+    'react-ringa': {
+      root: 'ReactRinga',
+      commonjs2: 'react-ringa',
+      commonjs: 'react-ringa',
+      amd: 'react-ringa',
+      umd: 'react-ringa',
+    },
+    'moment': {
+      root: 'Moment',
+      commonjs2: 'moment',
+      commonjs: 'moment',
+      amd: 'moment',
+      umd: 'moment',
+    },
+    'highlight.js': {
+      root: 'Highlight',
+      commonjs2: 'highlight.js',
+      commonjs: 'highlight.js',
+      amd: 'highlight.js',
+      umd: 'highlight.js',
+    },
+    'showdown': {
+      root: 'Showdown',
+      commonjs2: 'showdown',
+      commonjs: 'showdown',
+      amd: 'showdown',
+      umd: 'showdown',
+    },
+  },
   module: {
     loaders: [
       {

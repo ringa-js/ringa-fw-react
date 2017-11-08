@@ -12,6 +12,7 @@ import {Route, Redirect} from 'react-router-dom';
 import Home from '../Home';
 
 import ListHarness from '../harnesses/list/ListHarness';
+import FormHarness from '../harnesses/form/FormHarness';
 
 import {TooltipContainer,
         OverlayContainer,
@@ -39,8 +40,9 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
         <OverlayContainer global={true} classes="fill">
           <ModalContainer global={true} classes="fill">
             <Header {...this.props} />
-            <Route path="/list" component={ListHarness} />
             <Route path="/home" component={Home} />
+            <Route path="/list" component={ListHarness} />
+            <Route path="/form" component={FormHarness} />
             <Redirect from="/" to="/home" />
             <Footer />
           </ModalContainer>

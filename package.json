@@ -12,6 +12,7 @@
     "dev": "`npm bin`/webpack-dev-server --config ./config/webpack.config.dev.js",
     "build:harness": "rm -rf harness/dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.harness.prod.js",
     "build": "rm -rf dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.dist.js",
+    "analyze": "rm -rf dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.dist.analyze.js",
     "start": "npm run dev",
     "release:major": "npm test && npm run build && npm version major && npm publish && git push --follow-tags",
     "release:minor": "npm test && npm run build && npm version minor && npm publish && git push --follow-tags",
@@ -50,7 +51,8 @@
     "react-router-dom": "^4.2.2",
     "ringa-fw-core": "0.0.5",
     "showdown": "^1.8.1",
-    "trie-search": "^1.0.9"
+    "trie-search": "^1.0.9",
+    "webpack-bundle-analyzer": "^2.9.0"
   },
   "devDependencies": {
     "babel-core": "^6.7.6",

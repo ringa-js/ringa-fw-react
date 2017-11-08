@@ -15,17 +15,17 @@ export default class ValidatorLength extends ValidatorBase {
   //-----------------------------------
   // Methods
   //-----------------------------------
-  validate(value, options = {}) {
+  validate(value, options = {}, i18NModel) {
     if (value && value.length < this.min) {
       return {
         valid: this.valid = false,
-        message: this.message = options.i18n ? options.i18n('tooShort') : `Text must be at least ${this.min} characters.`,
+        message: this.message = i18NModel.i18n ? i18NModel.i18n('tooShort') : `Text must be at least ${this.min} characters.`,
         details: this.details = {}
       };
     } else if (value && value.length > this.max) {
       return {
         valid: this.valid = false,
-        message: this.message = options.i18n ? options.i18n('tooLong') : `Text must be at most ${this.max} characters.`,
+        message: this.message = i18NModel.i18n ? i18NModel.i18n('tooLong') : `Text must be at most ${this.max} characters.`,
         details: this.details = {}
       };
     }

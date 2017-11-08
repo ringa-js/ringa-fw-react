@@ -73,14 +73,13 @@ export default class List extends RingaComponent {
 
     let cn = this.calcClassnames('list');
 
-    return <div className={cn}
-                style={{maxHeight: maxHeight === -1 ? '' : maxHeight}}>
-      {items.length ? <div>
+    return <div className={cn}>
+      {items.length ? <div className="fill">
         {enableSearch ? <TextInput ref="search"
                                    classes="search"
                                    placeholder={searchPlaceholder || i18NModel.i18n('list.search', {count: items ? items.length : ''})}
                                    onChange={this.search_onChangeHandler} /> : undefined}
-        <div className="contents">
+        <div className="contents" style={{maxHeight: maxHeight === -1 ? '' : maxHeight}}>
           {children}
           {searchNoItemsMessage}
         </div>

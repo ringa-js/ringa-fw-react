@@ -16,12 +16,12 @@ export default class ValidatorBase extends Model {
   //-----------------------------------
   // Methods
   //-----------------------------------
-  validate(value, options) {
+  validate(value, options, i18NModel) {
     console.warn(`ValidatorBase::validate() should be overridden by ${this.constructor.name}::validate()!`);
 
     return {
       valid: false,
-      message: options.i18n ? options.i18n('invalid') : 'Invalid value',
+      message: i18NModel.i18n ? i18NModel.i18n('invalid') : 'Invalid value',
       details: {}
     };
   }

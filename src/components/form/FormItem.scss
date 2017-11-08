@@ -1,0 +1,10 @@
+@import '../../styles/themes/classic/variables';
+
+.ringa-component.form-item {
+  padding: $pad1;
+
+  label {
+    margin-bottom: $pad1;
+    display: block;
+  }
+}

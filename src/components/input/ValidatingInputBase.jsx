@@ -1,6 +1,7 @@
 import React from 'react';
 import RingaComponent from '../RingaComponent';
 import ValidatorRequired from '../validation/ValidatorRequired';
+import FormController from '../form/FormController';
 
 export default class ValidatingInputBase extends RingaComponent {
   //-----------------------------------
@@ -12,6 +13,8 @@ export default class ValidatingInputBase extends RingaComponent {
     this.state = Object.assign({}, this.state);
 
     this.processProps(props);
+
+    this.valid = true;
   }
 
   //-----------------------------------
@@ -24,12 +27,28 @@ export default class ValidatingInputBase extends RingaComponent {
   //-----------------------------------
   // Lifecycle
   //-----------------------------------
+  componentDispatchReady() {
+    super.componentDispatchReady();
+
+    this.dispatch(FormController.REGISTER_FORM_ELEMENT, {
+      element: this
+    });
+  }
+
+  componentWillUnmount() {
+    super.componentWillUnmount();
+
+    this.dispatch(FormController.UNREGISTER_FORM_ELEMENT, {
+      element: this
+    });
+  }
+
   componentWillReceiveProps(nextProps) {
     this.processProps(nextProps);
   }
 
   render() {
-    return this.props.children;
+    return <div className="validating-input-base">{this.props.children}</div>;
   }
 
   //-----------------------------------
@@ -120,6 +139,14 @@ export default class ValidatingInputBase extends RingaComponent {
       validators.unshift(new ValidatorRequired());
     }
 
+    validators = validators.map(validator => {
+      if (typeof validator === 'function') {
+        return new validator();
+      }
+
+      return validator;
+    });
+
     this.state = Object.assign({
       validators
     }, this.state);
@@ -151,12 +178,32 @@ export default class ValidatingInputBase extends RingaComponent {
     });
 
     if (invalidReasons.length) {
+      this.valid = false;
+
+      if (this.state.valid !== false) {
+        this.dispatch(FormController.VALID_CHANGED, {
+          element: this,
+          valid: false,
+          invalidReasons
+        });
+      }
+
       this.setState({
         valid: false,
         invalidReasons
       });
 
       return invalidReasons;
+    }
+
+    this.valid = true;
+
+    if (this.state.valid !== true) {
+      this.dispatch(FormController.VALID_CHANGED, {
+        element: this,
+        valid: true,
+        invalidReasons: undefined
+      });
     }
 
     this.setState({

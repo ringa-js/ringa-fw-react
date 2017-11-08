@@ -1,7 +1,12 @@
 @import '../../styles/themes/classic/variables';
 
-.tab-navigator {
-  .tab {
+.ringa-component.tab-navigator {
+  display: flex;
+  flex-direction: column;
+
+  .button.tab {
+    font-size: 16px;
+    padding: $pad2;
     border-top: 1px solid $grey-1;
 
     &:first-child {
@@ -16,5 +21,6 @@
   .content {
     border: 1px solid $grey-1;
     overflow: auto;
+    height: 100%;
   }
 }

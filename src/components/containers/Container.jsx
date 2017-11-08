@@ -13,8 +13,8 @@ export default class Container extends RingaComponent {
   // Lifecycle
   //-----------------------------------
   render() {
-    const {children, classes} = this.props;
+    const {children} = this.props;
 
-    return <div className={this.calcClassnames('ringa-container', classes)}>{children}</div>;
+    return <div className={this.calcClassnames('ringa-container')}>{children}</div>;
   }
 }

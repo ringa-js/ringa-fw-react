@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PositionableComponent from '../PositionableComponent';
 
-import classnames from 'classnames';
-
 export default class Tooltip extends PositionableComponent {
   //-----------------------------------
   // Constructor
@@ -28,7 +26,7 @@ export default class Tooltip extends PositionableComponent {
   render() {
     let {tooltip} = this.props;
 
-    let cn = classnames('tooltip', 'fade-in', tooltip.classes);
+    let cn = this.calcClassnames('tooltip', 'fade-in', tooltip.classes);
 
     return <div className={cn} style={this.positionStyle} onMouseLeave={this.onMouseLeaveHandler} ref="positionable">
       {tooltip.message && tooltip.pre ? <pre className="message">{tooltip.message}</pre> : null}

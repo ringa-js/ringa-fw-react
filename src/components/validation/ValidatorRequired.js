@@ -11,7 +11,7 @@ export default class ValidatorRequired extends ValidatorBase {
   //-----------------------------------
   // Methods
   //-----------------------------------
-  validate(value, options = {}) {
+  validate(value, options = {}, i18NModel) {
     this.valid = value !== undefined && value !== null && value !== '';
 
     if (this.valid) {
@@ -21,7 +21,7 @@ export default class ValidatorRequired extends ValidatorBase {
       return false;
     }
 
-    this.message = options.i18n ? options.i18n('required') : `${options.name || 'This field'} is required`;
+    this.message = i18NModel ? i18NModel.i18n('required') : `${options.name || 'This field'} is required`;
     this.details = {};
 
     return {

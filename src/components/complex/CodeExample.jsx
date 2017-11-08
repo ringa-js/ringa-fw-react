@@ -2,6 +2,7 @@ import React from 'react';
 import RingaComponent from '../RingaComponent';
 
 import TabNavigator from '../containers/TabNavigator';
+import Tab from '../containers/Tab';
 import Code from './Code';
 import Markdown from './Markdown';
 
@@ -26,23 +27,18 @@ class CodeExample extends RingaComponent {
     const {children, code, documentation, i18NKey = 'codeExample.example'} = this.props;
     const {i18NModel} = this.state;
 
-    const tabs = [{
-      label: i18NModel.i18n(i18NKey),
-      content: children
-    }, {
-      label: i18NModel.i18n('codeExample.code'),
-      content: <Code code={code} />
-    }];
-
-    if (documentation) {
-      tabs.push({
-        label: i18NModel.i18n('codeExample.documentation'),
-        content: <Markdown markdown={documentation} />
-      });
-    }
-
     return <div className={this.calcClassnames("code-example")}>
-      <TabNavigator tabs={tabs} />
+      <TabNavigator classes="fill">
+        <Tab label={i18NModel.i18n(i18NKey)}>
+          {children}
+        </Tab>
+        <Tab label={i18NModel.i18n('codeExample.code')}>
+          <Code code={code} classes="fill" />
+        </Tab>
+      </TabNavigator>
+      {documentation ? <Tab label={i18NModel.i18n('codeExample.documentation')}>
+        <Markdown markdown={documentation} />
+      </Tab> : undefined}
     </div>;
   }
 }

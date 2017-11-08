@@ -6,13 +6,13 @@ export default class ValidatorEmail extends ValidatorBase {
   // Constructor
   //-----------------------------------
   constructor(name, values) {
-    super(name,values);
+    super(name, values);
   }
 
   //-----------------------------------
   // Methods
   //-----------------------------------
-  validate(value, options = {}) {
+  validate(value, options = {}, i18NModel) {
     this.valid = !value || EMAIL_REGEX.test(value);
 
     if (this.valid) {
@@ -24,7 +24,7 @@ export default class ValidatorEmail extends ValidatorBase {
 
     return {
       valid: this.valid,
-      message: this.message = options.i18n ? options.i18n('invalidEmail') : 'Invalid email provided',
+      message: this.message = i18NModel ? i18NModel.i18n('invalidEmail') : 'Invalid email provided',
       details: this.details = {}
     };
   }

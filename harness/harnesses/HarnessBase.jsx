@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 
+import RingaComponent from '../../src/components/RingaComponent';
+
 import './HarnessBase.scss';
 
-class HarnessBase extends Component {
+class HarnessBase extends RingaComponent {
   render() {
-    return <div className="harness-container" id="harness-container">
+    return <div className={this.calcClassnames('harness-container')} id="harness-container">
       {this.props.children}
     </div>;
   }

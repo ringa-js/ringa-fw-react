@@ -1,6 +1,6 @@
 @import '../../styles/themes/classic/variables';
 
-.drag-list-container-item {
+.ringa-component.drag-list-container-item {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -11,7 +11,7 @@
   }
 }
 
-.overlay {
+.ringa-component.overlay {
   .drag-list-container-item {
     width: 100%;
     height: 100%;

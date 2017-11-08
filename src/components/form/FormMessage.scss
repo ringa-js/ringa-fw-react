@@ -1,0 +1,13 @@
+@import '../../styles/themes/classic/variables';
+
+.ringa-component.submit-message {
+  padding: $pad1;
+
+  .error {
+    background-color: $error-red;
+    color: $white;
+  }
+
+  .empty {
+  }
+}

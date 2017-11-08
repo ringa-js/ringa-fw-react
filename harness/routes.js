@@ -6,7 +6,8 @@ import ApplicationLayout from './layout/ApplicationLayout';
 
 export const routeMap = {
   'Home': '/home',
-  'List': '/list'
+  'List': '/list',
+  'Form': '/form'
 };
 
 const _routeMapInverted = {};

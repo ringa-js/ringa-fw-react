@@ -24,7 +24,7 @@ class Code extends RingaComponent {
     const {code} = this.props;
 
     return <div className={this.calcClassnames("code")}>
-      <pre><code ref="code" class="javascript">{code}</code></pre>
+      <pre><code ref="code">{code}</code></pre>
     </div>;
   }
 }
