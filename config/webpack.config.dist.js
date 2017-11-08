@@ -4,6 +4,8 @@ const ROOT_PATH = path.resolve(process.env.PWD);
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const UGLIFY_WHITELIST = require('./uglifyWhitelist.json');
+
 require('babel-polyfill');
 
 module.exports = {
@@ -144,43 +146,7 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: false,
       mangle: {
-        except: [
-          '$controller',
-          '$thread',
-          '$ringaEvent',
-          'event',
-          '$customEvent',
-          '$lastEvent',
-          '$target',
-          '$detail',
-          'done',
-          'fail',
-          '$lastPromiseResult',
-          '$lastPromiseError',
-          'Command',
-          'EventExecutor',
-          'FunctionExecutor',
-          'IifExecutor',
-          'ParallelExecutor',
-          'PromiseExecutor',
-          'SleepExecutor',
-          'SpawnExecutor',
-          'Bus',
-          'Controller',
-          'ExecutorAbstract',
-          'Model',
-          'ModelWatcher',
-          'RingaEvent',
-          'RingaEventFactory',
-          'RingaHashArray',
-          'RingaObject',
-          'Thread',
-          'ThreadFactory',
-          'InspectorModel',
-          'inspectorModel',
-          'InspectorController',
-          'inspectorController',
-          'thread']
+        except: UGLIFY_WHITELIST
       }
     })
   ]

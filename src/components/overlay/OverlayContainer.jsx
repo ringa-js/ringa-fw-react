@@ -32,6 +32,10 @@ export default class OverlayContainer extends RingaComponent {
   // Lifecycle
   //-----------------------------------
   render() {
+    if (!this.state.overlayContainerModel) {
+      return undefined;
+    }
+
     const {children, classes, global, zIndex, height} = this.props;
     let {overlays} = this.state.overlayContainerModel;
 

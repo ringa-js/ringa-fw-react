@@ -5,6 +5,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const buildInfo = require('./util/buildInfo');
 const ROOT_PATH = path.resolve(process.env.PWD);
 
+const UGLIFY_WHITELIST = require('./uglifyWhitelist.json');
+
 const config = {
   name: 'ringa-fw-react',
   devtool: 'source-map',
@@ -105,43 +107,7 @@ const config = {
         comments: false
       },
       mangle: {
-        except: [
-          '$controller',
-          '$thread',
-          '$ringaEvent',
-          'event',
-          '$customEvent',
-          '$lastEvent',
-          '$target',
-          '$detail',
-          'done',
-          'fail',
-          '$lastPromiseResult',
-          '$lastPromiseError',
-          'Command',
-          'EventExecutor',
-          'FunctionExecutor',
-          'IifExecutor',
-          'ParallelExecutor',
-          'PromiseExecutor',
-          'SleepExecutor',
-          'SpawnExecutor',
-          'Bus',
-          'Controller',
-          'ExecutorAbstract',
-          'Model',
-          'ModelWatcher',
-          'RingaEvent',
-          'RingaEventFactory',
-          'RingaHashArray',
-          'RingaObject',
-          'Thread',
-          'ThreadFactory',
-          'InspectorModel',
-          'inspectorModel',
-          'InspectorController',
-          'inspectorController',
-          'thread']
+        except: UGLIFY_WHITELIST
       }
     })
   ]
