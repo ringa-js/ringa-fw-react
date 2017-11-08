@@ -7,7 +7,7 @@ const ROOT_PATH = path.resolve(process.env.PWD);
 
 const config = {
   name: 'ringa-fw-react',
-  devtool: 'eval',
+  devtool: 'source-map',
   entry: {
     app: path.resolve(ROOT_PATH, 'harness/index.js')
   },
@@ -97,7 +97,7 @@ const config = {
       cache: true
     }),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: false,
+      sourceMap: true,
       compress: {
         warnings: true
       },
