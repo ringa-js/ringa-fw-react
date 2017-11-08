@@ -11,7 +11,7 @@
     "clean": "rm -rf dist",
     "dev": "`npm bin`/webpack-dev-server --config ./config/webpack.config.dev.js",
     "build:harness": "rm -rf harness/dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.harness.prod.js",
-    "minorVersionAndBuildHarness": "npm version patch && npm run build:harness",
+    "minorVersionAndBuildHarness": "npm run build:harness",
     "build": "rm -rf dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.dist.js",
     "analyze": "rm -rf dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.dist.analyze.js",
     "start": "npm run dev",
