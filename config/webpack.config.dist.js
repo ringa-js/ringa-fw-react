@@ -138,7 +138,7 @@ module.exports = {
       __DEV__: false
     }),
     new ExtractTextPlugin({
-      filename: 'ringa-theme-classic.[contenthash].css',
+      filename: 'ringa-theme-classic.css',
       allChunks: true
     }),
     new webpack.optimize.UglifyJsPlugin({
