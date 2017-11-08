@@ -125,7 +125,7 @@ module.exports = {
       }
     ]
   },
-  devtool: 'source-map',
+  devtool: 'eval',
   output: {
     path: path.join(ROOT_PATH, 'dist'),
     filename: 'ringa-fw-react.min.js',
