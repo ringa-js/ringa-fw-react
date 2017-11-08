@@ -142,7 +142,7 @@ module.exports = {
       allChunks: true
     }),
     new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
+      sourceMap: false,
       mangle: {
         except: [
           '$controller',

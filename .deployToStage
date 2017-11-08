@@ -1,0 +1,6 @@
+#!/bin/bash
+echo "Building and bumping patch version..."
+npm run minorVersionAndBuildHarness
+echo "Deploying to Jung Digital server..."
+scp -rp ./dist/* www-ssh@104.130.253.84:/var/www/ringa-fw-react/harness/dist
+echo "Done deploying to stage. See result at trackpay.jungdigital.com"
