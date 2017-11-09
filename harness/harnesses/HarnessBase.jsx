@@ -32,7 +32,7 @@ class HarnessBase extends RingaComponent {
   renderHeader(titleKey, version, descriptionKey, code, source) {
     const {i18NModel} =  this.state;
 
-    return <div className="header">
+    return <div className="harness-header">
       <Markdown markdown={i18NModel.i18n(titleKey)} />
       <div className="since-version">{i18NModel.i18n('harness.sinceVersion')}<span className="version">{version}</span></div>
         <Code code={code} />

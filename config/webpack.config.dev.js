@@ -102,6 +102,7 @@ const config = {
     new HtmlWebpackPlugin({
       title: 'Ringa JS React Framework',
       template: path.resolve(ROOT_PATH, 'harness/templates/index.ejs'),
+      favicon: path.resolve(ROOT_PATH, 'harness/images/favicon.ico'),
       filename: 'index.html',
       inject: false,
       cache: true

@@ -14,14 +14,11 @@ class TextInputExample2 extends RingaComponent {
     watch(this, new TextModel(), ['text']);
   }
 
-  //-----------------------------------
-  // Lifecycle
-  //-----------------------------------
   render() {
     const {textModel} = this.state;
 
     return <div>
-      <TextInput model={textModel} modelField="text" />
+      <TextInput model={textModel} modelField="text" placeholder="Data will automatically set the model..." />
       Looks like the text is: {textModel.text}
     </div>;
   }

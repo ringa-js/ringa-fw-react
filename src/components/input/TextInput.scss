@@ -6,18 +6,16 @@
   background: $white;
   position: relative;
   white-space: nowrap;
-  border: 1px solid $grey-2;
+  border: 1px solid $grey-1;
 
   display: flex;
   justify-content: flex-start;
-
-  background: $grey-3;
 
   transition: background $time-1 ease-in-out, border $time-1 ease-in-out;
 
   &:hover {
     background: $white;
-    border: 1px solid $grey-1;
+    border: 1px solid $black-3;
   }
 
   input:focus, textarea:focus {

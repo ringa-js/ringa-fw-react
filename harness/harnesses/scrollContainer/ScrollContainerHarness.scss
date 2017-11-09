@@ -1,0 +1,49 @@
+@import '../../../src/styles/themes/classic/variables';
+
+.scroll-container-harness {
+  display: flex;
+
+  .harness-header {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .panel {
+    margin: 0;
+    padding: 0;
+    padding-left: $pad3;
+
+    .content {
+      height: 100%;
+    }
+  }
+
+  .block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .large-block {
+    margin: 20px;
+    width: calc(100% - 40px);
+    height: 500px;
+    background-color: $grey-1;
+  }
+
+  .medium-block {
+    margin: 20px;
+    width: calc(100% - 40px);
+    height: 250px;
+    background-color: $grey-2;
+  }
+
+  .small-block {
+    margin: 20px;
+    width: calc(100% - 40px);
+    height: 125px;
+    background-color: $grey-3;
+  }
+}

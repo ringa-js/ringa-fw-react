@@ -6,16 +6,10 @@ class TextInputExample1 extends RingaComponent {
     super();
   }
 
-  //-----------------------------------
-  // Lifecycle
-  //-----------------------------------
   render() {
-    return <TextInput onChange={this.textInput_onChangeHandler} />;
+    return <TextInput onChange={this.textInput_onChangeHandler} placeholder="Enter data here and watch the console..." />;
   }
 
-  //-----------------------------------
-  // Events
-  //-----------------------------------
   textInput_onChangeHandler(event, value) {
     console.log('Value has changed to:', value);
   }

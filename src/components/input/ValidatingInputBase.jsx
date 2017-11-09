@@ -185,7 +185,7 @@ export default class ValidatingInputBase extends RingaComponent {
           element: this,
           valid: false,
           invalidReasons
-        });
+        }, true, true, false);
       }
 
       this.setState({
@@ -203,7 +203,7 @@ export default class ValidatingInputBase extends RingaComponent {
         element: this,
         valid: true,
         invalidReasons: undefined
-      });
+      }, true, true, false);
     }
 
     this.setState({

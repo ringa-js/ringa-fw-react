@@ -14,6 +14,8 @@ import Home from '../Home';
 import ListHarness from '../harnesses/list/ListHarness';
 import TextInputHarness from '../harnesses/textInput/TextInputHarness';
 import FormHarness from '../harnesses/form/FormHarness';
+import TabNavigatorHarness from '../harnesses/tabNavigator/TabNavigatorHarness';
+import ScrollContainerHarness from '../harnesses/scrollContainer/ScrollContainerHarness';
 
 import {TooltipContainer,
         OverlayContainer,
@@ -49,6 +51,8 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
             <Route path="/list" component={ListHarness} />
             <Route path="/textInput" component={TextInputHarness} />
             <Route path="/form" component={FormHarness} />
+            <Route path="/tabNavigator" component={TabNavigatorHarness} />
+            <Route path="/scrollContainer" component={ScrollContainerHarness} />
             <Footer />
           </ModalContainer>
         </OverlayContainer>

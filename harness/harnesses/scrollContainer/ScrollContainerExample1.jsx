@@ -1,0 +1,61 @@
+import React from 'react';
+import {ScrollContainer, ScrollContainerController, Container, Button, RingaComponent} from '../../../src/index';
+
+class ScrollContainerExample1 extends RingaComponent {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return <div className="fill">
+      <Button label="Scroll to bottom" onClick={this.buttonScrollToBottom_onClickHandler} />
+      <Button label="Scroll to top" onClick={this.buttonScrollToTop_onClickHandler} />
+      <ScrollContainer classes="fill">
+        <div ref="top">Top</div>
+        <Container classes="large-block block">
+          <Button label="Scroll to here!" onClick={this.button_onClickHandler} />
+          <Container classes="medium-block block">
+            <Button label="Scroll to here!" onClick={this.button_onClickHandler} />
+          </Container>
+        </Container>
+        <Container classes="large-block block">
+          <Button label="Scroll to here!" onClick={this.button_onClickHandler} />
+          <Container classes="small-block block">
+            <Button label="Scroll to here!" onClick={this.button_onClickHandler} />
+          </Container>
+        </Container>
+        <Container classes="large-block block">
+          <Button label="Scroll to here!" onClick={this.button_onClickHandler} />
+          <Container classes="small-block block">
+            <Button label="Scroll to here!" onClick={this.button_onClickHandler} />
+          </Container>
+        </Container>
+        <div ref="bottom">Bottom</div>
+      </ScrollContainer>
+    </div>;
+  }
+
+  button_onClickHandler(event) {
+    // We dispatch the event on the button, it bubbles up to the *nearest* parent that has a
+    // ScrollContainerController attached and then tells it to focus on the button.
+    this.dispatch(ScrollContainerController.SCROLL_TO, {
+      target: event.target
+    }, true, true, true, event.target);
+  }
+
+  buttonScrollToBottom_onClickHandler(event) {
+    // We just have to make sure to dispatch on a descendant of ScrollContainer (or on ScrollContainer's rootDomNode)!
+    this.dispatch(ScrollContainerController.SCROLL_TO, {
+      target: this.refs.bottom
+    }, true, true, true, this.refs.bottom);
+  }
+
+  buttonScrollToTop_onClickHandler(event) {
+    // We just have to make sure to dispatch on a descendant of ScrollContainer (or on ScrollContainer's rootDomNode)!
+    this.dispatch(ScrollContainerController.SCROLL_TO, {
+      target: this.refs.top
+    }, true, true, true, this.refs.top);
+  }
+}
+
+export default ScrollContainerExample1;

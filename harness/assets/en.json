@@ -14,5 +14,13 @@
   "textInput": {
     "title": "markdown:#TextInput Examples",
     "description": "markdown: The `TextInput` component is used to receive text input from the user. It can be bound to a Ringa `Model` value."
+  },
+  "tabNavigator": {
+    "title": "markdown:#TabNavigator Examples",
+    "description": "markdown: The `TabNavigator` component is used to display multiple children where each has its own tab button."
+  },
+  "scrollContainer": {
+    "title": "markdown:#ScrollContainer Examples",
+    "description": "markdown: The `ScrollContainer` is used to smooth-scroll intelligently to a particular location within its descendants."
   }
 }

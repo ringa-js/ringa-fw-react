@@ -2,8 +2,7 @@ import React from 'react';
 
 import HarnessBase from '../HarnessBase';
 import CodeExample from '../../../src/components/complex/CodeExample';
-import TabNavigator from '../../../src/components/containers/TabNavigator';
-import Tab from '../../../src/components/containers/Tab';
+import Panel from '../../../src/components/containers/Panel';
 
 import './ListHarness.scss';
 
@@ -27,18 +26,16 @@ class ListHarness extends HarnessBase {
     return <div className="harness-wrapper">
       <div className="list-harness">
         {this.renderHeader('list.title', '^0.0.7', 'list.description', 'import {List} from \'ringa-fw-react\'', 'https://github.com/ringa-js/ringa-fw-react/blob/master/src/components/input/List.jsx')}
-        <TabNavigator classes="fill">
-          <Tab label="Basic">
-            <CodeExample code={ListExample1Code} classes="fill">
-              <ListExample1 />
-            </CodeExample>
-          </Tab>
-          <Tab label="Multi-Select">
-            <CodeExample code={ListExample2Code} classes="fill">
-              <ListExample2 />
-            </CodeExample>
-          </Tab>
-        </TabNavigator>
+        <Panel label="Basic">
+          <CodeExample code={ListExample1Code} classes="fill">
+            <ListExample1 />
+          </CodeExample>
+        </Panel>
+        <Panel label="Multi-Select">
+          <CodeExample code={ListExample2Code} classes="fill">
+            <ListExample2 />
+          </CodeExample>
+        </Panel>
       </div>
     </div>;
   }

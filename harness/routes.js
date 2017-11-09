@@ -7,8 +7,10 @@ import ApplicationLayout from './layout/ApplicationLayout';
 export const routeMap = {
   'Home': '/',
   'List': '/list',
+  'TabNavigator': '/tabNavigator',
   'TextInput': '/textInput',
-  'Form': '/form'
+  'Form': '/form',
+  'Scroll Container': '/scrollContainer'
 };
 
 const _routeMapInverted = {};

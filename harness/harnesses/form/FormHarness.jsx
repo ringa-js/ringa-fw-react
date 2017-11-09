@@ -1,6 +1,5 @@
 import React from 'react';
-import {TabNavigator,
-        Tab} from '../../../src/index';
+import {Panel} from '../../../src/index';
 
 import HarnessBase from '../HarnessBase';
 import CodeExample from '../../../src/components/complex/CodeExample';
@@ -25,20 +24,18 @@ class FormHarness extends HarnessBase {
   // Lifecycle
   //-----------------------------------
   render() {
-    return <div className="harness-wrapper form-harness fill">
+    return <div className="harness-wrapper form-harness">
       {this.renderHeader('form.title', '^0.0.8', 'form.description', 'import {Form} from \'ringa-fw-react\'', 'https://github.com/ringa-js/ringa-fw-react/blob/master/src/components/form/Form.jsx')}
-      <TabNavigator classes="fill">
-        <Tab label="Basic">
-          <CodeExample code={FormExample1Code} classes="fill">
-            <FormExample1 />
-          </CodeExample>
-        </Tab>
-        <Tab label="Validation">
-          <CodeExample code={FormExample2Code} classes="fill">
-            <FormExample2 />
-          </CodeExample>
-        </Tab>
-      </TabNavigator>
+      <Panel label="Basic">
+        <CodeExample code={FormExample1Code}>
+          <FormExample1 />
+        </CodeExample>
+      </Panel>
+      <Panel label="Validation">
+        <CodeExample code={FormExample2Code}>
+          <FormExample2 />
+        </CodeExample>
+      </Panel>
     </div>;
   }
 

@@ -74,6 +74,7 @@ export ScreenModel from './models/ScreenModel';
 //-----------------------------------
 export List from './components/input/List';
 export TextInput from './components/input/TextInput';
+export Button from './components/input/Button';
 
 //-----------------------------------
 // Complex
@@ -86,8 +87,11 @@ export CodeExample from './components/complex/CodeExample';
 //-----------------------------------
 // Containers
 //-----------------------------------
+export Container from './components/containers/Container';
 export TabNavigator from './components/containers/TabNavigator';
 export Tab from './components/containers/Tab';
+export Panel from './components/containers/Panel';
+export ScrollContainer, {ScrollContainerController} from './components/containers/ScrollContainer';
 
 //-----------------------------------
 // Forms

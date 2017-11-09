@@ -1,0 +1,53 @@
+import React from 'react';
+import {ScrollContainer, ScrollContainerController, Container, Button, RingaComponent} from '../../../src/index';
+
+class ScrollContainerExample1 extends RingaComponent {
+  constructor() {
+    super();
+  }
+
+  render() {
+    return <ScrollContainer classes="fill">
+      <Container classes="large-block block">
+        <Button label="Focus" onClick={this.button_onClickHandler} />
+        <Container classes="medium-block block">
+          <Button label="Focus" onClick={this.button_onClickHandler} />
+        </Container>
+      </Container>
+      <Container classes="large-block block">
+        <Button label="Focus" onClick={this.button_onClickHandler} />
+        <Container classes="small-block block">
+          <Button label="Focus" onClick={this.button_onClickHandler} />
+        </Container>
+      </Container>
+      <Container classes="large-block block">
+        <Button label="Focus" onClick={this.button_onClickHandler} />
+        <Container classes="small-block block">
+          <Button label="Focus" onClick={this.button_onClickHandler} />
+        </Container>
+      </Container>
+      <Container classes="large-block block">
+        <Button label="Focus" onClick={this.button_onClickHandler} />
+        <Container classes="small-block block">
+          <Button label="Focus" onClick={this.button_onClickHandler} />
+        </Container>
+      </Container>
+      <Container classes="large-block block">
+        <Button label="Focus" onClick={this.button_onClickHandler} />
+        <Container classes="large-block block">
+          <Button label="Focus" onClick={this.button_onClickHandler} />
+        </Container>
+      </Container>
+    </ScrollContainer>;
+  }
+
+  button_onClickHandler(event) {
+    // We dispatch the event on the button, it bubbles up to the *nearest* parent that has a
+    // ScrollContainerController attached and then tells it to focus on the button.
+    this.dispatch(ScrollContainerController.SCROLL_TO, {
+      target: event.target
+    }, true, true, true, event.target);
+  }
+}
+
+export default ScrollContainerExample1;
