@@ -21,7 +21,7 @@ export default class I18NModel extends Model {
     this.cache = {};
 
     if (defaultLanguage === undefined) {
-      defaultLanguage = getCookie('language');
+      defaultLanguage = getCookie('lang');
 
       if (!defaultLanguage) {
         defaultLanguage = 'en';
@@ -32,7 +32,7 @@ export default class I18NModel extends Model {
       onChange: () => {
         moment.locale(this.language);
 
-        setCookie('language', this.language);
+        setCookie('lang', this.language);
       }
     });
 

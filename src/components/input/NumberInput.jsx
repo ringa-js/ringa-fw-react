@@ -37,7 +37,7 @@ export default class NumberInput extends TextInput {
       requiredNode = <div className="required-indicator">{requiredMessage}</div>;
     }
 
-    let cn = classnames('number-input', {
+    let cn = this.calcClassnames('number-input', {
       required,
       invalid: !this.state.valid || !valid
     }, classes);

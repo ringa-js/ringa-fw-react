@@ -58,6 +58,13 @@ module.exports = {
       amd: 'react-ringa',
       umd: 'react-ringa',
     },
+    'ringa-fw-core': {
+      root: 'Ringa FW Core',
+      commonjs2: 'ringa-fw-core',
+      commonjs: 'ringa-fw-core',
+      amd: 'ringa-fw-core',
+      umd: 'ringa-fw-core',
+    },
     'moment': {
       root: 'Moment',
       commonjs2: 'moment',

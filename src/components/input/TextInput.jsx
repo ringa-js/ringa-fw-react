@@ -52,7 +52,7 @@ export default class TextInput extends ValidatingInputBase {
       requiredNode = <div className="required-indicator">{requiredMessage}</div>;
     }
 
-    let cn = classnames('text-input', {
+    let cn = this.calcClassnames('text-input', {
       required,
       invalid: !this.state.valid || !valid,
       editonclick:editOnClick

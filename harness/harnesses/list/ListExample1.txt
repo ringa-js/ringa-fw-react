@@ -64,7 +64,7 @@ class ListExample1 extends RingaComponent {
   // Lifecycle
   //-----------------------------------
   render() {
-    return <List items={this.items} />;
+    return <List items={this.items} classes="max-height" />;
   }
 }
 

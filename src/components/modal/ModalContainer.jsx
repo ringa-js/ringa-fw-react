@@ -4,8 +4,6 @@ import RingaComponent from '../RingaComponent';
 import ModalContainerModel from './ModalContainerModel';
 import Modal from './Modal';
 
-import classnames from 'classnames';
-
 import {attach, depend, dependency} from 'react-ringa';
 
 export default class ModalContainer extends RingaComponent {
@@ -44,7 +42,7 @@ export default class ModalContainer extends RingaComponent {
       zIndex: global ? 10000 : zIndex
     };
 
-    let cnContents = classnames('modal-container-contents', 'fill', {
+    let cnContents = this.calcClassnames('modal-container-contents', 'fill', {
       'block-mouse-events': blockMouseEvents
     });
 

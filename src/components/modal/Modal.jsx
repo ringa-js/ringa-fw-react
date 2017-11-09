@@ -39,7 +39,7 @@ export default class Modal extends PositionableComponent {
   render() {
     let {modal} = this.props;
 
-    let cn = classnames('modal', modal.classes);
+    let cn = this.calcClassnames('modal', modal.classes);
 
     let children;
 

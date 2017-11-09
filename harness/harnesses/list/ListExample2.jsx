@@ -70,7 +70,8 @@ class ListExample2 extends RingaComponent {
   //-----------------------------------
   render() {
     return <List multiSelect={true}
-                 items={this.multiSelectItems} />;
+                 items={this.multiSelectItems}
+                 classes="max-height"/>;
   }
 }
 

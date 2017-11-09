@@ -80,6 +80,7 @@ export TextInput from './components/input/TextInput';
 export Button from './components/input/Button';
 export NumberInput from './components/input/NumberInput';
 export Checkbox from './components/input/Checkbox';
+export RadioButton from './components/input/RadioButton';
 export ValidatingInputBase from './components/input/ValidatingInputBase';
 
 //-----------------------------------

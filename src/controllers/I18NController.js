@@ -9,7 +9,7 @@ export default class I18NController extends Controller {
   // Constructor
   //-----------------------------------
   constructor(name, bus, i18NModel, options) {
-    super(name, bus, i18NModel, options);
+    super(name, bus, options);
 
     this.addModel(i18NModel || new I18NModel());
   }

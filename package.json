@@ -14,6 +14,7 @@
     "build:harness:test": "npm run build:harness && cd harness/dist && nws",
     "minorVersionAndBuildHarness": "npm run build:harness",
     "build": "rm -rf dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.dist.js",
+    "build:all": "npm run build && npm run build:harness",
     "analyze": "rm -rf dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.dist.analyze.js",
     "start": "npm run dev",
     "release:major": "npm test && npm run build && npm version major && npm publish && git push --follow-tags",

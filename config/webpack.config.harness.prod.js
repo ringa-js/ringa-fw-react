@@ -38,7 +38,7 @@ const config = {
       },
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        exclude: /node_modules\/(?![ringa|react\-ringa|ringa\-fw\-core])/,
         loaders: {
           loader: 'babel-loader',
           options: {

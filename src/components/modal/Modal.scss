@@ -1,11 +1,13 @@
-@import '../../styles/themes/classic/variables';
-
-.modal {
+.ringa-component.modal {
   position: absolute;
   pointer-events: all;
 
   min-width: 200px;
   min-height: 75px;
+
+  background: $white;
+
+  z-index: $modal-z-index;
 
   .modal-header {
   }
