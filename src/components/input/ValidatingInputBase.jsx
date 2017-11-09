@@ -32,7 +32,7 @@ export default class ValidatingInputBase extends RingaComponent {
 
     this.dispatch(FormController.REGISTER_FORM_ELEMENT, {
       element: this
-    });
+    }, true, true, false);
   }
 
   componentWillUnmount() {
@@ -40,7 +40,7 @@ export default class ValidatingInputBase extends RingaComponent {
 
     this.dispatch(FormController.UNREGISTER_FORM_ELEMENT, {
       element: this
-    });
+    }, true, true, false);
   }
 
   componentWillReceiveProps(nextProps) {

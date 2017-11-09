@@ -10,5 +10,9 @@
   "list": {
     "title": "markdown:#List Examples",
     "description": "markdown: The `List` component is used to display a vertical series of items."
+  },
+  "textInput": {
+    "title": "markdown:#TextInput Examples",
+    "description": "markdown: The `TextInput` component is used to receive text input from the user. It can be bound to a Ringa `Model` value."
   }
 }

@@ -12,6 +12,7 @@ import {Route, Redirect} from 'react-router-dom';
 import Home from '../Home';
 
 import ListHarness from '../harnesses/list/ListHarness';
+import TextInputHarness from '../harnesses/textInput/TextInputHarness';
 import FormHarness from '../harnesses/form/FormHarness';
 
 import {TooltipContainer,
@@ -46,6 +47,7 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
             <Header {...this.props} />
             <Route exact path="/" component={Home} />
             <Route path="/list" component={ListHarness} />
+            <Route path="/textInput" component={TextInputHarness} />
             <Route path="/form" component={FormHarness} />
             <Footer />
           </ModalContainer>

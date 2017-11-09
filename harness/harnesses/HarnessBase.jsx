@@ -35,7 +35,7 @@ class HarnessBase extends RingaComponent {
     return <div className="header">
       <Markdown markdown={i18NModel.i18n(titleKey)} />
       <div className="since-version">{i18NModel.i18n('harness.sinceVersion')}<span className="version">{version}</span></div>
-      <Code code={code} />
+        <Code code={code} />
       <Markdown markdown={i18NModel.i18n(descriptionKey)} />
       <label><a href={source} target="_blank">{i18NModel.i18n('harness.source')}</a></label>
     </div>;
