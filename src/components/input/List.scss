@@ -1,80 +1,80 @@
-@import '../../styles/themes/classic/variables';
+@if ($Use_List_Defaults) {
+  .ringa-component.list {
+    display: flex;
+    flex-direction: column;
 
-.list {
-  display: flex;
-  flex-direction: column;
+    border: 1px solid $grey-2;
+    border-radius: $radius-1;
+    background-color: white;
+    -webkit-overflow-scrolling: touch;
+    min-width: 250px;
+    position: relative;
 
-  border: 1px solid $grey-2;
-  border-radius: $radius-1;
-  background-color: white;
-  -webkit-overflow-scrolling: touch;
-  min-width: 250px;
-  position: relative;
+    font-size: 16px;
 
-  font-size: 16px;
-
-  .contents {
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    max-height: 300px;
-  }
-
-  .empty {
-    width: 100%;
-    text-align: center;
-    height: 100%;
-    padding-top: 1em;
-  }
-
-  .item-renderer {
-    @include hover-1;
-
-    padding: 9px 11px;
-    background: $white;
-
-    transition: 0.3s background linear;
-
-    &:hover {
-      cursor: pointer;
+    .contents {
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      max-height: 300px;
     }
 
-    &.selected {
-      background-color: $selected-1;
-      font-weight: bold;
+    .empty {
+      width: 100%;
+      text-align: center;
+      height: 100%;
+      padding-top: 1em;
     }
 
-    &.checkbox {
-      display: flex;
+    .item-renderer {
+      @include hover-1;
 
-      .checkbox-container {
-        margin-right: 5px;
+      padding: 9px 11px;
+      background: $white;
+
+      transition: 0.3s background linear;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      &.selected {
+        background-color: $selected-1;
+        font-weight: bold;
+      }
+
+      &.checkbox {
+        display: flex;
+
+        .checkbox-container {
+          margin-right: 5px;
+        }
       }
     }
-  }
 
-  .search {
-    flex: 0 0 auto;
-    border: none;
-    border-bottom: 1px solid $grey-2;
+    .search {
+      flex: 0 0 auto;
+      border: none;
+      border-bottom: 1px solid $grey-2;
 
-    input {
-      padding: 9px 11px;
-      font-size: 14px;
-      width: calc(100% - 22px);
+      input {
+        padding: 9px 11px;
+        font-size: 14px;
+        width: calc(100% - 22px);
+      }
     }
-  }
 
-  .search-no-items {
-    text-align: center;
-    color: $black-3;
-    margin-top: 10px;
-    font-size: 14px;
-  }
+    .search-no-items {
+      text-align: center;
+      color: $black-3;
+      margin-top: 10px;
+      font-size: 14px;
+    }
 
-  .empty-list-msg {
-    padding: 20px;
-    text-align: center;
-    color: $grey-1;
+    .empty-list-msg {
+      padding: 20px;
+      text-align: center;
+      color: $grey-1;
+    }
   }
 }

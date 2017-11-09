@@ -1,6 +1,6 @@
 import React from 'react';
 import RingaComponent from '../RingaComponent';
-import DragWrapper from '../complex/DragWrapper';
+import DragWrapper from '../dragDrop/DragWrapper';
 
 import classnames from 'classnames';
 

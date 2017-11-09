@@ -1,0 +1,39 @@
+@if ($Use_Tags_Defaults == true) {
+  .ringa-component.tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    .tag {
+      position: relative;
+      display: flex;
+      border: 1px solid $grey-1;
+      border-radius: 3px;
+      background: $grey-2;
+      margin: 3px 3px;
+      flex: 0 0 auto;
+      padding: 2px 5px;
+
+      .text {
+        flex: 0 0 auto;
+        padding-right: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
+      }
+
+      .delete {
+        position: absolute;
+        right: 4px;
+        top: 1px;
+        cursor: pointer;
+
+        img {
+          margin-left: 5px;
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
+  }
+}

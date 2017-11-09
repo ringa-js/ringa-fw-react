@@ -1,6 +1,9 @@
-.ringa-component.code-example {
-  .code {
-    height: 100%;
-    width: 100%;
+@if ($Use_CodeExample_Defaults == true)
+{
+  .ringa-component.code-example {
+    .code {
+      height: 100%;
+      width: 100%;
+    }
   }
 }

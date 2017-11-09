@@ -1,0 +1,21 @@
+@if ($Use_DropdownTypeahead_Defaults == true) {
+  .ringa-component.dropdown {
+    &.typeahead {
+      max-width: none;
+
+      .tags {
+        width: 100%;
+      }
+
+      .typeahead-input {
+        border: none;
+        width: calc(100% - 26px);
+        border-right: 1px solid $grey-2;
+
+        input:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}

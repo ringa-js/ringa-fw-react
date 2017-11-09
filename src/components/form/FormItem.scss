@@ -1,10 +1,10 @@
-@import '../../styles/themes/classic/variables';
+@if ($Use_FormItem_Defaults == true) {
+  .ringa-component.form-item {
+    padding: $pad1;
 
-.ringa-component.form-item {
-  padding: $pad1;
-
-  label {
-    margin-bottom: $pad1;
-    display: block;
+    label {
+      margin-bottom: $pad1;
+      display: block;
+    }
   }
 }

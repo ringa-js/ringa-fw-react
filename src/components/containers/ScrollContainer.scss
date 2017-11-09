@@ -1,3 +1,5 @@
-.scroll-container {
-  overflow: auto;
+@if ($Use_ScrollContainer_Defaults) {
+  .ringa-component.scroll-container {
+    overflow: auto;
+  }
 }

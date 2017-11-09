@@ -1,18 +1,18 @@
-@import '../../styles/themes/classic/variables';
+@if ($Use_DragListContainer_Defaults == true) {
+  .ringa-component.drag-list-container {
+    &.show-scroll {
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
 
-.ringa-component.drag-list-container {
-  &.show-scroll {
-    overflow: scroll;
-    -webkit-overflow-scrolling: touch;
-  }
+    &.drag-active {
+      box-shadow: 0 0 7px #C44;
+    }
 
-  &.drag-active {
-    box-shadow: 0 0 7px #C44;
-  }
-
-  .empty {
-    text-align: center;
-    width: calc(100% - 2em);
-    padding: 0.1em 1em;
+    .empty {
+      text-align: center;
+      width: calc(100% - 2em);
+      padding: 0.1em 1em;
+    }
   }
 }

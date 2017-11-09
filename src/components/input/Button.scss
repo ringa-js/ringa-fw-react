@@ -1,63 +1,63 @@
-@import '../../styles/themes/classic/variables';
-
-.ringa-component.button {
-  border: 1px solid $grey-2;
-  border-radius: $radius-1;
-  padding: 5px 10px;
-  font-size: 14px;
-  transition: 0.1s transform ease-out, 0.1s box-shadow ease-out, 0.2s filter ease-out;
-
-  &:hover {
-    transform: translate(-1px, -1px);
-
-    -webkit-box-shadow: 1px 1px 2px 1px $black-2;
-    -moz-box-shadow: 1px 1px 2px 1px $black-2;
-    box-shadow: 1px 1px 2px 1px $black-2;
-  }
-
-  &:focus {
-    outline:0;
-  }
-
-  &.disabled {
-    color: $grey-1;
-  }
-
-  @media screen and (max-width: $break-small) {
-    padding: 3px 8px;
-    font-size: 13px;
-  }
-
-  &.borderless {
-    font-size: 10px;
-    background: none; /* Green */
-    border: none;
-    color: $black;
-    padding: 3px 6px;
-    text-align: center;
-    text-decoration: underline;
-    display: inline-block;
-  }
-
-  &.white {
-    color: $white;
-  }
-
-  &.selected {
-    background: $ringa-color-2;
-    color: $white;
-    border: 1px $ringa-color-2;
-  }
-
-  &.tab {
-    margin: 0;
+@if ($Use_Button_Defaults == true) {
+  .ringa-component.button {
+    border: 1px solid $grey-2;
+    border-radius: $radius-1;
+    padding: 5px 10px;
+    font-size: 14px;
+    transition: 0.1s transform ease-out, 0.1s box-shadow ease-out, 0.2s filter ease-out;
 
     &:hover {
-      transform: translate(0px, 0px);
+      transform: translate(-1px, -1px);
 
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      box-shadow: none;
+      -webkit-box-shadow: 1px 1px 2px 1px $black-2;
+      -moz-box-shadow: 1px 1px 2px 1px $black-2;
+      box-shadow: 1px 1px 2px 1px $black-2;
+    }
+
+    &:focus {
+      outline: 0;
+    }
+
+    &.disabled {
+      color: $grey-1;
+    }
+
+    @media screen and (max-width: $break-small) {
+      padding: 3px 8px;
+      font-size: 13px;
+    }
+
+    &.borderless {
+      font-size: 10px;
+      background: none; /* Green */
+      border: none;
+      color: $black;
+      padding: 3px 6px;
+      text-align: center;
+      text-decoration: underline;
+      display: inline-block;
+    }
+
+    &.white {
+      color: $white;
+    }
+
+    &.selected {
+      background: $ringa-color-2;
+      color: $white;
+      border: 1px $ringa-color-2;
+    }
+
+    &.tab {
+      margin: 0;
+
+      &:hover {
+        transform: translate(0px, 0px);
+
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+      }
     }
   }
 }

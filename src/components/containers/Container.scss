@@ -1,1 +1,5 @@
-@import '../../styles/themes/classic/variables';
+@if ($Use_Container_Defaults == true) {
+  .ringa-component.ringa-container {
+    position: relative;
+  }
+}

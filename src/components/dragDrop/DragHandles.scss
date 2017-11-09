@@ -1,21 +1,21 @@
-@import '../../styles/themes/classic/variables';
+@if ($Use_DragHandles_Defaults == true) {
+  .ringa-component.drag-handles {
+    display: inline-block;
+    position: relative;
 
-.ringa-component.drag-handles {
-  display: inline-block;
-  position: relative;
-
-  > div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    width: 13px;
-    height: 30px;
-    cursor: pointer;
-
-    > img {
+    > div {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
       width: 13px;
+      height: 30px;
+      cursor: pointer;
+
+      > img {
+        width: 13px;
+      }
     }
   }
 }

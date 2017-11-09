@@ -1,6 +1,6 @@
-@import '../../styles/themes/classic/variables';
-
-.ringa-component.tab-content {
-  padding: $pad2;
-  height: calc(100% - #{$pad2 * 2});
+@if ($Use_Tab_Defaults == true) {
+  .ringa-component.tab-content {
+    padding: $pad2;
+    height: calc(100% - #{$pad2 * 2});
+  }
 }

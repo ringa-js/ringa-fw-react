@@ -1,25 +1,25 @@
-@import '../../styles/themes/classic/variables';
+@if ($Use_Panel_Defaults == true) {
+  .ringa-component.panel {
+    display: flex;
+    flex-flow: column;
+    flex-direction: column;
 
-.ringa-component.panel {
-  display: flex;
-  flex-flow: column;
-  flex-direction: column;
+    padding: $pad2;
 
-  padding: $pad2;
+    margin: $pad3 0;
 
-  margin: $pad3 0;
-
-  .header {
-    flex: 0 0 auto;
-    .label {
-      font-weight: bold;
-      font-size: 16px;
-      padding: $pad2 0;
+    .header {
+      flex: 0 0 auto;
+      .label {
+        font-weight: bold;
+        font-size: 16px;
+        padding: $pad2 0;
+      }
     }
-  }
 
-  .content {
-    flex: 1 1 auto;
-    min-height: 0;
+    .content {
+      flex: 1 1 auto;
+      min-height: 0;
+    }
   }
 }

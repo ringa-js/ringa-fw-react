@@ -1,19 +1,19 @@
-@import '../../../styles/themes/classic/variables';
+@if ($Use_Alert_Defaults == true) {
+  .alert {
+    position: relative;
 
-.alert {
-  position: relative;
+    .message {
+      width: 100%;
+      text-align: center;
+    }
 
-  .message {
-    width: 100%;
-    text-align: center;
-  }
+    .buttons {
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
 
-  .buttons {
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-
-    .button {
+      .button {
+      }
     }
   }
 }

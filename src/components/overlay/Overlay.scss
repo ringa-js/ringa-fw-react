@@ -1,6 +1,6 @@
-@import '../../styles/themes/classic/variables';
-
-.overlay {
-  position: absolute;
-  pointer-events: all;
+@if ($Use_Overlay_Defaults == true) {
+  .ringa-component.overlay {
+    position: absolute;
+    pointer-events: all;
+  }
 }

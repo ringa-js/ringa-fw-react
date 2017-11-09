@@ -1,27 +1,27 @@
-@import '../../styles/themes/classic/variables';
+@if ($Use_Tooltip_Defaults) {
+  .ringa-component.tooltip {
+    @include drop-shadow-1;
 
-.ringa-component.tooltip {
-  @include drop-shadow-1;
+    background: $grey-1;
+    padding: $pad1;
+    position: absolute;
+    pointer-events: all;
+    overflow-x: hidden;
 
-  background: $grey-1;
-  padding: $pad1;
-  position: absolute;
-  pointer-events: all;
-  overflow-x: hidden;
+    .message {
+      width: 100%;
+    }
 
-  .message {
-    width: 100%;
-  }
+    .children {
 
-  .children {
+    }
 
-  }
+    &.debug {
+    }
 
-  &.debug {
-  }
-
-  &.error {
-    background-color: $error-red;
-    color: $white;
+    &.error {
+      background-color: $error-red;
+      color: $white;
+    }
   }
 }

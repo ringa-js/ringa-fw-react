@@ -1,7 +1,7 @@
 //-----------------------------------
 // Classic Theme
 //-----------------------------------
-import './styles/themes/classic/theme-classic.scss';
+import './styles/themes/classic/index.scss';
 
 //-----------------------------------
 // Root
@@ -30,11 +30,13 @@ export DragDropModel from './components/dragDrop/DragDropModel';
 export DragHandles from './components/dragDrop/DragHandles';
 export DragListContainer from './components/dragDrop/DragListContainer';
 export DragListContainerItem from './components/dragDrop/DragListContainerItem';
+export DragWrapper from './components/dragDrop/DragWrapper';
 
 //-----------------------------------
 // dropdown
 //-----------------------------------
 export Dropdown from './components/dropdown/Dropdown';
+export DropdownTypeahead from './components/dropdown/DropdownTypeahead';
 
 //-----------------------------------
 // Overlay
@@ -60,9 +62,10 @@ export ModalContainer from './components/modal/ModalContainer';
 export ModalToggleContainer from './components/modal/ModalToggleContainer';
 
 //-----------------------------------
-// View Controllers
+// View controllers
 //-----------------------------------
 export I18NController from './controllers/I18NController';
+export ScreenController from './controllers/ScreenController';
 
 //-----------------------------------
 // Models
@@ -75,14 +78,17 @@ export ScreenModel from './models/ScreenModel';
 export List from './components/input/List';
 export TextInput from './components/input/TextInput';
 export Button from './components/input/Button';
+export NumberInput from './components/input/NumberInput';
+export Checkbox from './components/input/Checkbox';
+export ValidatingInputBase from './components/input/ValidatingInputBase';
 
 //-----------------------------------
 // Complex
 //-----------------------------------
-export DragWrapper from './components/complex/DragWrapper';
 export Alert from './components/complex/alert/AlertModel';
 export Code from './components/complex/Code';
 export CodeExample from './components/complex/CodeExample';
+export Tags from './components/complex/Tags';
 
 //-----------------------------------
 // Containers
@@ -111,4 +117,4 @@ export FormMessage from './components/form/FormMessage';
 //-----------------------------------
 // Utils
 //-----------------------------------
-export I18NModel from './models/I18NModel';
+export I18NModel, {languagePackDefaults} from './models/I18NModel';

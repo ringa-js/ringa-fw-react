@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import {Dropdown,
         RingaComponent} from '../../src/index';
 
 import {alphaSortKey} from 'ringa-fw-core';
 
-import {routeMap, routeMapInverted} from '../routes';
-import {depend, dependency} from 'react-ringa';
+import {routeMap} from '../routes';
 
 import './Header.scss';
 

@@ -4,8 +4,6 @@ import RingaComponent from '../RingaComponent';
 
 import FormModel from '../form/FormModel';
 
-import './FormItem.scss';
-
 import {depend, dependency} from "react-ringa";
 
 export default class FormItem extends RingaComponent {

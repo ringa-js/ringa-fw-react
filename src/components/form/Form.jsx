@@ -4,8 +4,6 @@ import RingaComponent from '../RingaComponent';
 
 import {attach} from 'react-ringa';
 
-import './Form.scss';
-
 import FormController from './FormController';
 
 export default class Form extends RingaComponent {

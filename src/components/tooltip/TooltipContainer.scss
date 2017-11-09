@@ -1,11 +1,11 @@
-@import '../../styles/themes/classic/variables';
-
-.ringa-component.tooltip-container {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 9000;
-  pointer-events: none;
+@if ($Use_TooltipContainer_Defaults == true) {
+  .ringa-component.tooltip-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 9000;
+    pointer-events: none;
+  }
 }
