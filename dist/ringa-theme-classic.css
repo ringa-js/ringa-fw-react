@@ -388,14 +388,13 @@ ul li {
   background: #FCFCFC;
   position: relative;
   white-space: nowrap;
-  border: 1px solid #EDEDED;
+  border: 1px solid #CCC;
   display: flex;
   justify-content: flex-start;
-  background: #F2F2F2;
   transition: background 300ms ease-in-out, border 300ms ease-in-out; }
   .text-input:hover {
     background: #FCFCFC;
-    border: 1px solid #CCC; }
+    border: 1px solid #666; }
   .text-input input:focus, .text-input textarea:focus {
     outline: none !important;
     box-shadow: 0 0 12px 1px rgba(235, 242, 242, 0.7) !important; }
@@ -550,6 +549,7 @@ ul li {
   display: flex;
   flex-direction: column; }
   .ringa-component.tab-navigator .button.tab {
+    flex: 0 0 auto;
     font-size: 16px;
     padding: 10px;
     border-top: 1px solid #CCC; }
@@ -558,6 +558,8 @@ ul li {
     .ringa-component.tab-navigator .button.tab:last-child {
       border-right: 1px solid #CCC; }
   .ringa-component.tab-navigator .content {
+    flex: 1 1 auto;
+    min-height: 0;
     border: 1px solid #CCC;
     overflow: auto;
     height: 100%; }
@@ -565,6 +567,25 @@ ul li {
 .ringa-component.tab-content {
   padding: 10px;
   height: calc(100% - 20px); }
+
+.ringa-component.panel {
+  display: flex;
+  flex-flow: column;
+  flex-direction: column;
+  padding: 10px;
+  margin: 20px 0; }
+  .ringa-component.panel .header {
+    flex: 0 0 auto; }
+    .ringa-component.panel .header .label {
+      font-weight: bold;
+      font-size: 16px;
+      padding: 10px 0; }
+  .ringa-component.panel .content {
+    flex: 1 1 auto;
+    min-height: 0; }
+
+.scroll-container {
+  overflow: auto; }
 
 .ringa-component.dropdown.default {
   position: relative;

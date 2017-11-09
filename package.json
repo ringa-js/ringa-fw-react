@@ -30,7 +30,7 @@
   ],
   "peerDependencies": {
     "react-dom": "15.5.4",
-    "ringa": "0.1.8",
+    "ringa": "^0.1.17",
     "react": "^15.5.4",
     "react-ringa": "^0.1.7"
   },
