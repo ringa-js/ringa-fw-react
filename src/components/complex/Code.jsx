@@ -2,8 +2,6 @@ import React from 'react';
 import RingaComponent from '../RingaComponent';
 
 import highlight from 'highlight.js';
-import js from 'highlight.js/lib/languages/javascript';
-import 'highlight.js/styles/sunburst.css';
 
 class Code extends RingaComponent {
   //-----------------------------------

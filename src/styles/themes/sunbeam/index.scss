@@ -11,4 +11,8 @@
   background: -webkit-linear-gradient(top, #faf33e 0%,#ffffff 17%,#ffffff 17%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom, #faf33e 0%,#ffffff 17%,#ffffff 17%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#faf33e', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+  .ringa-component.code .hljs {
+    background: #3d3b10;
+  }
 }
