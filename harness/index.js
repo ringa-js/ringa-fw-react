@@ -5,4 +5,6 @@ import { BrowserRouter } from 'react-router-dom';
 
 import routes from './routes';
 
+import '../src/styles/themes/sunbeam/index.scss';
+
 render(<BrowserRouter>{routes}</BrowserRouter>, document.querySelector('.react-app'));

@@ -5,6 +5,9 @@ html, body {
   width: 100%;
   height: 100%; }
 
+[data-reactroot] {
+  height: 100%; }
+
 .react-app {
   width: 100%;
   height: 100%; }
@@ -59,675 +62,642 @@ button {
 ul li {
   margin: 0.4em; }
 
-.ringa-component.disabled {
-  filter: brightness(110%) greyscale(50%);
-  pointer-events: none; }
-
-.ringa-component.hide {
-  display: none; }
-
-.ringa-drop-hover {
-  border: 1px dashed black !important; }
-
-.ringa-block-mouse {
-  pointer-events: none !important;
-  opacity: 0.5; }
-
-.alert {
-  position: relative; }
-  .alert .message {
-    width: 100%;
-    text-align: center; }
-  .alert .buttons {
-    justify-content: space-between;
-    align-items: center;
-    text-align: center; }
-
-.ringa-component.code pre {
-  margin: 0;
-  padding: 0; }
-
-.ringa-component.code-example .code {
-  height: 100%;
-  width: 100%; }
-
-.ringa-component.tags {
-  display: flex;
-  flex-wrap: wrap; }
-  .ringa-component.tags .tag {
-    position: relative;
-    display: flex;
-    border: 1px solid #CCC;
-    border-radius: 3px;
-    background: #EDEDED;
-    margin: 3px 3px;
-    flex: 0 0 auto;
-    padding: 2px 5px; }
-    .ringa-component.tags .tag .text {
-      flex: 0 0 auto;
-      padding-right: 15px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      max-width: 150px; }
-    .ringa-component.tags .tag .delete {
-      position: absolute;
-      right: 4px;
-      top: 1px;
-      cursor: pointer; }
-      .ringa-component.tags .tag .delete img {
-        margin-left: 5px;
-        width: 10px;
-        height: 10px; }
-
-.ringa-component.drag-handles {
-  display: inline-block;
-  position: relative; }
-  .ringa-component.drag-handles > div {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    width: 13px;
-    height: 30px;
-    cursor: pointer; }
-    .ringa-component.drag-handles > div > img {
-      width: 13px; }
-
-.ringa-component.drag-list-container.show-scroll {
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch; }
-
-.ringa-component.drag-list-container.drag-active {
-  box-shadow: 0 0 7px #C44; }
-
-.ringa-component.drag-list-container .empty {
-  text-align: center;
-  width: calc(100% - 2em);
-  padding: 0.1em 1em; }
-
-.ringa-component.drag-list-container-item {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%; }
-  .ringa-component.drag-list-container-item .list-item {
-    width: 100%; }
-
-.ringa-component.overlay .drag-list-container-item {
-  width: 100%;
-  height: 100%; }
-
-.ringa-component.drag-wrapper.dragEnabled {
-  cursor: move; }
-
-.ringa-component.drag-wrapper.dragging {
-  pointer-events: none; }
-
-.ringa-component.button {
-  border: 1px solid #EDEDED;
-  border-radius: 0px;
-  padding: 5px 10px;
-  font-size: 14px;
-  transition: 0.1s transform ease-out, 0.1s box-shadow ease-out, 0.2s filter ease-out; }
-  .ringa-component.button:hover {
-    transform: translate(-1px, -1px);
-    -webkit-box-shadow: 1px 1px 2px 1px #444;
-    -moz-box-shadow: 1px 1px 2px 1px #444;
-    box-shadow: 1px 1px 2px 1px #444; }
-  .ringa-component.button:focus {
-    outline: 0; }
-  .ringa-component.button.disabled {
-    color: #CCC; }
-  @media screen and (max-width: 720px) {
-    .ringa-component.button {
-      padding: 3px 8px;
-      font-size: 13px; } }
-  .ringa-component.button.borderless {
-    font-size: 10px;
-    background: none;
-    /* Green */
-    border: none;
-    color: #333;
-    padding: 3px 6px;
-    text-align: center;
-    text-decoration: underline;
-    display: inline-block; }
-  .ringa-component.button.white {
-    color: #FCFCFC; }
-  .ringa-component.button.selected {
-    background: #439DCA;
-    color: #FCFCFC;
-    border: 1px #439DCA; }
-  .ringa-component.button.tab {
-    margin: 0; }
-    .ringa-component.button.tab:hover {
-      transform: translate(0px, 0px);
-      -webkit-box-shadow: none;
-      -moz-box-shadow: none;
-      box-shadow: none; }
-
-/* .squaredFour */
-.squaredFour {
-  position: relative;
-  margin: 0;
-  display: inline-block; }
-  .squaredFour .checkbox-box {
-    width: 15px;
-    height: 15px;
-    cursor: pointer;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: #fcfff4;
-    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-    border-radius: 0;
-    border: 1px solid #CCC; }
-    .squaredFour .checkbox-box:after {
-      content: '';
-      width: 10px;
-      height: 5px;
-      position: absolute;
-      top: 3px;
-      left: 2px;
-      border: 2px solid #023149;
-      border-top: none;
-      border-right: none;
-      background: transparent;
-      opacity: 0.0;
-      transform: rotate(-50deg); }
-    .squaredFour .checkbox-box:hover::after {
-      opacity: 0.5; }
-  @media screen and (max-width: 720px) {
-    .squaredFour .checkbox-label {
-      font-size: 17px; } }
-  .squaredFour input[type=checkbox] {
-    visibility: hidden; }
-    .squaredFour input[type=checkbox]:checked + .checkbox-box:after {
-      opacity: 1; }
-
-/* end .squaredFour */
-.ringa-component.list {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #EDEDED;
-  border-radius: 0px;
-  background-color: white;
-  -webkit-overflow-scrolling: touch;
-  min-width: 250px;
-  position: relative;
-  font-size: 16px; }
-  .ringa-component.list.max-height {
-    max-height: 300px; }
-  .ringa-component.list .contents {
-    width: 100%;
-    height: 100%;
-    overflow: auto; }
-  .ringa-component.list .empty {
-    width: 100%;
-    text-align: center;
-    height: 100%;
-    padding-top: 1em; }
-  .ringa-component.list .item-renderer {
-    background: none;
-    transition: background 300ms linear;
-    padding: 9px 11px;
-    background: #FCFCFC;
-    transition: 0.3s background linear; }
-    .ringa-component.list .item-renderer:hover {
-      background: rgba(235, 242, 242, 0.7); }
-    .ringa-component.list .item-renderer:hover {
-      cursor: pointer; }
-    .ringa-component.list .item-renderer.selected {
-      background-color: #ebf2f2;
-      font-weight: bold; }
-    .ringa-component.list .item-renderer.checkbox {
-      display: flex; }
-      .ringa-component.list .item-renderer.checkbox .checkbox-container {
-        margin-right: 5px; }
-  .ringa-component.list .search {
-    flex: 0 0 auto;
-    border: none;
-    border-bottom: 1px solid #EDEDED; }
-    .ringa-component.list .search input {
-      padding: 9px 11px;
-      font-size: 14px;
-      width: calc(100% - 22px); }
-  .ringa-component.list .search-no-items {
-    text-align: center;
-    color: #666;
-    margin-top: 10px;
-    font-size: 14px; }
-  .ringa-component.list .empty-list-msg {
-    padding: 20px;
-    text-align: center;
-    color: #CCC; }
-
-.ringa-component.number-input {
-  padding: 0;
-  margin: 0;
+.classic {
   background: none;
-  position: relative;
-  white-space: nowrap;
-  width: 100px;
-  border: 1px solid #CCC;
-  display: flex;
-  justify-content: flex-end; }
-  .ringa-component.number-input input:focus {
-    outline: none !important;
-    box-shadow: 0 0 12px 1px rgba(235, 242, 242, 0.7) !important; }
-  .ringa-component.number-input .buttons {
-    position: absolute;
-    top: -1px;
-    right: 0; }
-    @media screen and (max-width: 720px) {
-      .ringa-component.number-input .buttons {
-        top: -3px; } }
-    .ringa-component.number-input .buttons .up, .ringa-component.number-input .buttons .down {
-      height: 14px;
+  /* .squaredFour */
+  /* end .squaredFour */ }
+  .classic .ringa-container-1 {
+    background: #023149;
+    color: #FCFCFC; }
+  .classic .ringa-container-2 {
+    background: #439DCA;
+    color: #FCFCFC; }
+  .classic .ringa-component.disabled {
+    filter: brightness(110%) greyscale(50%);
+    pointer-events: none; }
+  .classic .ringa-component.hide {
+    display: none; }
+  .classic .ringa-drop-hover {
+    border: 1px dashed black !important; }
+  .classic .ringa-block-mouse {
+    pointer-events: none !important;
+    opacity: 0.5; }
+  .classic .alert {
+    position: relative; }
+    .classic .alert .message {
+      width: 100%;
+      text-align: center; }
+    .classic .alert .buttons {
+      justify-content: space-between;
+      align-items: center;
+      text-align: center; }
+  .classic .ringa-component.code pre {
+    margin: 0;
+    padding: 0; }
+  .classic .ringa-component.code-example .code {
+    height: 100%;
+    width: 100%; }
+  .classic .ringa-component.tags {
+    display: flex;
+    flex-wrap: wrap; }
+    .classic .ringa-component.tags .tag {
+      position: relative;
+      display: flex;
+      border: 1px solid #CCC;
+      border-radius: 3px;
+      background: #EDEDED;
+      margin: 3px 3px;
+      flex: 0 0 auto;
+      padding: 2px 5px; }
+      .classic .ringa-component.tags .tag .text {
+        flex: 0 0 auto;
+        padding-right: 15px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px; }
+      .classic .ringa-component.tags .tag .delete {
+        position: absolute;
+        right: 4px;
+        top: 1px;
+        cursor: pointer; }
+        .classic .ringa-component.tags .tag .delete img {
+          margin-left: 5px;
+          width: 10px;
+          height: 10px; }
+  .classic .ringa-component.drag-handles {
+    display: inline-block;
+    position: relative; }
+    .classic .ringa-component.drag-handles > div {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      width: 13px;
+      height: 30px;
       cursor: pointer; }
-      .ringa-component.number-input .buttons .up[disabled], .ringa-component.number-input .buttons .down[disabled] {
-        visibility: hidden;
-        cursor: not-allowed; }
-      @media screen and (max-width: 720px) {
-        .ringa-component.number-input .buttons .up, .ringa-component.number-input .buttons .down {
-          display: none; } }
-  .ringa-component.number-input > label {
-    margin-right: 0.5em; }
-  .ringa-component.number-input > input {
-    padding: 0.3em;
-    padding-right: 20px;
-    font-size: 15px;
-    width: calc(100% - 20px);
-    text-align: right;
-    border: none; }
+      .classic .ringa-component.drag-handles > div > img {
+        width: 13px; }
+  .classic .ringa-component.drag-list-container.show-scroll {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch; }
+  .classic .ringa-component.drag-list-container.drag-active {
+    box-shadow: 0 0 7px #C44; }
+  .classic .ringa-component.drag-list-container .empty {
+    text-align: center;
+    width: calc(100% - 2em);
+    padding: 0.1em 1em; }
+  .classic .ringa-component.drag-list-container-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%; }
+    .classic .ringa-component.drag-list-container-item .list-item {
+      width: 100%; }
+  .classic .ringa-component.overlay .drag-list-container-item {
+    width: 100%;
+    height: 100%; }
+  .classic .ringa-component.drag-wrapper.dragEnabled {
+    cursor: move; }
+  .classic .ringa-component.drag-wrapper.dragging {
+    pointer-events: none; }
+  .classic .ringa-component.button {
+    border: 1px solid #EDEDED;
+    border-radius: 0px;
+    padding: 5px 10px;
+    font-size: 14px;
+    transition: 0.1s transform ease-out, 0.1s box-shadow ease-out, 0.2s filter ease-out; }
+    .classic .ringa-component.button:hover {
+      transform: translate(-1px, -1px);
+      -webkit-box-shadow: 1px 1px 2px 1px #444;
+      -moz-box-shadow: 1px 1px 2px 1px #444;
+      box-shadow: 1px 1px 2px 1px #444; }
+    .classic .ringa-component.button:focus {
+      outline: 0; }
+    .classic .ringa-component.button.disabled {
+      color: #CCC; }
     @media screen and (max-width: 720px) {
-      .ringa-component.number-input > input {
-        font-size: 18px;
-        padding-right: 0.3em;
-        width: 100%; } }
-  .ringa-component.number-input.required input, .ringa-component.number-input.required textarea {
-    width: calc(100% - 1.0em - 20px); }
-  .ringa-component.number-input > .required-indicator {
-    margin-left: 0.3em;
-    display: inline;
-    font-size: 20px;
-    color: red; }
-  .ringa-component.number-input.invalid input, .ringa-component.number-input.invalid textarea {
-    border: 2px solid red; }
-
-.ringa-component.radio-button {
-  /* Radio */
-  display: flex; }
-  .ringa-component.radio-button .label {
-    display: inline-block;
-    margin-left: 5px; }
-  .ringa-component.radio-button input[type="radio"] {
-    margin: 0;
-    background-color: #FCFCFC;
-    background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);
-    border-radius: 10px;
-    box-shadow: 0 0 0 1px #CCC;
-    cursor: pointer;
-    display: inline-block;
-    height: 15px;
+      .classic .ringa-component.button {
+        padding: 3px 8px;
+        font-size: 13px; } }
+    .classic .ringa-component.button.borderless {
+      font-size: 10px;
+      background: none;
+      /* Green */
+      border: none;
+      color: #333;
+      padding: 3px 6px;
+      text-align: center;
+      text-decoration: underline;
+      display: inline-block; }
+    .classic .ringa-component.button.white {
+      color: #FCFCFC; }
+    .classic .ringa-component.button.selected {
+      background: #439DCA;
+      color: #FCFCFC;
+      border: 1px #439DCA; }
+    .classic .ringa-component.button.tab {
+      margin: 0; }
+      .classic .ringa-component.button.tab:hover {
+        transform: translate(0px, 0px);
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none; }
+  .classic .squaredFour {
     position: relative;
-    width: 15px;
-    -webkit-appearance: none; }
+    margin: 0;
+    display: inline-block; }
+    .classic .squaredFour .checkbox-box {
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #fcfff4;
+      background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+      border-radius: 0;
+      border: 1px solid #CCC; }
+      .classic .squaredFour .checkbox-box:after {
+        content: '';
+        width: 10px;
+        height: 5px;
+        position: absolute;
+        top: 3px;
+        left: 2px;
+        border: 2px solid #023149;
+        border-top: none;
+        border-right: none;
+        background: transparent;
+        opacity: 0.0;
+        transform: rotate(-50deg); }
+      .classic .squaredFour .checkbox-box:hover::after {
+        opacity: 0.5; }
     @media screen and (max-width: 720px) {
-      .ringa-component.radio-button input[type="radio"] {
-        height: 20px;
-        width: 20px;
-        border-radius: 15px; } }
-  .ringa-component.radio-button .radio-label {
-    flex: 0 1 auto;
-    float: right;
-    margin-left: 5px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; }
-    @media screen and (max-width: 720px) {
-      .ringa-component.radio-button .radio-label {
-        margin-left: 10px;
+      .classic .squaredFour .checkbox-label {
         font-size: 17px; } }
-  .ringa-component.radio-button input[type="radio"] {
-    flex: 0 0 auto; }
-  .ringa-component.radio-button input[type="radio"]:after {
-    background-color: #EDEDED;
-    border-radius: 25px;
-    content: "";
-    display: block;
-    height: 7px;
-    left: 4px;
+    .classic .squaredFour input[type=checkbox] {
+      visibility: hidden; }
+      .classic .squaredFour input[type=checkbox]:checked + .checkbox-box:after {
+        opacity: 1; }
+  .classic .ringa-component.list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #EDEDED;
+    border-radius: 0px;
+    background-color: white;
+    -webkit-overflow-scrolling: touch;
+    min-width: 250px;
     position: relative;
-    top: 4px;
-    width: 7px; }
-    @media screen and (max-width: 720px) {
-      .ringa-component.radio-button input[type="radio"]:after {
-        height: 10px;
-        left: 5px;
-        top: 5px;
-        width: 10px; } }
-  .ringa-component.radio-button input[type="radio"]:checked:after {
-    background-color: #023149; }
-
-.ringa-component.text-input {
-  padding: 0;
-  margin: 0;
-  background: #FCFCFC;
-  position: relative;
-  white-space: nowrap;
-  border: 1px solid #CCC;
-  display: flex;
-  justify-content: flex-start;
-  transition: background 300ms ease-in-out, border 300ms ease-in-out; }
-  .ringa-component.text-input:hover {
-    background: #FCFCFC;
-    border: 1px solid #666; }
-  .ringa-component.text-input input:focus, .ringa-component.text-input textarea:focus {
-    outline: none !important;
-    box-shadow: 0 0 12px 1px rgba(235, 242, 242, 0.7) !important; }
-  .ringa-component.text-input > label {
-    margin-right: 0.5em; }
-  .ringa-component.text-input > input, .ringa-component.text-input textarea {
-    padding: 5px;
-    font-size: 15px;
-    width: calc(100% - 12px);
-    border: none;
-    background-color: transparent; }
-  .ringa-component.text-input.required input, .ringa-component.text-input.required textarea {
-    width: calc(100% - 25px); }
-  .ringa-component.text-input textarea {
+    font-size: 16px; }
+    .classic .ringa-component.list.max-height {
+      max-height: 300px; }
+    .classic .ringa-component.list .contents {
+      width: 100%;
+      height: 100%;
+      overflow: auto; }
+    .classic .ringa-component.list .empty {
+      width: 100%;
+      text-align: center;
+      height: 100%;
+      padding-top: 1em; }
+    .classic .ringa-component.list .item-renderer {
+      background: none;
+      transition: background 300ms linear;
+      padding: 9px 11px;
+      background: #FCFCFC;
+      transition: 0.3s background linear; }
+      .classic .ringa-component.list .item-renderer:hover {
+        background: rgba(235, 242, 242, 0.7); }
+      .classic .ringa-component.list .item-renderer:hover {
+        cursor: pointer; }
+      .classic .ringa-component.list .item-renderer.selected {
+        background-color: #ebf2f2;
+        font-weight: bold; }
+      .classic .ringa-component.list .item-renderer.checkbox {
+        display: flex; }
+        .classic .ringa-component.list .item-renderer.checkbox .checkbox-container {
+          margin-right: 5px; }
+    .classic .ringa-component.list .search {
+      flex: 0 0 auto;
+      border: none;
+      border-bottom: 1px solid #EDEDED; }
+      .classic .ringa-component.list .search input {
+        padding: 9px 11px;
+        font-size: 14px;
+        width: calc(100% - 22px); }
+    .classic .ringa-component.list .search-no-items {
+      text-align: center;
+      color: #666;
+      margin-top: 10px;
+      font-size: 14px; }
+    .classic .ringa-component.list .empty-list-msg {
+      padding: 20px;
+      text-align: center;
+      color: #CCC; }
+  .classic .ringa-component.number-input {
+    padding: 0;
     margin: 0;
-    resize: vertical; }
-  .ringa-component.text-input > .required-indicator {
-    margin-left: 0.1em;
-    display: inline;
-    font-size: 20px;
-    color: red; }
-  .ringa-component.text-input.invalid {
-    border: 2px solid red; }
-  .ringa-component.text-input.invalid input:focus, .ringa-component.text-input.invalid textarea:focus, .ringa-component.text-input.required input:focus, .ringa-component.text-input.required textarea:focus {
-    box-shadow: none !important; }
-  .ringa-component.text-input.editonclick {
-    background-color: transparent;
-    border: 0 !important; }
-    .ringa-component.text-input.editonclick input, .ringa-component.text-input.editonclick textarea {
+    background: none;
+    position: relative;
+    white-space: nowrap;
+    width: 100px;
+    border: 1px solid #CCC;
+    display: flex;
+    justify-content: flex-end; }
+    .classic .ringa-component.number-input input:focus {
+      outline: none !important;
+      box-shadow: 0 0 12px 1px rgba(235, 242, 242, 0.7) !important; }
+    .classic .ringa-component.number-input .buttons {
+      position: absolute;
+      top: -1px;
+      right: 0; }
+      @media screen and (max-width: 720px) {
+        .classic .ringa-component.number-input .buttons {
+          top: -3px; } }
+      .classic .ringa-component.number-input .buttons .up, .classic .ringa-component.number-input .buttons .down {
+        height: 14px;
+        cursor: pointer; }
+        .classic .ringa-component.number-input .buttons .up[disabled], .classic .ringa-component.number-input .buttons .down[disabled] {
+          visibility: hidden;
+          cursor: not-allowed; }
+        @media screen and (max-width: 720px) {
+          .classic .ringa-component.number-input .buttons .up, .classic .ringa-component.number-input .buttons .down {
+            display: none; } }
+    .classic .ringa-component.number-input > label {
+      margin-right: 0.5em; }
+    .classic .ringa-component.number-input > input {
+      padding: 0.3em;
+      padding-right: 20px;
+      font-size: 15px;
+      width: calc(100% - 20px);
+      text-align: right;
+      border: none; }
+      @media screen and (max-width: 720px) {
+        .classic .ringa-component.number-input > input {
+          font-size: 18px;
+          padding-right: 0.3em;
+          width: 100%; } }
+    .classic .ringa-component.number-input.required input, .classic .ringa-component.number-input.required textarea {
+      width: calc(100% - 1.0em - 20px); }
+    .classic .ringa-component.number-input > .required-indicator {
+      margin-left: 0.3em;
+      display: inline;
+      font-size: 20px;
+      color: red; }
+    .classic .ringa-component.number-input.invalid input, .classic .ringa-component.number-input.invalid textarea {
+      border: 2px solid red; }
+  .classic .ringa-component.radio-button {
+    /* Radio */
+    display: flex; }
+    .classic .ringa-component.radio-button .label {
+      display: inline-block;
+      margin-left: 5px; }
+    .classic .ringa-component.radio-button input[type="radio"] {
+      margin: 0;
+      background-color: #FCFCFC;
+      background-image: -webkit-linear-gradient(0deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%), -webkit-linear-gradient(90deg, transparent 20%, rgba(255, 255, 255, 0.7), transparent 80%);
+      border-radius: 10px;
+      box-shadow: 0 0 0 1px #CCC;
+      cursor: pointer;
+      display: inline-block;
+      height: 15px;
+      position: relative;
+      width: 15px;
+      -webkit-appearance: none; }
+      @media screen and (max-width: 720px) {
+        .classic .ringa-component.radio-button input[type="radio"] {
+          height: 20px;
+          width: 20px;
+          border-radius: 15px; } }
+    .classic .ringa-component.radio-button .radio-label {
+      flex: 0 1 auto;
+      float: right;
+      margin-left: 5px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis; }
+      @media screen and (max-width: 720px) {
+        .classic .ringa-component.radio-button .radio-label {
+          margin-left: 10px;
+          font-size: 17px; } }
+    .classic .ringa-component.radio-button input[type="radio"] {
+      flex: 0 0 auto; }
+    .classic .ringa-component.radio-button input[type="radio"]:after {
+      background-color: #EDEDED;
+      border-radius: 25px;
+      content: "";
+      display: block;
+      height: 7px;
+      left: 4px;
+      position: relative;
+      top: 4px;
+      width: 7px; }
+      @media screen and (max-width: 720px) {
+        .classic .ringa-component.radio-button input[type="radio"]:after {
+          height: 10px;
+          left: 5px;
+          top: 5px;
+          width: 10px; } }
+    .classic .ringa-component.radio-button input[type="radio"]:checked:after {
+      background-color: #023149; }
+  .classic .ringa-component.text-input {
+    padding: 0;
+    margin: 0;
+    background: #FCFCFC;
+    position: relative;
+    white-space: nowrap;
+    border: 1px solid #CCC;
+    display: flex;
+    justify-content: flex-start;
+    transition: background 300ms ease-in-out, border 300ms ease-in-out; }
+    .classic .ringa-component.text-input:hover {
+      background: #FCFCFC;
+      border: 1px solid #666; }
+    .classic .ringa-component.text-input input:focus, .classic .ringa-component.text-input textarea:focus {
+      outline: none !important;
+      box-shadow: 0 0 12px 1px rgba(235, 242, 242, 0.7) !important; }
+    .classic .ringa-component.text-input > label {
+      margin-right: 0.5em; }
+    .classic .ringa-component.text-input > input, .classic .ringa-component.text-input textarea {
+      padding: 5px;
+      font-size: 15px;
+      width: calc(100% - 12px);
+      border: none;
+      background-color: transparent; }
+    .classic .ringa-component.text-input.required input, .classic .ringa-component.text-input.required textarea {
+      width: calc(100% - 25px); }
+    .classic .ringa-component.text-input textarea {
+      margin: 0;
+      resize: vertical; }
+    .classic .ringa-component.text-input > .required-indicator {
+      margin-left: 0.1em;
+      display: inline;
+      font-size: 20px;
+      color: red; }
+    .classic .ringa-component.text-input.invalid {
+      border: 2px solid red; }
+    .classic .ringa-component.text-input.invalid input:focus, .classic .ringa-component.text-input.invalid textarea:focus, .classic .ringa-component.text-input.required input:focus, .classic .ringa-component.text-input.required textarea:focus {
+      box-shadow: none !important; }
+    .classic .ringa-component.text-input.editonclick {
       background-color: transparent;
       border: 0 !important; }
-      .ringa-component.text-input.editonclick input:focus, .ringa-component.text-input.editonclick textarea:focus {
+      .classic .ringa-component.text-input.editonclick input, .classic .ringa-component.text-input.editonclick textarea {
+        background-color: transparent;
+        border: 0 !important; }
+        .classic .ringa-component.text-input.editonclick input:focus, .classic .ringa-component.text-input.editonclick textarea:focus {
+          background-color: #fff;
+          border: 1px solid #ccc !important; }
+      .classic .ringa-component.text-input.editonclick:focus {
         background-color: #fff;
         border: 1px solid #ccc !important; }
-    .ringa-component.text-input.editonclick:focus {
-      background-color: #fff;
-      border: 1px solid #ccc !important; }
-
-.ringa-component.form {
-  padding: 20px; }
-
-.ringa-component.form-item {
-  padding: 5px; }
-  .ringa-component.form-item label {
-    margin-bottom: 5px;
-    display: block; }
-
-.ringa-component.submit-message {
-  padding: 5px; }
-  .ringa-component.submit-message .error {
-    background-color: red;
-    color: #FCFCFC; }
-
-.ringa-component.overlay {
-  position: absolute;
-  pointer-events: all; }
-
-.ringa-component.overlay-container-wrapper {
-  position: relative; }
-  .ringa-component.overlay-container-wrapper .overlay-container {
+  .classic .ringa-component.form {
+    padding: 20px; }
+  .classic .ringa-component.form-item {
+    padding: 5px; }
+    .classic .ringa-component.form-item label {
+      margin-bottom: 5px;
+      display: block; }
+  .classic .ringa-component.submit-message {
+    padding: 5px; }
+    .classic .ringa-component.submit-message .error {
+      background-color: red;
+      color: #FCFCFC; }
+  .classic .ringa-component.overlay {
     position: absolute;
+    pointer-events: all; }
+  .classic .ringa-component.overlay-container-wrapper {
+    position: relative; }
+    .classic .ringa-component.overlay-container-wrapper .overlay-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      pointer-events: none; }
+      .classic .ringa-component.overlay-container-wrapper .overlay-container > .children {
+        width: 100%;
+        height: 100%;
+        pointer-events: all; }
+  .classic .ringa-component.tooltip {
+    -webkit-box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.5);
+    background: #CCC;
+    padding: 5px;
+    position: absolute;
+    pointer-events: all;
+    overflow-x: hidden; }
+    .classic .ringa-component.tooltip .message {
+      width: 100%; }
+    .classic .ringa-component.tooltip.error {
+      background-color: red;
+      color: #FCFCFC; }
+  .classic .ringa-component.tooltip-container {
+    position: fixed;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
+    z-index: 9000;
     pointer-events: none; }
-    .ringa-component.overlay-container-wrapper .overlay-container > .children {
-      width: 100%;
-      height: 100%;
-      pointer-events: all; }
-
-.ringa-component.tooltip {
-  -webkit-box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.5);
-  box-shadow: 2px 2px 3px 1px rgba(0, 0, 0, 0.5);
-  background: #CCC;
-  padding: 5px;
-  position: absolute;
-  pointer-events: all;
-  overflow-x: hidden; }
-  .ringa-component.tooltip .message {
-    width: 100%; }
-  .ringa-component.tooltip.error {
-    background-color: red;
-    color: #FCFCFC; }
-
-.ringa-component.tooltip-container {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: 9000;
-  pointer-events: none; }
-
-.ringa-component.ringa-container {
-  position: relative; }
-
-.ringa-component.tab-navigator {
-  display: flex;
-  flex-direction: column; }
-  .ringa-component.tab-navigator .button.tab {
-    flex: 0 0 auto;
-    font-size: 16px;
-    padding: 10px;
-    border-top: 1px solid #CCC; }
-    .ringa-component.tab-navigator .button.tab:first-child {
-      border-left: 1px solid #CCC; }
-    .ringa-component.tab-navigator .button.tab:last-child {
-      border-right: 1px solid #CCC; }
-  .ringa-component.tab-navigator .content {
-    flex: 1 1 auto;
-    min-height: 0;
-    border: 1px solid #CCC;
-    overflow: auto;
-    height: 100%; }
-
-.ringa-component.tab-content {
-  padding: 10px;
-  height: calc(100% - 20px); }
-
-.ringa-component.panel {
-  display: flex;
-  flex-flow: column;
-  flex-direction: column;
-  padding: 10px;
-  margin: 20px 0; }
-  .ringa-component.panel .header {
-    flex: 0 0 auto; }
-    .ringa-component.panel .header .label {
-      font-weight: bold;
+  .classic .ringa-component.ringa-container {
+    position: relative; }
+  .classic .ringa-component.tab-navigator {
+    display: flex;
+    flex-direction: column; }
+    .classic .ringa-component.tab-navigator .button.tab {
+      flex: 0 0 auto;
       font-size: 16px;
-      padding: 10px 0; }
-  .ringa-component.panel .content {
-    flex: 1 1 auto;
-    min-height: 0; }
-
-.ringa-component.scroll-container {
-  overflow: auto; }
-
-.ringa-component.dropdown.default {
-  position: relative;
-  background-color: #FCFCFC;
-  border: 1px solid #CCC;
-  border-radius: 0px;
-  cursor: pointer;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  max-width: 250px;
-  color: #333; }
-  .ringa-component.dropdown.default.open {
-    border: 1px solid #023149;
-    border-bottom: none;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    padding-bottom: 1px; }
-    .ringa-component.dropdown.default.open.position-top {
-      border: 1px solid #023149;
-      border-top: none;
-      border-radius: 0px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      padding-top: 2px;
-      padding-bottom: 0px; }
-  .ringa-component.dropdown.default.borderless {
-    background-color: transparent;
-    border: none;
-    cursor: pointer; }
-    .ringa-component.dropdown.default.borderless > .arrow {
-      border-color: #666 transparent transparent; }
-    .ringa-component.dropdown.default.borderless > .arrow.open {
-      border-color: transparent transparent #666; }
-    .ringa-component.dropdown.default.borderless.white > .arrow {
-      border-color: #FCFCFC transparent transparent; }
-    .ringa-component.dropdown.default.borderless.white > .arrow.open {
-      border-color: transparent transparent #FCFCFC; }
-  .ringa-component.dropdown.default.white {
-    color: #FCFCFC; }
-  .ringa-component.dropdown.default > .dropdown-selected {
-    padding: 5px 10px;
-    margin-right: 15px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; }
-  .ringa-component.dropdown.default > .dropdown-placeholder {
-    color: #666;
-    padding: 5px;
-    width: calc(100% - 20px);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; }
-  .ringa-component.dropdown.default > .arrow {
-    border-color: #666 transparent transparent;
-    border-style: solid;
-    border-width: 5px 5px 0;
-    content: ' ';
-    display: block;
-    height: 0;
-    position: absolute;
-    right: 8px;
-    top: calc(50% - 2.5px);
-    width: 0; }
-  .ringa-component.dropdown.default > .arrow.open {
-    border-color: transparent transparent #666;
-    border-width: 0 5px 5px; }
-
-.overlay .dropdown-list {
-  min-width: 100px;
-  min-height: 25px;
-  width: 100%; }
-  .overlay .dropdown-list .item {
-    background: none;
-    transition: background 300ms linear;
-    font-size: 14px;
-    padding: 5px 10px;
+      padding: 10px;
+      border-top: 1px solid #CCC; }
+      .classic .ringa-component.tab-navigator .button.tab:first-child {
+        border-left: 1px solid #CCC; }
+      .classic .ringa-component.tab-navigator .button.tab:last-child {
+        border-right: 1px solid #CCC; }
+    .classic .ringa-component.tab-navigator .content {
+      flex: 1 1 auto;
+      min-height: 0;
+      border: 1px solid #CCC;
+      overflow: auto;
+      height: 100%; }
+  .classic .ringa-component.tab-content {
+    padding: 10px;
+    height: calc(100% - 20px); }
+  .classic .ringa-component.panel {
+    display: flex;
+    flex-flow: column;
+    flex-direction: column;
+    padding: 10px;
+    margin: 20px 0; }
+    .classic .ringa-component.panel .header {
+      flex: 0 0 auto; }
+      .classic .ringa-component.panel .header .label {
+        font-weight: bold;
+        font-size: 16px;
+        padding: 10px 0; }
+    .classic .ringa-component.panel .content {
+      flex: 1 1 auto;
+      min-height: 0; }
+  .classic .ringa-component.scroll-container {
+    overflow: auto; }
+  .classic .ringa-component.dropdown.default {
+    position: relative;
+    background-color: #FCFCFC;
+    border: 1px solid #CCC;
+    border-radius: 0px;
     cursor: pointer;
-    width: calc(100% - 10px); }
-    .overlay .dropdown-list .item:hover {
-      background: rgba(235, 242, 242, 0.7); }
-
-.overlay.dropdown-overlay {
-  display: block;
-  background-color: #FCFCFC;
-  border: 1px solid #023149;
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out; }
-  .overlay.dropdown-overlay.open, .overlay.dropdown-overlay.opening {
-    opacity: 1; }
-  .overlay.dropdown-overlay.closing {
-    opacity: 0; }
-  .overlay.dropdown-overlay.default {
     width: 100%;
-    border-top: none;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px; }
-    .overlay.dropdown-overlay.default.position-top {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    max-width: 250px;
+    color: #333; }
+    .classic .ringa-component.dropdown.default.open {
       border: 1px solid #023149;
       border-bottom: none;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
-      border-top-left-radius: 0px;
-      border-top-right-radius: 0px; }
-  .overlay.dropdown-overlay.borderless {
-    border-radius: 0px;
-    border: 1px solid #023149;
-    color: #333;
-    overflow: hidden; }
-    .overlay.dropdown-overlay.borderless .filler-line {
-      display: none; }
-
-.ringa-component.dropdown.typeahead {
-  max-width: none; }
-  .ringa-component.dropdown.typeahead .tags {
+      padding-bottom: 1px; }
+      .classic .ringa-component.dropdown.default.open.position-top {
+        border: 1px solid #023149;
+        border-top: none;
+        border-radius: 0px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        padding-top: 2px;
+        padding-bottom: 0px; }
+    .classic .ringa-component.dropdown.default.borderless {
+      background-color: transparent;
+      border: none;
+      cursor: pointer; }
+      .classic .ringa-component.dropdown.default.borderless > .arrow {
+        border-color: #666 transparent transparent; }
+      .classic .ringa-component.dropdown.default.borderless > .arrow.open {
+        border-color: transparent transparent #666; }
+      .classic .ringa-component.dropdown.default.borderless.white > .arrow {
+        border-color: #FCFCFC transparent transparent; }
+      .classic .ringa-component.dropdown.default.borderless.white > .arrow.open {
+        border-color: transparent transparent #FCFCFC; }
+    .classic .ringa-component.dropdown.default.white {
+      color: #FCFCFC; }
+    .classic .ringa-component.dropdown.default > .dropdown-selected {
+      padding: 5px 10px;
+      margin-right: 15px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+    .classic .ringa-component.dropdown.default > .dropdown-placeholder {
+      color: #666;
+      padding: 5px;
+      width: calc(100% - 20px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+    .classic .ringa-component.dropdown.default > .arrow {
+      border-color: #666 transparent transparent;
+      border-style: solid;
+      border-width: 5px 5px 0;
+      content: ' ';
+      display: block;
+      height: 0;
+      position: absolute;
+      right: 8px;
+      top: calc(50% - 2.5px);
+      width: 0; }
+    .classic .ringa-component.dropdown.default > .arrow.open {
+      border-color: transparent transparent #666;
+      border-width: 0 5px 5px; }
+  .classic .overlay .dropdown-list {
+    min-width: 100px;
+    min-height: 25px;
     width: 100%; }
-  .ringa-component.dropdown.typeahead .typeahead-input {
-    border: none;
-    width: calc(100% - 26px);
-    border-right: 1px solid #EDEDED; }
-    .ringa-component.dropdown.typeahead .typeahead-input input:focus {
-      outline: none; }
-
-.ringa-component.modal-container-wrapper {
-  position: relative; }
-  .ringa-component.modal-container-wrapper .modal-container-contents.block-mouse-events {
-    pointer-events: none; }
-  .ringa-component.modal-container-wrapper .modal-container {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    pointer-events: none; }
-    .ringa-component.modal-container-wrapper .modal-container > .children {
+    .classic .overlay .dropdown-list .item {
+      background: none;
+      transition: background 300ms linear;
+      font-size: 14px;
+      padding: 5px 10px;
+      cursor: pointer;
+      width: calc(100% - 10px); }
+      .classic .overlay .dropdown-list .item:hover {
+        background: rgba(235, 242, 242, 0.7); }
+  .classic .overlay.dropdown-overlay {
+    display: block;
+    background-color: #FCFCFC;
+    border: 1px solid #023149;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out; }
+    .classic .overlay.dropdown-overlay.open, .classic .overlay.dropdown-overlay.opening {
+      opacity: 1; }
+    .classic .overlay.dropdown-overlay.closing {
+      opacity: 0; }
+    .classic .overlay.dropdown-overlay.default {
       width: 100%;
-      height: 100%;
-      pointer-events: all; }
-
-.ringa-component.modal {
-  position: absolute;
-  pointer-events: all;
-  min-width: 200px;
-  min-height: 75px;
-  background: #FCFCFC;
-  z-index: 500; }
-
-.modal-header .title {
-  text-align: center; }
-  .modal-header .title.closeable {
-    padding-right: 15px; }
-
-.modal-header .modal-close-btn {
-  font-size: 12px;
-  position: absolute;
-  right: 5px;
-  top: 8px;
-  cursor: pointer; }
-  .modal-header .modal-close-btn img {
-    width: 12px;
-    height: 12px; }
+      border-top: none;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px; }
+      .classic .overlay.dropdown-overlay.default.position-top {
+        border: 1px solid #023149;
+        border-bottom: none;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px; }
+    .classic .overlay.dropdown-overlay.borderless {
+      border-radius: 0px;
+      border: 1px solid #023149;
+      color: #333;
+      overflow: hidden; }
+      .classic .overlay.dropdown-overlay.borderless .filler-line {
+        display: none; }
+  .classic .ringa-component.dropdown.typeahead {
+    max-width: none; }
+    .classic .ringa-component.dropdown.typeahead .tags {
+      width: 100%; }
+    .classic .ringa-component.dropdown.typeahead .typeahead-input {
+      border: none;
+      width: calc(100% - 26px);
+      border-right: 1px solid #EDEDED; }
+      .classic .ringa-component.dropdown.typeahead .typeahead-input input:focus {
+        outline: none; }
+  .classic .ringa-component.modal-container-wrapper {
+    position: relative; }
+    .classic .ringa-component.modal-container-wrapper .modal-container-contents.block-mouse-events {
+      pointer-events: none; }
+    .classic .ringa-component.modal-container-wrapper .modal-container {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      pointer-events: none; }
+      .classic .ringa-component.modal-container-wrapper .modal-container > .children {
+        width: 100%;
+        height: 100%;
+        pointer-events: all; }
+  .classic .ringa-component.modal {
+    position: absolute;
+    pointer-events: all;
+    min-width: 200px;
+    min-height: 75px;
+    background: #FCFCFC;
+    z-index: 500; }
+  .classic .modal-header .title {
+    text-align: center; }
+    .classic .modal-header .title.closeable {
+      padding-right: 15px; }
+  .classic .modal-header .modal-close-btn {
+    font-size: 12px;
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    cursor: pointer; }
+    .classic .modal-header .modal-close-btn img {
+      width: 12px;
+      height: 12px; }
 /*
 
 Sunburst-like style (c) Vasily Polovnyov <vast@whiteants.net>

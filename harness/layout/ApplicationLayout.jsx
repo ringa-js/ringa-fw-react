@@ -16,6 +16,9 @@ import TextInputHarness from '../harnesses/textInput/TextInputHarness';
 import FormHarness from '../harnesses/form/FormHarness';
 import TabNavigatorHarness from '../harnesses/tabNavigator/TabNavigatorHarness';
 import ScrollContainerHarness from '../harnesses/scrollContainer/ScrollContainerHarness';
+import ThemeHarness from '../harnesses/theme/ThemeHarness';
+
+import Theme from '../../src/components/containers/Theme';
 
 import {TooltipContainer,
         OverlayContainer,
@@ -43,20 +46,23 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
   //-----------------------------------
   render() {
     return <Body>
-      <div className="fill">
-        <OverlayContainer global={true} classes="fill">
-          <ModalContainer global={true} classes="fill">
-            <Header {...this.props} />
-            <Route exact path="/" component={Home} />
-            <Route path="/list" component={ListHarness} />
-            <Route path="/textInput" component={TextInputHarness} />
-            <Route path="/form" component={FormHarness} />
-            <Route path="/tabNavigator" component={TabNavigatorHarness} />
-            <Route path="/scrollContainer" component={ScrollContainerHarness} />
-            <Footer />
-          </ModalContainer>
-        </OverlayContainer>
-        <TooltipContainer />
+      <div classes="fill">
+        <Theme classes="fill">
+          <OverlayContainer global={true} classes="fill">
+            <ModalContainer global={true} classes="fill">
+              <Header {...this.props} />
+              <Route exact path="/" component={Home} />
+              <Route path="/list" component={ListHarness} />
+              <Route path="/textInput" component={TextInputHarness} />
+              <Route path="/form" component={FormHarness} />
+              <Route path="/tabNavigator" component={TabNavigatorHarness} />
+              <Route path="/scrollContainer" component={ScrollContainerHarness} />
+              <Route path="/theme" component={ThemeHarness} />
+              <Footer />
+            </ModalContainer>
+          </OverlayContainer>
+          <TooltipContainer />
+        </Theme>
       </div>
     </Body>;
   }

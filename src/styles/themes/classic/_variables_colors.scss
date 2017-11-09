@@ -1,9 +1,6 @@
-$ringa-color: #023149;
-$ringa-color-2: #439DCA;
-
-$hover-1: rgba(235, 242, 242, 0.7);
-$selected-1: rgba(235, 242, 242, 1);
-
+//--------------------------------
+// Generic
+//--------------------------------
 $white: #FCFCFC;
 
 $black: #333;
@@ -18,3 +15,20 @@ $grey-4: #FDFDFD;
 $error-red: red;
 
 $debug-orange: #FFA500;
+
+//--------------------------------
+// Theme
+//--------------------------------
+$ringa-color: #023149;
+$ringa-color-text: $white;
+
+$ringa-color-2: #439DCA;
+$ringa-color-text-2: $white;
+
+$hover-1: rgba(235, 242, 242, 0.7);
+$selected-1: rgba(235, 242, 242, 1);
+
+//--------------------------------
+// Elements
+//--------------------------------
+$theme-background: none;

@@ -42,7 +42,7 @@ class Header extends RingaComponent {
 
     options.sort(alphaSortKey('label'));
 
-    return <header className="app-header">
+    return <header className={this.calcClassnames('app-header', 'ringa-container-1')}>
         <div className="header-inner">
           <div className="flex-start">
             <div className="title" onClick={this.logo_onClickHandler}>

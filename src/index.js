@@ -1,6 +1,8 @@
 //-----------------------------------
 // Classic Theme
 //-----------------------------------
+// Our default build just bundles the 'classic' theme. However, we also have the sunbeam theme for fun.
+// The sunbeam theme is explicitly included in the harness.
 import './styles/themes/classic/index.scss';
 
 //-----------------------------------
@@ -9,6 +11,7 @@ import './styles/themes/classic/index.scss';
 export RingaComponent from './components/RingaComponent';
 
 export DefaultApplicationRoot from './components/DefaultApplicationRoot';
+export Theme, {ThemeController, ThemeModel} from './components/containers/Theme';
 
 //-----------------------------------
 // Utils

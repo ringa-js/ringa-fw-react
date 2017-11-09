@@ -10,7 +10,8 @@ export const routeMap = {
   'TabNavigator': '/tabNavigator',
   'TextInput': '/textInput',
   'Form': '/form',
-  'Scroll Container': '/scrollContainer'
+  'Scroll Container': '/scrollContainer',
+  'Theme': '/theme'
 };
 
 const _routeMapInverted = {};

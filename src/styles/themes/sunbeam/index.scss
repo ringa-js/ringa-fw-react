@@ -1,0 +1,14 @@
+@import 'variables';
+
+@import '../base/index';
+
+.#{$theme} {
+  @import 'generics';
+
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#faf33e+0,ffffff+17,ffffff+17 */
+  background: #faf33e; /* Old browsers */
+  background: -moz-linear-gradient(top, #faf33e 0%, #ffffff 17%, #ffffff 17%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #faf33e 0%,#ffffff 17%,#ffffff 17%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #faf33e 0%,#ffffff 17%,#ffffff 17%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#faf33e', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}

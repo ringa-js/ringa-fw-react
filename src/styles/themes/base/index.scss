@@ -1,47 +1,55 @@
 @import 'global';
 @import 'mixins';
 
-@import '../../../components/RingaComponent';
+.#{$theme} {
+  background: $theme-background;
 
-@import '../../../components/complex/alert/AlertModal';
-@import '../../../components/complex/Code';
-@import '../../../components/complex/CodeExample';
-@import '../../../components/complex/Tags';
+  @import 'generics';
 
-@import '../../../components/dragDrop/DragHandles';
-@import '../../../components/dragDrop/DragListContainer';
-@import '../../../components/dragDrop/DragListContainerItem';
-@import '../../../components/dragDrop/DragWrapper';
+  @import '../../../components/RingaComponent';
 
-@import '../../../components/errors/GlobalErrorModal';
+  @import '../../../components/containers/Theme';
 
-@import '../../../components/input/Button';
-@import '../../../components/input/Checkbox';
-@import '../../../components/input/List';
-@import '../../../components/input/NumberInput';
-@import '../../../components/input/RadioButton';
-@import '../../../components/input/TextInput';
+  @import '../../../components/complex/alert/AlertModal';
+  @import '../../../components/complex/Code';
+  @import '../../../components/complex/CodeExample';
+  @import '../../../components/complex/Tags';
 
-@import '../../../components/form/Form';
-@import '../../../components/form/FormItem';
-@import '../../../components/form/FormMessage';
-@import '../../../components/form/SubmitButton';
+  @import '../../../components/dragDrop/DragHandles';
+  @import '../../../components/dragDrop/DragListContainer';
+  @import '../../../components/dragDrop/DragListContainerItem';
+  @import '../../../components/dragDrop/DragWrapper';
 
-@import '../../../components/overlay/Overlay';
-@import '../../../components/overlay/OverlayContainer';
+  @import '../../../components/errors/GlobalErrorModal';
 
-@import '../../../components/tooltip/Tooltip';
-@import '../../../components/tooltip/TooltipContainer';
+  @import '../../../components/input/Button';
+  @import '../../../components/input/Checkbox';
+  @import '../../../components/input/List';
+  @import '../../../components/input/NumberInput';
+  @import '../../../components/input/RadioButton';
+  @import '../../../components/input/TextInput';
 
-@import '../../../components/containers/Container';
-@import '../../../components/containers/TabNavigator';
-@import '../../../components/containers/Tab';
-@import '../../../components/containers/Panel';
-@import '../../../components/containers/ScrollContainer';
+  @import '../../../components/form/Form';
+  @import '../../../components/form/FormItem';
+  @import '../../../components/form/FormMessage';
+  @import '../../../components/form/SubmitButton';
 
-@import '../../../components/dropdown/Dropdown';
-@import '../../../components/dropdown/DropdownTypeahead';
+  @import '../../../components/overlay/Overlay';
+  @import '../../../components/overlay/OverlayContainer';
 
-@import '../../../components/modal/ModalContainer';
-@import '../../../components/modal/Modal';
-@import '../../../components/modal/ModalHeader';
+  @import '../../../components/tooltip/Tooltip';
+  @import '../../../components/tooltip/TooltipContainer';
+
+  @import '../../../components/containers/Container';
+  @import '../../../components/containers/TabNavigator';
+  @import '../../../components/containers/Tab';
+  @import '../../../components/containers/Panel';
+  @import '../../../components/containers/ScrollContainer';
+
+  @import '../../../components/dropdown/Dropdown';
+  @import '../../../components/dropdown/DropdownTypeahead';
+
+  @import '../../../components/modal/ModalContainer';
+  @import '../../../components/modal/Modal';
+  @import '../../../components/modal/ModalHeader';
+}

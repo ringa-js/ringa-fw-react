@@ -1,0 +1,39 @@
+// Colors from this scheme:
+//
+// https://coolors.co/d6f8d6-7fc6a4-5d737e-55505c-faf33e
+//
+
+//--------------------------------
+// Generic
+//--------------------------------
+$white: #FAFAFA;
+
+$black: #222;
+$black-2: #333;
+$black-3: #444;
+
+$grey-1: #AAA;
+$grey-2: #CDCDCD;
+$grey-3: #E2E2E2;
+$grey-4: #FAFAFA;
+
+$error-red: #FF3333;
+
+$debug-orange: #FFA500;
+
+//--------------------------------
+// Theme
+//--------------------------------
+$ringa-color: #28252B;
+$ringa-color-text: $white;
+
+$ringa-color-2: #5D737E;
+$ringa-color-text-2: $white;
+
+$hover-1: rgba(127, 198, 164, 0.7);
+$selected-1: rgba(250, 243, 62, 1);
+
+//--------------------------------
+// Elements
+//--------------------------------
+$theme-background: $white;
