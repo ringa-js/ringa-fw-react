@@ -17,6 +17,9 @@ import FormHarness from '../harnesses/form/FormHarness';
 import TabNavigatorHarness from '../harnesses/tabNavigator/TabNavigatorHarness';
 import ScrollContainerHarness from '../harnesses/scrollContainer/ScrollContainerHarness';
 import ThemeHarness from '../harnesses/theme/ThemeHarness';
+import NumberInputHarness from '../harnesses/numberInput/NumberInputHarness';
+import CheckboxHarness from '../harnesses/checkbox/CheckboxHarness';
+import RadioButtonHarness from '../harnesses/radioButton/RadioButtonHarness';
 
 import Theme from '../../src/components/containers/Theme';
 
@@ -58,6 +61,9 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
               <Route path="/tabNavigator" component={TabNavigatorHarness} />
               <Route path="/scrollContainer" component={ScrollContainerHarness} />
               <Route path="/theme" component={ThemeHarness} />
+              <Route path="/numberInput" component={NumberInputHarness} />
+              <Route path="/checkbox" component={CheckboxHarness} />
+              <Route path="/radioButton" component={RadioButtonHarness} />
               <Footer />
             </ModalContainer>
           </OverlayContainer>

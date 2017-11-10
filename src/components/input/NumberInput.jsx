@@ -108,9 +108,11 @@ export default class NumberInput extends TextInput {
   onChangeHandler(event) {
     const {onChange, model, modelField, filter} = this.props;
 
-    this.refs.input.value = this.normalize(this.refs.input.value.replace(/[^0-9\.\,\-]/g, ''));
+    let number = this.normalize(this.refs.input.value.replace(/[^0-9\.\,\-]/g, ''));
 
-    return super.onChangeHandler(event);
+    this.refs.input.value = number;
+
+    return super.onChangeHandler(event, number);
   }
 
   up_clickHandler(event) {

@@ -11,7 +11,10 @@ export const routeMap = {
   'TextInput': '/textInput',
   'Form': '/form',
   'Scroll Container': '/scrollContainer',
-  'Theme': '/theme'
+  'Theme': '/theme',
+  'NumberInput': '/numberInput',
+  'Checkbox': '/checkbox',
+  'RadioButton': '/radioButton'
 };
 
 const _routeMapInverted = {};

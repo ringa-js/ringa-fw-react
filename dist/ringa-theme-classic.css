@@ -94,6 +94,65 @@ ul li {
   .classic .ringa-component.code pre {
     margin: 0;
     padding: 0; }
+  .classic .ringa-component.code .hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #01324a;
+    color: #f8f8f8; }
+  .classic .ringa-component.code .hljs-comment,
+  .classic .ringa-component.code .hljs-quote {
+    color: #aeaeae;
+    font-style: italic; }
+  .classic .ringa-component.code .hljs-keyword,
+  .classic .ringa-component.code .hljs-selector-tag,
+  .classic .ringa-component.code .hljs-type {
+    color: #e28964; }
+  .classic .ringa-component.code .hljs-string {
+    color: #65b042; }
+  .classic .ringa-component.code .hljs-subst {
+    color: #daefa3; }
+  .classic .ringa-component.code .hljs-regexp,
+  .classic .ringa-component.code .hljs-link {
+    color: #e9c062; }
+  .classic .ringa-component.code .hljs-title,
+  .classic .ringa-component.code .hljs-section,
+  .classic .ringa-component.code .hljs-tag,
+  .classic .ringa-component.code .hljs-name {
+    color: #89bdff; }
+  .classic .ringa-component.code .hljs-class .hljs-title,
+  .classic .ringa-component.code .hljs-doctag {
+    text-decoration: underline; }
+  .classic .ringa-component.code .hljs-symbol,
+  .classic .ringa-component.code .hljs-bullet,
+  .classic .ringa-component.code .hljs-number {
+    color: #3387cc; }
+  .classic .ringa-component.code .hljs-params,
+  .classic .ringa-component.code .hljs-variable,
+  .classic .ringa-component.code .hljs-template-variable {
+    color: #3e87e3; }
+  .classic .ringa-component.code .hljs-attribute {
+    color: #cda869; }
+  .classic .ringa-component.code .hljs-meta {
+    color: #8996a8; }
+  .classic .ringa-component.code .hljs-formula {
+    background-color: #0e2231;
+    color: #f8f8f8;
+    font-style: italic; }
+  .classic .ringa-component.code .hljs-addition {
+    background-color: #253b22;
+    color: #f8f8f8; }
+  .classic .ringa-component.code .hljs-deletion {
+    background-color: #420e09;
+    color: #f8f8f8; }
+  .classic .ringa-component.code .hljs-selector-class {
+    color: #9b703f; }
+  .classic .ringa-component.code .hljs-selector-id {
+    color: #8b98ab; }
+  .classic .ringa-component.code .hljs-emphasis {
+    font-style: italic; }
+  .classic .ringa-component.code .hljs-strong {
+    font-weight: bold; }
   .classic .ringa-component.code-example .code {
     height: 100%;
     width: 100%; }
@@ -698,85 +757,3 @@ ul li {
     .classic .modal-header .modal-close-btn img {
       width: 12px;
       height: 12px; }
-/*
-
-Sunburst-like style (c) Vasily Polovnyov <vast@whiteants.net>
-
-*/
-.hljs {
-  display: block;
-  overflow-x: auto;
-  padding: 0.5em;
-  background: #000;
-  color: #f8f8f8; }
-
-.hljs-comment,
-.hljs-quote {
-  color: #aeaeae;
-  font-style: italic; }
-
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-type {
-  color: #e28964; }
-
-.hljs-string {
-  color: #65b042; }
-
-.hljs-subst {
-  color: #daefa3; }
-
-.hljs-regexp,
-.hljs-link {
-  color: #e9c062; }
-
-.hljs-title,
-.hljs-section,
-.hljs-tag,
-.hljs-name {
-  color: #89bdff; }
-
-.hljs-class .hljs-title,
-.hljs-doctag {
-  text-decoration: underline; }
-
-.hljs-symbol,
-.hljs-bullet,
-.hljs-number {
-  color: #3387cc; }
-
-.hljs-params,
-.hljs-variable,
-.hljs-template-variable {
-  color: #3e87e3; }
-
-.hljs-attribute {
-  color: #cda869; }
-
-.hljs-meta {
-  color: #8996a8; }
-
-.hljs-formula {
-  background-color: #0e2231;
-  color: #f8f8f8;
-  font-style: italic; }
-
-.hljs-addition {
-  background-color: #253b22;
-  color: #f8f8f8; }
-
-.hljs-deletion {
-  background-color: #420e09;
-  color: #f8f8f8; }
-
-.hljs-selector-class {
-  color: #9b703f; }
-
-.hljs-selector-id {
-  color: #8b98ab; }
-
-.hljs-emphasis {
-  font-style: italic; }
-
-.hljs-strong {
-  font-weight: bold; }

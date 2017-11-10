@@ -11,6 +11,11 @@ export default class Checkbox extends RingaComponent {
 
     this.id = props.id || Math.round(Math.random() * 100000).toString(16);
 
+    this.state = {
+      checked: undefined,
+      stateDriven: false
+    };
+
     this.watchModel();
   }
 
@@ -40,6 +45,12 @@ export default class Checkbox extends RingaComponent {
 
   calcChecked() {
     const {model, modelField, checked, toggleStateComponent, toggleStateField} = this.props;
+    const {stateDriven} = this.state;
+    const stateChecked = this.state.checked;
+
+    if (stateChecked !== undefined) {
+      return stateChecked;
+    }
 
     let showChecked = checked;
 
@@ -47,6 +58,8 @@ export default class Checkbox extends RingaComponent {
       showChecked = toggleStateComponent.state[toggleStateField];
     } else if (model && modelField) {
       showChecked = model[modelField];
+    } else if (stateDriven && showChecked === undefined) {
+      showChecked = false;
     }
 
     return showChecked;
@@ -56,7 +69,9 @@ export default class Checkbox extends RingaComponent {
   // Events
   //-----------------------------------
   onClickHandler() {
-    const {onChange, model, modelField, checked, toggleStateComponent, toggleStateField} = this.props;
+    let {onChange, model, modelField, toggleStateComponent, toggleStateField} = this.props;
+
+    let checked = this.calcChecked();
 
     if (toggleStateComponent && toggleStateField) {
       let st = {};
@@ -65,10 +80,13 @@ export default class Checkbox extends RingaComponent {
       toggleStateComponent.setState(st);
 
       this.forceUpdate();
-    }
-
-    if (model && modelField) {
-      model[modelField] = !this.calcChecked();
+    } else if (model && modelField) {
+      model[modelField] = !checked;
+    } else {
+      this.setState({
+        checked: !checked,
+        stateDriven: true
+      });
     }
 
     if (onChange) {

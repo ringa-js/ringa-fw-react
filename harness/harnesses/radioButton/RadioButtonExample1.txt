@@ -1,0 +1,68 @@
+import React from 'react';
+
+import {Model} from 'ringa';
+import {watch} from 'react-ringa';
+
+import {RadioButton, RingaComponent, Button} from 'ringa-fw-react';
+
+const ValueModel = Model.construct('ValueModel', ['value']);
+
+class RadioButtonExample2 extends RingaComponent {
+  constructor() {
+    super();
+
+    watch(this, new ValueModel(), ['value']);
+  }
+
+  render() {
+    const {valueModel} = this.state;
+
+    let items = [{
+      label: "Red",
+      value: "#FF0000"
+    },{
+      label: "Green",
+      value: "#00FF00"
+    },{
+      label: "Blue",
+      value: "#0000FF"
+    },{
+      label: "White",
+      value: "#FFFFFF"
+    },{
+      label: "Black",
+      value: "#000000"
+    }];
+
+    return <div>
+      <RadioButton model={valueModel}
+                   label={items[0].label}
+                   value={items[0].value}
+                   modelField="value" />
+      <RadioButton model={valueModel}
+                   label={items[1].label}
+                   value={items[1].value}
+                   modelField="value" />
+      <RadioButton model={valueModel}
+                   label={items[2].label}
+                   value={items[2].value}
+                   modelField="value" />
+      <RadioButton model={valueModel}
+                   label={items[3].label}
+                   value={items[3].value}
+                   modelField="value" />
+      <RadioButton model={valueModel}
+                   label={items[4].label}
+                   value={items[4].value}
+                   modelField="value" />
+      The value you chose is: {valueModel.value ? valueModel.value : 'None'}
+      <Button label="Deselect All" onClick={this.deselect_onClickHandler} />
+    </div>;
+  }
+
+  deselect_onClickHandler() {
+    this.state.valueModel.value = undefined;
+  }
+}
+
+export default RadioButtonExample2;
