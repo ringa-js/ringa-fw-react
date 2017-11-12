@@ -17,6 +17,7 @@ let d = (v) => {
   return isNaN(v) ? '' : v;
 };
 
+
 export default class DebugInspector extends RingaComponent {
   //-----------------------------------
   // Constructor
@@ -24,19 +25,23 @@ export default class DebugInspector extends RingaComponent {
   constructor(props) {
     super(props);
 
-    // We will force the inspector to be global for now.
-    this.attach(new DebugInspectController(undefined, document));
-    this.attach(new InspectorController());
+    if (__DEV__) {
+      // We will force the inspector to be global for now.
+      this.attach(new DebugInspectController(undefined, document));
+      this.attach(new InspectorController());
 
-    this.depend(dependency(DebugInspectModel, ['inspectComponent', 'inspectee', 'top']),
-                dependency(InspectorModel));
+      this.depend(dependency(DebugInspectModel, ['inspectComponent', 'inspectee', 'top']),
+        dependency(InspectorModel));
+    }
   }
 
   //-----------------------------------
   // Methods
   //-----------------------------------
   renderRingaObject(ringaObject) {
-    return <div key={ringaObject.id} className="object" onClick={() => {console.log(ringaObject)}}>{ringaObject.id}</div>;
+    return <div key={ringaObject.id} className="object" onClick={() => {
+      console.log(ringaObject)
+    }}>{ringaObject.id}</div>;
   }
 
   ringaObjectSort(a, b) {
@@ -48,39 +53,45 @@ export default class DebugInspector extends RingaComponent {
   }
 
   render() {
-    let {inspectorModel, inspectComponent, inspectee, top} = this.state;
+    if (__DEV__) {
+      let {inspectorModel, inspectComponent, inspectee, top} = this.state;
 
-    let cn = this.calcClassnames('debug-inspector');
+      let cn = this.calcClassnames('debug-inspector');
 
-    let inspecteeClasses = inspectee ? classnames('inspectee', {
-      'inspectee-top': top,
-      'inspectee-bottom': !top
-    }) : '';
+      let inspecteeClasses = inspectee ? classnames('inspectee', {
+        'inspectee-top': top,
+        'inspectee-bottom': !top
+      }) : '';
 
-    return <div>
-      <ModalToggleContainer show={!!inspectComponent}
-                                 onClose={this.inspector_closeHandler}
-                                 title="Ringa Inspector"
-                                 position="centered"
-                                 width={300}
-                                 height={400}>
-        <div className={cn}>
-          <div className="inspector-content">
-            <div className="panels">
-              <div className="panel ringa-objects">
-                <div className="title">Ringa Objects ({inspectorModel.ringaObjects ? inspectorModel.ringaObjects._list.length : 'N/A'})</div>
-                <div className="subtitle">Click to console log</div>
-                <div className="panel-content">
-                  {inspectorModel.ringaObjects ? inspectorModel.ringaObjects._list.sort(this.ringaObjectSort).map(this.renderRingaObject) : 'N/A'}
+      return <div>
+        <ModalToggleContainer show={!!inspectComponent}
+                              onClose={this.inspector_closeHandler}
+                              title="Ringa Inspector"
+                              position="centered"
+                              width={300}
+                              height={400}>
+          <div className={cn}>
+            <div className="inspector-content">
+              <div className="panels">
+                <div className="panel ringa-objects">
+                  <div className="title">Ringa Objects
+                    ({inspectorModel.ringaObjects ? inspectorModel.ringaObjects._list.length : 'N/A'})
+                  </div>
+                  <div className="subtitle">Click to console log</div>
+                  <div className="panel-content">
+                    {inspectorModel.ringaObjects ? inspectorModel.ringaObjects._list.sort(this.ringaObjectSort).map(this.renderRingaObject) : 'N/A'}
+                  </div>
                 </div>
               </div>
+              <Button label="Throw a random error" onClick={this.throw_onClickHandler}/>
             </div>
-            <Button label="Throw a random error" onClick={this.throw_onClickHandler} />
           </div>
-        </div>
-      </ModalToggleContainer>
-      {inspectee ? <div className={inspecteeClasses}><Markdown markdown={inspectee.stack.join('\n')} /></div> : null}
-    </div>;
+        </ModalToggleContainer>
+        {inspectee ? <div className={inspecteeClasses}><Markdown markdown={inspectee.stack.join('\n')}/></div> : null}
+      </div>;
+    } else {
+      return <div></div>;
+    }
   }
 
   //-----------------------------------
