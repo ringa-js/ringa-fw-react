@@ -8,7 +8,8 @@ import ScreenController from '../controllers/ScreenController';
 
 import {attach, depend, dependency} from 'react-ringa';
 
-import EN from '../assets/i18n/en.json';
+import EN from '../assets/i18n/en/pack.json';
+import SV from '../assets/i18n/sv/pack.json';
 
 class DefaultApplicationRoot extends RingaComponent {
   //-----------------------------------
@@ -18,7 +19,9 @@ class DefaultApplicationRoot extends RingaComponent {
     super(props);
 
     this.i18NModel = new I18NModel();
+
     this.i18NModel.mergeLanguagePack('en', EN);
+    this.i18NModel.mergeLanguagePack('sv', SV);
 
     attach(this, new ScreenController());
     attach(this, new I18NController(undefined, undefined, this.i18NModel));

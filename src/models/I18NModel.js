@@ -11,6 +11,22 @@ export const languagePackDefaults = {
   sv: []
 };
 
+/**
+ * The I18NModel provides basic, but powerful, internationalization and text replacement support.
+ *
+ * This class maps a language and a key path to a string value. If the value does not exist, a kind and
+ * informative label is displayed indicating which language and which key is missing so that you can quickly
+ * spot missing keys in your application while it is running.
+ *
+ * To use this class, simply do `depend(this, dependency(I18NModel, 'language'))` in your component. Then you
+ * can reference a key like so:
+ *
+ * render() {
+ *   const {i18NModel} = this.state;
+ *
+ *   return <div>{i18NModel.i18n('key.to.value')}</div>;
+ * }
+ */
 export default class I18NModel extends Model {
   //-----------------------------------
   // Constructor
@@ -98,5 +114,36 @@ export default class I18NModel extends Model {
 
     // Go ahead and let any watchers know
     this.notify('languagePacks');
+
+    return this;
+  }
+
+  /**
+   * Add a single String value to the language pack at the key specified. Will automatically create the language and a path
+   * to the key location if necessary.
+   *
+   * @param language The language to put this String value into (e.g. 'en' or 'sv')
+   * @param keyPath The full path to the store the value within (e.g. 'homePage.mainContent')
+   * @param value The actual String value to store at this location.
+   */
+  addLanguageKey(language, keyPath, value) {
+    let obj = this.languagePacks[language];
+
+    if (!obj) {
+      obj = this.languagePacks[language] = {};
+    }
+
+    let keys = keyPath.split('.');
+
+    while (keys.length > 1) {
+      let key = keys.shift();
+
+      obj = obj[key] ? obj[key] : obj[key] = {};
+    }
+
+    // Insert our single value into the node (e.g. this.languagePacks['en']['homePage']['mainContent'] = value)
+    obj[keys[0]] = value;
+
+    return this;
   }
 }

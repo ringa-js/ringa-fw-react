@@ -1,0 +1,37 @@
+@import '~flag-icon-css/css/flag-icon.css';
+
+@if ($Use_I18NSwitcher_Defaults == true) {
+
+  .language-item {
+    font-size: 14px;
+
+    .flag-icon {
+      margin-right: 5px;
+    }
+
+    span {
+      margin-right: 2px;
+    }
+  }
+
+  @media screen and (max-width: $break-small) {
+    .app-header {
+      .language-item span {
+        margin-right: 0;
+      }
+
+      .dropdown-overlay.i18n-switcher {
+        width: inherit !important;
+      }
+
+      .dropdown-overlay.i18n-switcher .dropdown-list {
+        min-width: 50px;
+        width: 50px;
+      }
+
+      .language-item .name {
+        display: none;
+      }
+    }
+  }
+}

@@ -14,7 +14,8 @@ export const routeMap = {
   'Theme': '/theme',
   'NumberInput': '/numberInput',
   'Checkbox': '/checkbox',
-  'RadioButton': '/radioButton'
+  'RadioButton': '/radioButton',
+  'I18N': '/i18n'
 };
 
 const _routeMapInverted = {};

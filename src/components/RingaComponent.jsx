@@ -6,6 +6,7 @@ import HashArray from 'hasharray';
 import classnames from 'classnames';
 import {isCoordWithin, getBounds} from '../utils/DisplayUtils';
 import {dispatch} from 'ringa';
+import {depend, attach} from 'react-ringa';
 
 /**
  * Recursively walks the prototype chain to get all the available properties for a given Object.
@@ -242,6 +243,14 @@ class RingaComponent extends Component {
   //-----------------------------------
   // Methods
   //-----------------------------------
+  depend(...dependencies) {
+    depend(this, dependencies);
+  }
+
+  attach(controllerOrModel) {
+    attach(this, controllerOrModel);
+  }
+
   dumpAncestors() {
     let n = this.rootDomNode;
     let r = [];

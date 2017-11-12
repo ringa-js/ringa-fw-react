@@ -1,13 +1,13 @@
 import showdown from 'showdown';
 let converter = new showdown.Converter();
 
-const getDeepKey = function(key, obj) {
+export const getDeepKey = function(key, obj) {
   let ix = key.indexOf('.');
 
   return ix !== -1 ? getDeepKey(key.substr(ix + 1), obj[key.substr(0, ix)]) : obj[key];
 };
 
-const replaceKeys = function (str, values) {
+export const replaceKeys = function (str, values) {
   let arr;
   let newStr = str;
   let re = /\${[a-zA-Z0-9_]+}/g;

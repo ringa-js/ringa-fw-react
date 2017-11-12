@@ -1,0 +1,37 @@
+import ENGLISH_LANGUAGE_PACK from './assets/i18n/en/pack.json';
+import SWEDISH_LANGUAGE_PACK from './assets/i18n/sv/pack.json';
+
+import EN_HOME_PAGE_CONTENT from './assets/i18n/en/homePageContent.md';
+import SV_HOME_PAGE_CONTENT from './assets/i18n/sv/homePageContent.md';
+
+const EN = 'en';
+const SV = 'sv';
+
+/**
+ * In this example we are passing in a single i18NModel instance to populate with languages and keys.
+ *
+ * If your layout extends DefaultApplicationRoot, then you can access the default i18NModel via:
+ *
+ *     this.i18NModel
+ *
+ * If you are not extending DefaultApplicationRoot, you can get your own I18NModel by:
+ *
+ *    import {I18NController} from 'ringa-fw-react';
+ *
+ *    // In RingaComponent
+ *    this.attach(this.controller = new I18NController());
+ *
+ *    setupI18N(this.controller.injections.i18NModel);
+ *
+ * Now an I18NModel instance is available to that RingaComponent and all its descendants.
+ */
+export function setupI18N(i18NModel) {
+  // Language packs are a JSON file of multiple keys
+  i18NModel.mergeLanguagePack(EN, ENGLISH_LANGUAGE_PACK);
+  i18NModel.mergeLanguagePack(SV, SWEDISH_LANGUAGE_PACK);
+
+  // addLanguageKey adds a single key at a time. This is useful if our content for the page is larger
+  // than we would want in a single key in a JSON file.
+  i18NModel.addLanguageKey(EN, 'home.content', EN_HOME_PAGE_CONTENT);
+  i18NModel.addLanguageKey(SV, 'home.content', SV_HOME_PAGE_CONTENT);
+}

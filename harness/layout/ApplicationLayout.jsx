@@ -7,7 +7,7 @@ import Header from './Header';
 import Footer from './Footer';
 import AppController from '../controllers/AppController';
 
-import {Route, Redirect} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 
 import Home from '../Home';
 
@@ -20,6 +20,7 @@ import ThemeHarness from '../harnesses/theme/ThemeHarness';
 import NumberInputHarness from '../harnesses/numberInput/NumberInputHarness';
 import CheckboxHarness from '../harnesses/checkbox/CheckboxHarness';
 import RadioButtonHarness from '../harnesses/radioButton/RadioButtonHarness';
+import I18NHarness from '../harnesses/i18n/I18NHarness';
 
 import Theme from '../../src/components/containers/Theme';
 
@@ -30,7 +31,7 @@ import {TooltipContainer,
 
 import {attach} from 'react-ringa';
 
-import EN from '../assets/en.json';
+import {setup as setupI18N} from '../i18n.js';
 
 export default class ApplicationLayout extends DefaultApplicationRoot {
   //-----------------------------------
@@ -39,7 +40,7 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
   constructor(props) {
     super(props);
 
-    this.i18NModel.mergeLanguagePack('en', EN);
+    setupI18N(this.i18NModel);
 
     attach(this, new AppController());
   }
@@ -64,6 +65,7 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
               <Route path="/numberInput" component={NumberInputHarness} />
               <Route path="/checkbox" component={CheckboxHarness} />
               <Route path="/radioButton" component={RadioButtonHarness} />
+              <Route path="/i18n" component={I18NHarness} />
               <Footer />
             </ModalContainer>
           </OverlayContainer>

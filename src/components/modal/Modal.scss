@@ -1,4 +1,6 @@
 .ringa-component.modal {
+  @include modal-effects;
+
   position: absolute;
   pointer-events: all;
 

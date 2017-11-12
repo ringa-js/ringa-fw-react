@@ -1,7 +1,17 @@
+/**
+ * Step 1: Setup all our Ringa variables since all subsequent files require them.
+ */
 @import 'variables';
+@import 'mixins';
 
+/**
+ * Step 2: Setup all our base styles (fill, body, html, etc.) AND all our component styles (TextInput, Button, etc.)
+ */
 @import '../base/index';
 
+/**
+ * Step 3: Setup all our generic styles that are *not* associated with a Ringa component but might be useful in the theme.
+ */
 .#{$theme} {
   @import 'generics';
 }

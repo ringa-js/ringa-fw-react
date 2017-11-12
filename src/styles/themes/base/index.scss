@@ -1,5 +1,4 @@
 @import 'global';
-@import 'mixins';
 
 .#{$theme} {
   background: $theme-background;
@@ -52,4 +51,8 @@
   @import '../../../components/modal/ModalContainer';
   @import '../../../components/modal/Modal';
   @import '../../../components/modal/ModalHeader';
+
+  @import '../../../components/debugInspector/DebugInspector';
+
+  @import '../../../components/complex/I18NSwitcher';
 }

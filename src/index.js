@@ -122,3 +122,15 @@ export FormMessage from './components/form/FormMessage';
 // Utils
 //-----------------------------------
 export I18NModel, {languagePackDefaults} from './models/I18NModel';
+
+//-----------------------------------
+// Inspector
+//-----------------------------------
+export DebugInspector from './components/debugInspector/DebugInspector';
+export DebugInspectModel from './components/debugInspector/DebugInspectModel';
+export DebugInspectController from './components/debugInspector/DebugInspectController';
+
+//-----------------------------------
+// I18N
+//-----------------------------------
+export I18NSwitcher from './components/complex/I18NSwitcher';
