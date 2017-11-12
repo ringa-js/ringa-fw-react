@@ -25,4 +25,6 @@ export function setup(i18NModel) {
   // than we would want in a single key in a JSON file.
   i18NModel.addLanguageKey(EN, 'i18n.description', EN_I18N_DESCRIPTION);
   i18NModel.addLanguageKey(SV, 'i18n.description', SV_I18N_DESCRIPTION);
+
+  i18NModel.language = EN;
 }

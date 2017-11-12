@@ -71,7 +71,7 @@ export default class DebugInspectController extends Controller {
                 });
               }
 
-              return ` - **${controller.constructor.name}:controller.name** (${models.map(m => `${m.constructor.name}:${m.name}`).join(', ')})`;
+              return ` - **${controller.constructor.name}:${controller.name}** (${models.map(m => `${m.constructor.name}:${m.name}`).join(', ')})`;
             });
           }
 

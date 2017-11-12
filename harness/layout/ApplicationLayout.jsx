@@ -21,6 +21,7 @@ import NumberInputHarness from '../harnesses/numberInput/NumberInputHarness';
 import CheckboxHarness from '../harnesses/checkbox/CheckboxHarness';
 import RadioButtonHarness from '../harnesses/radioButton/RadioButtonHarness';
 import I18NHarness from '../harnesses/i18n/I18NHarness';
+import DebugInspector from '../../src/components/debugInspector/DebugInspector';
 
 import Theme from '../../src/components/containers/Theme';
 
@@ -67,6 +68,7 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
               <Route path="/radioButton" component={RadioButtonHarness} />
               <Route path="/i18n" component={I18NHarness} />
               <Footer />
+              <DebugInspector />
             </ModalContainer>
           </OverlayContainer>
           <TooltipContainer />
