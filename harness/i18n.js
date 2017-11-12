@@ -26,5 +26,7 @@ export function setup(i18NModel) {
   i18NModel.addLanguageKey(EN, 'i18n.description', EN_I18N_DESCRIPTION);
   i18NModel.addLanguageKey(SV, 'i18n.description', SV_I18N_DESCRIPTION);
 
-  i18NModel.language = EN;
+  // By default the language is loaded from a cookie 'lang' on the local domain, but you could set it up to something else
+  // here
+  // i18NModel.language = EN;
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import RingaComponent from '../RingaComponent';
 
-import highlight from 'highlight.js';
+import highlight from 'highlight.js/lib/highlight.js';
+import javascript from 'highlight.js/lib/languages/javascript';
 
 class Code extends RingaComponent {
   //-----------------------------------
@@ -15,6 +16,8 @@ class Code extends RingaComponent {
   // Lifecycle
   //-----------------------------------
   componentDidMount() {
+    highlight.registerLanguage('javascript', javascript);
+
     highlight.highlightBlock(this.refs.code);
   }
 

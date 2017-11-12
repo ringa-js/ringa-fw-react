@@ -12,6 +12,7 @@
     "dev": "`npm bin`/webpack-dev-server --config ./config/webpack.config.dev.js",
     "build:harness": "rm -rf harness/dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.harness.prod.js",
     "build:harness:test": "npm run build:harness && cd harness/dist && nws",
+    "build:harness:analyze": "rm -rf harness/dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.harness.prod.analyze.js",
     "minorVersionAndBuildHarness": "npm run build:harness",
     "build": "rm -rf dist && `npm bin`/webpack --progress --colors --config ./config/webpack.config.dist.js",
     "build:all": "npm run build && npm run build:harness",

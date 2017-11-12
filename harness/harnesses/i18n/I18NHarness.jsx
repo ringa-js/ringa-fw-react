@@ -18,6 +18,9 @@ import I18NExample3Code from './I18NExample3.txt';
 import I18NExample4 from './I18NExample4';
 import I18NExample4Code from './I18NExample4.txt';
 
+import I18NExample5 from './I18NExample5';
+import I18NExample5Code from './I18NExample5.txt';
+
 class I18NHarness extends HarnessBase {
   //-----------------------------------
   // Constructor
@@ -51,6 +54,11 @@ class I18NHarness extends HarnessBase {
         <Panel label="I18NSwitcher">
           <CodeExample code={I18NExample4Code} classes="fill">
             <I18NExample4 />
+          </CodeExample>
+        </Panel>
+        <Panel label="Missing Keys Example">
+          <CodeExample code={I18NExample5Code} classes="fill">
+            <I18NExample5 />
           </CodeExample>
         </Panel>
       </div>
