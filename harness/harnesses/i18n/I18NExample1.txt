@@ -34,7 +34,7 @@ export function setupI18N(i18NModel) {
   // than we would want in a single key in a JSON file.
   i18NModel.addLanguageKey(EN, 'home.content', EN_HOME_PAGE_CONTENT);
   i18NModel.addLanguageKey(SV, 'home.content', SV_HOME_PAGE_CONTENT);
-  
+
   // Set the starting language (obviously this could come from a cookie or the server)
   i18NModel.language = EN;
 }

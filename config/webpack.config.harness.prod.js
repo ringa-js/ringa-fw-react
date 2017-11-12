@@ -88,9 +88,6 @@ const config = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      __DEV__: false
-    }),
     new HtmlWebpackPlugin({
       title: 'Ringa JS React Framework',
       template: path.resolve(ROOT_PATH, 'harness/templates/index.ejs'),
@@ -116,7 +113,7 @@ const config = {
 module.exports = new Promise(resolve => {
   buildInfo(build => {
     config.plugins.unshift(new webpack.DefinePlugin({
-      __DEV__: true,
+      __DEV__: false,
       __BUILD__: JSON.stringify(build),
       __BUILD_EPOCH__: new Date().getTime(),
       'process.env': {
