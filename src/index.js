@@ -63,6 +63,7 @@ export Modal from './components/modal/Modal';
 export ModalModel from './components/modal/ModalModel';
 export ModalContainer from './components/modal/ModalContainer';
 export ModalToggleContainer from './components/modal/ModalToggleContainer';
+export ModalContainerController from './components/modal/ModalContainerController';
 
 //-----------------------------------
 // View controllers
