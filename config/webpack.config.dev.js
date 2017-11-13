@@ -9,7 +9,7 @@ const config = {
   name: 'ringa-fw-react',
   devtool: 'cheap-module-eval-source-map',
   entry: {
-    app: path.resolve(ROOT_PATH, 'harness/index.js')
+    app: ['babel-polyfill', path.resolve(ROOT_PATH, 'harness/index.js')]
   },
   output: {
     path: path.join(ROOT_PATH, 'dist'),

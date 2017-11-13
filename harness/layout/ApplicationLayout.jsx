@@ -30,8 +30,6 @@ import {TooltipContainer,
         ModalContainer,
         DefaultApplicationRoot} from '../../src/index';
 
-import {attach} from 'react-ringa';
-
 import {setup as setupI18N} from '../i18n.js';
 
 export default class ApplicationLayout extends DefaultApplicationRoot {
@@ -43,15 +41,15 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
 
     setupI18N(this.i18NModel);
 
-    attach(this, new AppController());
+    this.attach(new AppController());
   }
 
   //-----------------------------------
   // Lifecycle
   //-----------------------------------
   render() {
-    return <Body>
-      <div classes="fill">
+    return super.render(<Body>
+      <div className="fill">
         <Theme classes="fill">
           <OverlayContainer global={true} classes="fill">
             <ModalContainer global={true} classes="fill">
@@ -74,6 +72,6 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
           <TooltipContainer />
         </Theme>
       </div>
-    </Body>;
+    </Body>);
   }
 }
