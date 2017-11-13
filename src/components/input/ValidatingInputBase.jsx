@@ -2,6 +2,9 @@ import React from 'react';
 import RingaComponent from '../RingaComponent';
 import ValidatorRequired from '../validation/ValidatorRequired';
 import FormController from '../form/FormController';
+import I18NModel from '../../models/I18NModel';
+
+import {dependency} from 'react-ringa';
 
 export default class ValidatingInputBase extends RingaComponent {
   //-----------------------------------
@@ -15,6 +18,8 @@ export default class ValidatingInputBase extends RingaComponent {
     this.processProps(props);
 
     this.valid = true;
+
+    this.depend(dependency(I18NModel, 'language'));
   }
 
   //-----------------------------------
@@ -159,7 +164,7 @@ export default class ValidatingInputBase extends RingaComponent {
    * @param value False if valid. Array of reasons if invalid.
    * @returns {*}
    */
-  validate(value) {
+  validate(value, silent = false) {
     let {validators} = this.state;
     let {model, modelField} = this.props;
 
@@ -170,7 +175,7 @@ export default class ValidatingInputBase extends RingaComponent {
     let invalidReasons = [];
 
     validators.forEach(validator => {
-      let result = validator.validate(value);
+      let result = validator.validate(value, this.state.i18NModel);
 
       if (result) {
         invalidReasons.push(result);
@@ -180,36 +185,36 @@ export default class ValidatingInputBase extends RingaComponent {
     if (invalidReasons.length) {
       this.valid = false;
 
-      if (this.state.valid !== false) {
+      if (!silent) {
         this.dispatch(FormController.VALID_CHANGED, {
           element: this,
           valid: false,
           invalidReasons
         }, true, true, false);
-      }
 
-      this.setState({
-        valid: false,
-        invalidReasons
-      });
+        this.setState({
+          valid: false,
+          invalidReasons
+        });
+      }
 
       return invalidReasons;
     }
 
     this.valid = true;
 
-    if (this.state.valid !== true) {
+    if (!silent) {
       this.dispatch(FormController.VALID_CHANGED, {
         element: this,
         valid: true,
         invalidReasons: undefined
       }, true, true, false);
-    }
 
-    this.setState({
-      valid: true,
-      invalidReasons: undefined
-    });
+      this.setState({
+        valid: true,
+        invalidReasons: undefined
+      });
+    }
 
     return false;
   }

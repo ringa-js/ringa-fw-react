@@ -2079,7 +2079,7 @@ ul li {
       display: block; }
   .classic .ringa-component.submit-message {
     padding: 5px; }
-    .classic .ringa-component.submit-message .error {
+    .classic .ringa-component.submit-message.error {
       background-color: red;
       color: #FCFCFC; }
   .classic .ringa-component.overlay {
@@ -2326,14 +2326,14 @@ ul li {
     height: 100%;
     position: relative;
     transition: height 0.2s ease-in-out;
-    background: #ef7600; }
+    background: #ef7600;
+    color: #FCFCFC; }
     .classic .debug-inspector .show {
       height: 300px; }
     .classic .debug-inspector .panels {
       display: flex;
       flex-wrap: nowrap;
       padding: 1rem;
-      color: #333;
       font-size: 11px; }
       .classic .debug-inspector .panels .panel {
         flex: 0 1 20em;

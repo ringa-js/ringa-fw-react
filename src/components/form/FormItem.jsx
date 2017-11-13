@@ -13,7 +13,7 @@ export default class FormItem extends RingaComponent {
   constructor(props) {
     super(props);
 
-    depend(this, dependency(FormModel, 'change', 'elements', 'elementsById'));
+    depend(this, dependency(FormModel, ['change', 'elements', 'elementsById']));
   }
 
   //-----------------------------------

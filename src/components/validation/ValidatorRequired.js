@@ -4,14 +4,14 @@ export default class ValidatorRequired extends ValidatorBase {
   //-----------------------------------
   // Constructor
   //-----------------------------------
-  constructor(name, values) {
+  constructor(name, options, values) {
     super(name,values);
   }
 
   //-----------------------------------
   // Methods
   //-----------------------------------
-  validate(value, options = {}, i18NModel) {
+  validate(value, i18NModel) {
     this.valid = value !== undefined && value !== null && value !== '';
 
     if (this.valid) {
@@ -21,7 +21,7 @@ export default class ValidatorRequired extends ValidatorBase {
       return false;
     }
 
-    this.message = i18NModel ? i18NModel.i18n('required') : `${options.name || 'This field'} is required`;
+    this.message = i18NModel ? i18NModel.i18n('validator.required') : `${options.name || 'This field'} is required`;
     this.details = {};
 
     return {

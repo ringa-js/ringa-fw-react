@@ -2,12 +2,12 @@
   .ringa-component.submit-message {
     padding: $pad1;
 
-    .error {
+    &.error {
       background-color: $error-red;
       color: $white;
     }
 
-    .empty {
+    &.empty {
     }
   }
 }

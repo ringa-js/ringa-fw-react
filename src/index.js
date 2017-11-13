@@ -111,6 +111,8 @@ export ValidatorBase from './components/validation/ValidatorBase';
 export ValidatorEmail from './components/validation/ValidatorEmail';
 export ValidatorLength from './components/validation/ValidatorLength';
 export ValidatorRequired from './components/validation/ValidatorRequired';
+export ValidatorPassword from './components/validation/ValidatorPassword';
+export ValidatorFunction from './components/validation/ValidatorFunction';
 
 export Form from './components/form/Form';
 export FormItem from './components/form/FormItem';

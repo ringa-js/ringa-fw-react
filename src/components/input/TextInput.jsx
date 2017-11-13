@@ -34,6 +34,8 @@ export default class TextInput extends ValidatingInputBase {
     if (focusOnCreate) {
       this.refs.input.focus();
     }
+
+    this.validate(this.refs.input.value, true);
   }
 
   render() {

@@ -4,7 +4,7 @@ export default class ValidatorBase extends Model {
   //-----------------------------------
   // Constructor
   //-----------------------------------
-  constructor(name, values) {
+  constructor(name, options, values) {
     super(name, values);
     
     this.addProperty('options');
@@ -16,7 +16,7 @@ export default class ValidatorBase extends Model {
   //-----------------------------------
   // Methods
   //-----------------------------------
-  validate(value, options, i18NModel) {
+  validate(value, i18NModel) {
     console.warn(`ValidatorBase::validate() should be overridden by ${this.constructor.name}::validate()!`);
 
     return {

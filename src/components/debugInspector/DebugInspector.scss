@@ -11,6 +11,7 @@
   position: relative;
   transition: height 0.2s ease-in-out;
   background: #ef7600;
+  color: $white;
 
   .show {
     height: 300px;
@@ -21,7 +22,6 @@
     flex-wrap: nowrap;
     padding: 1rem;
 
-    color: $black;
     font-size: 11px;
 
     .panel {

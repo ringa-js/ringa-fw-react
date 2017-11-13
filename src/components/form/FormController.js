@@ -17,6 +17,10 @@ export default class FormController extends Controller {
       }
 
       formModel.elements.push(element);
+
+      if (element.id) {
+        formModel[element.id] = element;
+      }
     });
 
     this.addListener('unregisterFormElement', (formModel, element) => {
@@ -24,6 +28,10 @@ export default class FormController extends Controller {
 
       if (ix !== -1) {
         formModel.elements.splice(ix, 1);
+
+        if (element.id) {
+          delete formModel[element.id];
+        }
       }
     });
 
