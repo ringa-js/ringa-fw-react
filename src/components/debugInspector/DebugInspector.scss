@@ -26,7 +26,7 @@
 
     .panel {
       flex: 0 1 20em;
-      margin: 0em .5em;
+      margin: 0 .5em;
 
       .object {
         padding: 3px;
@@ -131,7 +131,7 @@
   color: $white;
   z-index: 20000;
 
-  width: 100%;
+  width: calc(100% - 10px);
 
   opacity: 0.87;
 

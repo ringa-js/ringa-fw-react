@@ -1551,6 +1551,19 @@
 /**
  * Step 1: Setup all our Ringa variables since all subsequent files require them.
  */
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
 /**
  * Step 2: Setup all our base styles (fill, body, html, etc.) AND all our component styles (TextInput, Button, etc.)
  */
@@ -1618,6 +1631,19 @@ button {
 ul li {
   margin: 0.4em; }
 
+/* -------------------------------------------------------------
+  Sass CSS3 Mixins! The Cross-Browser CSS3 Sass Library
+  By: Matthieu Aussaguel, http://www.mynameismatthieu.com, @matthieu_tweets
+
+  List of CSS3 Sass Mixins File to be @imported and @included as you need
+
+  The purpose of this library is to facilitate the use of CSS3 on different browsers avoiding HARD TO READ and NEVER
+  ENDING css files
+
+  note: All CSS3 Properties are being supported by Safari 5
+  more info: http://www.findmebyip.com/litmus/#css3-properties
+
+------------------------------------------------------------- */
 .classic {
   background: none;
   /* .squaredFour */
@@ -1871,7 +1897,7 @@ ul li {
     font-size: 16px; }
     .classic .ringa-component.list.max-height {
       max-height: 300px; }
-    .classic .ringa-component.list .contents {
+    .classic .ringa-component.list > .contents {
       width: 100%;
       height: 100%;
       overflow: auto; }
@@ -2337,7 +2363,7 @@ ul li {
       font-size: 11px; }
       .classic .debug-inspector .panels .panel {
         flex: 0 1 20em;
-        margin: 0em .5em; }
+        margin: 0 .5em; }
         .classic .debug-inspector .panels .panel .object {
           padding: 3px;
           cursor: pointer;
@@ -2394,18 +2420,36 @@ ul li {
     background: #ef9622; }
   .classic .inspectee {
     position: fixed;
+    pointer-events: none;
     padding: 5px;
-    line-height: 17px;
-    font-size: 11px;
-    background-color: #666 !important;
+    font-size: 10px;
+    background-color: #333 !important;
     color: #FCFCFC;
     z-index: 20000;
-    width: 100%;
-    opacity: 0.9; }
-    .classic .inspectee h1, .classic .inspectee h2, .classic .inspectee h3, .classic .inspectee h4, .classic .inspectee h5 {
-      margin: 0; }
-    .classic .inspectee ul, .classic .inspectee li {
-      margin: 0; }
+    width: calc(100% - 10px);
+    opacity: 0.87; }
+    .classic .inspectee .markdown .component {
+      color: #FFFF44; }
+    .classic .inspectee .markdown .ringacomponent {
+      color: #FF9999; }
+    .classic .inspectee .markdown .controller {
+      color: #44FF44; }
+    .classic .inspectee .markdown .model {
+      color: #99FFFF; }
+    .classic .inspectee .markdown .inspectee-group {
+      margin: 1px;
+      background-color: #444;
+      border: 1px solid #CCC;
+      border-radius: 3px;
+      padding: 0 3px; }
+    .classic .inspectee .markdown h2 {
+      border-bottom: 1px solid #FCFCFC; }
+    .classic .inspectee .markdown h1, .classic .inspectee .markdown h2, .classic .inspectee .markdown h3, .classic .inspectee .markdown h4, .classic .inspectee .markdown h5 {
+      margin: 0;
+      color: #FCFCFC; }
+    .classic .inspectee .markdown ul, .classic .inspectee .markdown li {
+      margin: 0;
+      color: #FCFCFC; }
   .classic .inspectee-top {
     top: 0;
     left: 0; }

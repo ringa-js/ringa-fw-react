@@ -1,10 +1,1 @@
-["$controller","$customEvent","$detail","$lastEvent","$lastPromiseError","$lastPromiseResult","$ringaEvent","$target","$thread",
-  "AppController","AppModel","Bus","FormController","FormModel","FormModel1","FormModel2","FormModel3","FunctionExecutor",
-  "I18NController","I18NModel","ModalContainerController","ModalContainerModel","ModelWatcher","OverlayContainerController",
-  "OverlayContainerModel","OverlayContainerModel1","OverlayModel","RingaEvent","ScreenController","ScreenModel",
-  "ScrollContainerController","ScrollContainerModel","ScrollContainerModel2","TextModel","Thread","ThreadFactory",
-  "TooltipContainerModel","TooltipContainerModel1","TooltipController","TooltipModel","ValidatorEmail","ValidatorRequired",
-  "done","element","event","fail","formModel","invalidReasons","overlay","overlayContainerModel","resume",
-  "scrollContainerModel","stop","target","tooltip","tooltipContainerModel","valid", "ThemeModel", "themeModel",
-  "theme", "ThemeController", "themeController",
-  "InspectModel", "inspectModel", "DebugInspectModel", "debugInspectModel", "DebugInspector", "debugInspector"]
+["$controller","$customEvent","$detail","$lastEvent","$lastPromiseError","$lastPromiseResult","$ringaEvent","$target","$thread","AppController","AppModel","Bus","DebugInspectController","FormController","FormModel","FormModel1","FormModel2","FormModel3","FormModel4","FunctionExecutor","I18NController","I18NModel","IifExecutor","InspectModel","InspectModel1","InspectorController","InspectorModel","InspectorModel1","ModalContainerController","ModalContainerModel","ModelWatcher","NumberModel","OverlayContainerController","OverlayContainerModel","OverlayContainerModel1","OverlayModel","RingaEvent","ScreenController","ScreenModel","ScrollContainerController","ScrollContainerModel","ScrollContainerModel1","SelectedModel","TextModel","ThemeController","ThemeModel","Thread","ThreadFactory","TooltipContainerModel","TooltipContainerModel1","TooltipController","TooltipModel","ValidatorEmail","ValidatorRequired","ValueModel","done","element","event","executor","fail","formModel","inspectModel","inspectorModel","invalidReasons","overlay","overlayContainerModel","resume","scrollContainerModel","stop","target","thread","tooltip","tooltipContainerModel","valid"]
