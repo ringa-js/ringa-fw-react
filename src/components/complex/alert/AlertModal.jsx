@@ -46,7 +46,7 @@ export default class AlertModal extends PositionableComponent {
     let {alert} = this.props;
     let {i18NModel} = this.state;
 
-    let cn = classnames('modal', 'alert', alert.classes);
+    let cn = this.calcClassnames('modal', 'alert', alert.classes);
 
     let message = typeof alert.messageOrRenderFunction === 'function' ? alert.messageOrRenderFunction(alert) : alert.messageOrRenderFunction;
 

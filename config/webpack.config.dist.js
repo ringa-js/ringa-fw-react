@@ -26,7 +26,8 @@ module.exports = {
       'react-ringa': path.resolve(__dirname, '../node_modules/react-ringa'),
       'react-fw-core': path.resolve(__dirname, '../node_modules/react-fw-core'),
       'moment': path.resolve(__dirname, '../node_modules/moment'),
-      'trie-search': path.resolve(__dirname, '../node_modules/trie-search')
+      'trie-search': path.resolve(__dirname, '../node_modules/trie-search'),
+      'showdown.js': path.resolve(__dirname, '../node_modules/showdown')
     }
   },
   externals: {

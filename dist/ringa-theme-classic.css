@@ -1671,12 +1671,12 @@ ul li {
   .classic .ringa-block-mouse {
     pointer-events: none !important;
     opacity: 0.5; }
-  .classic .alert {
+  .classic .ringa-component.alert {
     position: relative; }
-    .classic .alert .message {
+    .classic .ringa-component.alert .message {
       width: 100%;
       text-align: center; }
-    .classic .alert .buttons {
+    .classic .ringa-component.alert .buttons {
       justify-content: space-between;
       align-items: center;
       text-align: center; }
