@@ -82,9 +82,7 @@ export default class List extends RingaComponent {
         <div className="contents" style={{maxHeight: maxHeight === -1 ? '' : maxHeight}}>
           {children}
           {searchNoItemsMessage}
-        </div>] :
-      <div className="empty-list-msg" dangerouslySetInnerHTML={{__html : emptyListMessage}}></div>
-    }
+        </div>] : <div className="empty-list-msg" dangerouslySetInnerHTML={{__html : emptyListMessage}} />}
     </div>;
   }
 

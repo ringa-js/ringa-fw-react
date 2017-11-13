@@ -123,24 +123,56 @@
 .inspectee {
   position: fixed;
 
+  pointer-events: none;
   padding: 5px;
-  line-height: 17px;
-  font-size: 11px;
+  font-size: 10px;
 
-  background-color: $black-3 !important;
+  background-color: $black !important;
   color: $white;
   z-index: 20000;
 
   width: 100%;
 
-  opacity: 0.9;
+  opacity: 0.87;
 
-  h1, h2, h3, h4, h5 {
-    margin: 0;
-  }
+  .markdown {
 
-  ul, li {
-    margin: 0;
+    .component {
+      color: #FFFF44;
+    }
+
+    .ringacomponent {
+      color: #FF9999;
+    }
+
+    .controller {
+      color: #44FF44;
+    }
+    .model {
+      color: #99FFFF;
+    }
+
+    .inspectee-group {
+      margin: 1px;
+      background-color: $black-2;
+      border: 1px solid $grey-1;
+      border-radius: 3px;
+      padding: 0 3px;
+    }
+
+    h2 {
+      border-bottom: 1px solid $white;
+    }
+
+    h1, h2, h3, h4, h5 {
+      margin: 0;
+      color: $white;
+    }
+
+    ul, li {
+      margin: 0;
+      color: $white;
+    }
   }
 }
 

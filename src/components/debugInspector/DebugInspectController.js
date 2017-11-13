@@ -46,9 +46,10 @@ export default class DebugInspectController extends Controller {
         let injectionsByKey = {};
         let modelsByName = {};
 
-        let arr = ['##Ringa Inspect', '###React Component Heirarchy / Attached Controllers / Provided Models'];
+        let arr = ['###<span class="component">`React.Component`</span> / <span class="ringacomponent" markdown="1">`RingaComponent`</span> / <span class="controller" markdown="1">`Controller`</span> / <span class="model" markdown="1">`Model`</span>. Click to console log.'];
 
         components.forEach((component, ix) => {
+
           componentsByClass[component.constructor.name] = component;
 
           let controllerStrs = '';
@@ -71,17 +72,20 @@ export default class DebugInspectController extends Controller {
                 });
               }
 
-              return ` - **${controller.constructor.name}:${controller.name}** (${models.map(m => `${m.constructor.name}:${m.name}`).join(', ')})`;
+              return ` - **<span class="controller">${controller.constructor.name}(name='${controller.name || 'no name'}')</span>** Models: ${models.map(m => `<span class="model">${m.constructor.name} (id='${m.id || 'no id'}', name='${m.name || 'no name'})'</span>`).join(', ')}`;
             });
           }
 
           if (component.constructor.name) {
-            arr.push(`#### **${ix + 1} ${component.constructor.name}**:${component.id}`);
+            arr.push('<div class="inspectee-group" markdown="1">');
+
+            let cn = component.id ? 'ringacomponent' : 'component';
+
+            arr.push(`#### **${ix + 1} <span class="${cn}">${component.constructor.name}${component.id ? ` (id='${component.id}')` : ''}**</span>`);
             arr = arr.concat(controllerStrs);
+            arr.push('</div>');
           }
         });
-
-        arr.push('Click to console log');
 
         inspectModel.inspectee = {
           stack: arr,

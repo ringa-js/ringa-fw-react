@@ -1,5 +1,7 @@
 @import 'global';
 
+@import '../../css3_mixins';
+
 .#{$theme} {
   background: $theme-background;
 

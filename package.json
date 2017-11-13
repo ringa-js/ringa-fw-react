@@ -50,7 +50,6 @@
     "postcss-loader": "^2.0.8",
     "raw-loader": "^0.5.1",
     "react-body-classname": "^1.2.0",
-    "react-ringa": "^0.1.7",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "ringa": "^0.1.17",
