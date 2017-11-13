@@ -2,9 +2,9 @@
 
 This library is the foundational components for the React Ringa framework.
 
-This portion of Ringa JS is released under the AGPL 3.0. If you intend to make money commercially off of this software, please purchase the commercial license. For more information see http://www.ringajs.com/purchase.
+This portion of Ringa JS is released under the AGPL 3.0. If you intend to make money commercially off of this software, please purchase the commercial license. For more information see [License and Purchase Information](http://www.ringajs.com/purchase).
 
-`ringa` and `react-ringa` are freely available under the MIT license without purchase for use in commercial software.
+`ringa` and `react-ringa` are freely available under the MIT license without purchase for use in non-commercial software.
 
 # Installing
 
