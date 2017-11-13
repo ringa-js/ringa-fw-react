@@ -1644,6 +1644,10 @@ ul li {
   more info: http://www.findmebyip.com/litmus/#css3-properties
 
 ------------------------------------------------------------- */
+.ie-10-warning {
+  padding: 20px;
+  max-width: 400px; }
+
 .classic {
   background: none;
   /* .squaredFour */
@@ -2425,7 +2429,7 @@ ul li {
     font-size: 10px;
     background-color: #333 !important;
     color: #FCFCFC;
-    z-index: 20000;
+    z-index: 50000;
     width: calc(100% - 10px);
     opacity: 0.87; }
     .classic .inspectee .markdown .component {
