@@ -218,4 +218,10 @@ export default class ValidatingInputBase extends RingaComponent {
 
     return false;
   }
+
+  onChangeHandler(){
+    this.dispatch(FormController.VALUE_CHANGED, {
+      element: this,
+    }, true, true, false);
+  }
 }
