@@ -146,7 +146,7 @@ export default class TextInput extends ValidatingInputBase {
   onChangeHandler(event) {
     const {onChange, model, modelField, filter, setOnBlur, setOnKeyEnter} = this.props;
 
-    if(super.onChangeHandler){
+    if (super.onChangeHandler) {
       super.onChangeHandler();
     }
 
