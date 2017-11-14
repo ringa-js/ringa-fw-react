@@ -9,6 +9,10 @@ export default Model.construct('FormModel', [
     name: 'elements',
     default: []
   },
+  {
+    name: 'rerunValidationsOnTouchedElements',
+    default: false
+  },
   'message',
   'error'
 ]);
