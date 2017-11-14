@@ -89,9 +89,9 @@ export default class DebugInspector extends RingaComponent {
         </ModalToggleContainer>
         {inspectee ? <div className={inspecteeClasses}><Markdown markdown={inspectee.stack.join('\n')}/></div> : null}
       </div>;
-    } else {
-      return <div></div>;
     }
+
+    return <div></div>;
   }
 
   //-----------------------------------

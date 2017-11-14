@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const ROOT_PATH = path.resolve(process.env.PWD);
-
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const UGLIFY_WHITELIST = require('./uglifyWhitelist.json');
@@ -87,6 +87,13 @@ module.exports = {
       commonjs: 'showdown',
       amd: 'showdown',
       umd: 'showdown',
+    },
+    'flag-icon-css': {
+      root: 'Flag Icon CSS',
+      commonjs2: 'flag-icon-css',
+      commonjs: 'flag-icon-css',
+      amd: 'flag-icon-css',
+      umd: 'flag-icon-css',
     }
   },
   module: {
@@ -119,24 +126,24 @@ module.exports = {
         loader: {
           loader: 'url-loader',
           options: {
-            limit: 10000,
+            limit: 256,
             mimetype: 'image/png'
           }
         }
       },
       {
-        test: /\.(jpg|jpeg|gif|svg|woff|woff2|ttf|eot|svg)$/,
+        test: /\.(jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
         loader: {
           loader: 'url-loader',
           options: {
-            limit: 10000,
-            name: 'assets/[hash].[ext]'
+            limit: 256,
+            name: 'assets/[name].[ext]'
           }
         }
       }
     ]
   },
-  devtool: 'eval',
+  devtool: false,
   output: {
     path: path.join(ROOT_PATH, 'dist'),
     filename: 'ringa-fw-react.min.js',
@@ -152,10 +159,14 @@ module.exports = {
       filename: 'ringa-theme-classic.css',
       allChunks: true
     }),
-    new webpack.optimize.UglifyJsPlugin({
+    new UglifyJSPlugin({
       sourceMap: false,
-      mangle: {
-        except: UGLIFY_WHITELIST
+      uglifyOptions: {
+        mangle: {
+          keep_classnames: true,
+          keep_fnames: true,
+          reserved: require('./uglifyWhitelist.json')
+        }
       }
     })
   ]
