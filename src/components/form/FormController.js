@@ -45,6 +45,19 @@ export default class FormController extends Controller {
       formModel.elements.forEach(element => {
         formModel.valid = formModel.valid && element.valid;
       });
+
+    });
+
+    this.addListener('valueChanged', (formModel, element, invalidReasons, valid) => {
+
+      if (formModel.rerunValidationsOnTouchedElements) {
+        formModel.elements.forEach(element => {
+          if (element.value) {
+            element.validate(element.value);
+          }
+        });
+      }
+
     });
   }
 }
