@@ -2,10 +2,9 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const buildInfo = require('./util/buildInfo');
 const ROOT_PATH = path.resolve(process.env.PWD);
-
-const UGLIFY_WHITELIST = require('./uglifyWhitelist.json');
 
 const config = {
   name: 'ringa-fw-react',
@@ -70,17 +69,17 @@ const config = {
         loader: {
           loader: 'url-loader',
           options: {
-            limit: 10000,
+            limit: 256,
             mimetype: 'image/png'
           }
         }
       },
       {
-        test: /\.(jpg|jpeg|gif|svg|woff|woff2|ttf|eot|svg)$/,
+        test: /\.(jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
         loader: {
           loader: 'url-loader',
           options: {
-            limit: 10000,
+            limit: 256,
             name: 'assets/[hash].[ext]'
           }
         }
@@ -88,6 +87,7 @@ const config = {
     ]
   },
   plugins: [
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|sv/),
     new HtmlWebpackPlugin({
       title: 'Ringa JS React Framework',
       template: path.resolve(ROOT_PATH, 'harness/templates/index.ejs'),
@@ -95,16 +95,14 @@ const config = {
       inject: false,
       cache: true
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: true
-      },
-      output: {
-        comments: false
-      },
-      mangle: {
-        except: UGLIFY_WHITELIST
+    new UglifyJSPlugin({
+      sourceMap: false,
+      uglifyOptions: {
+        mangle: {
+          keep_classnames: true,
+          keep_fnames: true,
+          reserved: require('./uglifyWhitelist.json')
+        }
       }
     })
   ]
