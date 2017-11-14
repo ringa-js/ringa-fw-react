@@ -2,5 +2,6 @@
   .ringa-component.overlay {
     position: absolute;
     pointer-events: all;
+    z-index: $overlay-z-index;
   }
 }

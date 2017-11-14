@@ -2114,7 +2114,8 @@ ul li {
       color: #FCFCFC; }
   .classic .ringa-component.overlay {
     position: absolute;
-    pointer-events: all; }
+    pointer-events: all;
+    z-index: 1000; }
   .classic .ringa-component.overlay-container-wrapper {
     position: relative; }
     .classic .ringa-component.overlay-container-wrapper .overlay-container {

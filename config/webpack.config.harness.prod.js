@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const buildInfo = require('./util/buildInfo');
@@ -8,13 +9,14 @@ const ROOT_PATH = path.resolve(process.env.PWD);
 
 const config = {
   name: 'ringa-fw-react',
-  devtool: 'source-map',
+  devtool: false,
   entry: {
-    app: ['babel-polyfill', path.resolve(ROOT_PATH, 'harness/index.js')]
+    app: ['babel-polyfill', path.resolve(ROOT_PATH, 'harness/index.js')],
+    vendor: ['react', 'react-dom', 'showdown', 'trie-search', 'hasharray', 'moment']
   },
   output: {
     path: path.join(ROOT_PATH, 'harness/dist'),
-    filename: '[name].[hash].js',
+    filename: 'ringa-fw-react.[name].[hash].js',
     publicPath: '/'
   },
   resolve: {
@@ -48,21 +50,11 @@ const config = {
       },
       {
         test: /\.s?css$/,
-        loaders: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              outputStyle: 'expanded',
-              includePaths: [
-                path.join(__dirname, 'node_modules'),
-                path.join(__dirname, 'src'),
-                __dirname
-              ]
-            }
-          }
-        ]
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          //resolve-url-loader may be chained before sass-loader if necessary
+          use: ['css-loader', 'sass-loader']
+        })
       },
       {
         test: /\.png$/,
@@ -95,6 +87,11 @@ const config = {
       inject: false,
       cache: true
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor'],
+      filename: 'ringa-fw-react.[name].[hash].js',
+      minChunks: Infinity
+    }),
     new UglifyJSPlugin({
       sourceMap: false,
       uglifyOptions: {
@@ -104,6 +101,15 @@ const config = {
           reserved: require('./uglifyWhitelist.json')
         }
       }
+    }),
+    new ExtractTextPlugin({
+      filename: 'ringa-fw-react.[contenthash].css',
+      allChunks: true
+    }),
+    new OptimizeCssAssetsPlugin({
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: { discardComments: {removeAll: true } },
+      canPrint: true
     })
   ]
 };
