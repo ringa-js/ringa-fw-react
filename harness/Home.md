@@ -3,6 +3,28 @@ Ringa JS React Component Framework
 
 This framework includes a variety of components that are ready-built to help you rapidly construct an application that ties nicely with the Ringa Framework.
 
+Ringa JS is Tiny and Lightning Fast
+=====================================
+
+Did you notice how fast this page loaded? You can load this entire SPA and all its dependencies...
+
+**... in only 288 kb gzipped.**
+
+That includes:
+
+* react
+* react-dom
+* ringa
+* react-ringa
+* ringa-fw-react (all components)
+* hasharray
+* trie-search
+* showdown
+* highlight.js
+* CSS
+* index.html
+* images for home screen
+
 Themes
 ======
 
