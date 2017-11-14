@@ -26,7 +26,9 @@ module.exports = {
       'react-ringa': path.resolve(__dirname, '../node_modules/react-ringa'),
       'react-fw-core': path.resolve(__dirname, '../node_modules/react-fw-core'),
       'moment': path.resolve(__dirname, '../node_modules/moment'),
-      'trie-search': path.resolve(__dirname, '../node_modules/trie-search')
+      'trie-search': path.resolve(__dirname, '../node_modules/trie-search'),
+      'showdown': path.resolve(__dirname, '../node_modules/showdown'),
+      'highlight.js': path.resolve(__dirname, '../node_modules/highlight.js')
     }
   },
   externals: {
@@ -85,7 +87,7 @@ module.exports = {
       commonjs: 'showdown',
       amd: 'showdown',
       umd: 'showdown',
-    },
+    }
   },
   module: {
     loaders: [

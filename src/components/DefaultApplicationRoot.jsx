@@ -5,17 +5,16 @@ import I18NModel from '../models/I18NModel';
 import I18NController from '../controllers/I18NController';
 
 import ScreenController from '../controllers/ScreenController';
-
-import {attach, depend, dependency} from 'react-ringa';
+import BrowserCheck from './complex/BrowserCheck';
 
 import EN from '../assets/i18n/en/pack.json';
 import SV from '../assets/i18n/sv/pack.json';
 
-class DefaultApplicationRoot extends RingaComponent {
+export default class DefaultApplicationRoot extends RingaComponent {
   //-----------------------------------
   // Constructor
   //-----------------------------------
-  constructor(props, options) {
+  constructor(props) {
     super(props);
 
     this.i18NModel = new I18NModel();
@@ -23,9 +22,14 @@ class DefaultApplicationRoot extends RingaComponent {
     this.i18NModel.mergeLanguagePack('en', EN);
     this.i18NModel.mergeLanguagePack('sv', SV);
 
-    attach(this, new ScreenController());
-    attach(this, new I18NController(undefined, undefined, this.i18NModel));
+    this.attach(new ScreenController());
+    this.attach(new I18NController(undefined, undefined, this.i18NModel));
+  }
+
+  //-----------------------------------
+  // Methods
+  //-----------------------------------
+  render(children) {
+    return <BrowserCheck>{children}</BrowserCheck>;
   }
 }
-
-export default DefaultApplicationRoot;

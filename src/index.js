@@ -13,6 +13,8 @@ export RingaComponent from './components/RingaComponent';
 export DefaultApplicationRoot from './components/DefaultApplicationRoot';
 export Theme, {ThemeController, ThemeModel} from './components/containers/Theme';
 
+import BrowserCheck from './components/complex/BrowserCheck';
+
 //-----------------------------------
 // Utils
 //-----------------------------------
