@@ -96,9 +96,6 @@ const config = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      __DEV__: true
-    }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title: 'Ringa JS React Framework',

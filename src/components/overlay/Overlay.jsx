@@ -1,7 +1,6 @@
 import React from 'react';
 import PositionableComponent from '../PositionableComponent';
 import {watch} from 'react-ringa';
-import classnames from 'classnames';
 
 export default class Overlay extends PositionableComponent {
   //-----------------------------------
@@ -50,7 +49,7 @@ export default class Overlay extends PositionableComponent {
   render() {
     let overlayModel = this.props.overlay;
 
-    let cn = classnames('overlay', overlayModel.classes);
+    let cn = this.calcClassnames('overlay', overlayModel.classes);
 
     if (this.positionOptions.alternate) {
       cn += ` position-${this.positionOptions.alternate}`;
