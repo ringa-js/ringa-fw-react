@@ -9,7 +9,8 @@ const config = {
   name: 'ringa-fw-react',
   devtool: 'cheap-module-eval-source-map',
   entry: {
-    app: ['babel-polyfill', path.resolve(ROOT_PATH, 'harness/index.js')]
+    app: ['babel-polyfill', path.resolve(ROOT_PATH, 'harness/index.js')],
+    vendor: ['react', 'react-dom', 'showdown', 'trie-search', 'hasharray', 'moment']
   },
   output: {
     path: path.join(ROOT_PATH, 'dist'),
@@ -97,6 +98,11 @@ const config = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor'],
+      filename: 'ringa-fw-react.[name].[hash].js',
+      minChunks: Infinity
+    }),
     new HtmlWebpackPlugin({
       title: 'Ringa JS React Framework',
       template: path.resolve(ROOT_PATH, 'harness/templates/index.ejs'),

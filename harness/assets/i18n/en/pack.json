@@ -24,8 +24,7 @@
     "description": "markdown: The `ScrollContainer` is used to vertically smooth-scroll to a particular location within its descendants.\n\nIt is smart enough so that you just need to provide a DOM node to focus on and it will try to scroll as close to getting that DOM node in the center of its viewport as possible."
   },
   "theme": {
-    "title": "markdown:#Theme Examples",
-    "description": "markdown: The `Theme` Container is used at the *root of your application* (e.g. the same place you would put the `OverlayContainer` and `ModalContainer`) to wrap every React Component and provide a single root CSS class upon which every other style in the application depends. If for whatever reason you wanted to have multiple themes in your application at once, you certainly could by having two root `Theme` objects as long as they were not nested. In this example, the theme `div` switches between `'sunbeam'` and `'classic'` quickly depending on what is chosen in the dropdown, simply by setting a single property on the `ThemeModel` which is attached by default to the `Theme` React Component and accessible through the standard `depend()` call.\n\n To use a theme, you simply need to include the appropriate CSS in your application or use SASS/SCSS to load the appropriate theme root `index.scss` file during your build.\n\nBelow is an example of how to switch the theme in the application and just how easy it is. All components in the Ringa framework are built in the same fashion making it easy to change the entire look and feel of your application in one shot. In addition you can override every single style in the Ringa React Framework easily. See the documentation for more details (coming soon)."
+    "title": "markdown:#Theme Examples"
   },
   "numberInput": {
     "title": "markdown:#NumberInput Examples",
@@ -35,11 +34,21 @@
     "title": "markdown:#RadioButton Examples",
     "description": "markdown: The `RadioButton` component is used to select between multiple values. It is designed to be bound to a Ringa Model property and will update automatically when that properties changes. This allows for easy synchronization of every RadioButton at once."
   },
+  "checkbox": {
+    "title": "markdown:#Checkbox Examples",
+    "description": "markdown: The `Checkbox` component is used to turn on or off a single value. It is designed to be bound to a Ringa Model property and will update automatically when that properties changes."
+  },
   "i18n": {
     "en": "English",
     "sv": "Swedish",
     "title": "markdown:#Internationalization (I18N) Examples",
     "example1": "This value is loaded from the harness/assets/i18n/[language]/pack.json file",
     "example2": "This value is loaded from the harness/assets/i18n/[language]/pack.json file and has an injected value of: ${injectionProperty1} ${injectionProperty2}"
+  },
+  "screen": {
+    "title": "markdown:#Screen / Device Context Examples"
+  },
+  "debugInspector": {
+    "title": "markdown:#DebugInspector Instructions"
   }
 }

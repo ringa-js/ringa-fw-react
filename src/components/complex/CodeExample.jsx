@@ -8,7 +8,7 @@ import Markdown from './Markdown';
 
 import I18NModel from '../../models/I18NModel';
 
-import {depend, dependency} from 'react-ringa';
+import {dependency} from 'react-ringa';
 
 class CodeExample extends RingaComponent {
   //-----------------------------------
@@ -17,7 +17,7 @@ class CodeExample extends RingaComponent {
   constructor(props) {
     super(props);
 
-    depend(this, dependency(I18NModel, 'language'));
+    this.depend(dependency(I18NModel, 'language'));
   }
 
   //-----------------------------------
@@ -28,6 +28,7 @@ class CodeExample extends RingaComponent {
     const {i18NModel} = this.state;
 
     return <div className={this.calcClassnames("code-example")}>
+      {documentation ? <Markdown markdown={documentation} /> : undefined}
       <TabNavigator classes="fill">
         <Tab label={i18NModel.i18n(i18NKey)}>
           {children}
@@ -36,9 +37,6 @@ class CodeExample extends RingaComponent {
           <Code code={code} classes="fill" />
         </Tab>
       </TabNavigator>
-      {documentation ? <Tab label={i18NModel.i18n('codeExample.documentation')}>
-        <Markdown markdown={documentation} />
-      </Tab> : undefined}
     </div>;
   }
 }

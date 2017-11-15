@@ -8,6 +8,19 @@ html, body {
 
 [data-reactroot] { height: 100% }
 
+a {
+  transition: color $time-1 ease-in-out;
+  color: $black;
+}
+
+a:hover {
+  color: $black-3;
+}
+
+a:visited {
+  color: $black-2;
+}
+
 .react-app {
   width: 100%;
   height: 100%;

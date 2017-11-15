@@ -1,9 +1,37 @@
+.debug {
+  color: $debug-orange;
+}
+
 .ringa-container-1 {
   background: $ringa-color;
   color: $ringa-color-text;
+
+  a {
+    color: $white;
+  }
+
+  a:hover {
+    color: $grey-1;
+  }
+
+  a:visited {
+    color: $grey-2;
+  }
 }
 
 .ringa-container-2 {
   background: $ringa-color-2;
   color: $ringa-color-text-2;
+
+  a {
+    color: $white;
+  }
+
+  a:hover {
+    color: $grey-1;
+  }
+
+  a:visited {
+    color: $grey-2;
+  }
 }

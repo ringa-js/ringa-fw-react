@@ -1,9 +1,11 @@
 import React from 'react';
 
 import {Dropdown,
-        RingaComponent} from '../../src/index';
+        RingaComponent,
+        ScreenModel} from '../../src/index';
 
 import {alphaSortKey} from 'ringa-fw-core';
+import {dependency} from 'react-ringa';
 
 import {routeMap} from '../routes';
 
@@ -11,12 +13,14 @@ import './Header.scss';
 
 import LOGO from '../images/ringa.png';
 
-class Header extends RingaComponent {
+export default class Header extends RingaComponent {
   //-----------------------------------
   // Constructor
   //-----------------------------------
   constructor(props) {
     super(props);
+
+    this.depend(dependency(ScreenModel, 'curBreakpointIx'));
   }
 
   //-----------------------------------
@@ -24,6 +28,8 @@ class Header extends RingaComponent {
   //-----------------------------------
   render(props) {
     const {location} = this.props;
+    const {curBreakpointIx} = this.state;
+
     const options = [];
 
     let selectedItem;
@@ -47,10 +53,14 @@ class Header extends RingaComponent {
           <div className="flex-start">
             <div className="title" onClick={this.logo_onClickHandler}>
               <img src={LOGO} width={120} height={25} />
-              <div className="subtitle">React Framework</div>
+              {curBreakpointIx > 2 ? <div className="subtitle">React Framework</div> : undefined}
             </div>
           </div>
           <div className="links flex-end">
+            {curBreakpointIx > 2 ? <a href="/">Home</a> : undefined}
+            {curBreakpointIx > 2 ? <a href="http://ringajs.com/reactLibrary/introduction">Full Documentation</a> : undefined}
+            {curBreakpointIx > 2 ? <a href="https://github.com/ringa-js/ringa-fw-react/tree/master/harness">Github</a> : undefined}
+
             <Dropdown items={options}
                       align="right"
                       shift="right"
@@ -72,5 +82,3 @@ class Header extends RingaComponent {
     this.props.history.push('/');
   }
 }
-
-export default Header;
