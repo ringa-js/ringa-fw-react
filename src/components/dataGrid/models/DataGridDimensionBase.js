@@ -24,7 +24,14 @@ export default class DataGridDimension extends Model {
       type: DataGridField
     });
 
+    /**
+     * The base renderer would be something like row or column
+     */
     this.addProperty('baseRenderer');
+
+    /**
+     * This mapper maps the data at this dimension (e.g. an array of rows)
+     */
     this.addProperty('arrayToRenderersMap');
   }
 }

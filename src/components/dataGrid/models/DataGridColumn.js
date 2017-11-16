@@ -1,15 +1,17 @@
 import {Model} from 'ringa';
 
-import DataGridField from './DataGridField';
-import DataGridDimensionBase from './DataGridDimensionBase';
+import DataGridColumnHeaderCellRenderer from '../components/renderers/DataGridColumnHeaderCellRenderer';
 
-export default class DataGridColumn extends DataGridDimensionBase {
+export default class DataGridColumn extends Model {
   //-----------------------------------
   // Constructor
   //-----------------------------------
   constructor(name, values) {
     super(name, values);
 
+    this.addProperty('headerCellRenderer', DataGridColumnHeaderCellRenderer);
+
     this.addProperty('width');
+    this.addProperty('field');
   }
 }

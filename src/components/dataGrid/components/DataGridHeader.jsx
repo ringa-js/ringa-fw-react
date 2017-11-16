@@ -2,6 +2,8 @@ import React from 'react';
 
 import DataGridComponentBase from './DataGridComponentBase';
 
+import DataGridColumnDimension from '../models/DataGridColumnDimension';
+
 export default class DataGridHeader extends DataGridComponentBase {
   //-----------------------------------
   // Constructor
@@ -14,10 +16,24 @@ export default class DataGridHeader extends DataGridComponentBase {
   // Lifecycle
   //-----------------------------------
   render() {
+    const {dataGridModel} = this.state;
+
     let cn = this.calcClassnames('data-grid-header');
 
-    return <div className={cn}>
+    let columnDimension = dataGridModel.dimensions.find(dimension => dimension instanceof DataGridColumnDimension);
 
+    let HeaderWrapperRenderer = columnDimension.headerWrapperRenderer;
+
+    let headerCells = columnDimension.columns.map(column => {
+      let HeaderCellRenderer = column.headerCellRenderer;
+
+      return <HeaderCellRenderer />;
+    });
+
+    return <div className={cn}>
+      <HeaderWrapperRenderer>
+        {headerCells}
+      </HeaderWrapperRenderer>
     </div>;
   }
 }

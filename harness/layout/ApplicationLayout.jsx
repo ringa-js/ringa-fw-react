@@ -23,6 +23,7 @@ import RadioButtonHarness from '../harnesses/radioButton/RadioButtonHarness';
 import I18NHarness from '../harnesses/i18n/I18NHarness';
 import ScreenHarness from '../harnesses/screen/ScreenHarness';
 import DebugInspectorHarness from '../harnesses/debugInspector/DebugInspectorHarness';
+import DataGridHarness from '../harnesses/dataGrid/DataGridHarness';
 
 import DebugInspector from '../../src/components/debugInspector/DebugInspector';
 
@@ -70,6 +71,7 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
               <Route path="/i18n" component={I18NHarness} />
               <Route path="/screen" component={ScreenHarness} />
               <Route path="/debugInspector" component={DebugInspectorHarness} />
+              <Route path="/dataGrid" component={DataGridHarness} />
               <Footer />
               <DebugInspector />
             </ModalContainer>

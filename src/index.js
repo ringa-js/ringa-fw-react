@@ -90,6 +90,15 @@ export RadioButton from './components/input/RadioButton';
 export ValidatingInputBase from './components/input/ValidatingInputBase';
 
 //-----------------------------------
+// DataGrid
+//-----------------------------------
+export DataGrid from './components/dataGrid/DataGrid';
+export DataGridModel from './components/dataGrid/models/DataGridModel';
+export DataGridColumnDimension from './components/dataGrid/models/DataGridColumnDimension';
+export DataGridRowDimension from './components/dataGrid/models/DataGridRowDimension';
+export DataGridColumn from './components/dataGrid/models/DataGridColumn';
+
+//-----------------------------------
 // Complex
 //-----------------------------------
 export Alert from './components/complex/alert/AlertModel';

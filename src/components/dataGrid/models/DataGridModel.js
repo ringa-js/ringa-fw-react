@@ -11,6 +11,8 @@ export default class DataGridModel extends Model {
   constructor(name, values) {
     super(name, values);
 
+    this.addProperty('columnDimension');
+
     this.addProperty('dimensions', [], {
       type: DataGridDimensionBase
     });

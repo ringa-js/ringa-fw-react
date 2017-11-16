@@ -18,7 +18,7 @@ export default class DataGrid extends DataGridComponentBase {
     super(props);
 
     if (!props.useCustomDataGridController) {
-      this.attach(new DataGridController());
+      this.attach(new DataGridController(undefined, undefined, props.model));
     }
   }
 
@@ -26,8 +26,9 @@ export default class DataGrid extends DataGridComponentBase {
   // Lifecycle
   //-----------------------------------
   render() {
-    let cn = this.calcClassnames('data-grid');
     let {dataGridModel} = this.state;
+
+    let cn = this.calcClassnames('data-grid');
 
     return <div className={cn}>
       <DataGridHeader />
