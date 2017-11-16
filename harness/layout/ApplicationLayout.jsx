@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import './ApplicationLayout.scss';
 
-import Body from './Body';
 import Header from './Header';
 import Footer from './Footer';
 import AppController from '../controllers/AppController';
@@ -24,14 +23,7 @@ import I18NHarness from '../harnesses/i18n/I18NHarness';
 import ScreenHarness from '../harnesses/screen/ScreenHarness';
 import DebugInspectorHarness from '../harnesses/debugInspector/DebugInspectorHarness';
 
-import DebugInspector from '../../src/components/debugInspector/DebugInspector';
-
-import Theme from '../../src/components/containers/Theme';
-
-import {TooltipContainer,
-        OverlayContainer,
-        ModalContainer,
-        DefaultApplicationRoot} from '../../src/index';
+import {DefaultApplicationRoot} from '../../src/index';
 
 import {setup as setupI18N} from '../i18n.js';
 
@@ -51,32 +43,22 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
   // Lifecycle
   //-----------------------------------
   render() {
-    return super.render(<Body>
-      <div className="fill">
-        <Theme classes="fill">
-          <OverlayContainer global={true} classes="fill">
-            <ModalContainer global={true} classes="fill">
-              <Header {...this.props} />
-              <Route exact path="/" component={Home} />
-              <Route path="/list" component={ListHarness} />
-              <Route path="/textInput" component={TextInputHarness} />
-              <Route path="/form" component={FormHarness} />
-              <Route path="/tabNavigator" component={TabNavigatorHarness} />
-              <Route path="/scrollContainer" component={ScrollContainerHarness} />
-              <Route path="/theme" component={ThemeHarness} />
-              <Route path="/numberInput" component={NumberInputHarness} />
-              <Route path="/checkbox" component={CheckboxHarness} />
-              <Route path="/radioButton" component={RadioButtonHarness} />
-              <Route path="/i18n" component={I18NHarness} />
-              <Route path="/screen" component={ScreenHarness} />
-              <Route path="/debugInspector" component={DebugInspectorHarness} />
-              <Footer />
-              <DebugInspector />
-            </ModalContainer>
-          </OverlayContainer>
-          <TooltipContainer />
-        </Theme>
-      </div>
-    </Body>);
+    return super.render(<div className="fill">
+      <Header {...this.props} />
+      <Route exact path="/" component={Home} />
+      <Route path="/list" component={ListHarness} />
+      <Route path="/textInput" component={TextInputHarness} />
+      <Route path="/form" component={FormHarness} />
+      <Route path="/tabNavigator" component={TabNavigatorHarness} />
+      <Route path="/scrollContainer" component={ScrollContainerHarness} />
+      <Route path="/theme" component={ThemeHarness} />
+      <Route path="/numberInput" component={NumberInputHarness} />
+      <Route path="/checkbox" component={CheckboxHarness} />
+      <Route path="/radioButton" component={RadioButtonHarness} />
+      <Route path="/i18n" component={I18NHarness} />
+      <Route path="/screen" component={ScreenHarness} />
+      <Route path="/debugInspector" component={DebugInspectorHarness} />
+      <Footer />
+    </div>);
   }
 }
