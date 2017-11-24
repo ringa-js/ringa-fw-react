@@ -1,6 +1,7 @@
 import {Model} from 'ringa';
 
-import DataGridField from './DataGridField';
+import DataGridDimensionRenderer from '../components/DataGridDimensionRenderer';
+import {ArrayCollection} from 'ringa-fw-core';
 
 /**
  * A DataGrid has multiple dimensions. Normally this would just be two:
@@ -20,18 +21,19 @@ export default class DataGridDimension extends Model {
   constructor(name, values) {
     super(name, values);
 
-    this.addProperty('field', {
-      type: DataGridField
-    });
+    this.addProperty('headerRenderer');
+    this.addProperty('wrapperRenderer');
+    this.addProperty('dimensionRenderer', DataGridDimensionRenderer);
+    this.addProperty('itemRenderer', DataGridDimensionRenderer);
+    this.addProperty('footerRenderer');
 
-    /**
-     * The base renderer would be something like row or column
-     */
-    this.addProperty('baseRenderer');
+    this.addProperty('direction', 'vertical');
+  }
 
-    /**
-     * This mapper maps the data at this dimension (e.g. an array of rows)
-     */
-    this.addProperty('arrayToRenderersMap');
+  //-----------------------------------
+  // Methods
+  //-----------------------------------
+  itemsAsArray(items) {
+    return items instanceof ArrayCollection ? items.data : items;
   }
 }

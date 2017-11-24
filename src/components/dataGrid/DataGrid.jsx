@@ -3,12 +3,7 @@ import React from 'react';
 import DataGridController from './controllers/DataGridController';
 
 import DataGridComponentBase from './components/DataGridComponentBase';
-
-import DataGridDimensionContextStack from './models/DataGridDimensionContextStack';
-
-import DataGridDimensionRenderer from './components/DataGridDimensionRenderer';
-import DataGridHeader from './components/DataGridHeader';
-import DataGridFooter from './components/DataGridFooter';
+import DataGridDimensionContext from './models/DataGridDimensionContext';
 
 export default class DataGrid extends DataGridComponentBase {
   //-----------------------------------
@@ -26,14 +21,17 @@ export default class DataGrid extends DataGridComponentBase {
   // Lifecycle
   //-----------------------------------
   render() {
-    let {dataGridModel} = this.state;
+    const {dataGridModel} = this.state;
 
-    let cn = this.calcClassnames('data-grid');
+    const cn = this.calcClassnames('data-grid');
+
+    let startDimensionIx = 0;
+    let dimension = dataGridModel.dimensions[startDimensionIx];
+    let DimensionRenderer = dimension.dimensionRenderer;
+    let context = new DataGridDimensionContext(startDimensionIx, dataGridModel.items, undefined, dataGridModel);
 
     return <div className={cn}>
-      <DataGridHeader />
-      <DataGridDimensionRenderer dimension={dataGridModel} />
-      <DataGridFooter />
+      <DimensionRenderer context={context} />
     </div>;
   }
 }

@@ -1,5 +1,10 @@
 @if ($Use_DataGridHeader_Defaults == true) {
   .data-grid-header {
+    display: flex;
 
+    &.horizontal {
+      flex-direction: row;
+      width: 100%;
+    }
   }
 }

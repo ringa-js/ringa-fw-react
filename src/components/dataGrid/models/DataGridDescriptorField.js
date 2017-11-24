@@ -1,6 +1,6 @@
 import {Model} from 'ringa';
 
-export default class DataGridField extends Model {
+export default class DataGridDescriptorField extends Model {
   //-----------------------------------
   // Constructor
   //-----------------------------------
@@ -9,8 +9,7 @@ export default class DataGridField extends Model {
 
     this.addProperty('title');
 
-    this.addProperty('propertyName'); // Used for references into an object
-    this.addProperty('propertyIx');   // Used for references into an array
+    this.addProperty('propertyName');
 
     this.addProperty('labelFunction');
   }

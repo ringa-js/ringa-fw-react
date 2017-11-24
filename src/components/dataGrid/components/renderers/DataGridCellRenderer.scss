@@ -1,0 +1,5 @@
+@if ($Use_DataGridCellRenderer_Defaults == true) {
+  .data-grid-cell {
+    padding: $vertical-pad-1 $horizontal-pad-1;
+  }
+}

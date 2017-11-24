@@ -1,5 +1,5 @@
 @if ($Use_DataGridHeaderCellRenderer_Defaults == true) {
   .data-grid-header-cell {
-
+    padding: $vertical-pad-1 $horizontal-pad-1;
   }
 }

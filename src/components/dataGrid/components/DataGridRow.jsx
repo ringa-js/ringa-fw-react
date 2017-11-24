@@ -1,8 +1,8 @@
 import React from 'react';
 
-import DataGridComponentBase from '../DataGridComponentBase';
+import DataGridDimensionRenderer from "./DataGridDimensionRenderer";
 
-export default class DataGridCellRenderer extends DataGridComponentBase {
+export default class DataGridRow extends DataGridDimensionRenderer {
   //-----------------------------------
   // Constructor
   //-----------------------------------
@@ -14,13 +14,10 @@ export default class DataGridCellRenderer extends DataGridComponentBase {
   // Lifecycle
   //-----------------------------------
   render() {
-    let cn = this.calcClassnames('data-grid-cell');
-    let {context, item} = this.props;
-
-    let label = item.column.toLabel(item.object, context);
+    const cn = this.calcClassnames('data-grid-row');
 
     return <div className={cn}>
-      {label}
+      {super.render(false)}
     </div>;
   }
 }

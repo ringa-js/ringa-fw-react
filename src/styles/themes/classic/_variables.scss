@@ -1,4 +1,4 @@
-@import 'defaults';
+@import '../base/defaults';
 @import 'variables_colors';
 
 $pad1: 5px;
@@ -16,3 +16,5 @@ $modal-z-index: 500;
 $overlay-z-index: 1000;
 
 $theme: classic;
+
+@import 'variables_dataGrid';

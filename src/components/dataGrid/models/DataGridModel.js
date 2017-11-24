@@ -2,7 +2,10 @@ import {Model} from 'ringa';
 
 import {ArrayCollection} from 'ringa-fw-core';
 
-import DataGridDimensionBase from './DataGridDimensionBase';
+import DataGridDimension from './DataGridDimension';
+import DataGridDimensionRow from './DataGridDimensionRow';
+import DataGridDimensionColumn from './DataGridDimensionColumn';
+import DataGridDescriptorColumn from './DataGridDescriptorColumn';
 
 export default class DataGridModel extends Model {
   //-----------------------------------
@@ -11,14 +14,35 @@ export default class DataGridModel extends Model {
   constructor(name, values) {
     super(name, values);
 
-    this.addProperty('columnDimension');
-
     this.addProperty('dimensions', [], {
-      type: DataGridDimensionBase
+      type: DataGridDimension
     });
 
-    this.addProperty('arrayCollection', undefined, {
+    this.addProperty('items', undefined, {
       type: ArrayCollection
+    });
+  }
+
+  //-----------------------------------
+  // Statics
+  //-----------------------------------
+  static constructDefaultRowColumnModel(columns, data) {
+    let finalItems;
+
+    if (data) {
+      if (data instanceof ArrayCollection) {
+        finalItems = data;
+      } else {
+        finalItems = new ArrayCollection({data});
+      }
+    }
+
+    return new DataGridModel({
+      dimensions: [
+        new DataGridDimensionRow(),
+        new DataGridDimensionColumn({columns: columns.map(column => new DataGridDescriptorColumn(column))})
+      ],
+      items: finalItems
     });
   }
 }

@@ -94,9 +94,9 @@ export ValidatingInputBase from './components/input/ValidatingInputBase';
 //-----------------------------------
 export DataGrid from './components/dataGrid/DataGrid';
 export DataGridModel from './components/dataGrid/models/DataGridModel';
-export DataGridColumnDimension from './components/dataGrid/models/DataGridColumnDimension';
-export DataGridRowDimension from './components/dataGrid/models/DataGridRowDimension';
-export DataGridColumn from './components/dataGrid/models/DataGridColumn';
+export DataGridDimensionColumn from './components/dataGrid/models/DataGridDimensionColumn';
+export DataGridDimensionRow from './components/dataGrid/models/DataGridDimensionRow';
+export DataGridDescriptorColumn from './components/dataGrid/models/DataGridDescriptorColumn';
 
 //-----------------------------------
 // Complex
