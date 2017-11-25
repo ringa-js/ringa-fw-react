@@ -3,7 +3,10 @@ import React from 'react';
 import DataGridController from './controllers/DataGridController';
 
 import DataGridComponentBase from './components/DataGridComponentBase';
-import DataGridDimensionContext from './models/DataGridDimensionContext';
+
+import DataGridModel from './models/DataGridModel';
+
+import {dependency} from 'react-ringa';
 
 export default class DataGrid extends DataGridComponentBase {
   //-----------------------------------
@@ -15,6 +18,8 @@ export default class DataGrid extends DataGridComponentBase {
     if (!props.useCustomDataGridController) {
       this.attach(new DataGridController(undefined, undefined, props.model));
     }
+
+    this.depend(dependency(DataGridModel, 'change'));
   }
 
   //-----------------------------------
@@ -25,10 +30,8 @@ export default class DataGrid extends DataGridComponentBase {
 
     const cn = this.calcClassnames('data-grid');
 
-    let startDimensionIx = 0;
-    let dimension = dataGridModel.dimensions[startDimensionIx];
-    let DimensionRenderer = dimension.dimensionRenderer;
-    let context = new DataGridDimensionContext(startDimensionIx, dataGridModel.items, undefined, dataGridModel);
+    let context = dataGridModel.buildContext();
+    let DimensionRenderer = context.dimension.dimensionRenderer;
 
     return <div className={cn}>
       <DimensionRenderer context={context} />

@@ -15,7 +15,7 @@ export default class Form extends RingaComponent {
 
     this.formController = new FormController(props.model);
 
-    attach(this, this.formController);
+    this.attach(this.formController);
   }
 
   //-----------------------------------

@@ -33,6 +33,9 @@ export default class DataGridDescriptorColumn extends Model {
     this.addProperty('field', {
       type: DataGridDescriptorField
     });
+
+    this.addProperty('headerCellClasses', 'ellipsis');
+    this.addProperty('itemCellClasses', 'ellipsis');
   }
 
   //-----------------------------------

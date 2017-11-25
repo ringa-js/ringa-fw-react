@@ -14,11 +14,10 @@ export default class DataGridColumnHeaderCellRenderer extends DataGridComponentB
   // Lifecycle
   //-----------------------------------
   render() {
-    let cn = this.calcClassnames('data-grid-header-cell');
     let {column} = this.props;
     let {field} = column;
 
-    console.log(column);
+    let cn = this.calcClassnames('data-grid-header-cell', column.headerCellClasses);
 
     return <div className={cn} style={{width: column.width}}>
       <div className="label">{field.title}</div>

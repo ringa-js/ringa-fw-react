@@ -21,7 +21,7 @@ export default class FormExample1 extends RingaComponent {
     return <Form>
       <FormItem>
         <label>Name</label>
-        <TextInput />
+        <TextInput id="nameInput" />
       </FormItem>
       <SubmitButton label="Submit"
                     onClick={this.formSubmit_onClickHandler} />
@@ -31,7 +31,7 @@ export default class FormExample1 extends RingaComponent {
   //-----------------------------------
   // Events
   //-----------------------------------
-  formSubmit_onClickHandler() {
-    console.log('Submitted!');
+  formSubmit_onClickHandler(event, formModel) {
+    console.log('Submitted!', formModel.nameInput.value);
   }
 }

@@ -2,10 +2,13 @@ import {Model} from 'ringa';
 
 import {ArrayCollection} from 'ringa-fw-core';
 
+import TrieSearch from 'trie-search';
+
 import DataGridDimension from './DataGridDimension';
 import DataGridDimensionRow from './DataGridDimensionRow';
 import DataGridDimensionColumn from './DataGridDimensionColumn';
 import DataGridDescriptorColumn from './DataGridDescriptorColumn';
+import DataGridNodeContext from './DataGridNodeContext';
 
 export default class DataGridModel extends Model {
   //-----------------------------------
@@ -19,8 +22,76 @@ export default class DataGridModel extends Model {
     });
 
     this.addProperty('items', undefined, {
-      type: ArrayCollection
+      type: ArrayCollection,
+      onChange: () => this.items_changedHandler
     });
+
+    this.addProperty('autoIndex', true);
+
+    if (this.autoIndex && this.items) {
+      this.index();
+    }
+  }
+
+  //-----------------------------------
+  // Methods
+  //-----------------------------------
+  index() {
+    this.trieSearch = new TrieSearch();
+
+    this.depthFirst(ref => {
+      ref.context.dimension.indexItem(this.trieSearch, ref);
+    });
+  }
+
+  search(value) {
+    this.searchText = value;
+
+    this.dimensions.forEach(dimension => {
+      dimension.clearSearchResults();
+    });
+
+    this.trieSearch.get(this.searchText).forEach(ref => {
+      ref.dimension.addSearchResult(ref);
+    });
+
+    this.notify('change');
+  }
+
+  rebuildNodeContext() {
+    this.nodeContext = new DataGridNodeContext(this.dimensions[0], this);
+
+    this.notify('change');
+  }
+
+  depthFirst(callback) {
+    this.nodeContext.depthFirst(callback);
+  }
+
+  getNodeByPath(path) {
+    let obj = undefined;
+    let node = this.items.items;
+
+    try {
+      while (path.length) {
+        obj = node[path.shift()];
+      }
+    } catch (error) {
+      console.error(`DataGridModel: could not find object via path ${path.join(',')}`);
+
+      return undefined;
+    }
+
+    return obj;
+  }
+
+  //-----------------------------------
+  // Events
+  //-----------------------------------
+  items_changedHandler() {
+    this.autoIndex ? this.index() : undefined;
+
+    this.rebuildNodeContext();
   }
 
   //-----------------------------------

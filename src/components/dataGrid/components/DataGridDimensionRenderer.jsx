@@ -16,16 +16,16 @@ export default class DataGridDimensionRenderer extends DataGridComponentBase {
   render(wrap = true) {
     const {context} = this.props;
 
-    let items = [this.renderHeader(), this.renderItems(), this.renderFooter()];
+    let children = [this.renderHeader(), this.renderItems(), this.renderFooter()];
 
     if (!wrap) {
-      return items;
+      return children;
     }
 
     const cn = this.calcClassnames('data-grid-dimension', context.dimension.direction);
 
     return <div className={cn}>
-      {items}
+      {children}
     </div>;
   }
 
@@ -51,13 +51,15 @@ export default class DataGridDimensionRenderer extends DataGridComponentBase {
     context.iterate(iteratee => {
       let ItemRenderer = iteratee.itemRenderer;
 
-      renderedItems.push(<ItemRenderer key={iteratee.key} context={iteratee.context} item={iteratee.item} />);
+      renderedItems.push(<ItemRenderer key={iteratee.key}
+                                       context={iteratee.context}
+                                       item={iteratee.item} />);
     });
 
     let WrapperRenderer = context.dimension.wrapperRenderer;
 
     if (WrapperRenderer) {
-      return <WrapperRenderer>{renderedItems}</WrapperRenderer>;
+      return <WrapperRenderer context={context}>{renderedItems}</WrapperRenderer>;
     }
 
     return renderedItems;

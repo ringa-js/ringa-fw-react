@@ -7,6 +7,7 @@ import SV_I18N_DESCRIPTION from './assets/i18n/sv/i18n.md';
 import EN_SCREEN_DESCRIPTION from './assets/i18n/en/screen.md';
 import EN_DEBUG_INSPECTOR_DESCRIPTION from './assets/i18n/en/debugInspector.md';
 import EN_THEME_DESCRIPTION from './assets/i18n/en/theme.md';
+import EN_THEME_DATAGRID from './assets/i18n/en/dataGrid.md';
 
 const EN = 'en';
 const SV = 'sv';
@@ -33,6 +34,7 @@ export function setup(i18NModel) {
   i18NModel.addLanguageKey(EN, 'screen.description', EN_SCREEN_DESCRIPTION);
   i18NModel.addLanguageKey(EN, 'debugInspector.description', EN_DEBUG_INSPECTOR_DESCRIPTION);
   i18NModel.addLanguageKey(EN, 'theme.description', EN_THEME_DESCRIPTION);
+  i18NModel.addLanguageKey(EN, 'dataGrid.description', EN_THEME_DATAGRID);
 
   // By default the language is loaded from a cookie 'lang' on the local domain, but you could set it up to something else
   // here

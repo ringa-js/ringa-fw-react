@@ -1,6 +1,7 @@
 import React from 'react';
 
 import DataGridComponentBase from './DataGridComponentBase';
+import TextInput from '../../input/TextInput';
 
 export default class DataGridHeader extends DataGridComponentBase {
   //-----------------------------------
@@ -16,7 +17,7 @@ export default class DataGridHeader extends DataGridComponentBase {
   render() {
     const {context} = this.props;
 
-    let cn = this.calcClassnames('data-grid-header', 'horizontal');
+    let cn = this.calcClassnames('data-grid-header');
 
     let columnDimension = context.nextDimension;
 
@@ -27,7 +28,34 @@ export default class DataGridHeader extends DataGridComponentBase {
     });
 
     return <div className={cn}>
-      {headerCells}
+      {context.dimension.headerSettings.showFunctions ? this.renderFunctions() : undefined}
+      <div className="cells horizontal">
+        {headerCells}
+      </div>
     </div>;
+  }
+
+  //-----------------------------------
+  // Methods
+  //-----------------------------------
+  renderFunctions() {
+    const {context} = this.props;
+    const {i18NModel} = this.state;
+
+    return <div className="functions">
+      <div className="title"></div>
+      <div className="search">
+        <TextInput placeholder={i18NModel.i18n('list.search')} onChange={this.search_onChangeHandler}/>
+      </div>
+    </div>;
+  }
+
+  //-----------------------------------
+  // Events
+  //-----------------------------------
+  search_onChangeHandler(event, value) {
+    const {context} = this.props;
+
+    context.dataGridModel.search(value);
   }
 }

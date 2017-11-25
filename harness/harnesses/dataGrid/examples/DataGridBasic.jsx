@@ -1,5 +1,5 @@
 import React from 'react';
-import {DataGrid, DataGridModel, RingaComponent} from '../../../src/index';
+import {DataGrid, DataGridModel, RingaComponent} from '../../../../src/index';
 
 class DataGridExample1 extends RingaComponent {
   constructor() {

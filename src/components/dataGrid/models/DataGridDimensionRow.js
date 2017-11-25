@@ -15,5 +15,17 @@ export default class DataGridDimensionRow extends DataGridDimension {
     this.wrapperRenderer = DataGridRowContentBody;
     this.itemRenderer = DataGridRow;
     this.direction = 'vertical';
+    this.scrollable = true;
+  }
+
+  //-----------------------------------
+  // Methods
+  //-----------------------------------
+  indexItem(trieSearch, ref) {
+    // Row Number -> Next Item
+    trieSearch.map((ref.ix + 1).toString(), {
+      item: ref.item,
+      dimension: this
+    });
   }
 }

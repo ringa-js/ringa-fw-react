@@ -1,5 +1,7 @@
 @if ($Use_DataGridRow_Defaults == true) {
   .data-grid-row {
+    @include hover-1;
+
     display: flex;
     width: 100%;
     height: 100%;
