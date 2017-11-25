@@ -1,3 +1,4 @@
+import React from 'react';
 import {Controller} from 'ringa';
 import {domNodeToNearestReactComponent, getAllReactComponentAncestors} from 'react-ringa';
 import {isOver} from '../../utils/DisplayUtils';
@@ -10,16 +11,32 @@ import DragDropModel from './DragDropModel';
  * @param component A React Component instance.
  */
 function findNearestDragSource(component) {
-  component = component._reactInternalInstance;
+  if (component._reactInternalFiber) {
+    let fiber = component._reactInternalFiber;
 
-  while (component) {
-    let item = component._instance || component._currentElement._owner._instance;
+    while (fiber) {
+      let item = fiber.stateNode;
 
-    if (item.props && item.props.dragData) {
-      return item;
+      if (item && item instanceof React.Component) {
+        if (item.props && item.props.dragData) {
+          return item;
+        }
+      }
+
+      fiber = fiber.return; // return is the parent node, go figure (ask Facebook)
     }
+  } else {
+    component = component._reactInternalInstance;
 
-    component = component._hostParent;
+    while (component) {
+      let item = component._instance || component._currentElement._owner._instance;
+
+      if (item.props && item.props.dragData) {
+        return item;
+      }
+
+      component = component._hostParent;
+    }
   }
 
   return undefined;
