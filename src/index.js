@@ -97,6 +97,8 @@ export DataGridModel from './components/dataGrid/models/DataGridModel';
 export DataGridDimensionColumn from './components/dataGrid/models/DataGridDimensionColumn';
 export DataGridDimensionRow from './components/dataGrid/models/DataGridDimensionRow';
 export DataGridDescriptorColumn from './components/dataGrid/models/DataGridDescriptorColumn';
+export DataGridNumberColumn from './components/dataGrid/models/DataGridNumberColumn';
+export DataGridCellRenderer from './components/dataGrid/components/renderers/DataGridCellRenderer';
 
 //-----------------------------------
 // Complex

@@ -22,7 +22,7 @@ export default class DataGridDescriptorColumn extends Model {
     if (values && values.field && typeof values.field === 'string'){
       values.field = new DataGridDescriptorField({
         propertyName: values.field,
-        title: camelCaseToTitleCase(values.field)
+        title: !values.title ? camelCaseToTitleCase(values.field) : undefined
       });
     }
 
@@ -35,12 +35,18 @@ export default class DataGridDescriptorColumn extends Model {
       type: DataGridDescriptorField
     });
 
+    this.addProperty('title');
+
+    this.addProperty('labelFunction');
+
     this.addProperty('headerCellClasses', 'ellipsis');
     this.addProperty('itemCellClasses', 'ellipsis');
 
     this.addProperty('dimension', undefined, {
       type: DataGridDimension
     });
+
+    this.addProperty('itemRenderer');
   }
 
   //-----------------------------------
@@ -49,8 +55,16 @@ export default class DataGridDescriptorColumn extends Model {
   toLabel(item, context) {
     let {labelFunction, propertyName} = this.field;
 
+    labelFunction = labelFunction || this.labelFunction;
+
     let label = labelFunction ? labelFunction(item, this, context) : item[propertyName];
 
     return label !== undefined ? label.toString() : '';
+  }
+
+  toRawData(item) {
+    let {propertyName} = this.field;
+
+    return item[propertyName];
   }
 }

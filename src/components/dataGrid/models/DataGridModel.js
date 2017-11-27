@@ -148,7 +148,13 @@ export default class DataGridModel extends Model {
     return new DataGridModel({
       rootDimension: new DataGridDimensionRow({
         dimension: new DataGridDimensionColumn({
-          columns: columns.map(column => new DataGridDescriptorColumn(column))
+          columns: columns.map(column => {
+            if (column instanceof DataGridDescriptorColumn) {
+              return column;
+            }
+
+            return new DataGridDescriptorColumn(column)
+          })
         })
       }),
       items: finalItems

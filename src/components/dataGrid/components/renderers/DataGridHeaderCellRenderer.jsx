@@ -20,7 +20,7 @@ export default class DataGridColumnHeaderCellRenderer extends DataGridComponentB
     let cn = this.calcClassnames('data-grid-header-cell', column.headerCellClasses);
 
     return <div className={cn} style={{width: column.width}}>
-      <div className="label">{field.title}</div>
+      <div className="label">{column.title || field.title}</div>
     </div>;
   }
 }

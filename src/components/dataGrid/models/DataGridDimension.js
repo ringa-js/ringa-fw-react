@@ -75,7 +75,7 @@ export default class DataGridDimension extends Model {
     return this.idField ? rawData[idField] : undefined;
   }
 
-  _buildDataIterator(data) {
+  _buildDataIterator(data, nodeContext) {
     if (data instanceof Array) {
       let ix = 0;
 
@@ -84,7 +84,8 @@ export default class DataGridDimension extends Model {
           return ix < data.length ? {
             fieldOrIx: ix,
             data: data[ix++],
-            id: this.getIdFor(data[ix - 1]) || ix - 1
+            id: this.getIdFor(data[ix - 1]) || ix - 1,
+            parent: nodeContext
           } : undefined;
         }
       };
@@ -96,7 +97,8 @@ export default class DataGridDimension extends Model {
           return ix < data.items.length ? {
             fieldOrIx: ix,
             data: data.items[ix++],
-            id: this.getIdFor(data.items[ix - 1]) || ix - 1
+            id: this.getIdFor(data.items[ix - 1]) || ix - 1,
+            parent: nodeContext
           } : undefined;
         }
       };
@@ -112,13 +114,13 @@ export default class DataGridDimension extends Model {
   buildDataIteratorForContext(nodeContext) {
     let {node} = nodeContext;
 
-    return this._buildDataIterator(node);
+    return this._buildDataIterator(node, nodeContext);
   }
 
   buildFilteredDataIteratorForContext(nodeContext) {
     let {childrenFiltered} = nodeContext;
 
-    return this._buildDataIterator(childrenFiltered);
+    return this._buildDataIterator(childrenFiltered, nodeContext);
   }
 
   indexItem(trieSearch, ref) {

@@ -25,7 +25,7 @@ export default class DataGridRowContentBody extends DataGridComponentBase {
     let displayChildren = children;
 
     if (nodeContext.dimension.scrollable) {
-      let {childStartIx, childDisplayCount} = this.calculateView();
+      let {childStartIx, childDisplayCount, childOffset} = this.calculateView();
       let {scrollTopPx} = nodeContext;
       scrollTopPx = scrollTopPx === undefined ? 0 : scrollTopPx;
 
@@ -35,7 +35,7 @@ export default class DataGridRowContentBody extends DataGridComponentBase {
 
       displayChildren = displayChildren.map((child, ix) => <div style={{
         position: 'absolute',
-        top: scrollTopPx + (ix * defaultRowHeightPx),
+        top: -childOffset + scrollTopPx + (ix * defaultRowHeightPx),
         height: defaultRowHeightPx,
         width: '100%'
       }}>{child}</div>)
@@ -75,6 +75,7 @@ export default class DataGridRowContentBody extends DataGridComponentBase {
 
     return {
       childStartIx: Math.floor(scrollTopPx / defaultRowHeightPx),
+      childOffset: scrollTopPx % defaultRowHeightPx,
       childDisplayCount: displayRowCount
     };
   }
