@@ -41,6 +41,62 @@ export default class DataGridDimensionColumn extends DataGridDimension {
   //-----------------------------------
   // Methods
   //-----------------------------------
+  _buildDataIterator(data) {
+    if (data instanceof Array && data[0].fieldOrIx === undefined) {
+      console.error('Attempting to use a DataGridDimensionColumn to iterate over data that is not an Object!', this, data);
+    }
+
+    let cix = 0;
+
+    // Are we iterating over our filteredData (which is DataGridNodeContext) objects?
+    if (data instanceof Array) {
+      return {
+        next: () => {
+          let item = data[cix++];
+
+          if (item === undefined) {
+            return undefined;
+          }
+
+          return {
+            fieldOrIx: item.fieldOrIx,
+            data: item.data,
+            column: item.column,
+            id: item.id
+          };
+        }
+      };
+    }
+
+    // Are we iterating over our raw data (which is an Object)?
+    return {
+      next: () => {
+        let column = this.columns[cix++];
+
+        if (!column) {
+          return undefined;
+        }
+
+        let {field} = column;
+
+        return {
+          fieldOrIx: field,
+          data,
+          column,
+          id: field.propertyName
+        }
+      }
+    };
+  }
+
+  getItemRendererFor(iteratee) {
+    return this.itemRenderer;
+  }
+
+  getNextDimensionFor(ref) {
+    return ref.column.dimension;
+  }
+
   _setupDefaultColumnWidths() {
     let unassignedColumns = this.columns.filter(column => column.width === undefined);
 

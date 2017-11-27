@@ -38,25 +38,27 @@ export default class DataGridNodeContext {
     this.dimension = dimension;
     this.parent = parent;
     this.fieldOrIx = fieldOrIx;
+    this.isRoot = this.fieldOrIx === undefined;
     this.pathToNode = this.getPathToNode();
     this.node = this.dataGridModel.getNodeByPath(this.pathToNode);
-    this.dimensionIx = this.dataGridModel.dimensions.indexOf(this.dimension);
-    this.leaf = this.dimensionIx === this.dataGridModel.dimensions.length - 1;
-    this.isRoot = this.fieldOrIx === undefined;
-
     this.filtered = false; // When true, this node is ignored when rendering, etc.
 
     this.children = [];
 
-    if (!this.leaf) {
-      let nextDimension = this.dataGridModel.dimensions[this.dimensionIx + 1];
+    // Iterate over our data and recursively build the next dimension level
+    this.rawDataIterate(ref => {
+      let nextDimension = dimension.getNextDimensionFor(ref);
 
-      this.dataIterate(ref => {
-        let newNodeContext = new DataGridNodeContext(dimension, this, ref.fieldOrIx);
+      if (nextDimension) {
+        let newNodeContext = new DataGridNodeContext(nextDimension, this, ref.fieldOrIx);
 
         this.children.push(newNodeContext);
-      });
-    }
+      } else {
+        this.children.push(ref);
+      }
+    });
+
+    this.childrenFiltered = this.children.concat();
   }
 
   //-----------------------------------
@@ -69,15 +71,23 @@ export default class DataGridNodeContext {
   //-----------------------------------
   // Methods
   //-----------------------------------
-  buildIterator() {
+  buildRawDataIterator() {
     return this.dimension.buildDataIteratorForContext(this);
   }
 
+  buildFilteredDataIterator() {
+    return this.dimension.buildFilteredDataIteratorForContext(this);
+  }
+
   getPathToNode() {
+    if (this.isRoot) {
+      return [];
+    }
+
     let p = [this.fieldOrIx];
     let parent = this.parent;
 
-    while (parent.fieldOrIx !== undefined) {
+    while (!parent.isRoot) {
       p.unshift(parent.fieldOrIx);
       parent = parent.parent;
     }
@@ -91,8 +101,20 @@ export default class DataGridNodeContext {
     return new DataGridDimensionContext(nextDimension, this, fieldOrIx);
   }
 
-  dataIterate(callback) {
-    let iterator = this.buildIterator();
+  rawDataIterate(callback) {
+    let iterator = this.buildRawDataIterator();
+
+    let ref = iterator.next();
+
+    while (ref) {
+      callback(ref);
+
+      ref = iterator.next();
+    }
+  }
+
+  filteredDataIterate(callback) {
+    let iterator = this.buildFilteredDataIterator();
 
     let ref = iterator.next();
 

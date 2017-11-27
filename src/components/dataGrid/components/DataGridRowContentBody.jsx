@@ -2,7 +2,7 @@ import React from 'react';
 
 import DataGridComponentBase from "./DataGridComponentBase";
 
-export default class DataGridRow extends DataGridComponentBase {
+export default class DataGridRowContentBody extends DataGridComponentBase {
   //-----------------------------------
   // Constructor
   //-----------------------------------
@@ -14,10 +14,10 @@ export default class DataGridRow extends DataGridComponentBase {
   // Lifecycle
   //-----------------------------------
   render() {
-    const {children, context} = this.props;
+    const {children, nodeContext} = this.props;
 
     const cn = this.calcClassnames('data-grid-row-content-body', {
-      scrollable: context.dimension.scrollable
+      scrollable: nodeContext.dimension.scrollable
     });
 
     return <div className={cn}>

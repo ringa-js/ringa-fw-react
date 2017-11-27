@@ -1,6 +1,7 @@
 import React from 'react';
 
 import DataGridComponentBase from './DataGridComponentBase';
+import DataGridNodeContext from "../models/DataGridNodeContext";
 
 export default class DataGridDimensionRenderer extends DataGridComponentBase {
   //-----------------------------------
@@ -14,15 +15,19 @@ export default class DataGridDimensionRenderer extends DataGridComponentBase {
   // Lifecycle
   //-----------------------------------
   render(wrap = true) {
-    const {context} = this.props;
+    const {nodeContext} = this.props;
 
-    let children = [this.renderHeader(), this.renderItems(), this.renderFooter()];
+    let children = [
+      this.renderHeader(),
+      this.renderItems(),
+      this.renderFooter()
+    ];
 
     if (!wrap) {
       return children;
     }
 
-    const cn = this.calcClassnames('data-grid-dimension', context.dimension.direction);
+    const cn = this.calcClassnames('data-grid-dimension', nodeContext.dimension.direction);
 
     return <div className={cn}>
       {children}
@@ -33,44 +38,43 @@ export default class DataGridDimensionRenderer extends DataGridComponentBase {
   // Methods
   //-----------------------------------
   renderHeader() {
-    const {context} = this.props;
-    const HeaderRenderer = context.dimension.headerRenderer;
+    const {nodeContext} = this.props;
+    const HeaderRenderer = nodeContext.dimension.headerRenderer;
 
     if (HeaderRenderer) {
-      return <HeaderRenderer context={context}/>;
+      return <HeaderRenderer nodeContext={nodeContext}/>;
     }
 
     return undefined;
   }
 
   renderItems() {
-    const {context} = this.props;
+    const {nodeContext} = this.props;
 
     let renderedItems = [];
 
-    context.iterate(iteratee => {
-      let ItemRenderer = iteratee.itemRenderer;
+    nodeContext.filteredDataIterate(iteratee => {
+      let ItemRenderer = nodeContext.dimension.getItemRendererFor(iteratee);
 
-      renderedItems.push(<ItemRenderer key={iteratee.key}
-                                       context={iteratee.context}
-                                       item={iteratee.item} />);
+      renderedItems.push(<ItemRenderer key={iteratee.id}
+                                       nodeContext={iteratee.data instanceof DataGridNodeContext ? iteratee.data : iteratee} />);
     });
 
-    let WrapperRenderer = context.dimension.wrapperRenderer;
+    let WrapperRenderer = nodeContext.dimension.wrapperRenderer;
 
     if (WrapperRenderer) {
-      return <WrapperRenderer context={context}>{renderedItems}</WrapperRenderer>;
+      return <WrapperRenderer nodeContext={nodeContext}>{renderedItems}</WrapperRenderer>;
     }
 
     return renderedItems;
   }
 
   renderFooter() {
-    const {context} = this.props;
-    const FooterRenderer = context.dimension.footerRenderer;
+    const {nodeContext} = this.props;
+    const FooterRenderer = nodeContext.dimension.footerRenderer;
 
     if (FooterRenderer) {
-      return <FooterRenderer context={context}/>;
+      return <FooterRenderer nodeContext={nodeContext}/>;
     }
 
     return undefined;

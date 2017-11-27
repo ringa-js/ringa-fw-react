@@ -35,17 +35,23 @@ export default class ValidatingInputBase extends RingaComponent {
   componentDispatchReady() {
     super.componentDispatchReady();
 
-    this.dispatch(FormController.REGISTER_FORM_ELEMENT, {
-      element: this
-    }, true, true, false);
+    // It is possible nobody is actually using the FormController anywhere...
+    if (FormController.REGISTER_FORM_ELEMENT) {
+      this.dispatch(FormController.REGISTER_FORM_ELEMENT, {
+        element: this
+      }, true, true, false);
+    }
   }
 
   componentWillUnmount() {
     super.componentWillUnmount();
 
-    this.dispatch(FormController.UNREGISTER_FORM_ELEMENT, {
-      element: this
-    }, true, true, false);
+    // It is possible nobody is actually using the FormController anywhere...
+    if (FormController.UNREGISTER_FORM_ELEMENT) {
+      this.dispatch(FormController.UNREGISTER_FORM_ELEMENT, {
+        element: this
+      }, true, true, false);
+    }
   }
 
   componentWillReceiveProps(nextProps) {

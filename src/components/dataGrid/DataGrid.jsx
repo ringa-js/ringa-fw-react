@@ -30,11 +30,11 @@ export default class DataGrid extends DataGridComponentBase {
 
     const cn = this.calcClassnames('data-grid');
 
-    let context = dataGridModel.buildContext();
-    let DimensionRenderer = context.dimension.dimensionRenderer;
+    let nodeContext = dataGridModel.rootNodeContext;
+    let DimensionRenderer = nodeContext.dimension.dimensionRenderer;
 
     return <div className={cn}>
-      <DimensionRenderer context={context} />
+      <DimensionRenderer nodeContext={nodeContext} />
     </div>;
   }
 }

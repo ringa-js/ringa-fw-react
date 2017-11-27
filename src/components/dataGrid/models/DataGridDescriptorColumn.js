@@ -2,6 +2,7 @@ import {Model} from 'ringa';
 
 import DataGridHeaderCellRenderer from '../components/renderers/DataGridHeaderCellRenderer';
 import DataGridDescriptorField from "./DataGridDescriptorField";
+import DataGridDimension from "./DataGridDimension";
 
 let camelCaseToTitleCase = function (text) {
   let result = text.replace( /([A-Z])/g, " $1" );
@@ -36,6 +37,10 @@ export default class DataGridDescriptorColumn extends Model {
 
     this.addProperty('headerCellClasses', 'ellipsis');
     this.addProperty('itemCellClasses', 'ellipsis');
+
+    this.addProperty('dimension', undefined, {
+      type: DataGridDimension
+    });
   }
 
   //-----------------------------------

@@ -14,13 +14,14 @@ export default class DataGridCellRenderer extends DataGridComponentBase {
   // Lifecycle
   //-----------------------------------
   render() {
-    let {context, item} = this.props;
+    let {nodeContext} = this.props;
+    let {data, column} = nodeContext;
 
-    let label = item.column.toLabel(item.object, context);
+    let label = column.toLabel(data, nodeContext);
 
-    let cn = this.calcClassnames('data-grid-cell', item.column.itemCellClasses);
+    let cn = this.calcClassnames('data-grid-cell', column.itemCellClasses);
 
-    return <div className={cn} style={{width: item.column.width}}>
+    return <div className={cn} style={{width: column.width}}>
       {label}
     </div>;
   }

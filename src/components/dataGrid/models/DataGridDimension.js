@@ -33,7 +33,8 @@ export default class DataGridDimension extends Model {
 
     this.addProperty('direction', 'vertical');
 
-    this.addProperty('filteredItems', []);
+    this.addProperty('idField', undefined);
+    this.addProperty('idFunction', undefined);
   }
 
   //-----------------------------------
@@ -50,34 +51,66 @@ export default class DataGridDimension extends Model {
   //-----------------------------------
   // Methods
   //-----------------------------------
-  buildDataIteratorForContext(nodeContext) {
-    let {node} = nodeContext;
+  getItemRendererFor(iteratee) {
+    // To be implemented by subclass
+  }
 
-    if (node instanceof Array) {
+  getNextDimensionFor(iteratee) {
+    // To be implemented by subclass
+  }
+
+  getIdFor(rawData) {
+    if (this.idFunction) {
+      return this.idFunction(rawData, this);
+    }
+
+    return this.idField ? rawData[idField] : undefined;
+  }
+
+  _buildDataIterator(data) {
+    if (data instanceof Array) {
       let ix = 0;
 
       return {
-        next: () => ({
-          fieldOrIx: ix,
-          data: node[ix++]
-        })
+        next: () => {
+          return ix < data.length ? {
+            fieldOrIx: ix,
+            data: data[ix++],
+            id: this.getIdFor(data[ix - 1]) || ix - 1
+          } : undefined;
+        }
       };
-    } else if (node instanceof ArrayCollection) {
+    } else if (data instanceof ArrayCollection) {
       let ix = 0;
 
       return {
-        next: () => ({
-          fieldOrIx: ix,
-          data: node.items[ix++]
-        })
+        next: () => {
+          return ix < data.items.length ? {
+            fieldOrIx: ix,
+            data: data.items[ix++],
+            id: this.getIdFor(data.items[ix - 1]) || ix - 1
+          } : undefined;
+        }
       };
-    } else if (typeof node === 'object') {
+    } else if (typeof data === 'object') {
       console.error('Attempting to build an iterator of an object. Normally you would use DataGridDimensionColumn for this.');
     }
 
     return {
       next: () => {}
     };
+  }
+
+  buildDataIteratorForContext(nodeContext) {
+    let {node} = nodeContext;
+
+    return this._buildDataIterator(node);
+  }
+
+  buildFilteredDataIteratorForContext(nodeContext) {
+    let {childrenFiltered} = nodeContext;
+
+    return this._buildDataIterator(childrenFiltered);
   }
 
   indexItem(trieSearch, ref) {

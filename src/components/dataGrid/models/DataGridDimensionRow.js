@@ -16,11 +16,23 @@ export default class DataGridDimensionRow extends DataGridDimension {
     this.itemRenderer = DataGridRow;
     this.direction = 'vertical';
     this.scrollable = true;
+
+    this.addProperty('dimension', undefined, {
+      type: DataGridDimension
+    });
   }
 
   //-----------------------------------
   // Methods
   //-----------------------------------
+  getItemRendererFor(iteratee) {
+    return this.itemRenderer;
+  }
+
+  getNextDimensionFor(ref) {
+    return this.dimension; // Well this was simple...
+  }
+
   indexItem(trieSearch, ref) {
     // Row Number -> Next Item
     trieSearch.map((ref.ix + 1).toString(), {

@@ -17,7 +17,7 @@ export default class DataGridModel extends Model {
   constructor(name, values) {
     super(name, values);
 
-    this.addProperty('dimensions', [], {
+    this.addProperty('rootDimension', undefined, {
       type: DataGridDimension
     });
 
@@ -28,9 +28,17 @@ export default class DataGridModel extends Model {
 
     this.addProperty('autoIndex', true);
 
-    if (this.autoIndex && this.items) {
-      this.index();
-    }
+    this.rebuildRootNodeContext();
+    // if (this.autoIndex && this.items) {
+    //   this.index();
+    // }
+  }
+
+  //-----------------------------------
+  // Properties
+  //-----------------------------------
+  get rootNodeContext() {
+    return this._rootNodeContext;
   }
 
   //-----------------------------------
@@ -47,34 +55,34 @@ export default class DataGridModel extends Model {
   search(value) {
     this.searchText = value;
 
-    this.dimensions.forEach(dimension => {
-      dimension.clearSearchResults();
-    });
+    // this.rootDimension.forEach(dimension => {
+    //   dimension.clearSearchResults();
+    // });
 
-    this.trieSearch.get(this.searchText).forEach(ref => {
-      ref.dimension.addSearchResult(ref);
-    });
+    // this.trieSearch.get(this.searchText).forEach(ref => {
+    //   ref.dimension.addSearchResult(ref);
+    // });
 
     this.notify('change');
   }
 
-  rebuildNodeContext() {
-    this.nodeContext = new DataGridNodeContext(this.dimensions[0], this);
+  rebuildRootNodeContext() {
+    // This will recursively build out the entire tree
+    this._rootNodeContext = new DataGridNodeContext(this.rootDimension, this);
 
     this.notify('change');
   }
 
   depthFirst(callback) {
-    this.nodeContext.depthFirst(callback);
+    this.rootNodeContext.depthFirst(callback);
   }
 
   getNodeByPath(path) {
-    let obj = undefined;
     let node = this.items.items;
 
     try {
       while (path.length) {
-        obj = node[path.shift()];
+        node = node[path.shift()];
       }
     } catch (error) {
       console.error(`DataGridModel: could not find object via path ${path.join(',')}`);
@@ -82,7 +90,7 @@ export default class DataGridModel extends Model {
       return undefined;
     }
 
-    return obj;
+    return node;
   }
 
   //-----------------------------------
@@ -91,7 +99,7 @@ export default class DataGridModel extends Model {
   items_changedHandler() {
     this.autoIndex ? this.index() : undefined;
 
-    this.rebuildNodeContext();
+    this.rebuildRootNodeContext();
   }
 
   //-----------------------------------
@@ -109,10 +117,11 @@ export default class DataGridModel extends Model {
     }
 
     return new DataGridModel({
-      dimensions: [
-        new DataGridDimensionRow(),
-        new DataGridDimensionColumn({columns: columns.map(column => new DataGridDescriptorColumn(column))})
-      ],
+      rootDimension: new DataGridDimensionRow({
+        dimension: new DataGridDimensionColumn({
+          columns: columns.map(column => new DataGridDescriptorColumn(column))
+        })
+      }),
       items: finalItems
     });
   }
