@@ -37,6 +37,9 @@ export default class DataGridNodeContext {
   constructor(dimension, parent, fieldOrIx) {
     this.dimension = dimension;
     this.parent = parent;
+
+    this.dataGridModel.assignNextContextId(this);
+
     this.fieldOrIx = fieldOrIx;
     this.isRoot = this.fieldOrIx === undefined;
     this.pathToNode = this.getPathToNode();
@@ -74,6 +77,10 @@ export default class DataGridNodeContext {
   //-----------------------------------
   // Methods
   //-----------------------------------
+  index(trie) {
+    this.dimension.index(this, trie);
+  }
+
   searchFilter(value) {
     this.childrenFiltered = this.children.filter(nodeContext => {
       // Calling searchFilter is depth-first. As a result, our children have already had
@@ -143,13 +150,52 @@ export default class DataGridNodeContext {
 
   depthFirst(callback) {
     this.children.forEach(nodeContext => {
-      if (nodeContext.children) {
+      if (nodeContext.depthFirst) {
         nodeContext.depthFirst(callback);
+      } else if (nodeContext.children) {
+        nodeContext.children.forEach(callback);
       }
-
-      callback(nodeContext);
     });
 
     callback(this);
+  }
+
+  clearFilter() {
+    this.childrenFiltered = this.children.concat();
+  }
+
+  filterToContextIds(contextsById) {
+    this.included = false;
+
+    let includeAllChildren = true;
+
+    let dgm = this.dataGridModel;
+
+    for (let i = 0; i < this.children.length; i++) {
+      let childNodeContext = this.children[i];
+
+      if (childNodeContext.filterToContextIds) {
+        includeAllChildren = false;
+
+        childNodeContext.filterToContextIds(contextsById);
+      } else {
+        break;
+      }
+    }
+
+    this.included = this.included || !!contextsById[this.id];
+
+    if (this.included) {
+      let p = this.parent;
+
+      while (p !== dgm) {
+        p.included = true;
+        p = p.parent;
+      }
+    }
+
+    this.childrenFiltered = includeAllChildren ?
+      this.children.concat() :
+      this.children.filter(childNodeContext => childNodeContext.included);
   }
 }

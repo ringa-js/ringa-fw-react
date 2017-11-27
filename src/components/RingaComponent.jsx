@@ -206,7 +206,11 @@ class RingaComponent extends Component {
 
     this.addEvents();
 
+    this.dispatchReady = false;
+
     setTimeout(() => {
+      this.dispatchReady = true;
+
       this.setupDragDrop(this.props, this.state);
       this.componentDispatchReady();
     });
@@ -420,6 +424,10 @@ class RingaComponent extends Component {
   }
 
   dispatch(eventType, detail, bubbles = true, cancellable = true, requireCatch = true, bus = undefined) {
+    if (!this.dispatchReady) {
+      throw new Error('RingaComponent::dispatch(): please use componentDispatchReady() as you attempted to dispatch an event before the component was fully mounted to the DOM!');
+    }
+
     if (!this.rootDomNode) {
       throw new Error('RingaComponent::dispatch(): rootDomNode was undefined!');
     }

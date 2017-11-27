@@ -2,6 +2,8 @@ import {Model} from 'ringa';
 
 import {ArrayCollection} from 'ringa-fw-core';
 
+import TrieSearch from 'trie-search';
+
 import DataGridDimension from './DataGridDimension';
 import DataGridDimensionRow from './DataGridDimensionRow';
 import DataGridDimensionColumn from './DataGridDimensionColumn';
@@ -15,6 +17,10 @@ export default class DataGridModel extends Model {
   constructor(name, values) {
     super(name, values);
 
+    this._nextNodeContextId = 0;
+
+    this.idToNodeContextMap = {};
+
     this.addProperty('rootDimension', undefined, {
       type: DataGridDimension
     });
@@ -27,6 +33,10 @@ export default class DataGridModel extends Model {
     this.addProperty('autoIndex', true);
 
     this.rebuildRootNodeContext();
+
+    if (this.autoIndex) {
+      this.index();
+    }
   }
 
   //-----------------------------------
@@ -39,12 +49,48 @@ export default class DataGridModel extends Model {
   //-----------------------------------
   // Methods
   //-----------------------------------
-  search(value) {
+  assignNextContextId(nodeContext) {
+    nodeContext.id = this._nextNodeContextId++;
+
+    this.idToNodeContextMap[nodeContext.id] = nodeContext;
+  }
+
+  index() {
+    this.trie = new TrieSearch();
+
     this.depthFirst(nodeContext => {
-      if (nodeContext.searchFilter) {
-        nodeContext.searchFilter(value);
+      if (nodeContext.index) {
+        nodeContext.index(this.trie);
       }
     });
+  }
+
+  search(value) {
+    if (this.trie) {
+      if (!value) {
+        for (let id in this.idToNodeContextMap) {
+          if (this.idToNodeContextMap[id].clearFilter) {
+            this.idToNodeContextMap[id].clearFilter();
+          }
+        }
+      } else {
+        let contextIds = this.trie.get(value);
+        let contextIdsMap = {};
+
+        contextIds.forEach(id => contextIdsMap[id] = true);
+
+        // The breathFirst w/ pruning algorithm allows us to, at root nodes, determines a subset of items
+        // to search in for the child nodes so that if we have 1,000,000 items we don't have to iterate over
+        // all if they have already been preindexed.
+        this.rootNodeContext.filterToContextIds(contextIdsMap);
+      }
+    } else {
+      this.depthFirst(nodeContext => {
+        if (nodeContext.searchFilter) {
+          nodeContext.searchFilter(value);
+        }
+      });
+    }
 
     this.notify('change');
   }

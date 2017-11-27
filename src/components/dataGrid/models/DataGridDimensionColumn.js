@@ -41,6 +41,12 @@ export default class DataGridDimensionColumn extends DataGridDimension {
   //-----------------------------------
   // Methods
   //-----------------------------------
+  index(nodeContext, trie) {
+    this.columns.forEach(column => {
+      trie.map(column.toLabel(nodeContext.node), nodeContext.id);
+    });
+  }
+
   searchFilter(nodeContext, value) {
     return nodeContext.column.toLabel(nodeContext.data).indexOf(value) !== -1;
   }

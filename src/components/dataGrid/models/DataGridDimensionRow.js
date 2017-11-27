@@ -20,13 +20,21 @@ export default class DataGridDimensionRow extends DataGridDimension {
     this.addProperty('dimension', undefined, {
       type: DataGridDimension
     });
+
+    this.addProperty('defaultRowHeightPx', 30);
+    this.addProperty('displayRowCount', 30);
+    this.addProperty('maxHeight', 500);
   }
 
   //-----------------------------------
   // Methods
   //-----------------------------------
-  searchFilter(nodeContext, value) {
+  index(nodeContext, trie) {
+    trie.map((nodeContext.fieldOrIx + 1).toString(), nodeContext.id);
+  }
 
+  searchFilter(nodeContext, value) {
+    return (nodeContext.fieldOrIx + 1).toString().startsWith(value);
   }
 
   getItemRendererFor(iteratee) {

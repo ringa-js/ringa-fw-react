@@ -9,6 +9,9 @@ import './DataGridHarness.scss';
 import DataGridBasic from './examples/DataGridBasic';
 import DataGridBasicCode from './examples/DataGridBasic.txt';
 
+import DataGridHuge from './examples/DataGridHuge';
+import DataGridHugeCode from './examples/DataGridHuge.txt';
+
 export default class DataGridHarness extends HarnessBase {
   //-----------------------------------
   // Constructor
@@ -27,6 +30,11 @@ export default class DataGridHarness extends HarnessBase {
         <Panel label="Basic">
           <CodeExample code={DataGridBasicCode} classes="fill">
             <DataGridBasic />
+          </CodeExample>
+        </Panel>
+        <Panel label="Huge">
+          <CodeExample code={DataGridHugeCode} classes="fill">
+            <DataGridHuge />
           </CodeExample>
         </Panel>
       </div>

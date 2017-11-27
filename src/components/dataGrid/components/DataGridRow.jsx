@@ -16,7 +16,7 @@ export default class DataGridRow extends DataGridDimensionRenderer {
   render() {
     const cn = this.calcClassnames('data-grid-row');
 
-    return <div className={cn}>
+    return <div className={cn} style={{height: 30}}>
       {super.render(false)}
     </div>;
   }
