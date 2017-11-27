@@ -1,0 +1,26 @@
+@if ($Use_DataGridHeader_Defaults == true) {
+  .data-grid-header {
+    display: flex;
+    flex-direction: column;
+    background: $grey-2;
+
+    .functions {
+      .title {
+
+      }
+
+      .search {
+
+      }
+    }
+
+    .cells {
+      display: flex;
+
+      &.horizontal {
+        flex-direction: row;
+        width: 100%;
+      }
+    }
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 
 import DataGridComponentBase from '../DataGridComponentBase';
 
-export default class DataGridCellRenderer extends DataGridComponentBase {
+export default class DataGridColumnHeaderCellRenderer extends DataGridComponentBase {
   //-----------------------------------
   // Constructor
   //-----------------------------------
@@ -14,15 +14,13 @@ export default class DataGridCellRenderer extends DataGridComponentBase {
   // Lifecycle
   //-----------------------------------
   render() {
-    let {nodeContext} = this.props;
-    let {data, column} = nodeContext;
+    let {column} = this.props;
+    let {field} = column;
 
-    let label = column.toLabel(data, nodeContext);
-
-    let cn = this.calcClassnames('data-grid-cell', column.itemCellClasses);
+    let cn = this.calcClassnames('data-grid-header-cell', column.headerCellClasses);
 
     return <div className={cn} style={{width: column.width}}>
-      {label}
+      <div className="label">{column.title || field.title}</div>
     </div>;
   }
 }

@@ -1,0 +1,12 @@
+@if ($Use_DataGridCellRenderer_Defaults == true) {
+  .data-grid-cell {
+    padding: $vertical-pad-1 $horizontal-pad-1;
+    flex: 0 0 auto;
+
+    &.ellipsis {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

@@ -110,11 +110,51 @@ export default class ScrollContainer extends RingaComponent {
     super.componentDidMount();
 
     scrollContainerModel.scrollContainer = this.rootDomNode;
+
+    this.listen();
+  }
+
+  componentWillUnmount() {
+    super.componentWillUnmount();
+
+    this.unlisten();
   }
 
   render() {
-    const {children, classes} = this.props;
+    const {children, classes, maxHeight} = this.props;
 
-    return <div className={this.calcClassnames('ringa-container', 'scroll-container', classes)}>{children}</div>;
+    return <div className={this.calcClassnames('ringa-container', 'scroll-container', classes)} style={{maxHeight}}>{children}</div>;
+  }
+
+  //-----------------------------------
+  // Methods
+  //-----------------------------------
+  listen() {
+    this.rootDomNode.addEventListener('mousewheel', this.rootDomNode_mouseWheelHandler);
+    this.rootDomNode.addEventListener('scroll', this.rootDomNode_onScrollHandler);
+  }
+
+  unlisten() {
+    this.rootDomNode.removeEventListener('mousewheel', this.rootDomNode_mouseWheelHandler);
+    this.rootDomNode.removeEventListener('scroll', this.rootDomNode_onScrollHandler);
+  }
+
+  //-----------------------------------
+  // Events
+  //-----------------------------------
+  rootDomNode_mouseWheelHandler(event) {
+    const {onScrollTopChange} = this.props;
+
+    if (onScrollTopChange) {
+      onScrollTopChange(this.rootDomNode.scrollTop, 'wheel', event);
+    }
+  }
+
+  rootDomNode_onScrollHandler(event) {
+    const {onScrollTopChange} = this.props;
+
+    if (onScrollTopChange) {
+      onScrollTopChange(this.rootDomNode.scrollTop, 'scroll', event);
+    }
   }
 }

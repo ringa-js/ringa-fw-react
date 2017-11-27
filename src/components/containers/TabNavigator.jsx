@@ -30,6 +30,8 @@ class TabNavigator extends RingaComponent {
 
     children = children instanceof Array ? children : [children];
 
+    children = children.filter(child => child.props.visible !== false);
+
     const curTab = children[this.selectedIx];
     const tabContent = renderTabContent(curTab);
 

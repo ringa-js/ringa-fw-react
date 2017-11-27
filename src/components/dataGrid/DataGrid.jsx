@@ -4,11 +4,9 @@ import DataGridController from './controllers/DataGridController';
 
 import DataGridComponentBase from './components/DataGridComponentBase';
 
-import DataGridDimensionContextStack from './models/DataGridDimensionContextStack';
+import DataGridModel from './models/DataGridModel';
 
-import DataGridDimensionRenderer from './components/DataGridDimensionRenderer';
-import DataGridHeader from './components/DataGridHeader';
-import DataGridFooter from './components/DataGridFooter';
+import {dependency} from 'react-ringa';
 
 export default class DataGrid extends DataGridComponentBase {
   //-----------------------------------
@@ -18,21 +16,25 @@ export default class DataGrid extends DataGridComponentBase {
     super(props);
 
     if (!props.useCustomDataGridController) {
-      this.attach(new DataGridController());
+      this.attach(new DataGridController(undefined, undefined, props.model));
     }
+
+    this.depend(dependency(DataGridModel, 'change'));
   }
 
   //-----------------------------------
   // Lifecycle
   //-----------------------------------
   render() {
-    let cn = this.calcClassnames('data-grid');
-    let {dataGridModel} = this.state;
+    const {dataGridModel} = this.state;
+
+    const cn = this.calcClassnames('data-grid');
+
+    let nodeContext = dataGridModel.rootNodeContext;
+    let DimensionRenderer = nodeContext.dimension.dimensionRenderer;
 
     return <div className={cn}>
-      <DataGridHeader />
-      <DataGridDimensionRenderer dimension={dataGridModel} />
-      <DataGridFooter />
+      <DimensionRenderer nodeContext={nodeContext} />
     </div>;
   }
 }

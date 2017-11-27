@@ -17,7 +17,8 @@ export const routeMap = {
   'RadioButton': '/radioButton',
   'I18N': '/i18n',
   'Screen / Devices': '/screen',
-  'DebugInspector': '/debugInspector'
+  'DebugInspector': '/debugInspector',
+  'DataGrid': '/dataGrid'
 };
 
 const _routeMapInverted = {};

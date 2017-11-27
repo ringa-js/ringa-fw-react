@@ -39,17 +39,15 @@ export default class FormController extends Controller {
       formModel.elements = [];
     });
 
-    this.addListener('validChanged', (formModel, element, invalidReasons, valid) => {
+    this.addListener('validChanged', (formModel) => {
       formModel.valid = true;
 
       formModel.elements.forEach(element => {
         formModel.valid = formModel.valid && element.valid;
       });
-
     });
 
-    this.addListener('valueChanged', (formModel, element, invalidReasons, valid) => {
-
+    this.addListener('valueChanged', (formModel) => {
       if (formModel.rerunValidationsOnTouchedElements) {
         formModel.elements.forEach(element => {
           if (element.value) {
@@ -57,7 +55,6 @@ export default class FormController extends Controller {
           }
         });
       }
-
     });
   }
 }

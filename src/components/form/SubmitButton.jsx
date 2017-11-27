@@ -23,6 +23,18 @@ export default class SubmitButton extends RingaComponent {
   render() {
     const {valid} = this.state;
 
-    return <Button enabled={valid} {...this.props} />;
+    return <Button enabled={valid} {...this.props} onClick={this.onClickHandler} />;
+  }
+
+  //-----------------------------------
+  // Events
+  //-----------------------------------
+  onClickHandler() {
+    const {formModel} = this.state;
+    const {onClick} = this.props;
+
+    if (onClick) {
+      onClick(event, formModel);
+    }
   }
 }

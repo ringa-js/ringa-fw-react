@@ -1,4 +1,7 @@
-.data-grid {
-  display: flex;
-  flex-direction: column;
+@if ($Use_DataGrid_Defaults == true) {
+  .data-grid {
+    display: flex;
+    flex-direction: column;
+    min-height: 25px;
+  }
 }

@@ -61,4 +61,13 @@
   @import '../../../components/debugInspector/DebugInspector';
 
   @import '../../../components/complex/I18NSwitcher';
+
+  @import '../../../components/dataGrid/DataGrid';
+  @import '../../../components/dataGrid/components/DataGridHeader';
+  @import '../../../components/dataGrid/components/DataGridDimensionRenderer';
+  @import '../../../components/dataGrid/components/DataGridRow';
+  @import '../../../components/dataGrid/components/DataGridRowContentBody';
+  @import '../../../components/dataGrid/components/renderers/DataGridCellRenderer';
+  @import '../../../components/dataGrid/components/renderers/DataGridHeaderCellRenderer';
+  @import '../../../components/dataGrid/components/renderers/DataGridHeaderWrapperRenderer';
 }
