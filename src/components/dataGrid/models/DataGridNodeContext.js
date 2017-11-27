@@ -41,7 +41,6 @@ export default class DataGridNodeContext {
     this.isRoot = this.fieldOrIx === undefined;
     this.pathToNode = this.getPathToNode();
     this.node = this.dataGridModel.getNodeByPath(this.pathToNode);
-    this.filtered = false; // When true, this node is ignored when rendering, etc.
 
     this.children = [];
 
@@ -64,6 +63,10 @@ export default class DataGridNodeContext {
   //-----------------------------------
   // Properties
   //-----------------------------------
+  get filtered() {
+    return this.childrenFiltered.length === 0;
+  }
+
   get dataGridModel() {
     return this.parent instanceof DataGridModel ? this.parent : this.parent.dataGridModel;
   }
@@ -71,6 +74,19 @@ export default class DataGridNodeContext {
   //-----------------------------------
   // Methods
   //-----------------------------------
+  searchFilter(value) {
+    this.childrenFiltered = this.children.filter(nodeContext => {
+      // Calling searchFilter is depth-first. As a result, our children have already had
+      // searchFilter called on all of them. So if a child says it is *not* filtered, then
+      // we know for sure that we need to display ourselves.
+      if (nodeContext.filtered === false) {
+        return true;
+      }
+
+      return this.dimension.searchFilter(nodeContext, value);
+    });
+  }
+
   buildRawDataIterator() {
     return this.dimension.buildDataIteratorForContext(this);
   }
@@ -125,25 +141,15 @@ export default class DataGridNodeContext {
     }
   }
 
-  depthFirst(callback, filtered = false) {
-    let result = false;
-    let items = filtered ? this.filteredNodesAsArray : this.nodesAsArray;
-
-    items.forEach((item, ix) => {
-      let nextDepthResult = false;
-
-      if (this.nextDimension) {
-        nextDepthResult = this.cloneAndPush(ix, item).depthFirst(callback);
+  depthFirst(callback) {
+    this.children.forEach(nodeContext => {
+      if (nodeContext.children) {
+        nodeContext.depthFirst(callback);
       }
 
-      result = result || callback({
-        item,
-        ix,
-        context: this,
-        depth: this.ix
-      }, nextDepthResult);
+      callback(nodeContext);
     });
 
-    return result;
+    callback(this);
   }
 }

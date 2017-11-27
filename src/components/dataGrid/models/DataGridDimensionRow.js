@@ -25,6 +25,10 @@ export default class DataGridDimensionRow extends DataGridDimension {
   //-----------------------------------
   // Methods
   //-----------------------------------
+  searchFilter(nodeContext, value) {
+
+  }
+
   getItemRendererFor(iteratee) {
     return this.itemRenderer;
   }

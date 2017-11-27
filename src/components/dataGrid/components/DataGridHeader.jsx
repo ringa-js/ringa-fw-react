@@ -65,8 +65,8 @@ export default class DataGridHeader extends DataGridComponentBase {
   // Events
   //-----------------------------------
   search_onChangeHandler(event, value) {
-    const {context} = this.props;
+    const {nodeContext} = this.props;
 
-    context.dataGridModel.search(value);
+    nodeContext.dataGridModel.search(value);
   }
 }

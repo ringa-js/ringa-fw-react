@@ -51,6 +51,10 @@ export default class DataGridDimension extends Model {
   //-----------------------------------
   // Methods
   //-----------------------------------
+  searchFilter(nodeContext, value) {
+    // To be implemented by subclass
+  }
+
   getItemRendererFor(iteratee) {
     // To be implemented by subclass
   }

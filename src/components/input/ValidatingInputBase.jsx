@@ -192,11 +192,13 @@ export default class ValidatingInputBase extends RingaComponent {
       this.valid = false;
 
       if (!silent) {
-        this.dispatch(FormController.VALID_CHANGED, {
-          element: this,
-          valid: false,
-          invalidReasons
-        }, true, true, false);
+        if (FormController.VALID_CHANGED) {
+          this.dispatch(FormController.VALID_CHANGED, {
+            element: this,
+            valid: false,
+            invalidReasons
+          }, true, true, false);
+        }
 
         this.setState({
           valid: false,
@@ -210,11 +212,13 @@ export default class ValidatingInputBase extends RingaComponent {
     this.valid = true;
 
     if (!silent) {
-      this.dispatch(FormController.VALID_CHANGED, {
-        element: this,
-        valid: true,
-        invalidReasons: undefined
-      }, true, true, false);
+      if (FormController.VALID_CHANGED) {
+        this.dispatch(FormController.VALID_CHANGED, {
+          element: this,
+          valid: true,
+          invalidReasons: undefined
+        }, true, true, false);
+      }
 
       this.setState({
         valid: true,
@@ -226,8 +230,10 @@ export default class ValidatingInputBase extends RingaComponent {
   }
 
   onChangeHandler(){
-    this.dispatch(FormController.VALUE_CHANGED, {
-      element: this,
-    }, true, true, false);
+    if (FormController.VALUE_CHANGED) {
+      this.dispatch(FormController.VALUE_CHANGED, {
+        element: this,
+      }, true, true, false);
+    }
   }
 }

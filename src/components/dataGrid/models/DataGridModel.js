@@ -2,8 +2,6 @@ import {Model} from 'ringa';
 
 import {ArrayCollection} from 'ringa-fw-core';
 
-import TrieSearch from 'trie-search';
-
 import DataGridDimension from './DataGridDimension';
 import DataGridDimensionRow from './DataGridDimensionRow';
 import DataGridDimensionColumn from './DataGridDimensionColumn';
@@ -29,9 +27,6 @@ export default class DataGridModel extends Model {
     this.addProperty('autoIndex', true);
 
     this.rebuildRootNodeContext();
-    // if (this.autoIndex && this.items) {
-    //   this.index();
-    // }
   }
 
   //-----------------------------------
@@ -44,24 +39,12 @@ export default class DataGridModel extends Model {
   //-----------------------------------
   // Methods
   //-----------------------------------
-  index() {
-    this.trieSearch = new TrieSearch();
-
-    this.depthFirst(ref => {
-      ref.context.dimension.indexItem(this.trieSearch, ref);
-    });
-  }
-
   search(value) {
-    this.searchText = value;
-
-    // this.rootDimension.forEach(dimension => {
-    //   dimension.clearSearchResults();
-    // });
-
-    // this.trieSearch.get(this.searchText).forEach(ref => {
-    //   ref.dimension.addSearchResult(ref);
-    // });
+    this.depthFirst(nodeContext => {
+      if (nodeContext.searchFilter) {
+        nodeContext.searchFilter(value);
+      }
+    });
 
     this.notify('change');
   }

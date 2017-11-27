@@ -41,8 +41,24 @@ export default class DataGridDimensionColumn extends DataGridDimension {
   //-----------------------------------
   // Methods
   //-----------------------------------
+  searchFilter(nodeContext, value) {
+    return nodeContext.column.toLabel(nodeContext.data).indexOf(value) !== -1;
+  }
+
+  /**
+   * As a column renderer, we *always* display all our children, even if they are technically filtered out!
+   *
+   * @param nodeContext
+   * @returns {{next}|*}
+   */
+  buildFilteredDataIteratorForContext(nodeContext) {
+    let {children} = nodeContext;
+
+    return this._buildDataIterator(children);
+  }
+
   _buildDataIterator(data) {
-    if (data instanceof Array && data[0].fieldOrIx === undefined) {
+    if (data instanceof Array && data.length && data[0].fieldOrIx === undefined) {
       console.error('Attempting to use a DataGridDimensionColumn to iterate over data that is not an Object!', this, data);
     }
 
@@ -62,7 +78,8 @@ export default class DataGridDimensionColumn extends DataGridDimension {
             fieldOrIx: item.fieldOrIx,
             data: item.data,
             column: item.column,
-            id: item.id
+            id: item.id,
+            dimension: this
           };
         }
       };
@@ -83,7 +100,8 @@ export default class DataGridDimensionColumn extends DataGridDimension {
           fieldOrIx: field,
           data,
           column,
-          id: field.propertyName
+          id: field.propertyName,
+          dimension: this
         }
       }
     };
