@@ -2504,6 +2504,53 @@ ul li {
       width: 50px; }
     .classic .app-header .language-item .name {
       display: none; } }
+  .classic .data-grid {
+    display: flex;
+    flex-direction: column;
+    min-height: 25px; }
+  .classic .data-grid-header {
+    display: flex;
+    flex-direction: column;
+    background: #EDEDED; }
+    .classic .data-grid-header .cells {
+      display: flex; }
+      .classic .data-grid-header .cells.horizontal {
+        flex-direction: row;
+        width: 100%; }
+  .classic .data-grid-dimension {
+    display: flex;
+    width: 100%;
+    height: 100%; }
+    .classic .data-grid-dimension.vertical {
+      flex-direction: column; }
+    .classic .data-grid-dimension.horizontal {
+      flex-direction: row; }
+  .classic .data-grid-row {
+    background: none;
+    transition: background 300ms linear;
+    display: flex;
+    width: 100%; }
+    .classic .data-grid-row:hover {
+      background: rgba(235, 242, 242, 0.7); }
+  .classic .data-grid-row-content-body {
+    width: 100%;
+    height: 100%; }
+    .classic .data-grid-row-content-body.scrollable {
+      overflow-y: auto; }
+  .classic .data-grid-cell {
+    padding: 5px 10px;
+    flex: 0 0 auto; }
+    .classic .data-grid-cell.ellipsis {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+  .classic .data-grid-header-cell {
+    padding: 5px 10px;
+    flex: 0 0 auto; }
+    .classic .data-grid-header-cell.ellipsis .label {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
 
 /**
  * Step 3: Setup all our generic styles that are *not* associated with a Ringa component but might be useful in the theme.
