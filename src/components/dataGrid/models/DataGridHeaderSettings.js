@@ -9,6 +9,8 @@ export default class DataGridHeaderSettings extends Model {
 
     this.addProperty('showFunctions', true);
     this.addProperty('showSearch', true);
+    this.addProperty('autoFocusSearch', false);
     this.addProperty('title', '');
+    this.addProperty('searchI18NOptions', {});
   }
 }

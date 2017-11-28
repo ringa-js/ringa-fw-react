@@ -36,7 +36,7 @@ export default class DropdownTypeahead extends Dropdown {
 
       selectedItems = selectedItems || this.state.selectedItems;
 
-      placeholder = placeholder || i18NModel.i18n('dropdownTypeahead.defaultPlaceholder');
+      placeholder = placeholder || i18NModel.i18n('ringa-fw.dropdownTypeahead.defaultPlaceholder');
 
       let positionTop = open && this.overlayModel && this.overlayModel.positionOptions && this.overlayModel.positionOptions.alternate;
       const classNames = this.calcClassnames('dropdown default typeahead', open && 'open', positionTop ? 'position-top' : undefined);

@@ -24,6 +24,8 @@ export default class DataGridDimensionRow extends DataGridDimension {
     this.addProperty('defaultRowHeightPx', 30);
     this.addProperty('displayRowCount', 30);
     this.addProperty('maxHeight', 500);
+
+    this.addProperty('onClick');
   }
 
   //-----------------------------------

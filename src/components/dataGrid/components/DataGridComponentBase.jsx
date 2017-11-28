@@ -15,7 +15,9 @@ export default class DataGridComponentBase extends RingaComponent {
     super(props);
 
     this.depend(
-      dependency(DataGridModel, dataGridModelPropertyWatches),
+      dependency(DataGridModel, dataGridModelPropertyWatches, {
+        setStateAs: 'dataGridModel'
+      }),
       dependency(I18NModel, 'language'));
   }
 }

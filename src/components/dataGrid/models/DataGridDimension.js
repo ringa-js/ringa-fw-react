@@ -22,8 +22,12 @@ export default class DataGridDimension extends Model {
   constructor(name, values) {
     super(name, values);
 
+    if (values && values.headerSettings && !(values.headerSettings instanceof DataGridHeaderSettings)) {
+      values.headerSettings = new DataGridHeaderSettings(values.headerSettings);
+    }
+
     this.addProperty('headerRenderer');
-    this.addProperty('headerSettings', new DataGridHeaderSettings());
+    this.addProperty('headerSettings', new DataGridHeaderSettings(values ? values.headerSettings : undefined));
     this.addProperty('wrapperRenderer');
     this.addProperty('dimensionRenderer', DataGridDimensionRenderer);
     this.addProperty('itemRenderer', DataGridDimensionRenderer);

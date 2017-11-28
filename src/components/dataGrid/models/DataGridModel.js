@@ -21,21 +21,27 @@ export default class DataGridModel extends Model {
 
     this.idToNodeContextMap = {};
 
+    this.addProperty('name', 'defaultDataGrid');
+
     this.addProperty('rootDimension', undefined, {
       type: DataGridDimension
     });
 
     this.addProperty('items', undefined, {
       type: ArrayCollection,
-      onChange: () => this.items_changedHandler
+      onChange: this.items_onChangeHandler.bind(this)
     });
 
     this.addProperty('autoIndex', true);
 
-    this.rebuildRootNodeContext();
+    this.addProperty('classes');
 
-    if (this.autoIndex) {
-      this.index();
+    if (this.items) {
+      this.rebuildRootNodeContext();
+
+      if (this.autoIndex) {
+        this.index();
+      }
     }
   }
 
@@ -125,16 +131,20 @@ export default class DataGridModel extends Model {
   //-----------------------------------
   // Events
   //-----------------------------------
-  items_changedHandler() {
-    this.autoIndex ? this.index() : undefined;
+  items_onChangeHandler() {
+    if (this.items instanceof Array) {
+      this._items = new ArrayCollection({data: this.items});
+    }
 
     this.rebuildRootNodeContext();
+
+    this.autoIndex ? this.index() : undefined;
   }
 
   //-----------------------------------
   // Statics
   //-----------------------------------
-  static constructDefaultRowColumnModel(columns, data) {
+  static constructDefaultRowColumnModel(columns, data, options = {}) {
     let finalItems;
 
     if (data) {
@@ -145,9 +155,9 @@ export default class DataGridModel extends Model {
       }
     }
 
-    return new DataGridModel({
-      rootDimension: new DataGridDimensionRow({
-        dimension: new DataGridDimensionColumn({
+    return new DataGridModel(Object.assign({
+      rootDimension: new DataGridDimensionRow(Object.assign({
+        dimension: new DataGridDimensionColumn(Object.assign({
           columns: columns.map(column => {
             if (column instanceof DataGridDescriptorColumn) {
               return column;
@@ -155,9 +165,9 @@ export default class DataGridModel extends Model {
 
             return new DataGridDescriptorColumn(column)
           })
-        })
-      }),
+        }), options.column)
+      }, options.row)),
       items: finalItems
-    });
+    }, options));
   }
 }

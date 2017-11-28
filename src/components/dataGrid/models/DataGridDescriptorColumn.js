@@ -24,6 +24,8 @@ export default class DataGridDescriptorColumn extends Model {
         propertyName: values.field,
         title: !values.title ? camelCaseToTitleCase(values.field) : undefined
       });
+    } else if (values && values.field && typeof values.field === 'object') {
+      values.field = new DataGridDescriptorField(values.field);
     }
 
     super(name, values);
@@ -40,7 +42,8 @@ export default class DataGridDescriptorColumn extends Model {
     this.addProperty('labelFunction');
 
     this.addProperty('headerCellClasses', 'ellipsis');
-    this.addProperty('itemCellClasses', 'ellipsis');
+    this.addProperty('itemCellClasses');
+    this.addProperty('itemCellLabelClasses', 'ellipsis');
 
     this.addProperty('dimension', undefined, {
       type: DataGridDimension

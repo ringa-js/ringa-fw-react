@@ -33,7 +33,7 @@ class CodeExample extends RingaComponent {
         <Tab label={i18NModel.i18n(i18NKey)}>
           {children}
         </Tab>
-        <Tab label={i18NModel.i18n('codeExample.code')}>
+        <Tab label={i18NModel.i18n('ringa-fw.codeExample.code')}>
           <Code code={code} classes="fill" />
         </Tab>
       </TabNavigator>

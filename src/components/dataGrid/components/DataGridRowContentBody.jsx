@@ -15,14 +15,14 @@ export default class DataGridRowContentBody extends DataGridComponentBase {
   // Lifecycle
   //-----------------------------------
   render() {
-    const {children, nodeContext} = this.props;
+    const {items, nodeContext} = this.props;
 
     const cn = this.calcClassnames('data-grid-row-content-body', {
       scrollable: nodeContext.dimension.scrollable
     });
 
     let height = this.calculateHeight();
-    let displayChildren = children;
+    let displayChildren = items;
 
     if (nodeContext.dimension.scrollable) {
       let {childStartIx, childDisplayCount, childOffset} = this.calculateView();
@@ -31,14 +31,27 @@ export default class DataGridRowContentBody extends DataGridComponentBase {
 
       let {defaultRowHeightPx} = nodeContext.dimension;
 
-      displayChildren = children.slice(childStartIx, childStartIx + childDisplayCount);
+      displayChildren = items.slice(childStartIx, childStartIx + childDisplayCount);
 
-      displayChildren = displayChildren.map((child, ix) => <div style={{
-        position: 'absolute',
-        top: -childOffset + scrollTopPx + (ix * defaultRowHeightPx),
-        height: defaultRowHeightPx,
-        width: '100%'
-      }}>{child}</div>)
+      displayChildren = displayChildren.map((unrenderedItem, ix) => {
+        let ItemRenderer = unrenderedItem.itemRenderer;
+
+        return <div key={unrenderedItem.key} style={{
+                    position: 'absolute',
+                    top: -childOffset + scrollTopPx + (ix * defaultRowHeightPx),
+                    height: defaultRowHeightPx,
+                    width: '100%'
+                  }}><ItemRenderer key={unrenderedItem.key}
+                                   nodeContext={unrenderedItem.nodeContext} />
+              </div>;
+      });
+    } else {
+      displayChildren = displayChildren.map(unrenderedItem => {
+        let ItemRenderer = unrenderedItem.itemRenderer;
+
+        return <ItemRenderer key={unrenderedItem.key}
+                             nodeContext={unrenderedItem.nodeContext} />
+      });
     }
 
     return <ScrollContainer classes={cn} 
@@ -54,17 +67,17 @@ export default class DataGridRowContentBody extends DataGridComponentBase {
   // Methods
   //-----------------------------------
   calculateHeight() {
-    const {children, nodeContext} = this.props;
+    const {items, nodeContext} = this.props;
 
     let {dimension, scrollTopPx} = nodeContext;
 
     let {defaultRowHeightPx, displayRowCount} = dimension;
 
-    return defaultRowHeightPx * children.length;
+    return defaultRowHeightPx * items.length;
   }
 
   calculateView() {
-    const {children, nodeContext} = this.props;
+    const {items, nodeContext} = this.props;
 
     let {dimension, scrollTopPx} = nodeContext;
     let {defaultRowHeightPx, displayRowCount} = dimension;
@@ -88,6 +101,13 @@ export default class DataGridRowContentBody extends DataGridComponentBase {
 
     nodeContext.scrollTopPx = scrollTop;
 
-    this.forceUpdate();
+    if (this.scrollTimeout) {
+      return;
+    }
+
+    this.scrollTimeout = setTimeout(() => {
+      this.scrollTimeout = undefined;
+      this.forceUpdate();
+    }, 25);
   }
 }

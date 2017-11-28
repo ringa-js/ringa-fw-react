@@ -16,6 +16,18 @@ export default class DataGridHeader extends DataGridComponentBase {
   //-----------------------------------
   // Lifecycle
   //-----------------------------------
+  componentDidMount() {
+    super.componentDidMount();
+
+    const {nodeContext} = this.props;
+
+    let rowDimension = nodeContext.dimension;
+
+    if (rowDimension.headerSettings.autoFocusSearch) {
+      this.refs.searchInput.focus();
+    }
+  }
+
   render() {
     const {nodeContext} = this.props;
 
@@ -50,12 +62,17 @@ export default class DataGridHeader extends DataGridComponentBase {
   //-----------------------------------
   renderFunctions() {
     const {nodeContext} = this.props;
-    const {i18NModel} = this.state;
+    const {i18NModel, dataGridModel} = this.state;
+
+    let columnDimension = nodeContext.dimension.getNextDimensionFor();
+
+    let placeholder = i18NModel.i18n(`ringa-fw.${dataGridModel.name}.search`, columnDimension.headerSettings.searchI18NOptions);
 
     return <div className="functions">
       <div className="title"></div>
       <div className="search">
-        <TextInput placeholder={i18NModel.i18n('list.search')}
+        <TextInput placeholder={placeholder}
+                   ref="searchInput"
                    onChange={this.search_onChangeHandler}/>
       </div>
     </div>;

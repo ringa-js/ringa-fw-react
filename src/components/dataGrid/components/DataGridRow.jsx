@@ -16,8 +16,21 @@ export default class DataGridRow extends DataGridDimensionRenderer {
   render() {
     const cn = this.calcClassnames('data-grid-row');
 
-    return <div className={cn} style={{height: 30}}>
+    return <div className={cn} onClick={this.row_onClickHandler}>
       {super.render(false)}
     </div>;
+  }
+
+  //-----------------------------------
+  // Events
+  //-----------------------------------
+  row_onClickHandler(event) {
+    const {nodeContext} = this.props;
+
+    let rowDimension = nodeContext.parent.dimension;
+
+    if (rowDimension.onClick) {
+      rowDimension.onClick(nodeContext, event);
+    }
   }
 }

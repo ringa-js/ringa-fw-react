@@ -21,7 +21,7 @@ export default class ValidatorRequired extends ValidatorBase {
       return false;
     }
 
-    this.message = i18NModel ? i18NModel.i18n('validator.required') : `${options.name || 'This field'} is required`;
+    this.message = i18NModel ? i18NModel.i18n('ringa-fw.validator.required') : `${options.name || 'This field'} is required`;
     this.details = {};
 
     return {

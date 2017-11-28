@@ -19,7 +19,7 @@ export default class DataGrid extends DataGridComponentBase {
       this.attach(new DataGridController(undefined, undefined, props.model));
     }
 
-    this.depend(dependency(DataGridModel, 'change'));
+    this.depend(dependency(DataGridModel, ['change', 'items']));
   }
 
   //-----------------------------------
@@ -28,13 +28,18 @@ export default class DataGrid extends DataGridComponentBase {
   render() {
     const {dataGridModel} = this.state;
 
-    const cn = this.calcClassnames('data-grid');
+    const cn = this.calcClassnames('data-grid', dataGridModel.classes);
 
     let nodeContext = dataGridModel.rootNodeContext;
-    let DimensionRenderer = nodeContext.dimension.dimensionRenderer;
 
-    return <div className={cn}>
-      <DimensionRenderer nodeContext={nodeContext} />
-    </div>;
+    if (nodeContext) {
+      let DimensionRenderer = nodeContext.dimension.dimensionRenderer;
+
+      return <div className={cn}>
+        <DimensionRenderer nodeContext={nodeContext}/>
+      </div>;
+    }
+
+    return <div className={cn}>No data provided.</div>;
   }
 }

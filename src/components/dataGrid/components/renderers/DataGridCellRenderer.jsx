@@ -20,9 +20,12 @@ export default class DataGridCellRenderer extends DataGridComponentBase {
     let label = column.toLabel(data, nodeContext);
 
     let cn = this.calcClassnames('data-grid-cell', column.itemCellClasses);
+    let cccn = this.calcClassnames('data-grid-cell-label', column.itemCellLabelClasses);
 
     return <div className={cn} style={{width: column.width}}>
-      {label}
+      <div className={cccn}>
+        {label}
+      </div>
     </div>;
   }
 }

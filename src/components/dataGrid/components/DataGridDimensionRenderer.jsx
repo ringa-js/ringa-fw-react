@@ -51,6 +51,24 @@ export default class DataGridDimensionRenderer extends DataGridComponentBase {
   renderItems() {
     const {nodeContext} = this.props;
 
+    let WrapperRenderer = nodeContext.dimension.wrapperRenderer;
+
+    if (WrapperRenderer) {
+      let unrenderedItems = [];
+
+      nodeContext.filteredDataIterate(iteratee => {
+        let ItemRenderer = nodeContext.dimension.getItemRendererFor(iteratee);
+
+        unrenderedItems.push({
+          key: iteratee.id,
+          itemRenderer: nodeContext.dimension.getItemRendererFor(iteratee),
+          nodeContext: iteratee.data instanceof DataGridNodeContext ? iteratee.data : iteratee
+        });
+      });
+
+      return <WrapperRenderer nodeContext={nodeContext} items={unrenderedItems} />;
+    }
+
     let renderedItems = [];
 
     nodeContext.filteredDataIterate(iteratee => {
@@ -59,12 +77,6 @@ export default class DataGridDimensionRenderer extends DataGridComponentBase {
       renderedItems.push(<ItemRenderer key={iteratee.id}
                                        nodeContext={iteratee.data instanceof DataGridNodeContext ? iteratee.data : iteratee} />);
     });
-
-    let WrapperRenderer = nodeContext.dimension.wrapperRenderer;
-
-    if (WrapperRenderer) {
-      return <WrapperRenderer nodeContext={nodeContext}>{renderedItems}</WrapperRenderer>;
-    }
 
     return renderedItems;
   }

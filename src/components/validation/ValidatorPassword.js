@@ -46,7 +46,7 @@ export default class ValidatorPassword extends ValidatorBase {
 
     return {
       valid: this.valid,
-      message: this.message = i18NModel ? i18NModel.i18n('validator.passwordInvalid', this.owaspConfig) : 'Invalid password provided, does not pass strength test',
+      message: this.message = i18NModel ? i18NModel.i18n('ringa-fw.validator.passwordInvalid', this.owaspConfig) : 'Invalid password provided, does not pass strength test',
       details: this.details = {}
     };
   }
