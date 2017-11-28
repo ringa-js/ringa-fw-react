@@ -81,6 +81,8 @@ export default class ModalToggleContainer extends RingaComponent {
       }, this.rootDomNode);
 
       this.modal.addEventListener('remove', this.modal_removeHandler);
+    } else if (show && this.modal && this.modal.component) {
+      this.modal.component.forceUpdate();
     }
 
     if (!show && this.modal) {

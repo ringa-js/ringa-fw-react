@@ -28,6 +28,8 @@ export default class PositionableComponent extends RingaComponent {
   componentDidMount() {
     this.afterUpdate();
 
+    this.getPositionableModel().component = this;
+
     if (this.getPositionableModel().mouseDownOutsideHandler) {
       window.addEventListener('click', this.window_clickHandler);
     }
