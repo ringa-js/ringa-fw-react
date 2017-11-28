@@ -82,7 +82,7 @@ export default class Checkbox extends RingaComponent {
       this.forceUpdate();
     } else if (model && modelField) {
       model[modelField] = !checked;
-    } else {
+    } else if (this.props.checked === undefined) {
       this.setState({
         checked: !checked,
         stateDriven: true
