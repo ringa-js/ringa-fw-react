@@ -2553,6 +2553,7 @@ ul li {
     padding: 5px 10px;
     display: flex;
     flex: 0 1 auto;
+    min-width: 0;
     justify-content: space-between;
     align-items: center; }
     .classic .data-grid-cell .data-grid-cell-label {
@@ -2563,7 +2564,8 @@ ul li {
         text-overflow: ellipsis; }
   .classic .data-grid-header-cell {
     padding: 5px 10px;
-    flex: 0 0 auto; }
+    overflow: hidden;
+    flex: 0 1 auto; }
     .classic .data-grid-header-cell.ellipsis .label {
       white-space: nowrap;
       overflow: hidden;
