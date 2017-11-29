@@ -19,8 +19,16 @@ export default class DataGridColumnHeaderCellRenderer extends DataGridComponentB
 
     let cn = this.calcClassnames('data-grid-header-cell', column.headerCellClasses);
 
+    let title;
+
+    if (column.titleFunction) {
+      title = column.titleFunction();
+    } else {
+      title = column.title || field.title;
+    }
+
     return <div className={cn} style={{width: column.width}}>
-      <div className="label">{column.title || field.title}</div>
+      <div className="label">{title}</div>
     </div>;
   }
 }

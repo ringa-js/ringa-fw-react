@@ -1,8 +1,8 @@
 @if ($Use_DataGridHeaderCellRenderer_Defaults == true) {
   .data-grid-header-cell {
     padding: $vertical-pad-1 $horizontal-pad-1;
-
-    flex: 0 0 auto;
+    overflow: hidden;
+    flex: 0 1 auto;
 
     &.ellipsis {
       .label {

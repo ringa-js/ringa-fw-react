@@ -8,7 +8,7 @@ export default class DataGridRowContentBody extends DataGridComponentBase {
   // Constructor
   //-----------------------------------
   constructor(props) {
-    super(props);
+    super(props, ['change']);
   }
 
   //-----------------------------------
@@ -27,6 +27,7 @@ export default class DataGridRowContentBody extends DataGridComponentBase {
     if (nodeContext.dimension.scrollable) {
       let {childStartIx, childDisplayCount, childOffset} = this.calculateView();
       let {scrollTopPx} = nodeContext;
+
       scrollTopPx = scrollTopPx === undefined ? 0 : scrollTopPx;
 
       let {defaultRowHeightPx} = nodeContext.dimension;

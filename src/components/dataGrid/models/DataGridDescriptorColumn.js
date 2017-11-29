@@ -38,6 +38,7 @@ export default class DataGridDescriptorColumn extends Model {
     });
 
     this.addProperty('title');
+    this.addProperty('titleFunction');
 
     this.addProperty('labelFunction');
 

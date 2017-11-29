@@ -3,6 +3,7 @@
     padding: $vertical-pad-1 $horizontal-pad-1;
     display: flex;
     flex: 0 1 auto;
+    min-width: 0;
     justify-content: space-between;
     align-items: center;
 
