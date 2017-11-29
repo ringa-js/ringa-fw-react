@@ -2354,6 +2354,16 @@ ul li {
         width: 100%;
         height: 100%;
         pointer-events: all; }
+  .classic .ringa-component.modal-container-independent {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; }
+    .classic .ringa-component.modal-container-independent.has-modals {
+      pointer-events: all;
+      background: rgba(0, 0, 0, 0.2); }
   .classic .ringa-component.modal {
     -webkit-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 2px 2px 7px 2px rgba(0, 0, 0, 0.4);
@@ -2511,7 +2521,8 @@ ul li {
   .classic .data-grid-header {
     display: flex;
     flex-direction: column;
-    background: #EDEDED; }
+    background: #EDEDED;
+    flex: 0 0 auto; }
     .classic .data-grid-header .cells {
       display: flex; }
       .classic .data-grid-header .cells.horizontal {
@@ -2529,7 +2540,8 @@ ul li {
     background: none;
     transition: background 300ms linear;
     display: flex;
-    width: 100%; }
+    width: 100%;
+    height: 100%; }
     .classic .data-grid-row:hover {
       background: rgba(235, 242, 242, 0.7); }
   .classic .data-grid-row-content-body {
@@ -2539,11 +2551,16 @@ ul li {
       overflow-y: auto; }
   .classic .data-grid-cell {
     padding: 5px 10px;
-    flex: 0 0 auto; }
-    .classic .data-grid-cell.ellipsis {
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis; }
+    display: flex;
+    flex: 0 1 auto;
+    justify-content: space-between;
+    align-items: center; }
+    .classic .data-grid-cell .data-grid-cell-label {
+      width: 100%; }
+      .classic .data-grid-cell .data-grid-cell-label.ellipsis {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; }
   .classic .data-grid-header-cell {
     padding: 5px 10px;
     flex: 0 0 auto; }
