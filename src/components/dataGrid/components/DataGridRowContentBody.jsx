@@ -19,7 +19,7 @@ export default class DataGridRowContentBody extends DataGridComponentBase {
 
     const cn = this.calcClassnames('data-grid-row-content-body', {
       scrollable: nodeContext.dimension.scrollable
-    });
+    }, nodeContext.dimension.contentBodyClasses);
 
     let height = this.calculateHeight();
     let displayChildren = items;

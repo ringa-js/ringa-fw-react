@@ -102,6 +102,9 @@ export default class DataGridModel extends Model {
   }
 
   rebuildRootNodeContext() {
+    this._nextNodeContextId = 0;
+    this.idToNodeContextMap = {};
+
     // This will recursively build out the entire tree
     this._rootNodeContext = new DataGridNodeContext(this.rootDimension, this);
 

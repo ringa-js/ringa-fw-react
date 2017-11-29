@@ -9,7 +9,8 @@ class ModalModel extends PositionableModel {
   constructor(name, values) {
     super(name, values);
 
-    this.addProperty('renderer'); // A function used to render the children
+    this.addProperty('renderer'); // A function used to render the children *OR* a React Component class
+    this.addProperty('rendererProps'); // If the above is a class, this is the props to pass in.
     this.addProperty('title');
     this.addProperty('showCloseButton', true);
     this.addProperty('singleton', false);

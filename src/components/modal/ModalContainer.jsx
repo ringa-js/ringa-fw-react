@@ -30,7 +30,12 @@ export default class ModalContainer extends RingaComponent {
   // Lifecycle
   //-----------------------------------
   render() {
-    const {children, global, zIndex} = this.props;
+    const {children, global, zIndex, independent = false} = this.props;
+
+    if (independent) {
+      return this.renderIndependent(); // Useful for displaying positionable modals in an application that is not ringa
+                                       // based
+    }
 
     let {modals, blockMouseEvents} = this.state.modalContainerModel;
 
@@ -59,6 +64,26 @@ export default class ModalContainer extends RingaComponent {
   //-----------------------------------
   // Methods
   //-----------------------------------
+  renderIndependent() {
+    const {zIndex} = this.props;
+
+    let {modals} = this.state.modalContainerModel;
+
+    modals = modals.map(this.renderModal);
+
+    let cn = this.calcClassnames('modal-container-independent', {
+      'has-modals': modals.length > 0
+    });
+
+    let style = {
+      zIndex: global ? 10000 : zIndex
+    };
+
+    return <div className={cn} style={style}>
+      {modals}
+    </div> ;
+  }
+
   renderModal(modal) {
     if (modal.customWrapperRenderer) {
       return modal.customWrapperRenderer(modal, this);
