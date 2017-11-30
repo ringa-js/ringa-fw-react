@@ -12,7 +12,7 @@ class DataGridExample1 extends RingaComponent {
         email: 'somebody@gmail.com'
       },
       {
-        firstName: 'Noami',
+        firstName: 'Naomi',
         lastName: 'Mathews',
         email: 'nobody@gmail.com'
       },

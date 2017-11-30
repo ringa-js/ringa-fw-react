@@ -28,4 +28,18 @@ export default class DataGridCellRenderer extends DataGridComponentBase {
       </div>
     </div>;
   }
+
+  //-----------------------------------
+  // Methods
+  //-----------------------------------
+  calcClassnames(...args) {
+    let {nodeContext} = this.props;
+    let {column} = nodeContext;
+
+    let cn = column.itemCellClassesFunction ? column.itemCellClassesFunction(nodeContext) : column.itemCellClasses;
+
+    args.push(cn);
+
+    return super.calcClassnames.apply(this, args);
+  }
 }

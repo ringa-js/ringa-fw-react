@@ -40,7 +40,7 @@ export default class TextInput extends ValidatingInputBase {
 
   render() {
     let {label, classes, placeholder, defaultValue, required, valid = true,
-          requiredMessage = '*', multiline = false,editOnClick = false, type = 'text'} = this.props;
+          requiredMessage = '*', multiline = false, editOnClick = false, type = 'text'} = this.props;
 
     let {value, controlled, tempValue} = this.state;
 

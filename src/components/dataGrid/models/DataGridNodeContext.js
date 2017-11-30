@@ -43,6 +43,9 @@ export default class DataGridNodeContext {
     this.fieldOrIx = fieldOrIx;
     this.isRoot = this.fieldOrIx === undefined;
     this.pathToNode = this.getPathToNode();
+    /**
+     * Node contains raw data (e.g. a row within the original array of data.
+     */
     this.node = this.dataGridModel.getNodeByPath(this.pathToNode);
 
     this.children = [];
