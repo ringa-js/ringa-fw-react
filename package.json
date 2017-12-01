@@ -1,6 +1,6 @@
 {
   "name": "ringa-fw-react",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "RingaJS React Visual Framework",
   "main": "./src/index.js",
   "files": [
