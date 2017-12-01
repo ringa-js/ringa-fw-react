@@ -150,3 +150,5 @@ export DebugInspectController from './components/debugInspector/DebugInspectCont
 // I18N
 //-----------------------------------
 export I18NSwitcher from './components/complex/I18NSwitcher';
+
+export {setCookie, getCookie} from './utils/Cookie';

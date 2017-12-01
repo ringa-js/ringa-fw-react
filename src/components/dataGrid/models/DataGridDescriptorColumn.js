@@ -62,7 +62,19 @@ export default class DataGridDescriptorColumn extends Model {
 
     labelFunction = labelFunction || this.labelFunction;
 
-    let label = labelFunction ? labelFunction(item, this, context) : item[propertyName];
+    let splitter = () => {
+      let split = propertyName.split('.');
+      let n, obj = item;
+      while (split.length) {
+        n = split.shift();
+        obj = obj[n];
+      }
+      return obj;
+    };
+
+    labelFunction = labelFunction || splitter;
+
+    let label = labelFunction(item, this, context);
 
     return label !== undefined ? label.toString() : '';
   }
