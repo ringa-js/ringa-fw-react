@@ -15,7 +15,7 @@ export default class ValidatingInputBase extends RingaComponent {
 
     this.state = Object.assign({}, this.state);
 
-    this.processProps(props);
+    this.processProps(props, true);
 
     this.valid = true;
 
@@ -55,7 +55,7 @@ export default class ValidatingInputBase extends RingaComponent {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.processProps(nextProps);
+    this.processProps(nextProps, false);
   }
 
   render() {
@@ -65,7 +65,7 @@ export default class ValidatingInputBase extends RingaComponent {
   //-----------------------------------
   // Methods
   //-----------------------------------
-  processProps(props) {
+  processProps(props, firstPass) {
     let controlled;
     let value;
 
@@ -86,10 +86,13 @@ export default class ValidatingInputBase extends RingaComponent {
       value = undefined;
     }
 
-    let n = {
+    let n = firstPass ? {
       value: controlled ? value || '' : undefined,
       controlled,
       valid: true
+    } : {
+      value: controlled ? value || '' : undefined,
+      controlled
     };
 
     if (!this.mounted) {
@@ -170,7 +173,7 @@ export default class ValidatingInputBase extends RingaComponent {
    * @param value False if valid. Array of reasons if invalid.
    * @returns {*}
    */
-  validate(value, silent = false) {
+  validate(value, silent = false, setState = true) {
     let {validators} = this.state;
     let {model, modelField} = this.props;
 
@@ -199,7 +202,9 @@ export default class ValidatingInputBase extends RingaComponent {
             invalidReasons
           }, true, true, false);
         }
+      }
 
+      if (setState) {
         this.setState({
           valid: false,
           invalidReasons
@@ -219,7 +224,9 @@ export default class ValidatingInputBase extends RingaComponent {
           invalidReasons: undefined
         }, true, true, false);
       }
+    }
 
+    if (setState) {
       this.setState({
         valid: true,
         invalidReasons: undefined

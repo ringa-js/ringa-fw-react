@@ -73,6 +73,7 @@ export default class ModalToggleContainer extends RingaComponent {
         mouseDownOutsideHandler,
         blockMouseEvents,
         closable,
+        showCloseButton,
         renderer: this.renderer.bind(this),
         draggable,
         showHeader,

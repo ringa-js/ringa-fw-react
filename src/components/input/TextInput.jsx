@@ -26,6 +26,12 @@ export default class TextInput extends ValidatingInputBase {
   //-----------------------------------
   // Lifecycle
   //-----------------------------------
+  revalidate() {
+    setTimeout(() => {
+      this.validate(this.refs.input.value, true);
+    }, 0);
+  }
+
   componentDidMount() {
     super.componentDidMount();
 
@@ -35,7 +41,7 @@ export default class TextInput extends ValidatingInputBase {
       this.refs.input.focus();
     }
 
-    this.validate(this.refs.input.value, true);
+    this.validate(this.refs.input.value, true, false);
   }
 
   render() {

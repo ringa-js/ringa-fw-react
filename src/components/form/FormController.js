@@ -9,7 +9,11 @@ export default class FormController extends Controller {
   constructor(formModel, name, options) {
     super(formModel, name, options);
 
-    this.addModel(formModel || new FormModel());
+    this.addModel(formModel || (formModel = new FormModel()));
+
+    formModel.addEventListener('forceValidate', () => {
+      this.validate(formModel);
+    });
 
     this.addListener('registerFormElement', (formModel, element) => {
       if (formModel.elements.indexOf(element) !== -1) {
@@ -39,13 +43,7 @@ export default class FormController extends Controller {
       formModel.elements = [];
     });
 
-    this.addListener('validChanged', (formModel) => {
-      formModel.valid = true;
-
-      formModel.elements.forEach(element => {
-        formModel.valid = formModel.valid && element.valid;
-      });
-    });
+    this.addListener('validChanged', this.validate);
 
     this.addListener('valueChanged', (formModel) => {
       if (formModel.rerunValidationsOnTouchedElements) {
@@ -55,6 +53,21 @@ export default class FormController extends Controller {
           }
         });
       }
+    });
+  }
+
+  //-----------------------------------
+  // Methods
+  //-----------------------------------
+  validate(formModel) {
+    formModel.valid = true;
+
+    formModel.elements.forEach(element => {
+      if (element.revalidate && typeof element.revalidate === 'function') {
+        element.revalidate();
+      }
+
+      formModel.valid = formModel.valid && element.valid;
     });
   }
 }

@@ -51,8 +51,8 @@ export default class DefaultApplicationRoot extends RingaComponent {
       <BrowserCheck>
         <Theme classes="fill">
           <div className="fill">
-            <OverlayContainer global={true} classes={{fill: true}}>
-              <ModalContainer classes="fill no-scroll">
+            <OverlayContainer global={true} classes="fill">
+              <ModalContainer global={true} classes="fill no-scroll">
                 {children}
                 <DebugInspector />
               </ModalContainer>

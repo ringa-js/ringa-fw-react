@@ -12,6 +12,9 @@ import FormExample1 from './FormExample1';
 import FormExample2Code from './FormExample2.txt';
 import FormExample2 from './FormExample2';
 
+import FormForceValidateExampleCode from './FormForceValidateExample.txt';
+import FormForceValidateExample from './FormForceValidateExample';
+
 class FormHarness extends HarnessBase {
   //-----------------------------------
   // Constructor
@@ -34,6 +37,11 @@ class FormHarness extends HarnessBase {
       <Panel label="Validation">
         <CodeExample code={FormExample2Code}>
           <FormExample2 />
+        </CodeExample>
+      </Panel>
+      <Panel label="Force Validation">
+        <CodeExample code={FormForceValidateExampleCode}>
+          <FormForceValidateExample />
         </CodeExample>
       </Panel>
     </div>;
