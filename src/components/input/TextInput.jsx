@@ -1,6 +1,5 @@
 import React from 'react';
 import ValidatingInputBase from './ValidatingInputBase';
-import classnames from 'classnames';
 
 export default class TextInput extends ValidatingInputBase {
   //-----------------------------------
@@ -26,18 +25,18 @@ export default class TextInput extends ValidatingInputBase {
   //-----------------------------------
   // Lifecycle
   //-----------------------------------
-  revalidate() {
+  revalidate(updateIndicators = false) {
     setTimeout(() => {
-      this.validate(this.refs.input.value, true);
+      this.validate(this.refs.input.value, true, updateIndicators);
     }, 0);
   }
 
   componentDidMount() {
     super.componentDidMount();
 
-    const {focusOnCreate} = this.props;
+    const {focusOnMount} = this.props;
 
-    if (focusOnCreate) {
+    if (focusOnMount) {
       this.refs.input.focus();
     }
 
@@ -46,7 +45,7 @@ export default class TextInput extends ValidatingInputBase {
 
   render() {
     let {label, classes, placeholder, defaultValue, required, valid = true,
-          requiredMessage = '*', multiline = false, editOnClick = false, type = 'text'} = this.props;
+          requiredIndicator = this.renderDefaultRequiredIndicator, multiline = false, editOnClick = false, type = 'text'} = this.props;
 
     let {value, controlled, tempValue} = this.state;
 
@@ -57,7 +56,7 @@ export default class TextInput extends ValidatingInputBase {
     }
 
     if (required) {
-      requiredNode = <div className="required-indicator">{requiredMessage}</div>;
+      requiredNode = requiredIndicator();
     }
 
     let cn = this.calcClassnames('text-input', {
@@ -102,6 +101,10 @@ export default class TextInput extends ValidatingInputBase {
   //-----------------------------------
   // Methods
   //-----------------------------------
+  renderDefaultRequiredIndicator() {
+    return <div className="required-indicator"><div className="circle"></div></div>;
+  }
+
   getTooltipMessage() {
     let message;
 

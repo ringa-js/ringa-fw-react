@@ -25,6 +25,8 @@ export default class FormController extends Controller {
       if (element.id) {
         formModel[element.id] = element;
       }
+
+      formModel.valid = formModel.valid && element.valid;
     });
 
     this.addListener('unregisterFormElement', (formModel, element) => {
@@ -43,7 +45,9 @@ export default class FormController extends Controller {
       formModel.elements = [];
     });
 
-    this.addListener('validChanged', this.validate);
+    this.addListener('validChanged', (formModel, element, valid, invalidReasons) => {
+      this.validate(formModel);
+    });
 
     this.addListener('valueChanged', (formModel) => {
       if (formModel.rerunValidationsOnTouchedElements) {
@@ -61,6 +65,7 @@ export default class FormController extends Controller {
   //-----------------------------------
   validate(formModel) {
     formModel.valid = true;
+    formModel.invalidReasons = [];
 
     formModel.elements.forEach(element => {
       if (element.revalidate && typeof element.revalidate === 'function') {
@@ -68,6 +73,10 @@ export default class FormController extends Controller {
       }
 
       formModel.valid = formModel.valid && element.valid;
+
+      if (element.invalidReasons) {
+        formModel.invalidReasons = formModel.invalidReasons.concat(element.invalidReasons);
+      }
     });
   }
 }

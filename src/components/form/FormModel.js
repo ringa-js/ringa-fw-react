@@ -1,18 +1,30 @@
 import {Model} from 'ringa';
 
-export default Model.construct('FormModel', [
-  {
-    name: 'valid',
-    default: true
-  },
-  {
-    name: 'elements',
-    default: []
-  },
-  {
-    name: 'rerunValidationsOnTouchedElements',
-    default: false
-  },
-  'message',
-  'error'
-]);
+export default class FormModel extends Model {
+  //-----------------------------------
+  // Constructor
+  //-----------------------------------
+  constructor(props) {
+    super(props);
+
+    this.addProperty('valid', true);
+    this.addProperty('elements', []);
+    this.addProperty('rerunValidationsOnTouchedElements', false);
+    this.addProperty('message');
+    this.addProperty('error');
+    this.addProperty('invalidReasons');
+  }
+
+  //-----------------------------------
+  // Properties
+  //-----------------------------------
+  get values() {
+    let ret = {};
+
+    this.elements.forEach(element => {
+      ret[element.id] = element.value;
+    });
+
+    return ret;
+  }
+}

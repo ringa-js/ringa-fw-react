@@ -4,7 +4,7 @@
     border-radius: $radius-1;
     padding: 5px 10px;
     font-size: 14px;
-    transition: 0.1s transform ease-out, 0.1s box-shadow ease-out, 0.2s filter ease-out;
+    transition: $time-1 transform ease-out, $time-1 box-shadow ease-out, $time-1 filter ease-out, $time-1 background ease-out, $time-1 color ease-out;
 
     &:hover {
       transform: translate(-1px, -1px);
@@ -45,7 +45,7 @@
     &.selected {
       background: $ringa-color-2;
       color: $white;
-      border: 1px $ringa-color-2;
+      border: 1px solid $ringa-color-2;
     }
 
     &.tab {
