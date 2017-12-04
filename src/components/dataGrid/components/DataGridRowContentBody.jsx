@@ -70,6 +70,10 @@ export default class DataGridRowContentBody extends DataGridComponentBase {
   calculateHeight() {
     const {items, nodeContext} = this.props;
 
+    if (nodeContext.dimension.height) {
+      return nodeContext.dimension.height;
+    }
+
     let {dimension, scrollTopPx} = nodeContext;
 
     let {defaultRowHeightPx, displayRowCount} = dimension;
