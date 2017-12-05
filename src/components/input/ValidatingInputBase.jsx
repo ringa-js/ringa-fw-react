@@ -3,10 +3,11 @@ import RingaComponent from '../RingaComponent';
 import ValidatorRequired from '../validation/ValidatorRequired';
 import FormController from '../form/FormController';
 import I18NModel from '../../models/I18NModel';
+import FormInputBase from '../form/FormInputBase';
 
 import {dependency} from 'react-ringa';
 
-export default class ValidatingInputBase extends RingaComponent {
+export default class ValidatingInputBase extends FormInputBase {
   //-----------------------------------
   // Constructor
   //-----------------------------------
@@ -32,28 +33,6 @@ export default class ValidatingInputBase extends RingaComponent {
   //-----------------------------------
   // Lifecycle
   //-----------------------------------
-  componentDispatchReady() {
-    super.componentDispatchReady();
-
-    // It is possible nobody is actually using the FormController anywhere...
-    if (FormController.REGISTER_FORM_ELEMENT) {
-      this.dispatch(FormController.REGISTER_FORM_ELEMENT, {
-        element: this
-      }, true, true, false);
-    }
-  }
-
-  componentWillUnmount() {
-    super.componentWillUnmount();
-
-    // It is possible nobody is actually using the FormController anywhere...
-    if (FormController.UNREGISTER_FORM_ELEMENT) {
-      this.dispatch(FormController.UNREGISTER_FORM_ELEMENT, {
-        element: this
-      }, true, true, false);
-    }
-  }
-
   componentWillReceiveProps(nextProps) {
     this.processProps(nextProps, false);
   }
@@ -120,25 +99,6 @@ export default class ValidatingInputBase extends RingaComponent {
     }
   }
 
-  getTooltipMessage() {
-    if (!this.state.valid && this.state.invalidReasons) {
-      return this.state.invalidReasons.map(reason => reason.message).join('\n');
-    }
-
-    return undefined;
-  }
-
-  getTooltipOptions() {
-    if (!this.state.valid) {
-      return {
-        classes: 'error',
-        maxWidth: 400
-      };
-    }
-
-    return undefined;
-  }
-
   /**
    * This method is designed to be called in the subclass constructor AFTER state has been set!
    *
@@ -196,13 +156,7 @@ export default class ValidatingInputBase extends RingaComponent {
       this.invalidReasons = invalidReasons;
 
       if (dispatchEvents) {
-        if (FormController.VALID_CHANGED) {
-          this.dispatch(FormController.VALID_CHANGED, {
-            element: this,
-            valid: false,
-            invalidReasons
-          }, true, true, false);
-        }
+        this.notifyFormOfValidChange(false, invalidReasons);
       }
 
       if (updateIndicators) {
@@ -219,13 +173,7 @@ export default class ValidatingInputBase extends RingaComponent {
     this.invalidReasons = undefined;
 
     if (dispatchEvents) {
-      if (FormController.VALID_CHANGED) {
-        this.dispatch(FormController.VALID_CHANGED, {
-          element: this,
-          valid: true,
-          invalidReasons: undefined
-        }, true, true, false);
-      }
+      this.notifyFormOfValidChange(true);
     }
 
     if (updateIndicators) {
@@ -238,11 +186,7 @@ export default class ValidatingInputBase extends RingaComponent {
     return false;
   }
 
-  onChangeHandler(){
-    if (FormController.VALUE_CHANGED) {
-      this.dispatch(FormController.VALUE_CHANGED, {
-        element: this,
-      }, true, true, false);
-    }
+  onChangeHandler() {
+    this.notifyFormOfValueChange();
   }
 }

@@ -133,6 +133,7 @@ export FormController from './components/form/FormController';
 export FormModel from './components/form/FormModel';
 export SubmitButton from './components/form/SubmitButton';
 export FormMessage from './components/form/FormMessage';
+export FormInputBase from './components/form/FormInputBase';
 
 //-----------------------------------
 // Utils

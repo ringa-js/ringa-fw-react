@@ -89,6 +89,7 @@ export default class TextInput extends ValidatingInputBase {
                      onBlur={this.onBlurHandler}
                      onClick={this.onClickHandler}/>;
     }
+
     return <div className={cn}>
             {labelNode}
             {input}
@@ -100,7 +101,9 @@ export default class TextInput extends ValidatingInputBase {
   // Methods
   //-----------------------------------
   renderDefaultRequiredIndicator() {
-    return <div className="required-indicator"><div className="circle"></div></div>;
+    return <div className="required-indicator">
+      <div className="circle" />
+    </div>;
   }
 
   getTooltipMessage() {

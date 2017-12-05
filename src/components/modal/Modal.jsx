@@ -1,9 +1,8 @@
 import React from 'react';
 import ModalHeader from './ModalHeader.jsx';
 import PositionableComponent from '../PositionableComponent';
-import I18NModel from '../../models/I18NModel';
 
-import {watch, depend, dependency} from 'react-ringa';
+import {watch} from 'react-ringa';
 
 import classnames from 'classnames';
 
