@@ -31,8 +31,8 @@ export default class TextInput extends ValidatingInputBase {
     }, 0);
   }
 
-  componentDidMount() {
-    super.componentDidMount();
+  componentDispatchReady() {
+    super.componentDispatchReady();
 
     const {focusOnMount} = this.props;
 

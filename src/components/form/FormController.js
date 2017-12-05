@@ -11,8 +11,14 @@ export default class FormController extends Controller {
 
     this.addModel(formModel || (formModel = new FormModel()));
 
-    formModel.addEventListener('forceValidate', () => {
+    formModel.addEventListener('forceImmediateValidate', () => {
       this.validate(formModel);
+    });
+
+    formModel.addEventListener('forceValidate', () => {
+      setTimeout(() => {
+        this.validate(formModel);
+      }, 0);
     });
 
     this.addListener('registerFormElement', (formModel, element) => {
