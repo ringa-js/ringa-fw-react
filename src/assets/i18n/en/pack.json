@@ -14,6 +14,9 @@
       "tooLong": "You can enter at most ${max} characters.",
       "emailInvalid": "The value is an invalid email.",
       "passwordInvalid": "Please choose a more secure password! For your safety, your password must be at least ${minLength} characters in length, no more than ${maxLength} and must contain one uppercase letter or one number or one punctuation character."
+    },
+    "defaultDataGrid": {
+      "search": "Search..."
     }
   }
 }

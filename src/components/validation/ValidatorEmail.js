@@ -24,7 +24,7 @@ export default class ValidatorEmail extends ValidatorBase {
 
     return {
       valid: this.valid,
-      message: this.message = i18NModel ? i18NModel.i18n('validator.emailInvalid') : 'Invalid email provided',
+      message: this.message = i18NModel ? i18NModel.i18n('ringa-fw.validator.emailInvalid') : 'Invalid email provided',
       details: this.details = {}
     };
   }

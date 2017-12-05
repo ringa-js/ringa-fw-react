@@ -25,10 +25,8 @@ export default class TextInput extends ValidatingInputBase {
   //-----------------------------------
   // Lifecycle
   //-----------------------------------
-  revalidate(updateIndicators = false) {
-    setTimeout(() => {
-      this.validate(this.refs.input.value, true, updateIndicators);
-    }, 0);
+  revalidate(dispatchEvents = false, updateIndicators = false) {
+    this.validate(this.refs.input.value, dispatchEvents, updateIndicators);
   }
 
   componentDispatchReady() {

@@ -24,10 +24,10 @@ class CodeExample extends RingaComponent {
   // Lifecycle
   //-----------------------------------
   render() {
-    const {children, code, documentation, i18NKey = 'codeExample.example'} = this.props;
+    const {children, code, documentation, i18NKey = 'ringa-fw.codeExample.example'} = this.props;
     const {i18NModel} = this.state;
 
-    return <div className={this.calcClassnames("code-example")}>
+    return <div className={this.calcClassnames("ringa-fw.code-example")}>
       {documentation ? <Markdown markdown={documentation} /> : undefined}
       <TabNavigator classes="fill">
         <Tab label={i18NModel.i18n(i18NKey)}>

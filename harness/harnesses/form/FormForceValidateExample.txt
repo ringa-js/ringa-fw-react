@@ -1,37 +1,65 @@
 import React from 'react';
 
+import {RingaEvent} from 'ringa';
+
 import {RingaComponent,
         Form,
         FormItem,
         TextInput,
-        SubmitButton} from '../../../src/index';
+        Button,
+        FormModel,
+        SubmitButton} from 'ringa-fw-react';
 
-export default class FormExample1 extends RingaComponent {
+export default class FormForceValidateExample extends RingaComponent {
   //-----------------------------------
   // Constructor
   //-----------------------------------
   constructor() {
     super();
+
+    this.formModel = new FormModel();
+
+    this.state = {
+      value: 'Hey!'
+    };
   }
 
   //-----------------------------------
   // Lifecycle
   //-----------------------------------
   render() {
-    return <Form>
+    return <Form model={this.formModel}>
       <FormItem>
         <label>Name</label>
-        <TextInput id="nameInput" />
+        <TextInput id="nameInput"
+                   value={this.state.value}
+                   onChange={this.onChangeHandler}
+                   required={true} />
       </FormItem>
-      <SubmitButton label="Submit"
-                    onClick={this.formSubmit_onClickHandler} />
+      <Button label="Set value programmatically" onClick={this.setValueProgrammatically} />
+      <SubmitButton label="Submit" />
     </Form>;
   }
 
   //-----------------------------------
   // Events
   //-----------------------------------
-  formSubmit_onClickHandler(event, formModel) {
-    console.log('Submitted!', formModel.nameInput.value);
+  onChangeHandler(event, value) {
+    this.setState({
+      value
+    });
+  }
+
+  setValueProgrammatically() {
+    this.setState({
+      value: ''
+    });
+
+    // 'forceValidate: runs validation on the next frame
+    // 'forceImmediateValidate': runs immediately, but keep in mind if you have updated state or something similar
+    // it may take a full frame for your updates to take effect in the relevant inputs
+    this.formModel.dispatch('forceValidate', {
+      updateIndicators: true
+    });
   }
 }
