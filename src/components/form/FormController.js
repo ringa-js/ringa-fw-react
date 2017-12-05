@@ -11,8 +11,14 @@ export default class FormController extends Controller {
 
     this.addModel(formModel || (formModel = new FormModel()));
 
-    formModel.addEventListener('forceValidate', () => {
+    formModel.addEventListener('forceImmediateValidate', () => {
       this.validate(formModel);
+    });
+
+    formModel.addEventListener('forceValidate', updateIndicators => {
+      setTimeout(() => {
+        this.validate(formModel, updateIndicators);
+      }, 0);
     });
 
     this.addListener('registerFormElement', (formModel, element) => {
@@ -63,13 +69,13 @@ export default class FormController extends Controller {
   //-----------------------------------
   // Methods
   //-----------------------------------
-  validate(formModel) {
+  validate(formModel, updateIndicators) {
     formModel.valid = true;
     formModel.invalidReasons = [];
 
     formModel.elements.forEach(element => {
       if (element.revalidate && typeof element.revalidate === 'function') {
-        element.revalidate();
+        element.revalidate(false, updateIndicators);
       }
 
       formModel.valid = formModel.valid && element.valid;

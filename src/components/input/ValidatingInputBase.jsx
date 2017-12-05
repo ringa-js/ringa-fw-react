@@ -173,7 +173,7 @@ export default class ValidatingInputBase extends RingaComponent {
    * @param value False if valid. Array of reasons if invalid.
    * @returns {*}
    */
-  validate(value, dispatchEvents = false, updateIndicators = true) {
+  validate(value, dispatchEvents = true, updateIndicators = true) {
     let {validators} = this.state;
     let {model, modelField} = this.props;
 
@@ -195,7 +195,7 @@ export default class ValidatingInputBase extends RingaComponent {
       this.valid = false;
       this.invalidReasons = invalidReasons;
 
-      if (!dispatchEvents) {
+      if (dispatchEvents) {
         if (FormController.VALID_CHANGED) {
           this.dispatch(FormController.VALID_CHANGED, {
             element: this,
@@ -218,7 +218,7 @@ export default class ValidatingInputBase extends RingaComponent {
     this.valid = true;
     this.invalidReasons = undefined;
 
-    if (!dispatchEvents) {
+    if (dispatchEvents) {
       if (FormController.VALID_CHANGED) {
         this.dispatch(FormController.VALID_CHANGED, {
           element: this,

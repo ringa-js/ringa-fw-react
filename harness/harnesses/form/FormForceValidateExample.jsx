@@ -37,18 +37,13 @@ export default class FormForceValidateExample extends RingaComponent {
                    required={true} />
       </FormItem>
       <Button label="Set value programmatically" onClick={this.setValueProgrammatically} />
-      <SubmitButton label="Submit"
-                    onClick={this.formSubmit_onClickHandler} />
+      <SubmitButton label="Submit" />
     </Form>;
   }
 
   //-----------------------------------
   // Events
   //-----------------------------------
-  formSubmit_onClickHandler(event, formModel) {
-    console.log('Submitted!', formModel.nameInput.value);
-  }
-
   onChangeHandler(event, value) {
     this.setState({
       value
@@ -60,6 +55,11 @@ export default class FormForceValidateExample extends RingaComponent {
       value: ''
     });
 
-    this.formModel.dispatch('forceValidate');
+    // 'forceValidate: runs validation on the next frame
+    // 'forceImmediateValidate': runs immediately, but keep in mind if you have updated state or something similar
+    // it may take a full frame for your updates to take effect in the relevant inputs
+    this.formModel.dispatch('forceValidate', {
+      updateIndicators: true
+    });
   }
 }

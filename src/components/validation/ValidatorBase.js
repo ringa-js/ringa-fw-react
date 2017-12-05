@@ -21,7 +21,7 @@ export default class ValidatorBase extends Model {
 
     return {
       valid: false,
-      message: i18NModel.i18n ? i18NModel.i18n('invalid') : 'Invalid value',
+      message: i18NModel.i18n ? i18NModel.i18n('ringa-fw.invalid') : 'Invalid value',
       details: {}
     };
   }

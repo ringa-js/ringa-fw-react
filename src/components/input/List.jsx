@@ -55,7 +55,7 @@ export default class List extends RingaComponent {
     }
 
     if (items.length !== 0 && filteredItems.length === 0) {
-      searchNoItemsMessage = <div className="search-no-items">{i18NModel.i18n('list.noItemsForSearch')}</div>;
+      searchNoItemsMessage = <div className="search-no-items">{i18NModel.i18n('ringa-fw.list.noItemsForSearch')}</div>;
     }
 
     if (filteredItems && filteredItems.length) {
@@ -77,7 +77,7 @@ export default class List extends RingaComponent {
       {items.length ? [
         enableSearch ? <TextInput ref="search"
                                    classes="search"
-                                   placeholder={searchPlaceholder || i18NModel.i18n('list.search', {count: items ? items.length : ''})}
+                                   placeholder={searchPlaceholder || i18NModel.i18n('ringa-fw.list.search', {count: items ? items.length : ''})}
                                    onChange={this.search_onChangeHandler} /> : undefined,
         <div className="contents" style={{maxHeight: maxHeight === -1 ? '' : maxHeight}}>
           {children}

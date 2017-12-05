@@ -1842,7 +1842,7 @@ ul li {
     border-radius: 0px;
     padding: 5px 10px;
     font-size: 14px;
-    transition: 0.1s transform ease-out, 0.1s box-shadow ease-out, 0.2s filter ease-out; }
+    transition: 300ms transform ease-out, 300ms box-shadow ease-out, 300ms filter ease-out, 300ms background ease-out, 300ms color ease-out; }
     .classic .ringa-component.button:hover {
       transform: translate(-1px, -1px);
       -webkit-box-shadow: 1px 1px 2px 1px #444;
@@ -1871,7 +1871,7 @@ ul li {
     .classic .ringa-component.button.selected {
       background: #439DCA;
       color: #FCFCFC;
-      border: 1px #439DCA; }
+      border: 1px solid #439DCA; }
     .classic .ringa-component.button.tab {
       margin: 0; }
       .classic .ringa-component.button.tab:hover {
@@ -2108,11 +2108,17 @@ ul li {
       resize: vertical; }
     .classic .ringa-component.text-input > .required-indicator {
       margin-left: 0.1em;
-      display: inline;
-      font-size: 20px;
-      color: red; }
+      display: inline; }
+      .classic .ringa-component.text-input > .required-indicator .circle {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: 6px;
+        height: 6px;
+        border-radius: 4px;
+        background: red; }
     .classic .ringa-component.text-input.invalid {
-      border: 2px solid red; }
+      border: 1px solid red; }
     .classic .ringa-component.text-input.invalid input:focus, .classic .ringa-component.text-input.invalid textarea:focus, .classic .ringa-component.text-input.required input:focus, .classic .ringa-component.text-input.required textarea:focus {
       box-shadow: none !important; }
     .classic .ringa-component.text-input.editonclick {
