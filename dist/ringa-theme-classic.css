@@ -1872,6 +1872,8 @@ ul li {
       background: #439DCA;
       color: #FCFCFC;
       border: 1px solid #439DCA; }
+    .classic .ringa-component.button.inline {
+      display: inline-block; }
     .classic .ringa-component.button.tab {
       margin: 0; }
       .classic .ringa-component.button.tab:hover {
