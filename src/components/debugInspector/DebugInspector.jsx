@@ -17,7 +17,6 @@ let d = (v) => {
   return isNaN(v) ? '' : v;
 };
 
-
 export default class DebugInspector extends RingaComponent {
   //-----------------------------------
   // Constructor

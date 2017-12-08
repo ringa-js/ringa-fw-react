@@ -48,6 +48,10 @@
       border: 1px solid $ringa-color-2;
     }
 
+    &.inline {
+      display: inline-block;
+    }
+
     &.tab {
       margin: 0;
 
