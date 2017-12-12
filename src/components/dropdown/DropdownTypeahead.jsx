@@ -106,6 +106,8 @@ export default class DropdownTypeahead extends Dropdown {
   }
 
   updateDisplayedItems() {
+    const {filterSelectedItems} = this.props;
+
     let ai;
 
     if (this.refs.input && this.refs.input.value) {
@@ -114,10 +116,13 @@ export default class DropdownTypeahead extends Dropdown {
       ai = this.props.items;
     }
 
-    let selectedItems = this.props.selectedItems || this.state.selectedItems;
+    if (filterSelectedItems) {
+      ai = filterSelectedItems(ai);
+    } else{
+      let selectedItems = this.props.selectedItems || this.state.selectedItems;
 
-    ai = ai.filter(item => selectedItems.indexOf(item) === -1);
-
+      ai = ai.filter(item => selectedItems.indexOf(item) === -1);
+   }
     this.actualItems = ai;
 
     if (this.overlayModel) {
