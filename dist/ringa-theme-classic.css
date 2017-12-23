@@ -1701,7 +1701,8 @@ ul li {
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.3); }
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 501; }
   .classic .ringa-component.alert {
     position: relative;
     padding: 10px; }

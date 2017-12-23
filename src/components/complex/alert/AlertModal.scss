@@ -6,6 +6,7 @@
     top: 0;
     bottom: 0;
     background-color: $alert-wrapper-background;
+    z-index: $modal-z-index + 1;
   }
 
   .ringa-component.alert {
