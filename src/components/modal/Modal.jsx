@@ -38,6 +38,7 @@ export default class Modal extends PositionableComponent {
     let {modal} = this.props;
 
     let cn = this.calcClassnames('modal', modal.classes);
+    let cnWrapper = this.calcClassnames('modal-wrapper', modal.wrapperClasses);
 
     let children;
 
@@ -55,15 +56,17 @@ export default class Modal extends PositionableComponent {
       'show-header': modal.showHeader
     });
 
-    return <div className={cn}
-                style={this.positionStyle}
-                ref="positionable"
-                id={this.id}>
-      {modal.showHeader ? <ModalHeader modalModel={modal} /> : undefined}
+    let rendered = <div className={cn}
+                     style={this.positionStyle}
+                     ref="positionable"
+                     id={this.id}>
+      {modal.showHeader ? <ModalHeader modalModel={modal}/> : undefined}
       <div className={contentsCN}>
         {children}
       </div>
     </div>;
+
+    return modal.showWrapper ? <div className={cnWrapper}>{rendered}</div> : rendered;
   }
 
   //-----------------------------------

@@ -16,3 +16,8 @@ $modal-z-index: 500;
 $overlay-z-index: 1000;
 
 $theme: sunbeam;
+
+$alert-wrapper-background: rgba(0, 0, 0, 0.3);
+$alert-padding: $pad2;
+
+@import 'variables_dataGrid';

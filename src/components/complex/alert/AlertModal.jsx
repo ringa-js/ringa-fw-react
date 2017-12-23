@@ -47,6 +47,7 @@ export default class AlertModal extends PositionableComponent {
     let {i18NModel} = this.state;
 
     let cn = this.calcClassnames('modal', 'alert', alert.classes);
+    let cnWrapper = this.calcClassnames('modal-wrapper', 'alert-wrapper', alert.wrapperClasses);
 
     let message = typeof alert.messageOrRenderFunction === 'function' ? alert.messageOrRenderFunction(alert) : alert.messageOrRenderFunction;
 
@@ -61,16 +62,18 @@ export default class AlertModal extends PositionableComponent {
              </button>);
     });
 
-    return <div className={cn}
+    return <div className={cnWrapper}>
+      <div className={cn}
                 style={this.positionStyle}
                 ref="positionable"
                 id={this.id}>
-      <div className="alert-contents">
-        <div className="message">
-          {message}
-        </div>
-        <div className="buttons">
-          {buttons}
+        <div className="alert-contents">
+          <div className="message">
+            {message}
+          </div>
+          <div className="buttons">
+            {buttons}
+          </div>
         </div>
       </div>
     </div>;

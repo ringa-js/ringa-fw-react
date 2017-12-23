@@ -23,6 +23,7 @@ import I18NHarness from '../harnesses/i18n/I18NHarness';
 import ScreenHarness from '../harnesses/screen/ScreenHarness';
 import DebugInspectorHarness from '../harnesses/debugInspector/DebugInspectorHarness';
 import DataGridHarness from '../harnesses/dataGrid/DataGridHarness';
+import AlertHarness from '../harnesses/alert/AlertHarness';
 
 import {DefaultApplicationRoot} from '../../src/index';
 
@@ -60,6 +61,7 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
       <Route path="/screen" component={ScreenHarness} />
       <Route path="/debugInspector" component={DebugInspectorHarness} />
       <Route path="/dataGrid" component={DataGridHarness} />
+      <Route path="/alert" component={AlertHarness} />
       <Footer />
     </div>);
   }

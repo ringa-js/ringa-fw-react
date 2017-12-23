@@ -1,10 +1,21 @@
 @if ($Use_Alert_Defaults == true) {
+  .ringa-component.alert-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: $alert-wrapper-background;
+  }
+
   .ringa-component.alert {
     position: relative;
+    padding: $alert-padding;
 
     .message {
       width: 100%;
       text-align: center;
+      margin-bottom: $alert-padding;
     }
 
     .buttons {

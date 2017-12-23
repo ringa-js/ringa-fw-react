@@ -53,5 +53,8 @@
   },
   "dataGrid": {
     "title": "markdown:#DataGrid Instructions"
+  },
+  "alert": {
+    "title": "markdown:#Alert Instructions"
   }
 }

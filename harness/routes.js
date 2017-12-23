@@ -18,7 +18,8 @@ export const routeMap = {
   'I18N': '/i18n',
   'Screen / Devices': '/screen',
   'DebugInspector': '/debugInspector',
-  'DataGrid': '/dataGrid'
+  'DataGrid': '/dataGrid',
+  'Alert': '/alert'
 };
 
 const _routeMapInverted = {};

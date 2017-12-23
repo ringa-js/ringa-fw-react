@@ -17,6 +17,12 @@
     },
     "defaultDataGrid": {
       "search": "Search..."
+    },
+    "alert": {
+      "ok": "OK",
+      "cancel": "Cancel",
+      "yes": "Yes",
+      "no": "No"
     }
   }
 }

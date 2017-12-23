@@ -46,7 +46,9 @@ class AlertModel extends ModalModel {
         classes, singleton, singletonGroup, width, height, align, shift, alignAlternate,
         shiftAlternate, forceInViewport, global, overflowX, overflowY, mouseDownOutsideHandler,
         mouseLeaveHandler, onPositionUpdateHandler, closeTimeout, openTimeout,
-        blockMouseEvents,showCloseButton, draggable, customWrapperRenderer: AlertModel.customWrapperRenderer
+        blockMouseEvents,showCloseButton, draggable, customWrapperRenderer: AlertModel.customWrapperRenderer,
+        showWrapper: true,
+        wrapperClasses: 'alert-wrapper'
       });
 
       alertModel.dispatchDomNode = global ? document : domNode || document;
@@ -63,11 +65,11 @@ class AlertModel extends ModalModel {
 AlertModel.YES_NO = (values) => {
   values = Object.assign({
     buttons: [{
-      labelKey: 'alert.yes',
+      labelKey: 'ringa-fw.alert.yes',
       id: 'yes',
       classes: 'green'
     }, {
-      labelKey: 'alert.no',
+      labelKey: 'ringa-fw.alert.no',
       id: 'no',
       classes: 'red'
     }]
@@ -79,7 +81,7 @@ AlertModel.YES_NO = (values) => {
 AlertModel.OK = (values) => {
   values = Object.assign({
     buttons: [{
-      labelKey: 'alert.ok',
+      labelKey: 'ringa-fw.alert.ok',
       id: 'ok',
       classes: 'green'
     }]
@@ -91,11 +93,11 @@ AlertModel.OK = (values) => {
 AlertModel.OK_CANCEL = (values) => {
   values = Object.assign({
     buttons: [{
-      labelKey: 'alert.ok',
+      labelKey: 'ringa-fw.alert.ok',
       id: 'ok',
       classes: 'green'
     }, {
-      labelKey: 'alert.cancel',
+      labelKey: 'ringa-fw.alert.cancel',
       id: 'cancel'
     }]
   }, values);

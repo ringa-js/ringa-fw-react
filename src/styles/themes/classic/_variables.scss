@@ -17,4 +17,7 @@ $overlay-z-index: 1000;
 
 $theme: classic;
 
+$alert-wrapper-background: rgba(0, 0, 0, 0.3);
+$alert-padding: $pad2;
+
 @import 'variables_dataGrid';

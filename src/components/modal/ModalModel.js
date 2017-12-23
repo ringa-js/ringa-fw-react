@@ -19,6 +19,8 @@ class ModalModel extends PositionableModel {
     this.addProperty('customWrapperRenderer');
     this.addProperty('showHeader', true);
     this.addProperty('classes');
+    this.addProperty('showWrapper', false);
+    this.addProperty('wrapperClasses');
   }
 
   //-----------------------------------
@@ -61,7 +63,8 @@ class ModalModel extends PositionableModel {
       classes, singleton, singletonGroup, width, height, align, shift, alignAlternate,
       shiftAlternate, forceInViewport, global, overflowX, overflowY, mouseDownOutsideHandler,
       mouseLeaveHandler, onPositionUpdateHandler, closeTimeout, openTimeout,
-      blockMouseEvents,showCloseButton, draggable, showHeader, $ringaAlternateParentComponent}, domNode) {
+      blockMouseEvents,showCloseButton, draggable, showHeader, $ringaAlternateParentComponent,
+      showWrapper, wrapperClasses}, domNode) {
 
     let modalModel = new ModalModel(undefined, {
       renderer, title, target, position, positionAlternate,
@@ -70,7 +73,8 @@ class ModalModel extends PositionableModel {
       classes, singleton, singletonGroup, width, height, align, shift, alignAlternate,
       shiftAlternate, forceInViewport, global, overflowX, overflowY, mouseDownOutsideHandler,
       mouseLeaveHandler, onPositionUpdateHandler, closeTimeout, openTimeout,
-      blockMouseEvents,showCloseButton, draggable, showHeader, $ringaAlternateParentComponent
+      blockMouseEvents,showCloseButton, draggable, showHeader, $ringaAlternateParentComponent,
+      showWrapper, wrapperClasses
     });
 
     modalModel.dispatchDomNode = global ? document : domNode || document;
