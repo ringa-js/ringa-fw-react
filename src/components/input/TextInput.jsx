@@ -19,7 +19,9 @@ export default class TextInput extends ValidatingInputBase {
   }
 
   set value(value) {
-    this.refs.input.value = value;
+    this.refs.input.value = value ? value : '';
+
+    this.onChangeHandler();
   }
 
   //-----------------------------------

@@ -27,4 +27,29 @@ export default class FormModel extends Model {
 
     return ret;
   }
+
+  //-----------------------------------
+  // Methods
+  //-----------------------------------
+  setValue(elementId, value) {
+    this.elements.forEach(element => {
+      if (element.id === elementId) {
+        try {
+          element.value = value;
+        } catch (error) {
+          console.warn(`FormModel: attempted to set value on ${elementId} but received error`, error);
+        }
+      }
+    });
+  }
+
+  clear() {
+    this.elements.forEach(element => {
+      try {
+        element.value = undefined;
+      } catch (error) {
+        console.warn(`FormModel: attempted to set value on ${elementId} but received error`, error);
+      }
+    });
+  }
 }

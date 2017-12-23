@@ -15,6 +15,9 @@ import FormExample2 from './FormExample2';
 import FormForceValidateExampleCode from './FormForceValidateExample.txt';
 import FormForceValidateExample from './FormForceValidateExample';
 
+import FormSetValueExampleCode from './FormSetValueExample.txt';
+import FormSetValueExample from './FormSetValueExample';
+
 class FormHarness extends HarnessBase {
   //-----------------------------------
   // Constructor
@@ -42,6 +45,11 @@ class FormHarness extends HarnessBase {
       <Panel label="Force Validation">
         <CodeExample code={FormForceValidateExampleCode}>
           <FormForceValidateExample />
+        </CodeExample>
+      </Panel>
+      <Panel label="Set Values">
+        <CodeExample code={FormSetValueExampleCode}>
+          <FormSetValueExample />
         </CodeExample>
       </Panel>
     </div>;
