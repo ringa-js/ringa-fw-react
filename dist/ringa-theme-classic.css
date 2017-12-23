@@ -1695,11 +1695,20 @@ ul li {
   .classic .ringa-block-mouse {
     pointer-events: none !important;
     opacity: 0.5; }
+  .classic .ringa-component.alert-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3); }
   .classic .ringa-component.alert {
-    position: relative; }
+    position: relative;
+    padding: 10px; }
     .classic .ringa-component.alert .message {
       width: 100%;
-      text-align: center; }
+      text-align: center;
+      margin-bottom: 10px; }
     .classic .ringa-component.alert .buttons {
       justify-content: space-between;
       align-items: center;
@@ -2379,7 +2388,7 @@ ul li {
     position: absolute;
     pointer-events: all;
     min-width: 200px;
-    min-height: 75px;
+    min-height: 25px;
     background: #FCFCFC;
     z-index: 500; }
   .classic .modal-header .title {
