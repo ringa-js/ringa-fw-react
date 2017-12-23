@@ -8,4 +8,4 @@
   "ThreadFactory","TooltipContainerModel","TooltipContainerModel1","TooltipController","TooltipModel","ValidatorEmail",
   "ValidatorRequired","ValueModel","done","element","event","executor","fail","formModel","inspectModel",
   "inspectorModel","invalidReasons","overlay","overlayContainerModel","resume","scrollContainerModel","stop","target",
-  "thread","tooltip","tooltipContainerModel","valid"]
+  "thread","tooltip","tooltipContainerModel","valid", "modalModel", "modalContainerModel"]
