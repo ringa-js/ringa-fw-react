@@ -1861,7 +1861,7 @@ ul li {
     .classic .ringa-component.button:focus {
       outline: 0; }
     .classic .ringa-component.button.disabled {
-      color: #CCC; }
+      color: #999; }
     @media screen and (max-width: 720px) {
       .classic .ringa-component.button {
         padding: 3px 8px;
