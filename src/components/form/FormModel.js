@@ -31,22 +31,33 @@ export default class FormModel extends Model {
   //-----------------------------------
   // Methods
   //-----------------------------------
+  getElement(elementId) {
+    return this.elements.find(element => element.id === elementId);
+  }
+
   setValue(elementId, value) {
-    this.elements.forEach(element => {
-      if (element.id === elementId) {
-        try {
-          element.value = value;
-        } catch (error) {
-          console.warn(`FormModel: attempted to set value on ${elementId} but received error`, error);
-        }
+    let element = this.getElement(elementId);
+
+    if (element) {
+      try {
+        element.value = value;
+        return element;
+      } catch (error) {
+        console.warn(`FormModel: attempted to set value on ${elementId} but received error`, error);
       }
-    });
+    }
+
+    console.warn(`FormModel ${this.name} does not have an elements with id ${elementId}`);
   }
 
   clear() {
     this.elements.forEach(element => {
       try {
-        element.value = undefined;
+        if (element.clear) {
+          element.clear();
+        } else {
+          element.value = undefined;
+        }
       } catch (error) {
         console.warn(`FormModel: attempted to set value on ${elementId} but received error`, error);
       }
