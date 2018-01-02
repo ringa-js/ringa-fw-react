@@ -36,7 +36,8 @@ export default class FormForceValidateExample extends RingaComponent {
                    onChange={this.onChangeHandler}
                    required={true} />
       </FormItem>
-      <Button label="Set value programmatically" onClick={this.setValueProgrammatically} />
+      <Button label="Force Invalid" onClick={this.setValueProgrammatically} />
+      <Button label="Clear" onClick={this.clearValidation} />
       <SubmitButton label="Submit" />
     </Form>;
   }
@@ -48,6 +49,10 @@ export default class FormForceValidateExample extends RingaComponent {
     this.setState({
       value
     });
+  }
+
+  clearValidation() {
+    this.formModel.clear();
   }
 
   setValueProgrammatically() {

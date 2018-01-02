@@ -105,6 +105,14 @@ export default class TextInput extends ValidatingInputBase {
   //-----------------------------------
   // Methods
   //-----------------------------------
+  clear() {
+    this.value = '';
+
+    this.onChangeHandler();
+
+    this.resetValidation();
+  }
+
   renderDefaultRequiredIndicator() {
     return <div className="required-indicator">
       <div className="circle" />
@@ -159,7 +167,7 @@ export default class TextInput extends ValidatingInputBase {
   }
 
   onChangeHandler(event) {
-    const {onChange, model, modelField, filter, setOnBlur, setOnKeyEnter} = this.props;
+    const {onChange, setOnBlur, setOnKeyEnter} = this.props;
 
     if (super.onChangeHandler) {
       super.onChangeHandler();

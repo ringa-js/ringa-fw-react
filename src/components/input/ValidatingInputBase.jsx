@@ -186,6 +186,18 @@ export default class ValidatingInputBase extends FormInputBase {
     return false;
   }
 
+  resetValidation() {
+    this.valid = true;
+    this.invalidReasons = undefined;
+
+    this.notifyFormOfValidChange(true);
+
+    this.setState({
+      valid: true,
+      invalidReasons: undefined
+    });
+  }
+
   onChangeHandler() {
     this.notifyFormOfValueChange();
   }
