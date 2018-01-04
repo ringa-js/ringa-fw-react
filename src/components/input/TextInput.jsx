@@ -44,7 +44,7 @@ export default class TextInput extends ValidatingInputBase {
   }
 
   render() {
-    let {label, classes, placeholder, defaultValue, required, valid = true,
+    let {label, classes, placeholder, defaultValue, required, valid = true, readOnly = false,
           requiredIndicator = this.renderDefaultRequiredIndicator, multiline = false, editOnClick = false, type = 'text'} = this.props;
 
     let {value, controlled, tempValue} = this.state;
@@ -77,7 +77,9 @@ export default class TextInput extends ValidatingInputBase {
                         onChange={this.onChangeHandler}
                         onFocus={this.onFocusHandler}
                         onBlur={this.onBlurHandler}
-                        onClick={this.onClickHandler}/>
+                        onClick={this.onClickHandler}
+                        readOnly={readOnly}
+                        />
     } else {
       input = <input type={type}
                      ref="input"
@@ -89,7 +91,8 @@ export default class TextInput extends ValidatingInputBase {
                      onChange={this.onChangeHandler}
                      onFocus={this.onFocusHandler}
                      onBlur={this.onBlurHandler}
-                     onClick={this.onClickHandler}/>;
+                     onClick={this.onClickHandler}
+                     readOnly={readOnly}/>;
     }
 
     return <div className={cn}>
