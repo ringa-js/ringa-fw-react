@@ -1993,6 +1993,10 @@ ul li {
     border: 1px solid #CCC;
     display: flex;
     justify-content: flex-end; }
+    .classic .ringa-component.number-input input[type=number]::-webkit-inner-spin-button,
+    .classic .ringa-component.number-input input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0; }
     .classic .ringa-component.number-input input:focus {
       outline: none !important;
       box-shadow: 0 0 12px 1px rgba(235, 242, 242, 0.7) !important; }
