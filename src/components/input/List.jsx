@@ -157,10 +157,10 @@ export default class List extends RingaComponent {
   }
 
   rebuildIndex(props) {
-    const {enableSearch = true, items, labelField = 'label', indexFunction} = props;
+    const {enableSearch = true, items, labelField = 'label', indexFunction, indexField} = props;
 
     if (enableSearch) {
-      this.trieSearch = new TrieSearch();
+      this.trieSearch = new TrieSearch(undefined , {indexField: indexField});
 
       if (items) {
         items.forEach(item => {

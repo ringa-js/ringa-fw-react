@@ -11,6 +11,12 @@
     display: flex;
     justify-content: flex-end;
 
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
     input:focus {
       outline: none !important;
       box-shadow: 0 0 12px 1px $hover-1 !important;

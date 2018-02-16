@@ -42,7 +42,7 @@ export default class NumberInput extends TextInput {
       invalid: !this.state.valid || !valid
     }, classes);
 
-    let input = <input type="text"
+    let input = <input type="number"
                        ref="input"
                        id={this.id}
                        value={controlled ? value : undefined}
