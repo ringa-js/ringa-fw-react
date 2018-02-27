@@ -9,8 +9,10 @@ export default class DebugInspectController extends Controller {
   /**
    * Constructs the DebugInspectController. Constructed and attached in App.js.
    */
-  constructor(name, bus, options) {
+  constructor(name, bus, options = {}) {
     super(name, bus, options);
+
+    this.options.componentToHTML = this.options.componentToHTML || DebugInspectController.defaultComponentToHTML;
 
     if (__DEV__) {
       this.addModel(new InspectModel());
@@ -42,6 +44,18 @@ export default class DebugInspectController extends Controller {
 
         if (component) {
           let components = walkReactParents(component);
+
+          /**
+           * The componentPreprocess allows the end application to decide which order, any filterings, etc.
+           * that may need to be applied to the walked react components, allowing filtering of HOCs etc. or
+           * merging of HOCs with their wrapped component, making the debugging display cleaner.
+           *
+           * This is especially useful if you are using the debug inspector in a Material UI application.
+           */
+          if (this.options.componentPreprocess) {
+            components = this.options.componentPreprocess(components);
+          }
+
           let controllersByClass = {};
           let componentsByClass = {};
           let injectionsByKey = {};
@@ -53,37 +67,21 @@ export default class DebugInspectController extends Controller {
 
             componentsByClass[component.constructor.name] = component;
 
-            let controllerStrs = '';
+            let cn = component.id ? 'ringacomponent' : 'component';
 
-            if (component.$ringaControllers) {
-              // Controllers
-              controllerStrs = component.$ringaControllers.map(controller => {
-                controllersByClass[controller.constructor.name] = controller;
+            let defaultWrapper = (text) => {
+              return `#### **${ix + 1} <span class="${cn}">${text}</span>**`;
+            };
 
-                for (let key in controller.injections) {
-                  injectionsByKey[key] = controller.injections[key];
-                }
+            let newHTMLElements = this.options.componentToHTML(component, ix, defaultWrapper, componentsByClass, injectionsByKey, modelsByName);
 
-                let models = [];
-
-                if (controller.modelWatcher) {
-                  controller.modelWatcher.models.forEach(model => {
-                    modelsByName[model.name] = model;
-                    models.push(model);
-                  });
-                }
-
-                return ` - **<span class="controller">${controller.constructor.name}(name='${controller.name || 'no name'}')</span>** Models: ${models.map(m => `<span class="model">${m.constructor.name} (id='${m.id || 'no id'}', name='${m.name || 'no name'})'</span>`).join(', ')}`;
-              });
+            if (newHTMLElements === null) {
+              newHTMLElements = DebugInspectController.defaultComponentToHTML(component, ix, defaultWrapper, componentsByClass, injectionsByKey, modelsByName);
             }
 
-            if (component.constructor.name) {
+            if (newHTMLElements && newHTMLElements.length) {
               arr.push('<div class="inspectee-group" markdown="1">');
-
-              let cn = component.id ? 'ringacomponent' : 'component';
-
-              arr.push(`#### **${ix + 1} <span class="${cn}">${component.constructor.name}${component.id ? ` (id='${component.id}')` : ''}**</span>`);
-              arr = arr.concat(controllerStrs);
+              arr = arr.concat(newHTMLElements);
               arr.push('</div>');
             }
           });
@@ -136,5 +134,39 @@ export default class DebugInspectController extends Controller {
 
       console.log('Ringa Inspector is now running. Use ALT + SHIFT to begin inspection.');
     }
+  }
+
+  static defaultComponentToHTML(component, ix, defaultWrapper, controllersByClass, injectionsByKey, modelsByName) {
+    let controllerStrs = '';
+    let arr = [];
+
+    if (component.$ringaControllers) {
+      // Controllers
+      controllerStrs = component.$ringaControllers.map(controller => {
+        controllersByClass[controller.constructor.name] = controller;
+
+        for (let key in controller.injections) {
+          injectionsByKey[key] = controller.injections[key];
+        }
+
+        let models = [];
+
+        if (controller.modelWatcher) {
+          controller.modelWatcher.models.forEach(model => {
+            modelsByName[model.name] = model;
+            models.push(model);
+          });
+        }
+
+        return ` - **<span class="controller">${controller.constructor.name}(name='${controller.name || 'no name'}')</span>** Models: ${models.map(m => `<span class="model">${m.constructor.name} (id='${m.id || 'no id'}', name='${m.name || 'no name'})'</span>`).join(', ')}`;
+      });
+    }
+
+    if (component.constructor.name) {
+      arr.push(defaultWrapper(`${component.constructor.name}${component.id ? ` (id='${component.id}')` : ''}`));
+      arr = arr.concat(controllerStrs);
+    }
+
+    return arr;
   }
 }

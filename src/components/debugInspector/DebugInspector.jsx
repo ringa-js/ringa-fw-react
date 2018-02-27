@@ -26,7 +26,11 @@ export default class DebugInspector extends RingaComponent {
 
     if (__DEV__) {
       // We will force the inspector to be global for now.
-      this.attach(new DebugInspectController(undefined, document));
+      this.attach(new DebugInspectController(undefined, document, {
+        componentPreprocess: props.componentPreprocess,
+        componentToHTML: props.componentToHTML
+      }));
+
       this.attach(new InspectorController());
 
       this.depend(dependency(DebugInspectModel, ['inspectComponent', 'inspectee', 'top']),
