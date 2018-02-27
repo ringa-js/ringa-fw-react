@@ -45,7 +45,7 @@
     "react": "^16.2.0",
     "react-body-classname": "^1.2.0",
     "react-dom": "^16.2.0",
-    "react-ringa": "^0.1.8",
+    "react-ringa": "^0.5.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "ringa": "^0.3.1",
