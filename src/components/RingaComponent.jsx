@@ -514,7 +514,7 @@ class RingaComponent extends Component {
       return;
     }
 
-    this.render = this._render;
+    this.render = this._render || this.render;
 
     this.setState({
       isDragging: false,
