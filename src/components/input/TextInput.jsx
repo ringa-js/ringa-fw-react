@@ -39,8 +39,9 @@ export default class TextInput extends ValidatingInputBase {
     if (focusOnMount) {
       this.refs.input.focus();
     }
-
-    this.validate(this.refs.input.value, true, false);
+    if(this.refs.input) {
+        this.validate(this.refs.input.value, true, false);
+    }
   }
 
   render() {

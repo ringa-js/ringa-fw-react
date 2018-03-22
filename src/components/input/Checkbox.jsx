@@ -23,11 +23,12 @@ export default class Checkbox extends RingaComponent {
   // Lifecycle
   //-----------------------------------
   render() {
-    let {label} = this.props;
-    
+    let {label, disabled} = this.props;
+
     return <div id={this.id} className="squaredFour checkbox-container" onClick={this.onClickHandler}>
       <input type="checkbox"
              checked={this.calcChecked()}
+             disabled={disabled}
              onChange={() => {/* noop to get rid of warning */}} />
       <div className="checkbox-box" htmlFor={this.id} />
       {label ? <label className="checkbox-label"> {label}</label> : undefined}
@@ -69,7 +70,11 @@ export default class Checkbox extends RingaComponent {
   // Events
   //-----------------------------------
   onClickHandler() {
-    let {onChange, model, modelField, toggleStateComponent, toggleStateField} = this.props;
+    let {onChange, model, modelField, toggleStateComponent, toggleStateField, disabled} = this.props;
+
+    if (disabled) {
+        return;
+    }
 
     let checked = this.calcChecked();
 

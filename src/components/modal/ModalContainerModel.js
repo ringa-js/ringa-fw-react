@@ -66,4 +66,12 @@ export default class ModalContainerModel extends Model {
 
     this.checkBlockMouseEvents();
   }
+
+  removeAllModals() {
+      this.modals = [];
+
+      this.notify('modals');
+
+      this.checkBlockMouseEvents();
+  }
 }
