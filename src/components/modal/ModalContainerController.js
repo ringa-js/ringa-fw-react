@@ -28,5 +28,11 @@ export default class ModalContainerController extends Controller {
 
       $customEvent.stopPropagation();
     });
+
+    this.addListener('removeAllModals', ($customEvent, modalContainerModel) => {
+      modalContainerModel.removeAllModals();
+
+      $customEvent.stopPropagation();
+    });
   }
 }
