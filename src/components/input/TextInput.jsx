@@ -34,13 +34,16 @@ export default class TextInput extends ValidatingInputBase {
   componentDispatchReady() {
     super.componentDispatchReady();
 
-    const {focusOnMount} = this.props;
+    const {focusOnMount, multiline} = this.props;
 
     if (focusOnMount) {
       this.refs.input.focus();
     }
     if(this.refs.input) {
         this.validate(this.refs.input.value, true, false);
+        if(multiline) {
+            this.expand_onChangeHandler(this.refs.input);
+        }
     }
   }
 
@@ -168,7 +171,7 @@ export default class TextInput extends ValidatingInputBase {
   }
 
   onChangeHandler(event) {
-    const {onChange, setOnBlur, setOnKeyEnter} = this.props;
+    const {onChange, setOnBlur, setOnKeyEnter, multiline} = this.props;
 
     if (super.onChangeHandler) {
       super.onChangeHandler();
@@ -187,6 +190,16 @@ export default class TextInput extends ValidatingInputBase {
     if (onChange) {
       onChange(event, this.refs.input.value);
     }
+
+    if (multiline) {
+        this.expand_onChangeHandler();
+    }
+  }
+
+  expand_onChangeHandler(event) {
+      const textField = this.refs.input;
+      textField.style.height = 'auto';
+      textField.style.height = (textField.scrollHeight) + 'px';
   }
 
   onFocusHandler(event) {
