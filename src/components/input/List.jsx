@@ -63,9 +63,9 @@ export default class List extends RingaComponent {
         if (autoSort) {
           filteredItems.sort(this.multiSelectSort);
         }
-        children = filteredItems.map(itemRenderer.bind(undefined, this.item_clickHandler, this.checkbox_onChangeHandler));
+        children = filteredItems.map(item => itemRenderer(this.item_clickHandler.bind(this, item), this.checkbox_onChangeHandler.bind(this), item));
       } else {
-        children = filteredItems.map(itemRenderer.bind(undefined, this.item_clickHandler));
+        children = filteredItems.map(item => itemRenderer(this.item_clickHandler.bind(this, item), item));
       }
     } else if (emptyLabel) {
       children = <div className="empty">{emptyLabel}</div>;

@@ -5,8 +5,8 @@ import OverlayModel from './overlay/OverlayModel';
 import HashArray from 'hasharray';
 import classnames from 'classnames';
 import {isCoordWithin, getBounds} from '../utils/DisplayUtils';
-import {dispatch} from 'ringa';
-import {depend, attach} from 'react-ringa';
+import {dispatch, Model} from 'ringa';
+import {depend, attach, watch} from 'react-ringa';
 
 /**
  * Recursively walks the prototype chain to get all the available properties for a given Object.
@@ -189,6 +189,8 @@ class RingaComponent extends Component {
         dragInitiator: this
       }, document);
     }
+
+    this._unwatchProps();
   }
 
   componentDidMount() {
@@ -234,6 +236,8 @@ class RingaComponent extends Component {
     }
 
     window.renderCounts[this.constructor.name]++;
+
+    this._watchProps();
   }
 
   render() {
@@ -253,6 +257,34 @@ class RingaComponent extends Component {
 
   attach(controllerOrModel) {
     attach(this, controllerOrModel);
+  }
+
+  watchProps(props, handler) {
+    this.propsToWatch = this.propsToWatch || {};
+
+    props = props instanceof Array ? props : [props];
+    props.forEach(prop => this.propsToWatch[prop] = {handler});
+
+    this._watchProps();
+  }
+
+  _watchProps() {
+    this.watchedModels = this.watchedModels || [];
+
+    if (this.props && this.propsToWatch) {
+      for (let prop in this.propsToWatch) {
+        let model = this.props[prop];
+        if (model && model instanceof Model && this.watchedModels.indexOf(model) === -1) {
+          this.watchedModels.push(model);
+          watch(this, model, undefined, this.propsToWatch[prop].handler);
+        }
+      }
+    }
+  }
+
+  _unwatchProps() {
+    // Unwatching is handled internal to the watch() method
+    this.watchedModels = [];
   }
 
   dumpAncestors() {
