@@ -13,11 +13,11 @@ export default class Button extends RingaComponent {
   // Lifecycle
   //-----------------------------------
   render() {
-    const {label, id, selected} = this.props;
+    const {label, id, selected, children} = this.props;
 
     return <button className={this.calcClassnames('button', {selected})}
                    onClick={this.onClickHandler}
-                   id={id}>{label}</button> ;
+                   id={id}>{children || label}</button> ;
   }
 
   //-----------------------------------

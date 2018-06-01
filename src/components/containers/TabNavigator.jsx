@@ -22,7 +22,7 @@ class TabNavigator extends RingaComponent {
   // Lifecycle
   //-----------------------------------
   render() {
-    let {children, renderTabContent = this.defaultRenderTab, renderTabButton = this.defaultRenderTabButton} = this.props;
+    let {children, renderTabContent = this.defaultRenderTab, renderTabButton = this.defaultRenderTabButton, controls} = this.props;
 
     if (!children) {
       return <div>Please provide some children to the TabNavigator!</div>;
@@ -38,7 +38,7 @@ class TabNavigator extends RingaComponent {
     const tabButtons = children ? children.map(renderTabButton) : undefined;
 
     return <div className={this.calcClassnames("tab-navigator")}>
-      <div className="tabs">{tabButtons}</div>
+      <div className="tabs"><span>{tabButtons}</span>{controls}</div>
       <div className="content">{tabContent}</div>
     </div>;
   }
@@ -60,9 +60,17 @@ class TabNavigator extends RingaComponent {
   }
 
   tabButton_onClickHandler(ix) {
-    this.setState({
-      selectedIx: ix
-    });
+    const {onChange} = this.props;
+
+    if (this.props.selectedIx === undefined) {
+      this.setState({
+        selectedIx: ix
+      });
+    }
+
+    if (onChange) {
+      onChange(ix);
+    }
   }
 }
 
