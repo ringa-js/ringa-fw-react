@@ -1943,7 +1943,8 @@ ul li {
     .classic .ringa-component.list > .contents {
       width: 100%;
       height: 100%;
-      overflow: auto; }
+      overflow: auto;
+      -webkit-overflow-scrolling: touch; }
     .classic .ringa-component.list .empty {
       width: 100%;
       text-align: center;
