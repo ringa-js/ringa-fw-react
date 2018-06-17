@@ -59,7 +59,7 @@ class ModalModel extends PositionableModel {
   //-----------------------------------
   // Statics
   //-----------------------------------
-  static show({renderer, title, target, position, positionAlternate, maxWidth, maxHeight, x, y,
+  static show({renderer, rendererProps, title, target, position, positionAlternate, maxWidth, maxHeight, x, y,
       classes, singleton, singletonGroup, width, height, align, shift, alignAlternate,
       shiftAlternate, forceInViewport, global, overflowX, overflowY, mouseDownOutsideHandler,
       mouseLeaveHandler, onPositionUpdateHandler, closeTimeout, openTimeout,
@@ -67,7 +67,7 @@ class ModalModel extends PositionableModel {
       showWrapper, wrapperClasses}, domNode) {
 
     let modalModel = new ModalModel(undefined, {
-      renderer, title, target, position, positionAlternate,
+      renderer, rendererProps, title, target, position, positionAlternate,
       maxWidth: width === undefined ? maxWidth : 10000,
       maxHeight: height === undefined ? maxHeight: 10000, x, y,
       classes, singleton, singletonGroup, width, height, align, shift, alignAlternate,

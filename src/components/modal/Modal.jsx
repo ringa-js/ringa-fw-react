@@ -15,6 +15,8 @@ export default class Modal extends PositionableComponent {
 
     watch(this, props.modal);
 
+    props.modal.component = this;
+
     if (props.modal.$ringaAlternateParentComponent) {
       this.$ringaAlternateParentComponent = props.modal.$ringaAlternateParentComponent;
     }
@@ -47,7 +49,7 @@ export default class Modal extends PositionableComponent {
     } else if (modal.renderer.prototype instanceof React.Component) {
       let Renderer = modal.renderer;
 
-      children = <Renderer {...modal.rendererProps} />;
+      children = <Renderer {...modal.rendererProps} modal={modal} />;
     } else if (typeof modal.renderer === 'function') {
       children = modal.renderer(this);
     }
