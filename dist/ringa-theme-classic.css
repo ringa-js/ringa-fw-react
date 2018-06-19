@@ -2397,6 +2397,24 @@ ul li {
     min-height: 25px;
     background: #FCFCFC;
     z-index: 500; }
+    .classic .ringa-component.modal .modal-header {
+      height: 30px;
+      background: #023149;
+      color: #FCFCFC;
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px; }
+      .classic .ringa-component.modal .modal-header .title {
+        text-align: left;
+        font-size: 16px;
+        padding: 5px; }
+    .classic .ringa-component.modal .modal-close-btn {
+      color: #FCFCFC; }
+    .classic .ringa-component.modal .modal-contents {
+      padding: 5px;
+      width: calc(100% - 10px);
+      height: calc(100% - 10px); }
+      .classic .ringa-component.modal .modal-contents.show-header {
+        height: calc(100% - 10px - 30px); }
   .classic .modal-header .title {
     text-align: center; }
     .classic .modal-header .title.closeable {
