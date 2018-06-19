@@ -1,14 +1,5 @@
-import ENGLISH_LANGUAGE_PACK from './assets/i18n/en/pack.json';
-import SWEDISH_LANGUAGE_PACK from './assets/i18n/sv/pack.json';
-
-import EN_I18N_DESCRIPTION from './assets/i18n/en/i18n.md';
-import SV_I18N_DESCRIPTION from './assets/i18n/sv/i18n.md';
-
-import EN_SCREEN_DESCRIPTION from './assets/i18n/en/screen.md';
-import EN_DEBUG_INSPECTOR_DESCRIPTION from './assets/i18n/en/debugInspector.md';
-import EN_THEME_DESCRIPTION from './assets/i18n/en/theme.md';
-import EN_THEME_DATAGRID from './assets/i18n/en/dataGrid.md';
-import EN_THEME_ALERT from './assets/i18n/en/alert.md';
+import * as EN_ALL from './assets/i18n/en/index';
+import * as SV_ALL from './assets/i18n/sv/index';
 
 const EN = 'en';
 const SV = 'sv';
@@ -24,19 +15,20 @@ const SV = 'sv';
  */
 export function setup(i18NModel) {
   // Language packs are a JSON file of multiple keys
-  i18NModel.mergeLanguagePack(EN, ENGLISH_LANGUAGE_PACK);
-  i18NModel.mergeLanguagePack(SV, SWEDISH_LANGUAGE_PACK);
+  i18NModel.mergeLanguagePack(EN, EN_ALL.LANGUAGE_PACK);
+  i18NModel.mergeLanguagePack(SV, SV_ALL.LANGUAGE_PACK);
 
   // addLanguageKey adds a single key at a time. This is useful if our content for the page is larger
   // than we would want in a single key in a JSON file.
-  i18NModel.addLanguageKey(EN, 'i18n.description', EN_I18N_DESCRIPTION);
-  i18NModel.addLanguageKey(SV, 'i18n.description', SV_I18N_DESCRIPTION);
+  i18NModel.addLanguageKey(EN, 'i18n.description', EN_ALL.I18N);
+  i18NModel.addLanguageKey(SV, 'i18n.description', SV_ALL.I18N);
 
-  i18NModel.addLanguageKey(EN, 'screen.description', EN_SCREEN_DESCRIPTION);
-  i18NModel.addLanguageKey(EN, 'debugInspector.description', EN_DEBUG_INSPECTOR_DESCRIPTION);
-  i18NModel.addLanguageKey(EN, 'theme.description', EN_THEME_DESCRIPTION);
-  i18NModel.addLanguageKey(EN, 'dataGrid.description', EN_THEME_DATAGRID);
-  i18NModel.addLanguageKey(EN, 'alert.description', EN_THEME_ALERT);
+  i18NModel.addLanguageKey(EN, 'screen.description', EN_ALL.SCREEN);
+  i18NModel.addLanguageKey(EN, 'debugInspector.description', EN_ALL.DEBUG_INSPECTOR);
+  i18NModel.addLanguageKey(EN, 'theme.description', EN_ALL.THEME);
+  i18NModel.addLanguageKey(EN, 'dataGrid.description', EN_ALL.DATA_GRID);
+  i18NModel.addLanguageKey(EN, 'alert.description', EN_ALL.ALERT);
+  i18NModel.addLanguageKey(EN, 'modal.description', EN_ALL.MODAL);
 
   // By default the language is loaded from a cookie 'lang' on the local domain, but you could set it up to something else
   // here

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React from 'react';
-import { Route, Redirect } from 'react-router';
+import { Route } from 'react-router';
 
 import ApplicationLayout from './layout/ApplicationLayout';
 
@@ -19,7 +19,8 @@ export const routeMap = {
   'Screen / Devices': '/screen',
   'DebugInspector': '/debugInspector',
   'DataGrid': '/dataGrid',
-  'Alert': '/alert'
+  'Alert': '/alert',
+  'Modal': '/modal'
 };
 
 const _routeMapInverted = {};

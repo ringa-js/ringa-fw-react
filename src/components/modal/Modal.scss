@@ -21,7 +21,33 @@
     }
   }
 
+  .modal-header {
+    height: 30px;
+    background: $ringa-color;
+    color: $white;
+    border-top-left-radius: $radius-1;
+    border-top-right-radius: $radius-1;
+
+    .title {
+      text-align: left;
+      font-size: 16px;
+      padding: $pad1;
+    }
+  }
+
+  .modal-close-btn {
+    color: $white;
+  }
+
   .modal-contents {
+    padding: $pad1;
+    width: calc(100% - #{$pad1 * 2});
+    height: calc(100% - #{$pad1 * 2});
+
+    &.show-header {
+      height: calc(100% - #{$pad1 * 2} - 30px);
+    }
+
     &.show-header {
     }
   }

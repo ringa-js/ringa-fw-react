@@ -24,6 +24,7 @@ import ScreenHarness from '../harnesses/screen/ScreenHarness';
 import DebugInspectorHarness from '../harnesses/debugInspector/DebugInspectorHarness';
 import DataGridHarness from '../harnesses/dataGrid/DataGridHarness';
 import AlertHarness from '../harnesses/alert/AlertHarness';
+import ModalHarness from '../harnesses/modal/ModalHarness';
 
 import {DefaultApplicationRoot} from '../../src/index';
 
@@ -62,6 +63,7 @@ export default class ApplicationLayout extends DefaultApplicationRoot {
       <Route path="/debugInspector" component={DebugInspectorHarness} />
       <Route path="/dataGrid" component={DataGridHarness} />
       <Route path="/alert" component={AlertHarness} />
+      <Route path="/modal" component={ModalHarness} />
       <Footer />
     </div>);
   }

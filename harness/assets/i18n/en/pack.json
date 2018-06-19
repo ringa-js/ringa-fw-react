@@ -56,5 +56,8 @@
   },
   "alert": {
     "title": "markdown:#Alert Instructions"
+  },
+  "modal": {
+    "title": "markdown:#Modal Instructions"
   }
 }

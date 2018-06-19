@@ -1,6 +1,7 @@
 import React from 'react';
 import ModalHeader from './ModalHeader.jsx';
 import PositionableComponent from '../PositionableComponent';
+import ModalModel from './ModalModel';
 
 import {watch} from 'react-ringa';
 
@@ -77,4 +78,6 @@ export default class Modal extends PositionableComponent {
   getPositionableModel() {
     return this.props.modal;
   }
+
+  static show = ModalModel.show;
 }
