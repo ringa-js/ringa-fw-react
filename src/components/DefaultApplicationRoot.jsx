@@ -45,11 +45,11 @@ export default class DefaultApplicationRoot extends RingaComponent {
   // Methods
   //-----------------------------------
   render(children) {
-    const {bodyClasses = ''} = this.props;
+    const {bodyClasses = '', theme} = this.props;
 
     return <BodyClassName className={bodyClasses}>
       <BrowserCheck>
-        <Theme classes="fill">
+        <Theme classes="fill" theme={theme}>
           <div className="fill">
             <OverlayContainer global={true} classes="fill">
               <ModalContainer global={true} classes="fill no-scroll">
