@@ -8,7 +8,7 @@
 .debug-inspector {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: fixed;
   transition: height 0.2s ease-in-out;
   background: #ef7600;
   color: $white;
@@ -133,7 +133,7 @@
 
   width: calc(100% - 10px);
 
-  opacity: 0.87;
+  opacity: 0.75;
 
   .markdown {
 

@@ -5,6 +5,8 @@
 // This exists outside the theme in DefaultApplicationRoot
 @import '../../../components/complex/BrowserCheck';
 
+@import '../../../components/debugInspector/DebugInspector';
+
 .#{$theme} {
   background: $theme-background;
 
@@ -57,8 +59,6 @@
   @import '../../../components/modal/ModalContainer';
   @import '../../../components/modal/Modal';
   @import '../../../components/modal/ModalHeader';
-
-  @import '../../../components/debugInspector/DebugInspector';
 
   @import '../../../components/complex/I18NSwitcher';
 

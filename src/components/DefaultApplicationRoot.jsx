@@ -54,8 +54,8 @@ export default class DefaultApplicationRoot extends RingaComponent {
             <OverlayContainer global={true} classes="fill">
               <ModalContainer global={true} classes="fill no-scroll">
                 {children}
-                <DebugInspector />
               </ModalContainer>
+              <DebugInspector />
             </OverlayContainer>
             <TooltipContainer />
           </div>

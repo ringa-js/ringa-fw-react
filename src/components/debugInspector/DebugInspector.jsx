@@ -66,7 +66,7 @@ export default class DebugInspector extends RingaComponent {
         'inspectee-bottom': !top
       }) : '';
 
-      return <div>
+      return <div style={{ position: 'absolute', top: 1, left: 1, zIndex: 50000 }}>
         <ModalToggleContainer show={!!inspectComponent}
                               onClose={this.inspector_closeHandler}
                               title="Ringa Inspector"
