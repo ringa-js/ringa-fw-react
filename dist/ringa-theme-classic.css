@@ -1658,13 +1658,130 @@ ul li {
   padding: 20px;
   max-width: 400px; }
 
+/**
+ * CSS for the component you are inspecting right now.
+ */
+.inspecting {
+  background-color: rgba(239, 118, 0, 0.9) !important; }
+
+.debug-inspector {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  transition: height 0.2s ease-in-out;
+  background: #ef7600;
+  color: #FCFCFC; }
+  .debug-inspector .show {
+    height: 300px; }
+  .debug-inspector .panels {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 1rem;
+    font-size: 11px; }
+    .debug-inspector .panels .panel {
+      flex: 0 1 20em;
+      margin: 0 .5em; }
+      .debug-inspector .panels .panel .object {
+        padding: 3px;
+        cursor: pointer;
+        transition: background-color 0.2s ease-out; }
+      .debug-inspector .panels .panel .object:hover {
+        background-color: #CCC; }
+      .debug-inspector .panels .panel .panel-content {
+        overflow: auto;
+        height: 180px;
+        border: 1px solid #ef7600;
+        max-width: 20em;
+        background: #FCFCFC; }
+      .debug-inspector .panels .panel .title {
+        margin-bottom: 5px;
+        font-size: 14px;
+        font-weight: bold; }
+      .debug-inspector .panels .panel .subtitle {
+        margin-bottom: 5px;
+        font-size: 11px;
+        font-style: italic; }
+      .debug-inspector .panels .panel .detail {
+        margin: 5px;
+        padding: 5px;
+        background: #ef7600; }
+        .debug-inspector .panels .panel .detail .label {
+          display: inline-block; }
+        .debug-inspector .panels .panel .detail .value {
+          float: right;
+          font-weight: bold;
+          display: inline-block; }
+    .debug-inspector .panels .panel.settings .detail {
+      height: 21px; }
+    .debug-inspector .panels .panel.settings input {
+      width: 30px;
+      float: right; }
+    .debug-inspector .panels .panel.settings .btn {
+      margin: 5px;
+      display: inline-block;
+      cursor: pointer;
+      color: #FCFCFC;
+      padding: 4px;
+      border: 1px solid #ef7600; }
+    .debug-inspector .panels .panel.settings .btn:hover {
+      color: #FCFCFC; }
+    .debug-inspector .panels .panel.settings .btn-reset {
+      float: left; }
+    .debug-inspector .panels .panel.settings .btn-commit {
+      float: right; }
+
+.inspector-content {
+  margin: 10px;
+  padding: 15px;
+  height: calc(100% - 50px);
+  width: calc(100% - 50px);
+  background: #ef9622; }
+
+.inspectee {
+  position: fixed;
+  pointer-events: none;
+  padding: 5px;
+  font-size: 10px;
+  background-color: #333 !important;
+  color: #FCFCFC;
+  z-index: 50000;
+  width: calc(100% - 10px);
+  opacity: 0.75; }
+  .inspectee .markdown .component {
+    color: #FFFF44; }
+  .inspectee .markdown .ringacomponent {
+    color: #FF9999; }
+  .inspectee .markdown .controller {
+    color: #44FF44; }
+  .inspectee .markdown .model {
+    color: #99FFFF; }
+  .inspectee .markdown .inspectee-group {
+    margin: 1px;
+    background-color: #444;
+    border: 1px solid #CCC;
+    border-radius: 3px;
+    padding: 0 3px; }
+  .inspectee .markdown h2 {
+    border-bottom: 1px solid #FCFCFC; }
+  .inspectee .markdown h1, .inspectee .markdown h2, .inspectee .markdown h3, .inspectee .markdown h4, .inspectee .markdown h5 {
+    margin: 0;
+    color: #FCFCFC; }
+  .inspectee .markdown ul, .inspectee .markdown li {
+    margin: 0;
+    color: #FCFCFC; }
+
+.inspectee-top {
+  top: 0;
+  left: 0; }
+
+.inspectee-bottom {
+  bottom: 0;
+  left: 0; }
+
 .classic {
   background: none;
   /* .squaredFour */
-  /* end .squaredFour */
-  /**
- * CSS for the component you are inspecting right now.
- */ }
+  /* end .squaredFour */ }
   .classic .debug {
     color: #FFA500; }
   .classic .ringa-container-1 {
@@ -2428,117 +2545,6 @@ ul li {
     .classic .modal-header .modal-close-btn img {
       width: 12px;
       height: 12px; }
-  .classic .inspecting {
-    background-color: rgba(239, 118, 0, 0.9) !important; }
-  .classic .debug-inspector {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transition: height 0.2s ease-in-out;
-    background: #ef7600;
-    color: #FCFCFC; }
-    .classic .debug-inspector .show {
-      height: 300px; }
-    .classic .debug-inspector .panels {
-      display: flex;
-      flex-wrap: nowrap;
-      padding: 1rem;
-      font-size: 11px; }
-      .classic .debug-inspector .panels .panel {
-        flex: 0 1 20em;
-        margin: 0 .5em; }
-        .classic .debug-inspector .panels .panel .object {
-          padding: 3px;
-          cursor: pointer;
-          transition: background-color 0.2s ease-out; }
-        .classic .debug-inspector .panels .panel .object:hover {
-          background-color: #CCC; }
-        .classic .debug-inspector .panels .panel .panel-content {
-          overflow: auto;
-          height: 180px;
-          border: 1px solid #ef7600;
-          max-width: 20em;
-          background: #FCFCFC; }
-        .classic .debug-inspector .panels .panel .title {
-          margin-bottom: 5px;
-          font-size: 14px;
-          font-weight: bold; }
-        .classic .debug-inspector .panels .panel .subtitle {
-          margin-bottom: 5px;
-          font-size: 11px;
-          font-style: italic; }
-        .classic .debug-inspector .panels .panel .detail {
-          margin: 5px;
-          padding: 5px;
-          background: #ef7600; }
-          .classic .debug-inspector .panels .panel .detail .label {
-            display: inline-block; }
-          .classic .debug-inspector .panels .panel .detail .value {
-            float: right;
-            font-weight: bold;
-            display: inline-block; }
-      .classic .debug-inspector .panels .panel.settings .detail {
-        height: 21px; }
-      .classic .debug-inspector .panels .panel.settings input {
-        width: 30px;
-        float: right; }
-      .classic .debug-inspector .panels .panel.settings .btn {
-        margin: 5px;
-        display: inline-block;
-        cursor: pointer;
-        color: #FCFCFC;
-        padding: 4px;
-        border: 1px solid #ef7600; }
-      .classic .debug-inspector .panels .panel.settings .btn:hover {
-        color: #FCFCFC; }
-      .classic .debug-inspector .panels .panel.settings .btn-reset {
-        float: left; }
-      .classic .debug-inspector .panels .panel.settings .btn-commit {
-        float: right; }
-  .classic .inspector-content {
-    margin: 10px;
-    padding: 15px;
-    height: calc(100% - 50px);
-    width: calc(100% - 50px);
-    background: #ef9622; }
-  .classic .inspectee {
-    position: fixed;
-    pointer-events: none;
-    padding: 5px;
-    font-size: 10px;
-    background-color: #333 !important;
-    color: #FCFCFC;
-    z-index: 50000;
-    width: calc(100% - 10px);
-    opacity: 0.87; }
-    .classic .inspectee .markdown .component {
-      color: #FFFF44; }
-    .classic .inspectee .markdown .ringacomponent {
-      color: #FF9999; }
-    .classic .inspectee .markdown .controller {
-      color: #44FF44; }
-    .classic .inspectee .markdown .model {
-      color: #99FFFF; }
-    .classic .inspectee .markdown .inspectee-group {
-      margin: 1px;
-      background-color: #444;
-      border: 1px solid #CCC;
-      border-radius: 3px;
-      padding: 0 3px; }
-    .classic .inspectee .markdown h2 {
-      border-bottom: 1px solid #FCFCFC; }
-    .classic .inspectee .markdown h1, .classic .inspectee .markdown h2, .classic .inspectee .markdown h3, .classic .inspectee .markdown h4, .classic .inspectee .markdown h5 {
-      margin: 0;
-      color: #FCFCFC; }
-    .classic .inspectee .markdown ul, .classic .inspectee .markdown li {
-      margin: 0;
-      color: #FCFCFC; }
-  .classic .inspectee-top {
-    top: 0;
-    left: 0; }
-  .classic .inspectee-bottom {
-    bottom: 0;
-    left: 0; }
   .classic .language-item {
     font-size: 14px; }
     .classic .language-item .flag-icon {
