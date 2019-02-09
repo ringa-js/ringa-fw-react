@@ -41,7 +41,7 @@ export default class OverlayContainer extends RingaComponent {
 
     overlays = overlays.map(this.renderOverlay);
 
-    let cn = classnames({
+    let cn = this.calcClassnames({
       'overlay-container-wrapper': true
     }, classes);
 
